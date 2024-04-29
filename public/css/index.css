@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: "Abordage";
+}
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 350PX --------------- */
+/* ------------------ SUP. OU ÉGALE ------------------ */
+/* --------------------------------------------------- */
+@media screen and (min-width: 350px) {
+
+    html,
+    body {
+        background-color: rgb(247, 245, 216);
+    }
+
+    body {
+        min-width: 100vw;
+        min-height: 100vh;
+    }
+
+    .loading {
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        padding: 70px
+    }
+
+    #logo img {
+        width: 600px;
+    }
+
+    #loader {
+        font-family: "Lemon Milk";
+        font-size: 7rem;
+        color: black;
+    }
+}
+
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 1000PX --------------- */
+/* ----------------- SUP. OU ÉGALE ------------------- */
+/* --------------------------------------------------- */
+@media only screen and (min-width: 1000px) {
+    #logo img {
+        width: 800px;
+        padding-left: 70px;
+    }
+
+    #loader {
+        font-family: "Lemon Milk";
+        font-size: 9rem;
+        padding-left: 70px;
+    }
+}
+
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 1200PX --------------- */
+/* ----------------- SUP. OU ÉGALE ------------------- */
+/* --------------------------------------------------- */
+@media only screen and (min-width: 1200px) {
+    #logo img {
+        width: 900px;
+        padding-left: 70px;
+    }
+
+    #loader {
+        font-family: "Lemon Milk";
+        font-size: 9rem;
+        padding-left: 70px;
+    }
+}

@@ -1,0 +1,978 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 350PX --------------- */
+/* ------------------ SUP. OU ÉGALE ------------------ */
+/* --------------------------------------------------- */
+@media screen and (min-width: 350px) {
+
+    html,
+    body {
+        background-color: rgb(247, 245, 216);
+    }
+
+    body {
+        font-family: "Abordage", "Space Grotesk";
+        color: black;
+        min-width: 100vw;
+        min-height: 100vh;
+        text-align: justify;
+        overflow-x: hidden;
+
+        p {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    }
+
+    /* NAVBAR */
+    .navbar .burger-menu-button {
+        color: black;
+        cursor: pointer;
+        display: none;
+        display: block;
+    }
+
+    .container_menu {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 50px 20px 50px;
+    }
+
+    .navbar .links {
+        display: none;
+    }
+
+    .logo img {
+        width: 55%;
+        padding-right: 70px;
+    }
+
+    header {
+        position: relative;
+        background-color: rgb(27, 237, 177);
+    }
+
+    .navbar {
+        display: flex;
+        align-items: end;
+        justify-content: center;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .burger-menu {
+        display: block;
+        height: 0;
+        position: absolute;
+        width: 100%;
+        overflow: hidden;
+        transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background-color: rgb(27, 237, 177);
+    }
+
+    .burger-menu.open {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .burger-menu.open a {
+        font-size: 4rem;
+    }
+
+    .links {
+        margin: 0;
+        padding: 0;
+    }
+
+    .burger-menu li {
+        padding: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .burger-menu-button i {
+        padding: 15px 0 15px 0;
+        transform: scale(4.5);
+    }
+
+    .fa-solid.fa-bars,
+    .fa-solid.fa-xmark {
+        padding-right: 10px;
+    }
+
+    .dropdown-menu_one {
+        border: 2px solid black;
+        display: none;
+        position: absolute;
+        justify-content: center;
+        padding: 10px;
+        width: 280px;
+        margin-left: 20px;
+        background-color: rgb(243, 237, 79);
+        text-align: center;
+    }
+
+    .dropdown:hover .dropdown-menu_one {
+        display: block;
+    }
+
+    .dropdown-menu_two {
+        border: 2px solid black;
+        display: none;
+        position: absolute;
+        justify-content: center;
+        padding: 10px;
+        width: 280px;
+        margin-left: 20px;
+        background-color: rgb(243, 237, 79);
+        text-align: center;
+    }
+
+    .dropdown:hover .dropdown-menu_two {
+        display: block;
+    }
+
+    /* revoir */
+    #imageChange {
+        padding: 40px 100px 0 0;
+        width: 35%;
+        height: auto;
+    }
+
+    /* NAVBAR */
+
+    .title {
+        font-family: "Lemon milk";
+        font-weight: 600;
+        font-size: 2.9rem;
+        padding-left: 40px;
+        text-align: left;
+    }
+
+    .container {
+        box-sizing: border-box;
+        border-radius: 5px;
+        width: 100%;
+        min-width: 980px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    /* MODALE */
+    .text_click {
+        font-family: "Lemon Milk";
+    }
+
+    #openModal {
+        border: none;
+        background-color: rgb(27, 237, 177);
+        font-size: 1.2rem;
+        font-family: "Lemon Milk";
+        display: flex;
+        align-items: start;
+        margin-top: 0;
+        border-radius: 20px;
+        width: fit-content;
+        padding: 6px;
+        transition: transform 0.3s ease;
+    }
+
+    #openModal:hover {
+        transform: rotate(-2deg);
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        overflow: auto;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 15px 25px 35px 25px;
+        border: 2px solid black;
+        box-shadow: 0px 0px 10px 1px white;
+        width: 80%;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .hide-on-menu-open {
+        display: none;
+    }
+
+    .fa-hand-pointer {
+        display: none;
+    }
+
+    .toggle-table .fa-hand-pointer {
+        display: none;
+    }
+
+    .toggle-table.show-pointer .fa-hand-pointer {
+        display: inline-block;
+    }
+
+    .toggle-table.show-pointer .fa-hand-point-down {
+        display: none;
+    }
+
+    .corners {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .corner {
+        border-radius: 25px;
+        border: 2px solid #000000;
+        padding: 30px;
+        width: 490px;
+        height: fit-content;
+        font-size: 2.1rem;
+        line-height: 1.7;
+        background-color: white;
+    }
+
+    .corner:hover {
+        box-shadow: 0px 0px 20px 5px white;
+    }
+
+    .p_description {
+        margin-top: 50px;
+        font-size: 2.6rem;
+        text-align: justify;
+    }
+
+    .scrolling-text-container {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+    }
+
+    .scrolling-text {
+        font-family: "Lemon Milk";
+        display: block;
+        margin-right: 500px;
+        font-size: 2.3rem;
+        white-space: nowrap;
+        animation: scrollText 18s linear infinite;
+        animation-direction: alternate-reverse;
+    }
+
+    @keyframes scrollText {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    .big-title {
+        display: flex;
+        justify-content: center;
+        font-family: "Lemon Milk";
+        font-weight: 600;
+        font-size: 6rem;
+    }
+
+    .big-title-two {
+        font-family: "Lemon Milk";
+        font-weight: 600;
+        font-size: 6rem;
+    }
+
+    /* FOOTER */
+    #footer {
+        display: flex;
+        justify-content: space-between;
+        background-color: #000000;
+        color: white;
+        width: 100%;
+        font-size: 0.8rem;
+    }
+
+    .confidential {
+        margin: 0 50px 0 0;
+        display: flex;
+        align-items: self-end;
+        justify-content: end;
+        text-decoration: underline;
+    }
+
+    .confidential a {
+        color: white;
+        font-size: 0.8rem;
+    }
+
+    .credits {
+        margin: 0 50px;
+    }
+
+    .copyright {
+        font-family: "Lemon Milk";
+    }
+
+    /* FOOTER */
+}
+
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 768PX --------------- */
+/* ------------------ SUP. OU ÉGALE ------------------ */
+/* --------------------------------------------------- */
+@media screen and (min-width: 768px) {
+    .container {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+    }
+
+    #projet,
+    #fonctionnement,
+    #adhesion,
+    #contact,
+    #partenaires {
+        height: 100%;
+        margin: 0 50px;
+        font-size: 1.7rem;
+    }
+
+    #deposer {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bordure {
+        border: 1px solid black;
+    }
+
+    .circle {
+        width: 60px;
+        height: 60px;
+        background-color: rgb(0, 0, 0);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+        font-family: "Lemon milk";
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .stage {
+        display: flex;
+        align-items: center;
+    }
+
+    .fa-regular.fa-hand-point-down,
+    .fa-regular.fa-hand-pointer {
+        transform: scale(1.3);
+    }
+
+    .list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toggle-table {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .toggle-table i {
+        margin-left: auto;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .rectangle {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .rectangle-green-one {
+        box-sizing: border-box;
+        width: 50%;
+        height: 350px;
+        background-color: rgb(27, 237, 177);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .rectangle-green-two {
+        box-sizing: border-box;
+        width: 50%;
+        height: 350px;
+        background-color: rgb(27, 237, 177);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .rectangle-gray-one {
+        box-sizing: border-box;
+        width: 50%;
+        height: 350px;
+        background-color: rgb(247, 245, 216);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .rectangle-gray-two {
+        box-sizing: border-box;
+        width: 50%;
+        height: 350px;
+        background-color: rgb(247, 245, 216);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .border-container {
+        height: calc(100% - 20px);
+        border-left: 30px solid black;
+        border-right: 30px solid black;
+        position: relative;
+    }
+}
+
+.icon {
+    width: 280px;
+}
+
+.arrow-up {
+    display: flex;
+    justify-content: end;
+}
+
+h2 {
+    font-family: "Lemon Milk";
+    font-weight: 600;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.swipe-text {
+    display: inline-block;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+}
+
+.swipe-text:hover {
+    transform: translateX(20px);
+}
+
+.mail {
+    font-size: 3rem;
+}
+
+.text_line span {
+    text-decoration: underline;
+}
+
+.logo_partenaires {
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: auto;
+
+    div {
+        margin-right: 30px;
+    }
+
+    .RM {
+        width: 100px;
+        height: auto;
+    }
+
+    .AURA {
+        width: 150px;
+        height: auto;
+    }
+
+    .PF {
+        width: 120px;
+        height: auto;
+    }
+
+    .CDD {
+        width: 90px;
+        height: auto;
+    }
+
+    .OU {
+        width: 130px;
+        height: auto;
+    }
+}
+
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 1000PX --------------- */
+/* ----------------- SUP. OU ÉGALE ------------------- */
+/* --------------------------------------------------- */
+@media only screen and (min-width: 1000px) {
+    .navbar .links a {
+        font-size: 1.5rem;
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+    }
+
+    .container {
+        box-sizing: border-box;
+        border-radius: 5px;
+        width: 100%;
+        min-width: 1000px;
+        max-width: 1500px;
+        margin: 0;
+    }
+
+    .circle_menu {
+        width: 17px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: black;
+    }
+
+    #projet,
+    #fonctionnement,
+    #adhesion,
+    #contact,
+    #partenaires {
+        height: 100%;
+        margin: 0 110px;
+        font-size: 1.25rem;
+    }
+
+    /* FOOTER */
+    #footer {
+        font-size: 1rem;
+    }
+
+    .confidential {
+        margin: 0 110px 0 0;
+    }
+
+    .confidential a {
+        font-size: 1rem;
+    }
+
+    .credits {
+        margin: 0 110px;
+    }
+
+    /* FOOTER */
+
+    .p_description {
+        font-size: 1.8rem;
+    }
+
+    .scrolling-text {
+        font-size: 2.5rem;
+    }
+
+    .corners {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .corner {
+        width: 450px;
+        height: fit-content;
+        font-size: 1.6rem;
+    }
+
+    .rectangle {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .rectangle-green-one,
+    .rectangle-green-two,
+    .rectangle-gray-one,
+    .rectangle-gray-two {
+        height: 315px;
+    }
+
+    .icon {
+        width: 300px;
+    }
+
+    .border-container {
+        width: calc(100% - 17px);
+        height: calc(100% - 20px);
+        border-left: 30px solid black;
+        border-right: 30px solid black;
+        position: relative;
+    }
+
+    .title {
+        font-size: 2.1rem;
+    }
+
+    .circle {
+        width: 60px;
+        height: 60px;
+        font-size: 2.2rem;
+    }
+
+    .big-title,
+    .big-title-two {
+        font-size: 5.3rem;
+    }
+
+    .mail {
+        font-size: 2.6rem;
+    }
+
+    .logo_partenaires {
+        display: flex;
+        align-items: center;
+        height: auto;
+
+        div {
+            margin-right: 30px;
+        }
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    /* NAVBAR */
+    .navbar {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 10px 110px 10px 110px;
+        background-color: rgb(243, 237, 79);
+        box-shadow: 2px 2px 10px 1px rgb(243, 237, 79);
+    }
+
+    .navbar .burger-menu-button {
+        display: none;
+    }
+
+    .navbar .links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar .links a {
+        font-size: 1.1rem;
+    }
+
+    .burger-menu {
+        display: none;
+    }
+
+    .links {
+        width: 100%;
+    }
+
+    .container_menu {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .logo img {
+        width: 60%;
+        padding: 40px 50px 40px 110px;
+    }
+
+    #imageChange {
+        width: 32%;
+        padding: 40px 110px 40px 0;
+    }
+
+    /* NAVBAR */
+}
+
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 1200PX --------------- */
+/* ----------------- SUP. OU ÉGALE ------------------- */
+/* --------------------------------------------------- */
+@media only screen and (min-width: 1200px) {
+
+    .navbar .links a {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 3.8rem;
+    }
+
+    .title {
+        font-size: 3.3rem;
+    }
+
+    .circle {
+        width: 90px;
+        height: 90px;
+        font-size: 4rem;
+    }
+
+    .big-title,
+    .big-title-two {
+        font-size: 7rem;
+    }
+
+    .mail {
+        font-size: 3.8rem;
+    }
+
+    .logo_partenaires {
+        display: flex;
+        align-items: center;
+        width: 50px;
+        height: auto;
+
+        div {
+            margin-right: 30px;
+        }
+
+        .RM {
+            width: 120px;
+            height: auto;
+        }
+
+        .AURA {
+            width: 200px;
+            height: auto;
+        }
+
+        .PF {
+            width: 140px;
+            height: auto;
+        }
+
+        .CDD {
+            width: 110px;
+            height: auto;
+        }
+
+        .OU {
+            width: 150px;
+            height: auto;
+        }
+    }
+
+    .icon {
+        width: 400px;
+    }
+
+    #projet,
+    #fonctionnement,
+    #adhesion,
+    #contact,
+    #partenaires {
+        height: 100%;
+        margin: 0 140px;
+        font-size: 1.4rem;
+    }
+
+    .credits {
+        margin: 0 140px;
+    }
+
+    .confidential {
+        margin: 0 140px 0 0;
+        display: flex;
+        justify-content: end;
+        align-items: self-end;
+    }
+
+    .rectangle-green-one,
+    .rectangle-green-two,
+    .rectangle-gray-one,
+    .rectangle-gray-two {
+        height: 300px;
+    }
+
+    .corners {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: start;
+    }
+
+    /* NAVBAR  */
+    .navbar {
+        padding: 10px 140px 10px 140px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbar .links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar .links a {
+        font-size: 1.3rem;
+    }
+
+    .logo img {
+        width: 60%;
+        padding: 40px 50px 40px 140px;
+    }
+
+    .imageChange {
+        width: 50%;
+        padding: 40px 140px 0 0;
+    }
+
+    .container {
+        box-sizing: border-box;
+        border-radius: 5px;
+        width: 100%;
+        min-width: 980px;
+        max-width: 2000px;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* NAVBAR  */
+}
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 1500PX --------------- */
+/* ----------------- SUP. OU ÉGALE ------------------- */
+/* --------------------------------------------------- */
+@media only screen and (min-width: 1500px) {
+
+    .navbar .links a {
+        font-size: 1.8rem;
+    }
+
+    .circle_menu {
+        width: 25px;
+        height: 16px;
+    }
+
+    .logo img {
+        width: 60%;
+        padding: 40px 50px 40px 140px;
+    }
+
+    .imageChange {
+        width: 60%;
+    }
+
+    h2 {
+        font-size: 4.6rem;
+    }
+
+    .icon {
+        width: 500px;
+    }
+
+    .navbar .links {
+        display: flex;
+    }
+
+    .dropdown-menu_one,
+    .dropdown-menu_two {
+        padding: 10px;
+        width: 340px;
+    }
+
+    .dropdown:hover .dropdown-menu_one {
+        display: block;
+    }
+
+    .p_description {
+        font-size: 2.4rem;
+    }
+
+    .rectangle-green-one,
+    .rectangle-green-two,
+    .rectangle-gray-one, 
+    .rectangle-gray-two {
+        height: 400px;
+    }
+}
+
+
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 1500PX --------------- */
+/* ----------------- SUP. OU ÉGALE ------------------- */
+/* --------------------------------------------------- */
+@media only screen and (min-width: 1500px) {
+    .logo img {
+        width: 60%;
+        padding: 40px 50px 40px 140px;
+    }
+
+    .imageChange {
+        width: 65%;
+    }
+}

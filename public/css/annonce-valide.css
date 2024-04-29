@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 350PX --------------- */
+/* ------------------ SUP. OU ÉGALE ------------------ */
+/* --------------------------------------------------- */
+@media (min-width: 350px) {
+
+    html,
+    body {
+        background-color: rgb(247, 245, 216);
+    }
+
+    body {
+        font-family: "Abordage";
+        font-size: 1.4rem;
+        color: black;
+        min-width: 100vw;
+        min-height: 100vh;
+        text-align: justify;
+        overflow-x: hidden;
+
+        p {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    }
+
+    .container {
+        box-sizing: border-box;
+        width: 100vw;
+        height: 100vh;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .border-container {
+        height: calc(100% - 20px);
+        border-left: 30px solid black;
+        border-right: 30px solid black;
+        position: relative;
+    }
+}
+
+
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 1000PX --------------- */
+/* ----------------- SUP. OU ÉGALE ------------------- */
+/* --------------------------------------------------- */
+@media only screen and (min-width: 1000px) {
+
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 1200PX --------------- */
+/* ----------------- SUP. OU ÉGALE ------------------- */
+/* --------------------------------------------------- */
+@media only screen and (min-width: 1200px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+}
+
+
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 1500PX --------------- */
+/* ----------------- SUP. OU ÉGALE ------------------- */
+/* --------------------------------------------------- */
+@media only screen and (min-width: 1500px) {
+    h1 {
+        font-size: 4rem;
+    }
+}
