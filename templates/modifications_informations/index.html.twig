@@ -1,20 +1,103 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ModificationsInformationsController!{% endblock %}
+{% block title %}Bennes Solidaires - Créer une annonce{% endblock %}
+
+{% block stylesheets_additionnal %}
+<link rel="stylesheet" href={{ asset('public/css/modifications-informations.css') }}>
+{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% include 'partials/header.html.twig' %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/src/Controller/ModificationsInformationsController.php</code></li>
-        <li>Your template at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/templates/modifications_informations/index.html.twig</code></li>
-    </ul>
-</div>
+    <div class="container" id="container">
+            <section id="inscription">
+                <div class="scrolling-text-container">
+                    <p class="scrolling-text">Modifier mes informations</p>
+                    <p class="scrolling-text">Modifier mes informations</p>
+                    <p class="scrolling-text">Modifier mes informations</p>
+                    <p class="scrolling-text">Modifier mes informations</p>
+                </div>
+                <div class="bordure mb-4"></div>
+                <form>
+                    <div class="choice mb-4">
+                    <div class="checkbox mb-3">
+                        <input type="radio" id="particulier" name="user-type" value="particulier">
+                        <label for="particulier">Je suis un·e particulier</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="radio" id="professionnel" name="user-type" value="professionnel">
+                        <label for="professionnel">Je suis un·e professionnel·le</label>
+                    </div>
+                
+
+                    <div class="text_rgpd" id="text_rgpd" style="display: none;">
+                        <p>En cochant cette case, vous consentez à ce que nous utilisions les informations concernant
+                            votre
+                            secteur d'activité pour établir des statistiques internes sur notre site. Ces données seront
+                            traitées de manière anonymes et utilisées uniquement dans le but d'améliorer notre service
+                            en
+                            connaissant mieux notre public.</p>
+                    </div>
+                </div>
+
+                    <div class="radio_professionnal" style="display: none;">
+                        <label for="activity-select" class="activity-select">Secteur d'activité</label>
+
+                        <select name="activity" id="activity-select" required>
+                            <option value="">Modifiez votre secteur d'activité</option>
+                            <option value="Éducation et formation">Éducation et formation</option>
+                            <option value="Agriculture et agroalimentaire">Agriculture et agroalimentaire</option>
+                            <option value="Fabrication et production">Fabrication et production</option>
+                            <option value="Énergie et environnement">Énergie et environnement</option>
+                            <option value="Immobilier et construction">Immobilier et construction</option>
+                            <option value="Construction durable">Construction durable</option>
+                            <option value="Aménagement paysager">Aménagement paysager</option>
+                            <option value="Restauration et cafés">Restauration et cafés</option>
+                            <option value="Architecture">Architecture</option>
+                            <option value="Design d'intérieur">Design d'intérieur</option>
+                            <option value="Design de mobilier">Design de mobilier</option>
+                            <option value="Design d'objet">Design d'objet</option>
+                            <option value="Design textile">Design textile</option>
+                            <option value="Restauration du patrimoine">Restauration du patrimoine</option>
+                            <option value="Menuiserie">Artisanat bois</option>
+                            <option value="Charpente">Artisanat céramique et poterie</option>
+                            <option value="Maçonnerie">Artisanat maçonnerie</option>
+                        </select>
+                    </div>
+
+                    <label for="firstname">Prénom</label>
+                    <input type="text" id="firstname" name="firstname" placeholder="Modifiez votre prénom" required>
+
+                    <label for="lastname">Nom</label>
+                    <input type="text" type="lastname" name="lastname" placeholder="Modifiez votre nom" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Modifiez votre adresse email" required>
+
+                    <label for="identifier">Identifiant</label>
+                    <input type="text" id="identifier" name="identifier" placeholder="Modifiez votre identifiant"
+                        required>
+
+                    <label for="password">Mot de passe</label>
+                    <input id="password" type="password" name="password" placeholder="Modifiez votre mot de passe"
+                        required>
+
+                    <label for="password">Confirmation</label>
+                    <input id="password" type="password" name="password" placeholder="Confirmez votre mot de passe"
+                        required>
+
+                    <div class="foot_form">
+                        <input type="submit" value="Valider les modifications">
+                    </div>
+                </form>
+            </section>
+        </div>
+
+{% endblock %}
+
+{% block javascripts_additionnal %}
+    {{asset('public/js/overall-scrolling.js') }}
+    {{asset('public/js/inscription.js') }}
 {% endblock %}

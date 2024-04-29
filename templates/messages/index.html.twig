@@ -1,20 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MessagesController!{% endblock %}
+{% block title %}Bennes Solidaires - Messages{% endblock %}
+
+{% block stylesheets_additionnal %}
+<link rel="stylesheet" href={{ asset('public/css/messages.css') }}>
+{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% include 'partials/header.html.twig' %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/src/Controller/MessagesController.php</code></li>
-        <li>Your template at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/templates/messages/index.html.twig</code></li>
-    </ul>
-</div>
+    <div class="nav-two">
+            <!-- RETOUR VERS LA PAGE PRÉCÉDENTE -->
+            <a href="#"onclick="history.back(); return false;"><i class="fa-solid fa-chevron-left"></i></a>
+            <h1>VOS CONVERSATIONS</h1>
+        </div>
+
+        <!-- VERSION MOBILE  -->
+        <div class="container">
+            <div class="description_announce">
+
+                <div class="img_announce">
+                    <img src="../images/20201108_115654.jpeg">
+                </div>
+
+                <div class="text_announce">
+                    <p><span>PAILLE</span></p>
+                    <p>Annonce en ligne</p>
+                    <p>Barnabé - 4 mai 2024</p>
+                    <a href="#" class="look_announce">Voir l'annonce</a>
+                </div>
+
+                <div class="icons_announce">
+                    <!-- FONCTION DELETE -->
+                    <a href=""><i class="fa-solid fa-trash"></i></a>
+                    <a href="./messagerie.html"><i class="fa-regular fa-message"></i></a>
+                </div>
+            </div>
+        <!-- VERSION MOBILE  -->
+
+{% endblock %}
+
+{% block javascripts_additionnal %}
+    {{asset('public/js/overall-no-scrolling.js') }}
+    {{asset('public/js/back.js') }}
 {% endblock %}

@@ -1,20 +1,131 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AnnonceChercherControllerAnnonceChercherController!{% endblock %}
+{% block title %}Bennes Solidaires - Créer une annonce{% endblock %}
+
+{% block stylesheets_additionnal %}
+<link rel="stylesheet" href={{ asset('public/css/annonce-chercher.css') }}>
+{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% include 'partials/header.html.twig' %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/src/Controller/AnnonceChercherControllerAnnonceChercherController.php</code></li>
-        <li>Your template at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/templates/annonce_chercher_controller_annonce_chercher/index.html.twig</code></li>
-    </ul>
-</div>
+    <div class="container" id="container">
+            <section id="inscription">
+                <div class="scrolling-text-container">
+                    <p class="scrolling-text">Je cherche un matériau</p>
+                    <p class="scrolling-text">Je cherche un matériau</p>
+                    <p class="scrolling-text">Je cherche un matériau</p>
+                    <p class="scrolling-text">Je cherche un matériau</p>
+                </div>
+                <div class="bordure mb-4"></div>
+
+                <form action="#" method="POST">
+                    <label for="classification-select" class="classification-select">Classification</label>
+                    <select name="classification" id="classification-select" required onchange="toggleMaterialSelect()">
+                        <option value="">--</option>
+                        <option value="Matériau bio-sourcé">Matériau bio-sourcé</option>
+                        <option value="Matériau géo-sourcé">Matériau géo-sourcé</option>
+                    </select>
+                    <button id="openModal" type="button">Pour en savoir plus, vous pouvez cliquer ici.</button>
+                    
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <div class="first-content">
+                                <p class="mb-5">Les matériaux bio-sourcés sont des matériaux qui sont dérivés de matières
+                                    premières
+                                    renouvelables
+                                    d'origine biologique, généralement issues de plantes, d'arbres, ou d'autres organismes
+                                    vivants. Les
+                                    exemples de matériaux bio-sourcés comprennent le bois, la paille, le liège, la fibre de
+                                    lin, le
+                                    bambou, etc. L'utilisation de matériaux bio-sourcés est souvent associée à des avantages
+                                    environnementaux, car ils sont généralement considérés comme plus durables et moins
+                                    nocifs pour
+                                    l'environnement que les matériaux synthétiques dérivés du pétrole.</p>
+                            </div>
+                            
+                            <div class="second-content">
+                                <p>Les matériaux géo-sourcés, eux, sont des matériaux qui sont extraits directement de la
+                                    Terre,
+                                    généralement à partir de ressources minérales ou de roches. Les exemples de matériaux
+                                    géo-sourcés
+                                    comprennent le sable, le gravier, la pierre, l'argile, les métaux, les minéraux, etc.
+                                    Contrairement
+                                    aux matériaux bio-sourcés, les matériaux géo-sourcés ne sont pas dérivés de matières
+                                    premières
+                                    renouvelables, mais sont plutôt issus de ressources naturelles non vivantes présentes
+                                    dans le sol ou
+                                    le sous-sol de la Terre.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="material-geo-select" class="material-select-geo"
+                        style="display: none;">Matériaux</label>
+                    <select name="material-geo-select" id="material-geo-select" style="display: none;" required>
+                        <option value="">--</option>
+                        <option value="material geo-source">Brique</option>
+                        <option value="material geo-source">Céramique</option>
+                        <option value="material geo-source">Gravier</option>
+                        <option value="material geo-source">Pierre</option>
+                        <option value="material geo-source">Sable</option>
+                        <option value="material geo-source">Terre</option>
+                        <option value="material geo-source">Verre</option>
+                        <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
+                    </select>
+
+                    <label for="material-bio-select" class="material-select-bio"
+                        style="display: none;">Matériaux</label>
+                    <select name="material-bio-select" id="material-bio-select" style="display: none;" required>
+                        <option value="">--</option>
+                        <option value="material bio-source">Bambou</option>
+                        <option value="material bio-source">Bois</option>
+                        <option value="material bio-source">Canne-de-provence</option>
+                        <option value="material bio-source">Chanvre</option>
+                        <option value="material bio-source">Coquille d'huître</option>
+                        <option value="material bio-source">Coquille d'escargot</option>
+                        <option value="material bio-source">Laine de mouton</option>
+                        <option value="material bio-source">Liège</option>
+                        <option value="material bio-source">Marc de café</option>
+                        <option value="material bio-source">Papier</option>
+                        <option value="material bio-source">Papier-journal</option>
+                        <option value="material bio-source">Paille de blé</option>
+                        <option value="material bio-source">Paille de lavande</option>
+                        <option value="material bio-source">Roseau</option>
+                        <option value="material bio-source">Sciure de bois</option>
+                        <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
+                    </select>
+
+                    <div class="add">
+                        <label for="new-material" class="new-material">Ajouter</label>
+                        <input type="text" id="new-material" placeholder="Entrer un autre matériau">
+                    </div>
+
+                    <label for="geographical">Localisation</label>
+                    <input id="geographical" type="text" name="geographical" placeholder="Entrer le code postal" required>
+
+                    <div id="map"></div>
+
+                    <div class="custom-popup"></div>
+
+                    <div class="foot_form">
+                        <a href="#">Vous n'avez pas trouvé ce que vous cherchiez ?</a>
+                        <input type="submit" value="Publier cette recherche">
+                    </div>
+                </form>
+            </section>
+        </div>
+
+    {% endblock %}
+
+{% block javascripts_additionnal %}
+    {{asset('public/js/overall-scrolling.js') }}
+    {{asset('public/js/select-material.js') }}
+    {{asset('public/js/add-material.js') }}
+    {{asset('public/js/map.js') }}
+    {{asset('public/js/modale.js') }}
+    {{asset('https://unpkg.com/leaflet/dist/leaflet.js') }}
 {% endblock %}

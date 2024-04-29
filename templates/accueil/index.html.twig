@@ -1,20 +1,278 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccueilController!{% endblock %}
+{% block title %}Bennes Solidaires - Accueil{% endblock %}
+
+{% block stylesheets_additionnal %}
+<link rel="stylesheet" href={{ asset('public/css/accueil.css') }}>
+{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {# INCLURE AUTRE HEADER #}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/src/Controller/AccueilController.php</code></li>
-        <li>Your template at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/templates/accueil/index.html.twig</code></li>
-    </ul>
-</div>
+    <div class="container" id="container">
+            <section id="projet">
+
+                <p class="p_description pb-5">Bennes solidaires se positionne comme une plate-forme dédiée à l'économie
+                    circulaire des ressources bio et géo-sourcées, où l’excèdent de matière de l'un·e devient la matière
+                    première de l'autre.
+                    Cette plateforme est ouverte à toutes et tous : designers, créateur·rices, artisan·es,
+                    bâtisseur·euses et
+                    particuliers.
+                </p>
+
+                <div class="scrolling-text-container">
+                    <p class="scrolling-text">Quel est le projet de Bennes solidaires ?</p>
+                    <p class="scrolling-text">Quel est le projet de Bennes solidaires ?</p>
+                    <p class="scrolling-text">Quel est le projet de Bennes solidaires ?</p>
+                </div>
+                <div class="bordure mb-4"></div>
+
+                <p class="p_description pb-5">L'idée initiale de ce projet découle d'un constat évident : ces matériaux
+                    incitent au
+                    réemploi et à la création, mais peu d'initiatives sont actuellement déployées en ce sens.
+                    Ainsi, cet outil offre une opportunité aux matériaux bio et géo-sourcés de retrouver une valeur et
+                    une
+                    nouvelle utilité, tout en évitant le recours systématique à la déchetterie et en encourageant des
+                    initiatives vertueuses.</p>
+
+            </section>
+
+            <section id="fonctionnement">
+                <div class="scrolling-text-container">
+                    <p class="scrolling-text">Quel est le fonctionnement de Bennes solidaires ?</p>
+                    <p class="scrolling-text">Quel est le fonctionnement de Bennes solidaires ?</p>
+                    <p class="scrolling-text">Quel est le fonctionnement de Bennes solidaires ?</p>
+                </div>
+                <div class="bordure mb-5"></div>
+
+                <div class="stage pb-4">
+                    <div class="circle">
+                        <span>1</span>
+                    </div>
+                    <p class="title">J'IDENTIFIE</p>
+                </div>
+
+                <p class="pb-5">Vous avez un surplus de matière sur votre lieu de travail, sur votre chantier de
+                    rénovation,
+                    ou tout simplement parce-que votre matière n’est plus destinée à la vente ? Ici, c’est l’étape qui
+                    consiste à identifier l’excédent de matière dont vous disposez.</p>
+                <div class="bordure mb-5"></div>
+
+                <div class="stage pb-4">
+                    <div class="circle">
+                        <span>2</span>
+                    </div>
+                    <p class="title">JE CLASSE</p>
+                </div>
+
+                <p>Les matériaux pouvant être enregistrés sur la plateforme sont issus de sources
+                    bio-sourcée
+                    ou du géo-sourcée. Ici, vous trouverez deux listes non-exhaustives pour chacune de ses typologies.
+                    Si
+                    votre matériau n’est pas encore classé : pas de problème, vous pourrez le proposer en créant votre
+                    annonce et notre modérateur s’en occupera !</p>
+
+                <button id="openModal" class="text_click mb-5">Pour en savoir plus, vous pouvez cliquer ici.</button>
+
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="first-content">
+                            <p class="mb-5">Les matériaux bio-sourcés sont des matériaux qui sont dérivés de matières
+                                premières
+                                renouvelables
+                                d'origine biologique, généralement issues de plantes, d'arbres, ou d'autres organismes
+                                vivants. Les
+                                exemples de matériaux bio-sourcés comprennent le bois, la paille, le liège, la fibre de
+                                lin, le
+                                bambou, etc. L'utilisation de matériaux bio-sourcés est souvent associée à des avantages
+                                environnementaux, car ils sont généralement considérés comme plus durables et moins
+                                nocifs pour
+                                l'environnement que les matériaux synthétiques dérivés du pétrole.</p>
+                        </div>
+                        
+                        <div class="second-content">
+                            <p>Les matériaux géo-sourcés, eux, sont des matériaux qui sont extraits directement de la
+                                Terre,
+                                généralement à partir de ressources minérales ou de roches. Les exemples de matériaux
+                                géo-sourcés
+                                comprennent le sable, le gravier, la pierre, l'argile, les métaux, les minéraux, etc.
+                                Contrairement
+                                aux matériaux bio-sourcés, les matériaux géo-sourcés ne sont pas dérivés de matières
+                                premières
+                                renouvelables, mais sont plutôt issus de ressources naturelles non vivantes présentes
+                                dans le sol ou
+                                le sous-sol de la Terre.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="corners pb-5">
+                    <div class="corner">
+                        <ul class="list">
+                            <li class="toggle-table">Matériaux géo-sourcés
+                                <i class="show fa-regular fa-hand-point-down"></i>
+                                <i class="close fa-regular fa-hand-pointer"></i>
+                            </li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> terre</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> pierre</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> gravier</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> sable</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> verre</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> céramique</li>
+                        </ul>
+                    </div>
+
+                    <div class="corner">
+                        <ul class="list">
+                            <li class="toggle-table">Matériaux bio-sourcés
+                                <i class="show fa-regular fa-hand-point-down"></i>
+                                <i class="close fa-regular fa-hand-pointer"></i>
+                            </li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> bois</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> papier</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> papier journal</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> paille</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> canne de Provence</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> bambou</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> sciure de bois</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> liège</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> coquille</li>
+                            <li class="hidden"><i class="fa-solid fa-arrow-right"></i> marc de café</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bordure mb-5"></div>
+
+                <div class="stage pb-4">
+                    <div class="circle">
+                        <span>3</span>
+                    </div>
+                    <p class="title">JE REMPLIE LE FORMULAIRE</p>
+                </div>
+
+                <p class="pb-5">On vous demande le minimum d’informations pour que la transaction se déroule au mieux
+                    (type
+                    de matériau, volume, adresse de récupération, ...).</p>
+                <div class="bordure mb-5"></div>
+
+                <div class="stage pb-4">
+                    <div class="circle">
+                        <span>4</span>
+                    </div>
+                    <p class="title">JE CARTOGRAPHIE</p>
+                </div>
+
+                <p class="pb-5">Le principe est simple : lorsque vous créez votre annonce, un code postal
+                    vous sera demandé afin que les autres membres sachent dans quelle zone géographique venir chercher
+                    le matériau en
+                    question.
+                    En appliquant sa recherche, un pointeur fixé sur la cartographie indiquera donc les environs où
+                    venir le
+                    récupérer. Suite à la prise de contact, l'adresse exacte pourra être communiquée en message privé.
+                </p>
+                <div class="bordure mb-5"></div>
+
+                <div class="stage pb-4">
+                    <div class="circle">
+                        <span>5</span>
+                    </div>
+                    <p class="title">JE POSTE</p>
+                </div>
+
+                <p class="pb-5">Votre annonce est sur le point d’être publiée.</p>
+                <a href="#header" class="arrow-up">
+                    <img src="../images/arrow-up.svg" width="50px" height="auto">
+                </a>
+                <div class="bordure mb-5"></div>
+            </section>
+
+            <section id="deposer">
+                <div class="border-container">
+                    <h1 class="big-title pt-2 pb-2">C'EST PARTI ?</h1>
+
+                    <div class="rectangle">
+                        <div class="rectangle-gray-one">
+                            <img src="../images/big-arrow-left.png" alt="arrow" class="icon">
+                        </div>
+                        <div class="rectangle-green-one">
+                            <h2><a href="./annonce-chercher.html" class="swipe-text">CHERCHER UN MATÉRIAU</a></h2>
+                        </div>
+                    </div>
+                    <div class="rectangle">
+                        <div class="rectangle-green-two">
+                            <h2><a href="./annonce-donner.html" class="swipe-text">DONNER UN MATÉRIAU</a></h2>
+                        </div>
+                        <div class="rectangle-gray-two">
+                            <img src="../images/big-arrow-right.png" alt="arrow" class="icon">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="adhesion">
+                <div class="bordure mt-5"></div>
+                <h1 class="big-title-two pt-5">J'ADHÈRE</h1>
+                <p class="pb-5 text_line">Soutenez l’action de Bennes solidaires en devenant adhérent·e sur la
+                    plateforme
+                    <span>www.helloasso.com.</span>
+                </p>
+
+                <p>— cotisation minimale : 5€
+                <p>— cotisation de base : 20€</p>
+                <p class="pb-5">— cotisation de soutien : 50€</p>
+                <a href="#header" class="arrow-up">
+                    <img src="../images/arrow-up.svg" width="50px" height="auto">
+                </a>
+                <div class="bordure"></div>
+            </section>
+
+            <section id="contact">
+                <h1 class="big-title-two pt-5">NOUS ÉCRIRE</h1>
+                <a href="mailto:bennes-solidaires@contact.com" class="pb-3 mail">bennes-solidaires@contact.com</a>
+
+                <p>ASSOCIATION LOI 1901</p>
+                <p>SIRET 91938174110017</p>
+                <p class="pb-5">RNA W421005131</p>
+                <div class="bordure"></div>
+            </section>
+
+            <section id="partenaires">
+                <h1 class="big-title-two pt-5">PARTENAIRES</h1>
+                <div class="logo_partenaires pb-4">
+                    <div><img src="../images/Logo-RemueMeninges.png" class="RM" alt="Logo Remue Méninges"></div>
+                    <div><img src="../images/Logo-régionAURA.png" class="AURA" alt="Logo Région Auvergnes-Rhône-Alpes">
+                    </div>
+                    <div><img src="../images/Logo-planforet.png" class="PF" alt="Logo Plan Forêt"></div>
+                    <div><img src="../images/Logo-CiteduDesign.png" class="CDD" alt="Logo Cité du design"></div>
+                    <div><img src="../images/Logo-Ouestlebeau.png" class="OU" alt="Logo Où est le beau"></div>
+                </div>
+                <a href="#header" class="arrow-up">
+                    <img src="../images/arrow-up.svg" width="50px" height="auto">
+                </a>
+        </div>
+        </section>
+
+        <section id="footer">
+            <div class="credits pt-4 pb-4">
+                <p>Conception visuelle et développement web : Manon Caffin</p>
+                <p>Typographie : VTF Gulax par Morgan Gilbert et Abordage par Ange Degheest</p>
+                <p class="copyright">copyright © 2024 - Bennes Solidaires. all rights reserved.</p>
+            </div>
+
+            <div class="confidential pt-4 pb-4">
+                <a href="./page-de-confidentialite.html">Politique de confidentialité</a>
+            </div>
+        </section>
+        </div>
+
+{% endblock %}
+
+{% block javascripts_additionnal %}
+    <script src="{{ asset('public/js/overall-scrolling.js') }}"></script>
+    <script src="{{ asset('public/js/accueil.js') }}"></script>
+    <script src="{{ asset('public/js/modale.js') }}"></script>
 {% endblock %}

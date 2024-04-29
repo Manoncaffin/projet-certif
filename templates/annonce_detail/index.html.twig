@@ -1,20 +1,116 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AnnonceDetailController!{% endblock %}
+{% block title %}Bennes Solidaires - Détails de l'annonce{% endblock %}
+
+{% block stylesheets_additionnal %}
+<link rel="stylesheet" href={{ asset('public/css/annonce-detail.css') }}>
+{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% include 'partials/header.html.twig' %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/src/Controller/AnnonceDetailController.php</code></li>
-        <li>Your template at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/templates/annonce_detail/index.html.twig</code></li>
-    </ul>
-</div>
+    <div class="container">
+            <div class="top_all">
+                <div class="form_profil">
+                    <p>ANNONCE</p>
+                </div>
+                <div class="form_profil">
+                    <p>BOTTES DE PAILLE</p>
+                </div>
+
+                <div class="form_profil">
+                    <p>SAMIA</p>
+                </div>
+                <div class="form_profil">
+                    <p>0 MESSAGE NON LU</p>
+                </div>
+            </div>
+
+            <div class="announce_all">
+
+                <div class="carousel">
+                    <button class="carousel__button carousel__button--left is-hidden">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel__track-container">
+                        <div class="carousel__track">
+                            <div class="carousel__slide current-slide">
+                                <img class="carousel__images" src="../images/IMG_2099.jpeg" alt="background-image" />
+                            </div>
+                            <div class="carousel__slide">
+                                <img class="carousel__images" src="../images/20201108_115654.jpeg" alt="background-image" />
+                            </div>
+                            <!-- <div class="carousel__slide"> ici -->
+                        </div>
+                    </div>
+                    <button class="carousel__button carousel__button--right">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <div class="carousel__nav">
+                        <button class="carousel__indicator current-slide"></button>
+                        <button class="carousel__indicator"></button>
+                        <!-- <button class="carousel__indicator"> selon le nombre d'images -->
+                    </div>
+                </div>
+
+                <div class="bordure"></div>
+
+                <div class="form_announce">
+                    <div class="announce">
+                        <div class="link_member">
+                            <div class="text">
+                                <p><span>BARNABÉ</span></p>
+                                <p><span>2 ANNONCES</span></p>
+                            </div>
+                            <a href="#" class="link_announce_member">
+                                <div class="icon">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="location">
+                            <p><span>LOCALISATION</span></p>
+                            <p>Sisteron (04)</p>
+                        </div>
+
+                        <div class="classification">
+                            <p><span>CLASSIFICATION</span></p>
+                            <p>Bio-sourcé</p>
+                        </div>
+
+                        <div class="materials">
+                            <p><span>MATÉRIAU</span></p>
+                            <p>Paille de blé</p>
+                        </div>
+
+                        <div class="quantity">
+                            <p><span>QUANTITÉ</span></p>
+                            <p>3 bottes</p>
+                        </div>
+
+                        <div class="description">
+                            <p><span>DESCRIPTION</span></p>
+                            <p>Bonjour, je donne 3 bottes de paille de blé destinés à la construction mais elles ont
+                                un taux
+                                d’humidité trop haut pour les utiliser.</p>
+                        </div>
+
+                        <div class="foot_form">
+                            <a href="./messagerie.html">
+                                <button class="send_message">Message</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block javascripts_additionnal %}
+    {{asset('public/js/overall-no-scrolling.js') }}
+    {{asset('public/js/carousel.js') }}
 {% endblock %}

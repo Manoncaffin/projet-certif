@@ -1,20 +1,82 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MessagerieController!{% endblock %}
+{% block title %}Bennes Solidaires - Messagerie{% endblock %}
+
+{% block stylesheets_additionnal %}
+<link rel="stylesheet" href={{ asset('public/css/messagerie.css') }}>
+{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% include 'partials/header.html.twig' %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/src/Controller/MessagerieController.php</code></li>
-        <li>Your template at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/templates/messagerie/index.html.twig</code></li>
-    </ul>
-</div>
+    <section class="all_container">
+
+            <div class="container_one">
+                <div class="description_announce">
+
+                    <div class="img_announce">
+                        <img src="../images/20201108_115654.jpeg">
+                    </div>
+
+                    <div class="text_announce">
+                        <p><span>PAILLE</span></p>
+                        <p>Annonce en ligne</p>
+                        <p>Barnabé - 4 mai 2024</p>
+                        <a href="#" class="look_announce">Voir l'annonce</a>
+                    </div>
+
+                    <div class="icons_announce">
+                        <!-- FONCTION DELETE -->
+                        <a href=""><i class="fa-solid fa-trash"></i></a>
+                        <a href="./messagerie.html"><i class="fa-regular fa-message"></i></a>
+                    </div>
+                </div>
+                <div class="scrollbar" id="style-1">
+                    <div class="force-overflow"></div>
+                </div>
+            </div>
+
+            
+
+            <div class="container_two">
+
+                <!-- <div class="nav-two">
+                    <h1><span>BARNABÉ</span></h1>
+                    <p>En ligne il y a 1h</p>
+                </div> -->
+                
+                <div class="message_user_one">
+                    <img src="../images/BS.webp" class="avatar">
+                    <div class="bubble_one">
+                        <p>Bonjour Barnabé,
+                            Je suis intéressée par vos bottes de paille, pouvez-vous me communiquer vos disponibilités
+                            pour
+                            venir les récupérer ?</p>
+                    </div>
+                    <div class="datetime_one">LE 06 MAI À 10h12</div>
+                </div>
+
+                <div class="message_user_two">
+                    <img src="../images/BS.webp" class="avatar">
+                    <div class="bubble_two">
+                        <p>Bonjour Samia, je suis disponible tous les jours à partir de 18h, possible pour vous ?</p>
+                    </div>
+                    <div class="datetime_two">LE 06 MAI À 13h10</div>
+                </div>
+
+                <div class="message-input">
+                    <textarea id="message" placeholder="Votre message..."></textarea>
+                    <i class="fa-regular fa-paper-plane"></i>
+                </div>
+            </div>
+        </section>
+
+{% endblock %}
+
+{% block javascripts_additionnal %}
+    {{asset('public/js/overall-no-scrolling.js') }}
+    {{asset('public/js/back.js') }}
+    {{asset('public/js/messagerie.js') }}
 {% endblock %}

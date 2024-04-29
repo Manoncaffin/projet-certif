@@ -1,20 +1,85 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}Bennes Solidaires - Créer une annonce{% endblock %}
+
+{% block stylesheets_additionnal %}
+<link rel="stylesheet" href={{ asset('public/css/annonce-donner.css') }}>
+{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% include 'partials/header.html.twig' %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/src/Controller/ProfilController.php</code></li>
-        <li>Your template at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/templates/profil/index.html.twig</code></li>
-    </ul>
-</div>
+    <div class="container">
+            <div class="top">
+                <div class="form_profil">
+                    <p>PROFIL DE SAMIA</p>
+                </div>
+                <div class="form_profil">
+                    <p>1 MESSAGE NON LU</p>
+                </div>
+                <div class="form_profil">
+                    <p>MEMBRE DEPUIS AVRIL 2024</p>
+                </div>
+                <div class="form_profil">
+                    <p><i class="fas fa-map-marker-alt px-2"></i>LOIRE</p>
+                </div>
+            </div>
+
+            <div class="form_profil_large_one">
+                <div class="form_circle">
+                    <h1><a href="#">S</a></h1>
+                </div>
+                <p><a href="#"><span>Ajouter une photo de profil.</span></a></p>
+            </div>
+
+            <div class="form_profil_large_two">
+                <p><span>Vous n’avez pas d’annonce en ligne</span></p>
+                <p class="pt-4">Vous avez un surplus de matière qui ne peut pas être destiné à son premier usage ?
+                    Vous disposez de matières premières dont vous ne savez pas quoi faire ?
+                    Vous pouvez faire un geste pour la planète, tout en faisant faire des économies à quelqu’un·e !</p>
+            </div>
+
+            <div class="form_medium_all">
+                <div class="form_medium">
+                    <i class="fa-solid fa-folder-plus"></i>
+                    <div class="text">
+                        <h6>DÉPÔT</h6>
+                        <p><a href="./annonce-donner.html">Donner un matériau</a></p>
+                        <p><a href="./annonce-chercher.html">Chercher un matériau</a></p>
+                    </div>
+                </div>
+
+                <div class="form_medium">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <div class="text">
+                        <h6>INFORMATIONS</h6>
+                        <p><a href="./modifications-informations.html">Modifier mes informations</a></p>
+                        <p class="remove_registration"><a href="#">Supprimer mon compte</a></p>
+                    </div>
+                </div>
+                <div class="form_medium">
+                    <i class="fa-regular fa-message"></i>
+                    <div class="text">
+                        <h6>MESSAGERIE</h6>
+                        <p><a href="./messagerie.html">Consulter mes messages</a></p>
+                    </div>
+                </div>
+                
+                <div class="form_medium" style="display:none;">
+                    <i class="fa-regular fa-folder"></i>
+                    <div class="text">
+                        <h6>>GÉRER</h6>
+                        <p><a href="./mes-annonces.html">Gérer mes annonces déposées</a></p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block javascripts_additionnal %}
+    {{asset('public/js/overall-no-scrolling.js') }}
 {% endblock %}

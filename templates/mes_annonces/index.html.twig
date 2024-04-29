@@ -1,7 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MesAnnoncesController!{% endblock %}
+{% block title %}Bennes Solidaires - Mes annonces{% endblock %}
+
+{% block stylesheets_additionnal %}
+<link rel="stylesheet" href={{ asset('public/css/mes-annonces.css') }}>
+{% endblock %}
+
 
 {% block body %}
 
+    {% include 'partials/header.html.twig' %}
+
+     <div class="container" id="container">
+            <div class="top_all">
+                <div class="form_profil">
+                    <p>ANNONCES DE SAMIA</p>
+                </div>
+                <div class="form_profil">
+                    <p>MEMBRE DEPUIS AVRIL 2024</p>
+                </div>
+                <div class="form_profil">
+                    <p><i class="fas fa-map-marker-alt px-2"></i>LOIRE</p>
+                </div>
+            </div>
+
+            <div class="form_profil_large_one">
+                <p><a href="#">Vos annonces en ligne.</a></p>
+            </div>
+
+            <div class="announce">
+                <div class="form_profil_large_two">
+                    <div class="text">
+                        <p>Titre de votre annonce : Terre</p>
+                        <p>Date de publication : 01/02/2024</p>
+                    </div>
+
+                    <div class="announce_inline">
+                        <img src="../images/IMG_terre.jpeg">
+                    </div>
+
+                    <div class="foot_form">
+                        <a href="#">
+                            <button type="button" class="update_announce">Modifier</button>
+                        </a>
+                        <a href="#">
+                            <!-- AJOUTER PROMPT ALERT ÊTES-VOUS SÛRE ? -->
+                            <button type="button" class="delete_announce">Supprimer</button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="form_profil_large_two">
+                    <div class="text">
+                        <p>Titre de votre annonce : Moellons</p>
+                        <p>Date de publication : 15/02/2024</p>
+                    </div>
+                    <div class="announce_inline">
+                        <img src="../images/pierres.jpeg">
+                    </div>
+                    <div class="foot_form">
+                        <a href="#">
+                            <button class="update_announce">Modifier</button>
+                        </a>
+                        <a href="#">
+                            <!-- AJOUTER PROMPT ALERT ÊTES-VOUS SÛRE ? -->
+                            <button class="delete_announce">Supprimer</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {% endblock %}
+
+{% block javascripts_additionnal %}
+    {{asset('public/js/overall-no-scrolling.js') }}
 {% endblock %}
+
+
+

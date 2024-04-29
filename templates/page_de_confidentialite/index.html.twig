@@ -1,20 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PageDeConfidentialiteController!{% endblock %}
+{% block title %}Bennes Solidaires - Créer une annonce{% endblock %}
+
+{% block stylesheets_additionnal %}
+<link rel="stylesheet" href={{ asset('public/css/annonce-donner.css') }}>
+{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{# INCLURE AUTRE HEADER #}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/src/Controller/PageDeConfidentialiteController.php</code></li>
-        <li>Your template at <code>/Applications/MAMP/htdocs/Exercices_Symfony/projet-certif/templates/page_de_confidentialite/index.html.twig</code></li>
-    </ul>
-</div>
+<div class="container" id="container">
+
+            <section id="confidentials">
+
+                <h1><span>Politique de confidentialité de Bennes Solidaires</span></h1>
+
+                <p class="pb-5">Dernière mise à jour : [09/04/2024]</p>
+
+                <p>Bennes Solidaires est dédiée à promouvoir l'économie circulaire des ressources bio et géo-sourcées,
+                    facilitant l'échange de matériaux excédentaires entre individus, designers, créateur·rices,
+                    artisan·es, bâtisseur·euses et
+                    particuliers. Cette plateforme est conçue pour encourager la réutilisation et la valorisation des
+                    matériaux, contribuant ainsi à réduire le gaspillage.</p>
+
+                <h1>Collecte et Utilisation des Informations Personnelles</h1>
+                <p class="pb-3">Nous collectons le minimum d'informations nécessaires pour faciliter les transactions et le
+                    fonctionnement optimal de la plateforme. Lorsque vous vous inscrivez sur Bennes Solidaires, nous
+                    vous demandons les informations suivantes :</p>
+
+                <ul class="data_user">
+                    <li><i class="fa-solid fa-arrow-right"></i> Nom et Prénom</li>
+                    <li><i class="fa-solid fa-arrow-right"></i> Type de matériau</li>
+                    <li><i class="fa-solid fa-arrow-right"></i> Volume du matériau</li>
+                    <li class="pb-3"><i class="fa-solid fa-arrow-right"></i> Adresse de récupération</li>
+                </ul>
+                <p>Votre adresse de récupération est nécessaire pour que les autres membres
+                    sachent où récupérer le matériau en question. En appliquant leur recherche, un pointeur fixé sur la
+                    cartographie indiquera l'emplacement précis pour récupérer le matériau.</p>
+
+                <h1>Collecte d'Informations Supplémentaires</h1>
+                <p>Lors de votre inscription sur la plateforme, nous vous demandons si vous êtes un particulier ou un·e
+                    professionnel·le. Dans le cas où vous êtes un·e professionnel·le, nous vous demandons également de
+                    préciser
+                    votre secteur d'activité. Ces informations sont collectées dans le but de réaliser des statistiques
+                    afin de mieux comprendre notre public cible, qui comprend particuliers, designers et artisan·es.</p>
+
+                <h1>Sécurité des Informations Personnelles</h1>
+                <p>Nous prenons la sécurité de vos informations personnelles très au sérieux. Nous mettons en place des
+                    mesures de sécurité techniques, administratives et physiques pour protéger vos données contre tout
+                    accès non autorisé, utilisation abusive ou divulgation.</p>
+
+                <h1>Partage d'Informations avec des Tiers</h1>
+                <p>Nous ne partageons vos informations personnelles avec des tiers que dans les cas suivants :</p>
+
+                <p>Lorsque cela est nécessaire pour fournir les services que vous avez demandés, par exemple, partager
+                    votre code postal avec d'autres membres pour faciliter l'échange.
+                    Lorsque nous sommes légalement tenus de le faire pour répondre à des exigences légales, protéger nos
+                    droits légaux ou répondre à des demandes des autorités gouvernementales.</p>
+                <h1>Modification de la Politique de Confidentialité</h1>
+                <p>Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Toute
+                    modification sera affichée sur cette page avec la date de la dernière mise à jour. Nous vous
+                    encourageons à consulter régulièrement cette page pour rester informé·e de nos pratiques en matière
+                    de confidentialité.</p>
+
+                <h1>Contactez-nous</h1>
+                <p>Si vous avez des questions ou des préoccupations concernant notre politique de confidentialité,
+                    veuillez nous contacter à l'adresse suivante : bennes-solidaires@contact.com.</p>
+
+                <p>En utilisant la plateforme Bennes Solidaires, vous acceptez les termes de notre politique de
+                    confidentialité.</p>
+            </section>
+
+{% endblock %}
+
+{% block javascripts_additionnal %}
+    {{asset('public/js/overall-no-scrolling.js') }}
 {% endblock %}
