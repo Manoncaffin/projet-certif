@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class SectorActivityController extends AbstractController
+class AnnonceChercherController extends AbstractController
 {
-    #[Route('/sector/activity', name: 'app_sector_activity')]
+    #[Route('/annonce-chercher', name: 'app_annonce_chercher')]
     public function index(): Response
     {
-        return $this->render('sector_activity/index.html.twig', [
-            'controller_name' => 'SectorActivityController',
+        return $this->render('annonce-chercher/index.html.twig', [
+            'controller_name' => 'AnnonceChercherController',
         ]);
     }
 }

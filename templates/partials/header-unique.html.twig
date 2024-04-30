@@ -3,25 +3,26 @@
             <div>
                 <a href={{ path('/accueil') }} class="logo"><img src={{ asset('images/Bennes-solidaires.webp') }}
                         alt="Bennes solidaires"></a>
+                <img id="imageChange" src={{ asset('images/brouette.webp') }} onmouseover="ImageChange(this)" onmouseout="ImageInitial(this)">
             </div>
 
             <div class="navbar">
                 <ul class="links">
-                    <li><a href={{ path('/accueil') }}>ACCUEIL</a></li>
+                    <li><a href="#projet">ACCUEIL</a></li>
 
                     <div class="circle_menu"></div>
 
                     <li class="dropdown">
-                        <a href={{ path('/accueil') }}#deposer>DÉPOSER UNE ANNONCE</a>
+                        <a href="#deposer">DÉPOSER UNE ANNONCE</a>
                         <ul class="dropdown-menu_one">
-                            <li><a href={{ path('/annonce-chercher') }}>Chercher un matériau</a></li>
-                            <li><a href={{ path('/annonce-donner') }}>Donner un matériau</a></li>
+                            <li>{{ path('/annonce-chercher') }}>Chercher un matériau</a></li>
+                            <li>{{ path('/annonce-donner') }}>Donner un matériau</a></li>
                         </ul>
                     </li>
                     <div class="circle_menu"></div>
 
                     <li class="dropdown">
-                        <a href={{ path('connexion') }}>CONNEXION</a>
+                        <a href={{ path('/connexion') }}>CONNEXION</a>
                         <ul class="dropdown-menu_two">
                             <li><a href={{ path('/connexion') }}>Connexion</a></li>
                             <li><a href={{ path('/inscription') }}>Inscription</a></li>
@@ -31,7 +32,7 @@
                     <div class="circle_menu"></div>
 
                     <li class="dropdown">
-                        <a href={{ path('profil') }}>MON PROFIL</a>
+                        <a href={{ path('/profil') }}>MON PROFIL</a>
                         <ul class="dropdown-menu_two">
                             <li><a href={{ path('/profil') }}>Voir mon profil</a></li>
                             <li><a href={{ path('/mes-annonces') }}>Mes annonces</a></li>
@@ -56,7 +57,7 @@
 
         <div class="burger-menu" id="nav-menu">
             <ul class="links">
-                <li><a href={{ path('/accueil') }}>ACCUEIL</a></li>
+                <li><a href={{ path('/accueil') }}#projet>ACCUEIL</a></li>
                 <li><a href={{ path('/accueil') }}#deposer>DÉPOSER UNE ANNONCE</a></li>
                 <li><a href={{ path('/connexion') }}>CONNEXION</a></li>
                 <li><a href={{ path('/accueil') }}#adhesion>ADHÉSION</a></li>

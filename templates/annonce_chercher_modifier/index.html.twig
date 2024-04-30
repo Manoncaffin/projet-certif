@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bennes Solidaires - Modifier une annonce{% endblock %}
+{% block title %}Bennes solidaires - Modifier une annonce{% endblock %}
 
-{% block stylesheets_additionnal %}
-<link rel="stylesheet" href={{ asset('public/css/annonce-chercher.css') }}>
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/annonce-chercher.css') }}>
 {% endblock %}
 
 
@@ -121,11 +121,11 @@
 
     {% endblock %}
 
-{% block javascripts_additionnal %}
-    {{asset('public/js/overall-scrolling.js') }}
-    {{asset('public/js/select-material.js') }}
-    {{asset('public/js/add-material.js') }}
-    {{asset('public/js/map.js') }}
-    {{asset('public/js/modale.js') }}
-    {{asset('https://unpkg.com/leaflet/dist/leaflet.js') }}
+{% block javascripts %}
+    <script src={{ asset('js/overall-scrolling.js') }}></script>
+    <script src={{ asset('js/select-material.js') }}></script>
+    <script src={{ asset('js/add-material.js') }}></script>
+    <script src={{ asset('js/map.js') }}></script>
+    <script src={{ asset('js/modale.js') }}></script>
+    <script src={{ asset('https://unpkg.com/leaflet/dist/leaflet.js') }}></script>
 {% endblock %}

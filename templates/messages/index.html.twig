@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bennes Solidaires - Messages{% endblock %}
+{% block title %}Bennes solidaires - Messages{% endblock %}
 
-{% block stylesheets_additionnal %}
-<link rel="stylesheet" href={{ asset('public/css/messages.css') }}>
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/messages.css') }}>
 {% endblock %}
 
 
@@ -29,20 +29,20 @@
                     <p><span>PAILLE</span></p>
                     <p>Annonce en ligne</p>
                     <p>Barnabé - 4 mai 2024</p>
-                    <a href="#" class="look_announce">Voir l'annonce</a>
+                    <a href={{ path('/annonce-detail') }} class="look_announce">Voir l'annonce</a>
                 </div>
 
                 <div class="icons_announce">
                     <!-- FONCTION DELETE -->
                     <a href=""><i class="fa-solid fa-trash"></i></a>
-                    <a href="./messagerie.html"><i class="fa-regular fa-message"></i></a>
+                    <a href={{ path('/messagerie') }}><i class="fa-regular fa-message"></i></a>
                 </div>
             </div>
         <!-- VERSION MOBILE  -->
 
 {% endblock %}
 
-{% block javascripts_additionnal %}
-    {{asset('public/js/overall-no-scrolling.js') }}
-    {{asset('public/js/back.js') }}
+{% block javascripts %}
+    {{asset('js/overall-no-scrolling.js') }}
+    {{asset('js/back.js') }}
 {% endblock %}

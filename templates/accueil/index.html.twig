@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bennes Solidaires - Accueil{% endblock %}
+{% block title %}Bennes solidaires - Accueil{% endblock %}
 
-{% block stylesheets_additionnal %}
-<link rel="stylesheet" href={{ asset('public/css/accueil.css') }}>
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/accueil.css') }}>
 {% endblock %}
 
 
 {% block body %}
 
-    {# INCLURE AUTRE HEADER #}
+    {% include 'partials/header-unique.html.twig' %}
 
     <div class="container" id="container">
             <section id="projet">
@@ -184,8 +184,8 @@
                 </div>
 
                 <p class="pb-5">Votre annonce est sur le point d’être publiée.</p>
-                <a href="#header" class="arrow-up">
-                    <img src="../images/arrow-up.svg" width="50px" height="auto">
+                <a href={{ path('/accueil') }}#header class="arrow-up">
+                    <img src={{ asset('images/arrow-up.svg') }} width="50px" height="auto">
                 </a>
                 <div class="bordure mb-5"></div>
             </section>
@@ -199,15 +199,15 @@
                             <img src="../images/big-arrow-left.png" alt="arrow" class="icon">
                         </div>
                         <div class="rectangle-green-one">
-                            <h2><a href="./annonce-chercher.html" class="swipe-text">CHERCHER UN MATÉRIAU</a></h2>
+                            <h2><a href={{ path('annonce-chercher') }} class="swipe-text">CHERCHER UN MATÉRIAU</a></h2>
                         </div>
                     </div>
                     <div class="rectangle">
                         <div class="rectangle-green-two">
-                            <h2><a href="./annonce-donner.html" class="swipe-text">DONNER UN MATÉRIAU</a></h2>
+                            <h2><a href={{ path('annonce/donner') }} class="swipe-text">DONNER UN MATÉRIAU</a></h2>
                         </div>
                         <div class="rectangle-gray-two">
-                            <img src="../images/big-arrow-right.png" alt="arrow" class="icon">
+                            <img src={{ asset('images/big-arrow-right.png') }} alt="arrow" class="icon">
                         </div>
                     </div>
                 </div>
@@ -224,8 +224,8 @@
                 <p>— cotisation minimale : 5€
                 <p>— cotisation de base : 20€</p>
                 <p class="pb-5">— cotisation de soutien : 50€</p>
-                <a href="#header" class="arrow-up">
-                    <img src="../images/arrow-up.svg" width="50px" height="auto">
+                <a href={{ path('/accueil') }}#header class="arrow-up">
+                    <img src={{ asset('images/arrow-up.svg') }} width="50px" height="auto">
                 </a>
                 <div class="bordure"></div>
             </section>
@@ -243,15 +243,15 @@
             <section id="partenaires">
                 <h1 class="big-title-two pt-5">PARTENAIRES</h1>
                 <div class="logo_partenaires pb-4">
-                    <div><img src="../images/Logo-RemueMeninges.png" class="RM" alt="Logo Remue Méninges"></div>
-                    <div><img src="../images/Logo-régionAURA.png" class="AURA" alt="Logo Région Auvergnes-Rhône-Alpes">
+                    <div><img src={{ asset('images/Logo-RemueMeninges.png') }} class="RM" alt="Logo Remue Méninges"></div>
+                    <div><img src={{ asset('images/Logo-régionAURA.png') }} class="AURA" alt="Logo Région Auvergnes-Rhône-Alpes">
                     </div>
-                    <div><img src="../images/Logo-planforet.png" class="PF" alt="Logo Plan Forêt"></div>
-                    <div><img src="../images/Logo-CiteduDesign.png" class="CDD" alt="Logo Cité du design"></div>
-                    <div><img src="../images/Logo-Ouestlebeau.png" class="OU" alt="Logo Où est le beau"></div>
+                    <div><img src={{ asset('images/Logo-planforet.png') }} class="PF" alt="Logo Plan Forêt"></div>
+                    <div><img src={{ asset('images/Logo-CiteduDesign.png') }} class="CDD" alt="Logo Cité du design"></div>
+                    <div><img src={{ asset('images/Logo-Ouestlebeau.png') }} class="OU" alt="Logo Où est le beau"></div>
                 </div>
-                <a href="#header" class="arrow-up">
-                    <img src="../images/arrow-up.svg" width="50px" height="auto">
+                <a href={{ path('/accueil') }}#header class="arrow-up">
+                    <img src={{ asset('images/arrow-up.svg') }} width="50px" height="auto">
                 </a>
         </div>
         </section>
@@ -264,15 +264,15 @@
             </div>
 
             <div class="confidential pt-4 pb-4">
-                <a href="./page-de-confidentialite.html">Politique de confidentialité</a>
+                <a href={{ path('/page-de-confidentialite') }}>Politique de confidentialité</a>
             </div>
         </section>
         </div>
 
 {% endblock %}
 
-{% block javascripts_additionnal %}
-    <script src="{{ asset('public/js/overall-scrolling.js') }}"></script>
-    <script src="{{ asset('public/js/accueil.js') }}"></script>
-    <script src="{{ asset('public/js/modale.js') }}"></script>
+{% block javascripts %}
+    <script src={{ asset('js/overall-scrolling.js') }}></script>
+    <script src={{ asset('js/accueil.js') }}></script>
+    <script src={{ asset('js/modale.js') }}></script>
 {% endblock %}

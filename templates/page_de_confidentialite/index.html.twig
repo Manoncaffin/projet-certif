@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bennes Solidaires - Créer une annonce{% endblock %}
+{% block title %}Bennes solidaires - Page de confidentialité{% endblock %}
 
-{% block stylesheets_additionnal %}
-<link rel="stylesheet" href={{ asset('public/css/annonce-donner.css') }}>
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/annonce-donner.css') }}>
 {% endblock %}
 
 
 {% block body %}
 
-{# INCLURE AUTRE HEADER #}
+    {% include 'partials/header-unique.html.twig' %}
 
-<div class="container" id="container">
+        <div class="container" id="container">
 
             <section id="confidentials">
 
@@ -75,6 +75,6 @@
 
 {% endblock %}
 
-{% block javascripts_additionnal %}
-    {{asset('public/js/overall-no-scrolling.js') }}
+{% block javascripts %}
+    {{asset('js/overall-no-scrolling.js') }}
 {% endblock %}

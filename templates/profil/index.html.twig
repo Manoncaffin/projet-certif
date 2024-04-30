@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bennes Solidaires - Créer une annonce{% endblock %}
+{% block title %}Bennes solidaires - Profil{% endblock %}
 
-{% block stylesheets_additionnal %}
-<link rel="stylesheet" href={{ asset('public/css/annonce-donner.css') }}>
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/annonce-donner.css') }}>
 {% endblock %}
 
 
@@ -46,8 +46,8 @@
                     <i class="fa-solid fa-folder-plus"></i>
                     <div class="text">
                         <h6>DÉPÔT</h6>
-                        <p><a href="./annonce-donner.html">Donner un matériau</a></p>
-                        <p><a href="./annonce-chercher.html">Chercher un matériau</a></p>
+                        <p><a href={{ path('/annonce-donner') }}>Donner un matériau</a></p>
+                        <p><a href={{ path('/annonce-chercher') }}>Chercher un matériau</a></p>
                     </div>
                 </div>
 
@@ -55,7 +55,7 @@
                     <i class="fa-regular fa-pen-to-square"></i>
                     <div class="text">
                         <h6>INFORMATIONS</h6>
-                        <p><a href="./modifications-informations.html">Modifier mes informations</a></p>
+                        <p><a href={{ path('/modifications-informations') }}>Modifier mes informations</a></p>
                         <p class="remove_registration"><a href="#">Supprimer mon compte</a></p>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                     <i class="fa-regular fa-message"></i>
                     <div class="text">
                         <h6>MESSAGERIE</h6>
-                        <p><a href="./messagerie.html">Consulter mes messages</a></p>
+                        <p><a href={{ path('/messagerie') }}>Consulter mes messages</a></p>
                     </div>
                 </div>
                 
@@ -71,7 +71,7 @@
                     <i class="fa-regular fa-folder"></i>
                     <div class="text">
                         <h6>>GÉRER</h6>
-                        <p><a href="./mes-annonces.html">Gérer mes annonces déposées</a></p>
+                        <p><a href={{ path('/mes-annonces') }}>Gérer mes annonces déposées</a></p>
                     </div>
                 </div>
                 
@@ -80,6 +80,6 @@
 
 {% endblock %}
 
-{% block javascripts_additionnal %}
-    {{asset('public/js/overall-no-scrolling.js') }}
+{% block javascripts %}
+    {{ asset('js/overall-no-scrolling.js') }}
 {% endblock %}

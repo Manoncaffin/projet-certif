@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bennes Solidaires - Créer une annonce{% endblock %}
+{% block title %}Bennes solidaires - Modifier mes informations{% endblock %}
 
-{% block stylesheets_additionnal %}
-<link rel="stylesheet" href={{ asset('public/css/modifications-informations.css') }}>
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/modifications-informations.css') }}>
 {% endblock %}
 
 
@@ -97,7 +97,7 @@
 
 {% endblock %}
 
-{% block javascripts_additionnal %}
-    {{asset('public/js/overall-scrolling.js') }}
-    {{asset('public/js/inscription.js') }}
+{% block javascripts %}
+    {{asset('js/overall-scrolling.js') }}
+    {{asset('js/inscription.js') }}
 {% endblock %}

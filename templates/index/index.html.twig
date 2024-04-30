@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+<title>{% block title %}Bennes solidaires {% endblock %}</title>
+
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/index.css') }}>
+{% endblock %}
+
+{% block body %}
+
+        <section class="loading">
+            <div id="logo">
+                <img src="./images/Bennes-solidaires.webp" alt="Bennes solidaires" width="1300px" height="auto">
+            </div>
+            <div id="loader">00 %</div>
+        </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{asset('js/index.js') }}
+{% endblock %}

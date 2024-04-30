@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class PageDeConfidentialiteController extends AbstractController
 {
-    #[Route('/page/de/confidentialite', name: 'app_page_de_confidentialite')]
+    #[Route('/page-de-confidentialite', name: 'app_page_de_confidentialite')]
     public function index(): Response
     {
         return $this->render('page_de_confidentialite/index.html.twig', [

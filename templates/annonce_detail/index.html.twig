@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bennes Solidaires - Détails de l'annonce{% endblock %}
+{% block title %}Bennes solidaires - Détails de l'annonce{% endblock %}
 
-{% block stylesheets_additionnal %}
-<link rel="stylesheet" href={{ asset('public/css/annonce-detail.css') }}>
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/annonce-detail.css') }}>
 {% endblock %}
 
 
@@ -99,7 +99,7 @@
                         </div>
 
                         <div class="foot_form">
-                            <a href="./messagerie.html">
+                            <a href={{ path('/messagerie') }}>
                                 <button class="send_message">Message</button>
                             </a>
                         </div>
@@ -110,7 +110,7 @@
 
 {% endblock %}
 
-{% block javascripts_additionnal %}
-    {{asset('public/js/overall-no-scrolling.js') }}
-    {{asset('public/js/carousel.js') }}
+{% block javascripts %}
+    <script src={{ asset('public/js/overall-no-scrolling.js') }}></script>
+    <script src={{ asset('public/js/carousel.js') }}></script>
 {% endblock %}

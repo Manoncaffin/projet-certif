@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class AnnonceDonnerModifierController extends AbstractController
 {
-    #[Route('/annonce/donner/modifier', name: 'app_annonce_donner_modifier')]
+    #[Route('/annonce-donner-modifier', name: 'app_annonce_donner_modifier')]
     public function index(): Response
     {
         return $this->render('annonce_donner_modifier/index.html.twig', [

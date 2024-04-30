@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bennes Solidaires - Messagerie{% endblock %}
+{% block title %}Bennes solidaires - Messagerie{% endblock %}
 
-{% block stylesheets_additionnal %}
-<link rel="stylesheet" href={{ asset('public/css/messagerie.css') }}>
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/messagerie.css') }}>
 {% endblock %}
 
 
@@ -17,20 +17,20 @@
                 <div class="description_announce">
 
                     <div class="img_announce">
-                        <img src="../images/20201108_115654.jpeg">
+                        <img src={{ asset('images/20201108_115654.jpeg') }}>
                     </div>
 
                     <div class="text_announce">
                         <p><span>PAILLE</span></p>
                         <p>Annonce en ligne</p>
                         <p>Barnabé - 4 mai 2024</p>
-                        <a href="#" class="look_announce">Voir l'annonce</a>
+                        <a href={{ path('/annonce-detail') }} class="look_announce">Voir l'annonce</a>
                     </div>
 
                     <div class="icons_announce">
                         <!-- FONCTION DELETE -->
                         <a href=""><i class="fa-solid fa-trash"></i></a>
-                        <a href="./messagerie.html"><i class="fa-regular fa-message"></i></a>
+                        <a href={{ path('/messagerie') }}><i class="fa-regular fa-message"></i></a>
                     </div>
                 </div>
                 <div class="scrollbar" id="style-1">
@@ -48,7 +48,7 @@
                 </div> -->
                 
                 <div class="message_user_one">
-                    <img src="../images/BS.webp" class="avatar">
+                    <img src={{ asset('images/BS.webp') }} class="avatar">
                     <div class="bubble_one">
                         <p>Bonjour Barnabé,
                             Je suis intéressée par vos bottes de paille, pouvez-vous me communiquer vos disponibilités
@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="message_user_two">
-                    <img src="../images/BS.webp" class="avatar">
+                    <img src={{ asset('images/BS.webp') }} class="avatar">
                     <div class="bubble_two">
                         <p>Bonjour Samia, je suis disponible tous les jours à partir de 18h, possible pour vous ?</p>
                     </div>
@@ -75,8 +75,8 @@
 
 {% endblock %}
 
-{% block javascripts_additionnal %}
-    {{asset('public/js/overall-no-scrolling.js') }}
-    {{asset('public/js/back.js') }}
-    {{asset('public/js/messagerie.js') }}
+{% block javascripts %}
+    <script src={{ asset('js/overall-no-scrolling.js') }}></script>
+    <script src={{ asset('js/back.js') }}></script>
+    <script src={{ asset('js/messagerie.js') }}></script>
 {% endblock %}

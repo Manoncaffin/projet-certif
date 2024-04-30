@@ -12,7 +12,7 @@ return function (RoutingConfigurator $routes) {
     $routes->add('connexion', '/connexion.html')
         ->controller('App\Controller\ConnexionController::index');
 
-    $routes->add('mes_annonces', '/mes-annonces')
+    $routes->add('mes-annonces', '/mes-annonces')
         ->controller('App\Controller\MesAnnoncesController::index');
 
     $routes->add('annonce-chercher', '/annonce-chercher')
