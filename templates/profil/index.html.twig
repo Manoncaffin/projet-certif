@@ -3,7 +3,7 @@
 {% block title %}Bennes solidaires - Profil{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href={{ asset('css/annonce-donner.css') }}>
+<link rel="stylesheet" href={{ asset('css/profil.css') }}>
 {% endblock %}
 
 
@@ -46,8 +46,8 @@
                     <i class="fa-solid fa-folder-plus"></i>
                     <div class="text">
                         <h6>DÉPÔT</h6>
-                        <p><a href={{ path('/annonce-donner') }}>Donner un matériau</a></p>
-                        <p><a href={{ path('/annonce-chercher') }}>Chercher un matériau</a></p>
+                        <p><a href={{ path('app_annonce_donner') }}>Donner un matériau</a></p>
+                        <p><a href={{ path('app_annonce_chercher') }}>Chercher un matériau</a></p>
                     </div>
                 </div>
 
@@ -55,7 +55,7 @@
                     <i class="fa-regular fa-pen-to-square"></i>
                     <div class="text">
                         <h6>INFORMATIONS</h6>
-                        <p><a href={{ path('/modifications-informations') }}>Modifier mes informations</a></p>
+                        <p><a href={{ path('app_modifications_informations') }}>Modifier mes informations</a></p>
                         <p class="remove_registration"><a href="#">Supprimer mon compte</a></p>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                     <i class="fa-regular fa-message"></i>
                     <div class="text">
                         <h6>MESSAGERIE</h6>
-                        <p><a href={{ path('/messagerie') }}>Consulter mes messages</a></p>
+                        <p><a href={{ path('app_messagerie') }}>Consulter mes messages</a></p>
                     </div>
                 </div>
                 
@@ -71,7 +71,7 @@
                     <i class="fa-regular fa-folder"></i>
                     <div class="text">
                         <h6>>GÉRER</h6>
-                        <p><a href={{ path('/mes-annonces') }}>Gérer mes annonces déposées</a></p>
+                        <p><a href={{ path('app_mes_annonces') }}>Gérer mes annonces déposées</a></p>
                     </div>
                 </div>
                 

@@ -1,7 +1,7 @@
     <header id="header">
         <div class="container_menu">
             <div>
-                <a href={{ path('/accueil') }} class="logo"><img src={{ asset('images/Bennes-solidaires.webp') }}
+                <a href={{ path('app_accueil') }} class="logo"><img src={{ asset('images/Bennes-solidaires.webp') }}
                         alt="Bennes solidaires"></a>
                 <img id="imageChange" src={{ asset('images/brouette.webp') }} onmouseover="ImageChange(this)" onmouseout="ImageInitial(this)">
             </div>
@@ -15,38 +15,38 @@
                     <li class="dropdown">
                         <a href="#deposer">DÉPOSER UNE ANNONCE</a>
                         <ul class="dropdown-menu_one">
-                            <li>{{ path('/annonce-chercher') }}>Chercher un matériau</a></li>
-                            <li>{{ path('/annonce-donner') }}>Donner un matériau</a></li>
+                            <li><a href={{ path('app_annonce_chercher') }}>Chercher un matériau</a></li>
+                            <li><a href={{ path('app_annonce_donner') }}>Donner un matériau</a></li>
                         </ul>
                     </li>
                     <div class="circle_menu"></div>
 
                     <li class="dropdown">
-                        <a href={{ path('/connexion') }}>CONNEXION</a>
+                        <a href={{ path('app_login') }}>CONNEXION</a>
                         <ul class="dropdown-menu_two">
-                            <li><a href={{ path('/connexion') }}>Connexion</a></li>
-                            <li><a href={{ path('/inscription') }}>Inscription</a></li>
+                            <li><a href={{ path('app_login') }}>Connexion</a></li>
+                            <li><a href={{ path('app_register') }}>Inscription</a></li>
                         </ul>
                     </li>
 
                     <div class="circle_menu"></div>
 
                     <li class="dropdown">
-                        <a href={{ path('/profil') }}>MON PROFIL</a>
+                        <a href={{ path('app_profil') }}>MON PROFIL</a>
                         <ul class="dropdown-menu_two">
-                            <li><a href={{ path('/profil') }}>Voir mon profil</a></li>
-                            <li><a href={{ path('/mes-annonces') }}>Mes annonces</a></li>
-                            <li><a href={{ path('/messagerie') }}>Messagerie</a></li>
+                            <li><a href={{ path('app_profil') }}>Voir mon profil</a></li>
+                            <li><a href={{ path('app_mes_annonces') }}>Mes annonces</a></li>
+                            <li><a href={{ path('app_messagerie') }}>Messagerie</a></li>
                         </ul>
                     </li>
 
                     <div class="circle_menu"></div>
 
-                    <li><a href={{ path('/accueil') }}#adhesion>ADHÉSION</a></li>
+                    <li><a href={{ path('app_accueil') }}#adhesion>ADHÉSION</a></li>
 
                     <div class="circle_menu"></div>
 
-                    <li><a href={{ path('/accueil') }}#contact>CONTACT</a></li>
+                    <li><a href={{ path('app_accueil') }}#contact>CONTACT</a></li>
                 </ul>
 
                 <div class="burger-menu-button" id="nav-toggle">
@@ -57,11 +57,11 @@
 
         <div class="burger-menu" id="nav-menu">
             <ul class="links">
-                <li><a href={{ path('/accueil') }}#projet>ACCUEIL</a></li>
-                <li><a href={{ path('/accueil') }}#deposer>DÉPOSER UNE ANNONCE</a></li>
-                <li><a href={{ path('/connexion') }}>CONNEXION</a></li>
-                <li><a href={{ path('/accueil') }}#adhesion>ADHÉSION</a></li>
-                <li><a href={{ path('/accueil') }}#contact>CONTACT</a></li>
+                <li><a href={{ path('app_accueil') }}#projet>ACCUEIL</a></li>
+                <li><a href={{ path('app_accueil') }}#deposer>DÉPOSER UNE ANNONCE</a></li>
+                <li><a href={{ path('app_login') }}>CONNEXION</a></li>
+                <li><a href={{ path('app_accueil') }}#adhesion>ADHÉSION</a></li>
+                <li><a href={{ path('app_accueil') }}#contact>CONTACT</a></li>
             </ul>
         </div>
     </header>

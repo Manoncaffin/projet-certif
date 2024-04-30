@@ -8,10 +8,10 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class AnnonceChercherController extends AbstractController
 {
-    #[Route('/annonce-chercher', name: 'app_annonce_chercher')]
+    #[Route('/annonce_chercher', name: 'app_annonce_chercher')]
     public function index(): Response
     {
-        return $this->render('annonce-chercher/index.html.twig', [
+        return $this->render('annonce_chercher/index.html.twig', [
             'controller_name' => 'AnnonceChercherController',
         ]);
     }
