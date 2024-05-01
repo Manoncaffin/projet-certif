@@ -134,7 +134,7 @@
     .dropdown-menu_two {
         z-index: 100;
         border: 2px solid black;
-        display: none;
+        display: none;  
         position: absolute;
         justify-content: center;
         padding: 10px;
@@ -157,30 +157,30 @@
 
     /* NAVBAR */
 
-    /* FORM  */
+    /* FORM */
     input[type=text],
     input[type=email],
     input[type=password] {
         width: 100%;
-        padding: 5px;
+        padding: 10px;
         border: none;
         outline: none;
         border-bottom: 1px solid rgb(92, 91, 91);
         border-radius: 0;
         box-sizing: border-box;
-        margin-top: 6px;
-        margin-bottom: 36px;
+        margin-bottom: 160px;
         margin-right: 0px;
         margin-left: 0px;
         resize: vertical;
         background-color: transparent;
-        font-size: 2.7rem;
+        font-size: 2.9rem;
     }
 
     label {
         margin-right: 0px;
         margin-left: 0px;
-        font-size: 3rem;
+        width: 100%;
+        font-size: 3.1rem;
     }
 
     input[type=submit] {
@@ -191,8 +191,7 @@
         border-radius: 55px;
         cursor: pointer;
         margin-bottom: 10px;
-        margin-top: 40px;
-        font-size: 2.7rem;
+        font-size: 3.1rem;
         width: 100%;
     }
 
@@ -210,104 +209,39 @@
      }
 
     .foot_form {
-        justify-content: center;
+        justify-content: center !important;
         flex-direction: column;
         text-align: center;
     }
 
-    .foot_form a {
-        font-size: 2rem;
-    }
-
     .container {
         box-sizing: border-box;
-        border-radius: 5px;
+        border-radius: 60px;
         padding: 50px;
         width: 100%;
-        min-width: 980px;
-        max-width: 900px;
-        margin: 0 auto;
+        height: fit-content;
+        margin: 130px 50px 90px 50px;
+        max-width: 880px;
+        background-color: white;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+        padding: 10px 20px 10px 20px;
+        font-family: "Lemon Milk";
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        font-size: 3.2rem;
+        margin-bottom: 120px;
     }
 
     .container a {
         padding-bottom: 5px;
         display: flex;
         justify-content: center;
-    }
-
-    #activity-select {
-        width: 100%;
-        border: none;
-        outline: none;
-        padding: 5px;
-        border-bottom: 1px solid rgb(92, 91, 91);
-        border-radius: 0;
-        box-sizing: border-box;
-        margin-bottom: 36px;
-        margin-right: 0px;
-        margin-left: 0px;
-        resize: vertical;
-        font-size: 2.7rem;
-        color: rgb(123, 122, 122);
-        background-color: transparent;
-    }
-
-    .checkbox {
-        display: flex;
-    }
-
-    input[type=radio] {
-        margin-right: 20px;
-        width: 40px;
-    }
-
-    input[type="radio"]::before {
-        content: "";
-        width: 0.65em;
-        height: 0.65em;
-        border-radius: 50%;
-        box-shadow: inset 1em 1em var(--form-control-color);
-    }
-
-    /* FORM  */
-
-    .scrolling-text-container {
-        display: flex;
-        min-width: 100%;
-        overflow: hidden;
-    }
-
-    .scrolling-text {
-        display: block;
-        margin-right: 500px;
-        font-size: 3.5rem;
-        white-space: nowrap;
-        animation: scrollText 10s linear infinite;
-        animation-direction: alternate-reverse;
-    }
-
-    @keyframes scrollText {
-        from {
-            transform: translateX(100%);
-        }
-
-        to {
-            transform: translateX(-100%);
-        }
-    }
-
-    .hide-on-menu-open .scrolling-text {
-        display: none;
-    }
-
-
-    .bordure {
-        border: 1px solid black;
-    }
-
-    .text_rgpd {
-        width: 700px;
-        font-size: 1.8rem;
+        font-size: 2.5rem;
     }
 }
 
@@ -336,7 +270,7 @@
         border-radius: 50%;
         background-color: black;
     }
-    
+
     .navbar .burger-menu-button {
         display: none;
     }
@@ -370,49 +304,43 @@
     /* NAVBAR */
 
     /* FORM */
-    .container {
-        box-sizing: border-box;
-        border-radius: 5px;
-        padding: 20px 110px 20px 110px;
-        width: 100%;
-        min-width: 1000px;
-        max-width: 1500px;
-        margin: 0;
-    }
-
-    .scrolling-text {
-        font-size: 1.7rem;
-    }
-
     input[type=text],
     input[type=email],
-    input[type=password],
-    #activity-select,
-    label {
-        font-size: 1.3rem;
+    input[type=password] {
+        padding: 5px;
+        font-size: 1.2rem;
+        margin-bottom: 25px;
     }
 
+    label {
+        font-size: 1.2rem;
+    }
 
     input[type=submit] {
-        margin-top: 15px;
-        font-size: 1.3rem;
-        width: 40%;
+        font-size: 1.2rem;
     }
 
-    .foot_form {
-        font-size: 1.3rem;
+    .container {
+        padding: 30px;
+        margin: 50px auto;
+        max-width: 580px;
+        margin-top: 30px;
     }
 
-    .foot_form a {
-        font-size: 1.1rem;
+    h1 {
+        padding: 0px 20px 10px 20px;
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .container a {
+        padding-bottom: 5px;
+        display: flex;
+        justify-content: center;
+        font-size: 1rem;
     }
 
     /* FORM */
-
-    .text_rgpd {
-        width: 600px;
-        font-size: 1rem;
-    }
 }
 
 
@@ -444,44 +372,19 @@
         padding: 20px 140px 20px 140px;
     }
 
-    .container {
-        box-sizing: border-box;
-        border-radius: 5px;
-        padding: 20px 140px 20px 140px;
-        width: 100%;
-        min-width: 980px;
-        max-width: 2000px;
-        margin: 0;
-    }
-
     /* NAVBAR  */
 
-
-    input[type=radio] {
-        margin-right: 20px;
-        width: 20px;
+    .container {
+        width: 580px;
+        margin-top: 30px;
     }
-
-    input[type="radio"]::before {
-        content: "";
-        width: 0.65em;
-        height: 0.65em;
-        border-radius: 50%;
-        box-shadow: inset 1em 1em var(--form-control-color);
-    }
-
-    .text_rgpd {
-        width: 600px;
-        font-size: 0.8rem;
-    }
-
 }
 
 
 
 /* --------------------------------------------------- */
 /* --------------------------------------------------- */
-/* ------------- MEDIA MIN-WIDTH 1500PX --------------- */
+/* ------------- MEDIA MIN-WIDTH 1500PX -------------- */
 /* ----------------- SUP. OU ÉGALE ------------------- */
 /* --------------------------------------------------- */
 @media only screen and (min-width: 1500px) {
@@ -503,4 +406,40 @@
     }
 
     /* NAVBAR */
+
+    /* FORM */
+    input[type=text],
+    input[type=email],
+    input[type=password] {
+        font-size: 1.1rem;
+    }
+
+    label {
+        font-size: 1.2rem;
+    }
+
+    input[type=submit] {
+        font-size: 1.2rem;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .container a {
+        padding-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        font-size: 1rem;
+    }
+}
+
+
+
+/* --------------------------------------------------- */
+/* --------------------------------------------------- */
+/* ------------- MEDIA MIN-WIDTH 1800PX -------------- */
+/* ----------------- SUP. OU ÉGALE ------------------- */
+/* --------------------------------------------------- */
+@media only screen and (min-width: 1800px) {
 }

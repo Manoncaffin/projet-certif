@@ -67,7 +67,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private bool $isVerified = false;
 
     #[ORM\Column(length: 255)]
-    private ?string $professionnal = null;
+    private ?string $professional = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $particulier = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $identifier = null;
 
  
 
@@ -291,14 +297,38 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getProfessionnal(): ?string
+    public function getProfessional(): ?string
     {
-        return $this->professionnal;
+        return $this->professional;
     }
 
-    public function setProfessionnal(string $professionnal): static
+    public function setProfessional(string $professional): static
     {
-        $this->professionnal = $professionnal;
+        $this->professional = $professional;
+
+        return $this;
+    }
+
+    public function getParticulier(): ?string
+    {
+        return $this->particulier;
+    }
+
+    public function setParticulier(string $particulier): static
+    {
+        $this->particulier = $particulier;
+
+        return $this;
+    }
+
+    public function getIdentifier(): ?string
+    {
+        return $this->identifier;
+    }
+
+    public function setIdentifier(string $identifier): static
+    {
+        $this->identifier = $identifier;
 
         return $this;
     }

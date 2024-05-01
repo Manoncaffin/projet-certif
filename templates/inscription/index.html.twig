@@ -3,7 +3,7 @@
 {% block title %}Bennes solidaires - Inscription{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href={{ asset('css/inscription.css') }}>
+<link rel="stylesheet" href={{ asset('css/register.css') }}>
 {% endblock %}
 
 
@@ -20,15 +20,30 @@
                     <p class="scrolling-text">Page d'inscription</p>
                 </div>
                 <div class="bordure mb-4"></div>
-                <form class="registration_form">
+
+                {{ form_start(registrationForm, {
+                    'attr' : {
+                    'class' : 'registration_form',
+                    'role' : 'form',
+                    }
+                }) }}
+                {# <form class="registration_form"> #}
+                {% for flash_error in app.flashes('verify_email_error') %}
+                    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                {% endfor %}
+
                     <div class="choice mb-4">
                         <div class="checkbox mb-3">
-                            <input type="radio" id="particulier" name="user-type" value="particulier">
-                            <label for="particulier">Je suis un·e particulier</label>
+                            {# <input type="radio" id="particulier" name="user-type" value="particulier">
+                            <label for="particulier">Je suis un·e particulier</label>                            #}
+                            {{ form_widget(registrationForm.radio)}}
+                            {{ form_label(registrationForm.particulier) }}
                         </div>
                         <div class="checkbox">
-                            <input type="radio" id="professionnel" name="user-type" value="professionnel">
-                            <label for="professionnel">Je suis un·e professionnel·le</label>
+                            {# <input type="radio" id="professionnel" name="user-type" value="professionnel">
+                            <label for="professionnel">Je suis un·e professionnel·le</label> #}
+                            {{ form_widget(registrationForm.radio)}}
+                            {{ form_label(registrationForm.professional) }}
                         </div>
 
 
@@ -70,31 +85,43 @@
                         </select>
                     </div>
 
-                    <label for="firstname">Prénom</label>
-                    <input type="text" id="firstname" name="firstname" placeholder="Votre prénom" required>
+                    {# <label for="firstname">Prénom</label>
+                    <input type="text" id="firstname" name="firstname" placeholder="Votre prénom" required> #}
+                    {{ form_label(registrationForm.firstname) }}
+                    {{ form_widget(registrationForm.firstname)}}
 
-                    <label for="lastname">Nom</label>
-                    <input type="text" type="lastname" name="lastname" placeholder="Votre nom" required>
+                    {# <label for="lastname">Nom</label>
+                    <input type="text" type="lastname" name="lastname" placeholder="Votre nom" required> #}
+                    {{ form_label(registrationForm.lastname) }}
+                    {{ form_widget(registrationForm.lastname)}}
 
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Votre adresse email" required>
+                    {# <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Votre adresse email" required> #}
+                    {{ form_label(registrationForm.email) }}
+                    {{ form_widget(registrationForm.email)}}
 
                     <label for="identifier">Identifiant</label>
                     <input type="text" id="identifier" name="identifier" placeholder="Choisir un identifiant" required>
+                    {{ form_label(registrationForm.identifier) }}
+                    {{ form_widget(registrationForm.identifier)}}
 
-                    <label for="password">Mot de passe</label>
-                    <input id="password" type="password" name="password" placeholder="Votre mot de passe" required>
+                    {# <label for="password">Mot de passe</label>
+                    <input id="password" type="password" name="password" placeholder="Votre mot de passe" required> #}
+                    {{ form_label(registrationForm.plainPassword) }}
+                    {{ form_widget(registrationForm.plainPassword)}}
 
                     <label for="password">Confirmation</label>
                     <input id="password" type="password" name="password" placeholder="Confirmer le mot de passe"
                         required>
 
                     <div class="foot_form">
+                        {{ form_widget(registrationForm.agreeTerms) }}
                         <input type="submit" value="Valider mon inscription">
                         <a href={{ path('app_login') }}>Vous possédez déjà un compte ?</a>
                         <a href={{ path('app_login') }}>Cliquez ici !</a>
                     </div>
-                </form>
+                        {{ form_end(registrationForm) }}
+                {# </form> #}
             </section>
         </div>
 

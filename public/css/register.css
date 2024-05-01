@@ -157,33 +157,33 @@
 
     /* NAVBAR */
 
-    /* FORM */
+    /* FORM  */
     input[type=text],
     input[type=email],
     input[type=password] {
         width: 100%;
-        padding: 12px;
+        padding: 5px;
         border: none;
         outline: none;
         border-bottom: 1px solid rgb(92, 91, 91);
         border-radius: 0;
         box-sizing: border-box;
-        margin-bottom: 160px;
+        margin-top: 6px;
+        margin-bottom: 26px;
         margin-right: 0px;
         margin-left: 0px;
         resize: vertical;
         background-color: transparent;
-        font-size: 2.9rem;
+        font-size: 2.7rem;
     }
 
     label {
         margin-right: 0px;
         margin-left: 0px;
-        width: 100%;
-        font-size: 3.1rem;
+        font-size: 3rem;
     }
 
-    input[type=submit] {
+    .custom-submit {
         background-color: rgb(27, 237, 177);
         color: black;
         padding: 8px 20px;
@@ -191,11 +191,12 @@
         border-radius: 55px;
         cursor: pointer;
         margin-bottom: 10px;
-        font-size: 3.1rem;
+        margin-top: 40px;
+        font-size: 2.7rem;
         width: 100%;
     }
 
-    input[type=submit]:hover {
+    .custom-submit:hover {
         background-color: black;
         color: white;
     }
@@ -209,39 +210,125 @@
      }
 
     .foot_form {
-        justify-content: center !important;
+        justify-content: center;
         flex-direction: column;
         text-align: center;
     }
 
-    .container {
-        box-sizing: border-box;
-        border-radius: 60px;
-        padding: 50px;
-        width: 100%;
-        height: fit-content;
-        margin: 130px 50px 50px 50px;
-        max-width: 880px;
-        background-color: white;
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    .foot_form a {
+        font-size: 2rem;
     }
 
-    h1 {
-        padding: 10px 20px 10px 20px;
-        font-family: "Lemon Milk";
-        font-weight: 600;
-        display: flex;
-        justify-content: center;
+    .container {
+        box-sizing: border-box;
+        border-radius: 5px;
+        padding: 50px;
         width: 100%;
-        font-size: 3.2rem;
-        margin-bottom: 120px;
+        min-width: 980px;
+        max-width: 900px;
+        margin: 0 auto;
     }
 
     .container a {
         padding-bottom: 5px;
         display: flex;
         justify-content: center;
-        font-size: 2.5rem;
+    }
+
+    .list_professionnal {
+        display: none;
+    }
+
+    #registration_form_sectorActivity {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 5px;
+        border-bottom: 1px solid rgb(92, 91, 91);
+        border-radius: 0;
+        box-sizing: border-box;
+        margin-bottom: 26px;
+        margin-right: 0px;
+        margin-left: 0px;
+        resize: vertical;
+        font-size: 2.7rem;
+        color: rgb(123, 122, 122);
+        background-color: transparent;
+    }
+
+    /* #registration_form_professional_0,
+    #registration_form_professional_1 {
+        margin-right: 15px;
+        width: 30px;
+        height: 30px;
+    } */
+
+    #registration_form_agreeTerms,
+    #registration_form_professional_0,
+    #registration_form_professional_1 {
+        display: none;
+    }
+
+    #registration_form_agreeTerms + label:before {
+        margin-right: 15px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        background-color: white;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        transition: background-color 0.1s ease;
+    }
+
+    #registration_form_agreeTerms:checked + label:before{
+        background-color: black;
+    }
+
+    #registration_form_professional_0 + label:before,
+    #registration_form_professional_1 + label:before {
+        
+    }
+    /* FORM  */
+
+    .scrolling-text-container {
+        display: flex;
+        min-width: 100%;
+        overflow: hidden;
+    }
+
+    .scrolling-text {
+        display: block;
+        margin-right: 500px;
+        font-size: 3.5rem;
+        white-space: nowrap;
+        animation: scrollText 10s linear infinite;
+        animation-direction: alternate-reverse;
+    }
+
+    @keyframes scrollText {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    .hide-on-menu-open .scrolling-text {
+        display: none;
+    }
+
+
+    .bordure {
+        border: 1px solid black;
+    }
+
+    .text_rgpd {
+        width: 700px;
+        font-size: 1.8rem;
     }
 }
 
@@ -270,7 +357,7 @@
         border-radius: 50%;
         background-color: black;
     }
-
+    
     .navbar .burger-menu-button {
         display: none;
     }
@@ -304,42 +391,49 @@
     /* NAVBAR */
 
     /* FORM */
+    .container {
+        box-sizing: border-box;
+        border-radius: 5px;
+        padding: 20px 110px 20px 110px;
+        width: 100%;
+        min-width: 1000px;
+        max-width: 1500px;
+        margin: 0;
+    }
+
+    .scrolling-text {
+        font-size: 1.7rem;
+    }
+
     input[type=text],
     input[type=email],
-    input[type=password] {
-        padding: 5px;
-        font-size: 1.2rem;
-        margin-bottom: 35px;
-    }
-
+    input[type=password],
+    #registration_form_sectorActivity,
     label {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 
-    input[type=submit] {
-        font-size: 1.2rem;
+
+    .custom-submit {
+        margin-top: 15px;
+        font-size: 1.3rem;
+        width: 40%;
     }
 
-    .container {
-        margin: 50px auto;
-        max-width: 580px;
-        margin-top: 30px;
+    .foot_form {
+        font-size: 1.3rem;
     }
 
-    h1 {
-        padding: 0px 20px 10px 20px;
-        font-size: 2rem;
-        margin-bottom: 30px;
-    }
-
-    .container a {
-        padding-bottom: 5px;
-        display: flex;
-        justify-content: center;
-        font-size: 1rem;
+    .foot_form a {
+        font-size: 1.1rem;
     }
 
     /* FORM */
+
+    .text_rgpd {
+        width: 600px;
+        font-size: 1rem;
+    }
 }
 
 
@@ -371,19 +465,42 @@
         padding: 20px 140px 20px 140px;
     }
 
+    .container {
+        box-sizing: border-box;
+        border-radius: 5px;
+        padding: 20px 140px 20px 140px;
+        width: 100%;
+        min-width: 980px;
+        max-width: 2000px;
+        margin: 0;
+    }
+
     /* NAVBAR  */
 
-    .container {
-        width: 580px;
-        margin-top: 30px;
+
+    #registration_form_professional_0,
+    #registration_form_professional_1 {
+        width: 20px;
+        height: 20px;
     }
+
+    #registration_form_agreeTerms {
+        width: 20px;
+        height: 20px;
+    }
+
+    .text_rgpd {
+        width: 600px;
+        font-size: 0.8rem;
+    }
+
 }
 
 
 
 /* --------------------------------------------------- */
 /* --------------------------------------------------- */
-/* ------------- MEDIA MIN-WIDTH 1500PX -------------- */
+/* ------------- MEDIA MIN-WIDTH 1500PX --------------- */
 /* ----------------- SUP. OU ÉGALE ------------------- */
 /* --------------------------------------------------- */
 @media only screen and (min-width: 1500px) {
@@ -405,44 +522,4 @@
     }
 
     /* NAVBAR */
-
-    /* FORM */
-    input[type=text],
-    input[type=email],
-    input[type=password] {
-        font-size: 1.3rem;
-    }
-
-    label {
-        font-size: 1.3rem;
-    }
-
-    input[type=submit] {
-        font-size: 1.4rem;
-    }
-
-    h1 {
-        font-size: 2.2rem;
-    }
-
-    .container {
-        margin-top: 50px;
-    }
-
-    .container a {
-        padding-bottom: 10px;
-        display: flex;
-        justify-content: center;
-        font-size: 1rem;
-    }
-}
-
-
-
-/* --------------------------------------------------- */
-/* --------------------------------------------------- */
-/* ------------- MEDIA MIN-WIDTH 1800PX -------------- */
-/* ----------------- SUP. OU ÉGALE ------------------- */
-/* --------------------------------------------------- */
-@media only screen and (min-width: 1800px) {
 }

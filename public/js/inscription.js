@@ -1,41 +1,30 @@
-// TEXTE RGPD
-document.addEventListener("DOMContentLoaded", function () {
-// Sélection des boutons radio
-const radioButtons = document.querySelectorAll('input[name="user-type"]');
-// Sélection du texte RGPD
-const textRGPD = document.getElementById('text_rgpd');
-// Fonction pour afficher ou masquer le texte RGPD en fonction de la sélection du bouton radio
-function toggleTextRGPD() {
- if (document.getElementById('professionnel').checked) {
-     textRGPD.style.display = 'block';
- } else {
-     textRGPD.style.display = 'none';
- }
-}
-// Ajout d'un écouteur d'événements à chaque bouton radio
-radioButtons.forEach(function (radioButton) {
- radioButton.addEventListener('change', toggleTextRGPD);
-});
-// Appel initial pour assurer que le texte RGPD est caché par défaut
-toggleTextRGPD();
-// TEXTE RGPD
+// TEXT RGPD / ADD SECTOR ACTIVITY
+// Sélectionnez l'élément input radio pour "Je suis un professionnel"
+const professionalInput = document.querySelector('#registration_form_professional_1');
+const individualInput = document.querySelector('#registration_form_professional_0');
 
-// ADD SECTOR ACTIVITY
-const particulierRadioButton = document.getElementById('particulier');
-const professionnelRadioButton = document.getElementById('professionnel');
-const radioProfessionnalContainer = document.querySelector('.radio_professionnal');
+// Sélectionnez le div contenant le texte à afficher
+const rgpdTextDiv = document.querySelector('#text_rgpd');
 
-professionnelRadioButton.addEventListener('change', function () {
- if (this.checked) {
-     radioProfessionnalContainer.style.display = 'block';
- } else {
-     radioProfessionnalContainer.style.display = 'none';
- }
+// Sélectionnez le div contenant la liste déroulante
+const sectorActivityDiv = document.querySelector('.list_professionnal');
+
+// Ajoutez un écouteur d'événement sur le clic de l'input radio
+professionalInput.addEventListener('click', () => {
+  // Si l'input radio est sélectionné, affichez le texte et la liste déroulante
+  if (professionalInput.checked) {
+    rgpdTextDiv.style.display = 'block';
+    sectorActivityDiv.style.display = 'block';
+  } else {
+    rgpdTextDiv.style.display = 'none';
+    sectorActivityDiv.style.display = 'none';
+  }
 });
-particulierRadioButton.addEventListener('change', function () {
- if (this.checked) {
-     radioProfessionnalContainer.style.display = 'none';
- }
-});
-});
-// ADD SECTOR ACTIVITY
+
+// Ajoutez un écouteur d'événement sur le clic de l'input radio "Je suis un particulier"
+individualInput.addEventListener('click', () => {
+    // Masquez le texte et la liste déroulante
+    rgpdTextDiv.style.display = 'none';
+    sectorActivityDiv.style.display = 'none';
+  });
+// TEXT RGPD / ADD SECTOR ACTIVITY

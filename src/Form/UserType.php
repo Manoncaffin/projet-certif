@@ -18,15 +18,10 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('roles', CheckboxType::class) 
+            // ->add('roles', CheckboxType::class) 
             ->add('password', PasswordType::class)
             ->add('firstname', TextType::class)
             ->add('lastname', TextType::class)
-            // LISTE DEROULANTE
-            ->add('sectorActivity', EntityType::class, [
-                'class' => SectorActivity::class,
-                'choice_label' => 'name',
-            ])
         ;
     }
 

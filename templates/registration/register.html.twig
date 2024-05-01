@@ -1,23 +1,108 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Bennes solidaires - Inscription{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('/css/register.css') }}>
+{% endblock %}
+
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
 
-    <h1>Register</h1>
+    {% include 'partials/header.html.twig' %}
 
-    {{ form_errors(registrationForm) }}
+        <div class="container" id="container">
+            <section id="inscription">
+                <div class="scrolling-text-container">
+                    <p class="scrolling-text">Page d'inscription</p>
+                    <p class="scrolling-text">Page d'inscription</p>
+                    <p class="scrolling-text">Page d'inscription</p>
+                    <p class="scrolling-text">Page d'inscription</p>
+                </div>
+                <div class="bordure mb-4"></div>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                {{ form_start(registrationForm, {
+                    'attr' : {
+                    'class' : 'registration_form',
+                    'role' : 'form',
+                    }
+                }) }}
+
+                {% for flash_error in app.flashes('verify_email_error') %}
+                    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                {% endfor %}
+
+
+                        {# <div class="checkbox mb-3" id="particulier">                         
+                            {{ form_widget(registrationForm.professional)}}
+                        </div>  #}
+
+
+                        <div class="checkbox mb-3" id="particulier">
+                        {% block professional_widget %}
+                            {% for child in registrationForm.professional %}
+                                <div class="custom-control custom-radio {% if child.vars.value == 'particulier' %}particulier{% elseif child.vars.value == 'professional' %}professional{% endif %}">
+                                {{ form_widget(child) }}
+                                <label class="custom-control-label" for="{{ child.vars.id }}">{{ child.vars.label }}</label>
+                                </div>
+                            {% endfor %}
+                        {% endblock professional_widget %}
+                        </div>
+
+                        <div class="text_rgpd mb-4" id="text_rgpd" style="display: none;">
+                            <p>En cochant cette case, vous consentez à ce que nous utilisions les informations
+                                concernant
+                                votre
+                                secteur d'activité pour établir des statistiques internes sur notre site. Ces données
+                                seront
+                                traitées de manière anonymes et utilisées uniquement dans le but d'améliorer notre
+                                service
+                                en
+                                connaissant mieux notre public.</p>
+                        </div>
+
+                    <div class="list_professionnal">
+                        {{ form_label(registrationForm.sectorActivity, 'Secteur d\'activité') }}
+                        {{ form_widget(registrationForm.sectorActivity) }}
+                    </div>
+
+                    {{ form_label(registrationForm.firstname) }}
+                    {{ form_widget(registrationForm.firstname)}}
+
+                    {{ form_label(registrationForm.lastname) }}
+                    {{ form_widget(registrationForm.lastname)}}
+
+                    {{ form_label(registrationForm.email) }}
+                    {{ form_widget(registrationForm.email)}}
+
+                
+                    {{ form_label(registrationForm.identifier) }}
+                    {{ form_widget(registrationForm.identifier)}}
+
+                    {{ form_widget(registrationForm.plainPassword)}}
+                    
+                    <div class="custum-checkbox">
+                        {{ form_widget(registrationForm.agreeTerms) }}
+                        {{ form_label(registrationForm.agreeTerms) }}
+                    </div>
+
+                    <div class="foot_form">
+                        {{ form_row(registrationForm.submit) }}
+                        <a href={{ path('app_login') }}>Vous possédez déjà un compte ?</a>
+                        <a href={{ path('app_login') }}>Cliquez ici !</a>
+                    </div>
+
+                        {{ form_end(registrationForm) }}
+            </section>
+        </div>
+
+    {% endblock %}
+
+{% block javascripts %}
+    <script src={{ asset('js/overall-scrolling.js') }}></script>
+    <script src={{ asset('js/inscription.js') }}></script>
 {% endblock %}
+
+
+

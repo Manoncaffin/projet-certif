@@ -3,3 +3,10 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+
+modifications_informations:
+    path: /modifications-informations
+    controller: App\Controller\ModificationsInformationsController::index
+
+

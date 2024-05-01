@@ -4,12 +4,16 @@ namespace App\Form;
 
 use App\Entity\SectorActivity;
 use App\Entity\User;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,47 +26,120 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('professionnal', ChoiceType::class, [
+            ->add('professional', ChoiceType::class, [
                 'choices' => [
-                    'Particulier' => 'particulier',
-                    'Professionnel' => 'professionnal',
+                    'Je suis un·e particulier' => 'particulier',
+                    'Je suis un·e professionnel·le' => 'professional',
                 ],
                 'expanded' => true,
+                'mapped' => false,
             ]) 
-            ->add('firstname', TextType::class)
-            ->add('lastname', TextType::class)
-            // LISTE DEROULANTE
+
             ->add('sectorActivity', EntityType::class, [
                 'class' => SectorActivity::class,
                 'choice_label' => 'activity',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.activity', 'ASC');
+                },
+                'required' => false,
+                'attr' => [
+                    'id' => 'activity-select',
+                    // 'style' => 'display: none;',
+                ],
             ])
-            ->add('agreeTerms', CheckboxType::class, [
+
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom',
+                'attr' => [
+                    'id' => 'firstname',
+                    'name' => 'firstname',
+                    'placeholder' => 'Votre prénom',
+                    'required' => 'true',
+                ]
+            ])
+
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom',
+                'attr' => [
+                    'id' => 'lastname',
+                    'name' => 'lastname',
+                    'placeholder' => 'Votre nom',
+                    'required' => 'true',
+                ]
+            ])
+
+            ->add('email', EmailType::class, [
+                'label' => 'Email',
+                'attr' => [
+                    'placeholder' => 'Votre adresse email',
+                    'id' => 'email',
+                    'name' => 'email',
+                    'required' => 'true',
+                ]
+                ])
+
+                ->add('identifier', TextType::class, [
+                    'label' => 'Identifiant',
+                    'attr' => [
+                        'placeholder' => 'Choisir un identifiant',
+                        'id' => 'identifier',
+                        'name' => 'identifier',
+                        'required' => 'true',
+                    ]
+                    ])
+
+            ->add('agreeTerms', RadioType::class, [
+                'label' => 'J\'accepte les termes et conditions',
                 'mapped' => false,
+                'attr' => [
+                    'class'=> 'custom-checkbox',
+                ],
                 'constraints' => [
                     new IsTrue([
                         'message' => 'You should agree to our terms.',
                     ]),
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
-                'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
+
+            ->add('submit', SubmitType::class, [
+                'label' => 'Valider mon inscription',
+                'attr' => [
+                    'class' => 'custom-submit',
                 ],
             ])
-        ;
+
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'first_options' => [
+                    'label' => 'Mot de passe',
+                    'attr' => [
+                        'autocomplete' => 'new-password',
+                        'required' => 'true',
+                        'placeholder' => 'Votre mot de passe',
+                    ],
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Veuillez entrer un mot de passe',
+                        ]),
+                        new Length([
+                            'min' => 6,
+                            'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
+                            'max' => 4096,
+                        ]),
+                    ],
+                ],
+                'second_options' => [
+                    'label' => 'Confirmation',
+                    'attr' => [
+                        'autocomplete' => 'new-password',
+                        'required' => 'true',
+                        'placeholder' => 'Confirmez votre mot de passe',
+                    ],
+                ],
+                'invalid_message' => 'Les mots de passe ne correspondent pas',
+                'mapped' => false,
+            ]);  
     }
 
     public function configureOptions(OptionsResolver $resolver): void
