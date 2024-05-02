@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-<title>{% block title %}Bennes solidaires {% endblock %}</title>
+{% block title %}Bennes solidaires {% endblock %}
 
 {% block stylesheets %}
 <link rel="stylesheet" href={{ asset('css/index.css') }}>
@@ -18,5 +18,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{asset('js/index.js') }}
+    <script src={{asset('js/index.js') }}></script>
 {% endblock %}

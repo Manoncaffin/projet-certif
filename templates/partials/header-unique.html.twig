@@ -24,6 +24,13 @@
                     <li class="dropdown">
                         <a href={{ path('app_login') }}>CONNEXION</a>
                         <ul class="dropdown-menu_two">
+                        {# DÉPLACER DANS LE HEADER #}
+                        {% if app.user %}
+                            <div class="mb-3">
+                                Bienvenue {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                            </div>
+                        {% endif %}
+                        {# DÉPLACER DANS LE HEADER #}
                             <li><a href={{ path('app_login') }}>Connexion</a></li>
                             <li><a href={{ path('app_register') }}>Inscription</a></li>
                         </ul>

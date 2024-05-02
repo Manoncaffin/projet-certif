@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Redirection à la fin de l'animation en simulant une tâche longue
     setTimeout(function () {
         document.querySelector(".loading").style.display = "none";
-        window.location.href = "./pages/accueil.html";
+        window.location.href = "/accueil";
     }, 1500);
 });
 // LOADER

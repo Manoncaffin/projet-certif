@@ -31,8 +31,10 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
+        
+
         if ($form->isSubmitted() && $form->isValid()) {
-            
+            $status = $request->request->all()['registration_form']['professional'];
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -40,7 +42,9 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-        
+
+            $user->setProfessional($status);
+
             $entityManager->persist($user);
             $entityManager->flush();
 

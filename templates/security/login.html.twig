@@ -13,18 +13,10 @@
 
             <div class="container" id="container">
                 <h1>CONNEXION</h1>
-                    <form method="post">
+                    <form action={{ path('app_login')}} method="post">
                         {% if error %}
-                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            <div class="alert alert-danger">Il y a une erreur dans le </div>
                         {% endif %}
-
-                        {# DÉPLACER DANS LE HEADER #}
-                        {% if app.user %}
-                            <div class="mb-3">
-                                Bienvenue {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
-                            </div>
-                        {% endif %}
-                        {# DÉPLACER DANS LE HEADER #}
 
                         <label for="identifier">Identifiant</label>
                         <input type="text" value="{{ last_username }}" name="identifier" id="identifier" class="form-control" autocomplete="identifier" placeholder="Votre identifiant" required autofocus>

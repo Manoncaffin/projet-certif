@@ -69,8 +69,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $professional = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $particulier = null;
+    // #[ORM\Column(length: 255)]
+    // private ?string $particulier = null;
 
     #[ORM\Column(length: 255)]
     private ?string $identifier = null;
@@ -309,17 +309,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getParticulier(): ?string
-    {
-        return $this->particulier;
-    }
+    // public function getParticulier(): ?string
+    // {
+    //     return $this->particulier;
+    // }
 
-    public function setParticulier(string $particulier): static
-    {
-        $this->particulier = $particulier;
+    // public function setParticulier(string $particulier): static
+    // {
+    //     $this->particulier = $particulier;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getIdentifier(): ?string
     {
