@@ -9,4 +9,6 @@ modifications_informations:
     path: /modifications-informations
     controller: App\Controller\ModificationsInformationsController::index
 
-
+dashboard:
+    path: /dashboard
+    controller: App\Controller\Admin\DashboardController::index

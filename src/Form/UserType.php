@@ -19,9 +19,38 @@ class UserType extends AbstractType
     {
         $builder
             // ->add('roles', CheckboxType::class) 
-            ->add('password', PasswordType::class)
-            ->add('firstname', TextType::class)
-            ->add('lastname', TextType::class)
+
+            ->add('password', PasswordType::class, [
+                'label' => 'Mot de passe',
+                'attr' => [
+                'name' => 'password',
+                'id' => 'inputPassword',
+                'class' => 'form-control',
+                'autocomplete' => 'current-password',
+                'placeholder' => 'Votre mot de passe',
+                'required' => 'true',
+                ]
+            ])
+
+            ->add('identifier', TextType::class, [
+                'label' => 'Prénom',
+                'attr' => [
+                    'id' => 'firstname',
+                    'name' => 'firstname',
+                    'placeholder' => 'Votre prénom',
+                    'required' => 'true',
+                ]
+            ])
+            
+            ->add('email', EmailType::class, [
+                'label' => 'Nom',
+                'attr' => [
+                    'id' => 'lastname',
+                    'name' => 'lastname',
+                    'placeholder' => 'Votre nom',
+                    'required' => 'true',
+                ]
+            ])
         ;
     }
 

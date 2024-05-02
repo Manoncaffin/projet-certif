@@ -256,13 +256,6 @@
         background-color: transparent;
     }
 
-    /* #registration_form_professional_0,
-    #registration_form_professional_1 {
-        margin-right: 15px;
-        width: 30px;
-        height: 30px;
-    } */
-
     #registration_form_agreeTerms,
     #registration_form_professional_0,
     #registration_form_professional_1 {
@@ -274,7 +267,7 @@
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        border: 2px solid #ccc;
+        border: 2px solid black;
         background-color: white;
         content: "";
         display: inline-block;
@@ -288,7 +281,21 @@
 
     #registration_form_professional_0 + label:before,
     #registration_form_professional_1 + label:before {
-        
+        margin-right: 15px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 2px solid black;
+        background-color: white;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        transition: background-color 0.1s ease;
+    }
+    
+    #registration_form_professional_0:checked + label:before,
+    #registration_form_professional_1:checked + label:before {
+        background-color: black;
     }
     /* FORM  */
 
@@ -478,13 +485,13 @@
     /* NAVBAR  */
 
 
-    #registration_form_professional_0,
-    #registration_form_professional_1 {
+    #registration_form_professional_0 + label:before,
+    #registration_form_professional_1 + label:before{
         width: 20px;
         height: 20px;
     }
 
-    #registration_form_agreeTerms {
+    #registration_form_agreeTerms + label:before {
         width: 20px;
         height: 20px;
     }

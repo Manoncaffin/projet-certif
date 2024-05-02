@@ -19,11 +19,11 @@
                         {% endif %}
 
                         {# DÉPLACER DANS LE HEADER #}
-                        {# {% if app.user %}
+                        {% if app.user %}
                             <div class="mb-3">
-                                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                Bienvenue {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
                             </div>
-                        {% endif %} #}
+                        {% endif %}
                         {# DÉPLACER DANS LE HEADER #}
 
                         <label for="identifier">Identifiant</label>
@@ -34,9 +34,7 @@
 
                         <label for="inputPassword">Mot de passe</label>
                         <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Votre mot de passe" required>
-                        <a href="#">Mot de passe oublié ?</a>
 
-                        {# ÇA SERT À QUOI ? #}
                         <input type="hidden" name="_csrf_token"
                             value="{{ csrf_token('authenticate') }}"
                         >
