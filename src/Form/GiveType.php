@@ -55,11 +55,8 @@ class GiveType extends AbstractType
                 ],
                 'class' => ClassificationMaterial::class,
                 'choice_label' => 'name',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('c')
-                        ->orderBy('c.name', 'ASC');
-                }
             ])
+
             // LISTE DEROULANTE
             ->add('material', EntityType::class, [
                 'class' => Material::class,
@@ -67,7 +64,7 @@ class GiveType extends AbstractType
                 // La requête trie les options par ordre alphabétique en fonction du nom de la classification.
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('c')
-                        ->orderBy('c.name', 'ASC');
+                        ->orderBy('c.name', 'DESC');
                 }
             ])
         ;

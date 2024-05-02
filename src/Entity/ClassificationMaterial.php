@@ -24,9 +24,16 @@ class ClassificationMaterial
     #[ORM\OneToMany(targetEntity: Announce::class, mappedBy: 'classification')]
     private Collection $announces;
 
+    /**
+     * @var Collection<int, Material>
+     */
+    #[ORM\OneToMany(targetEntity: Material::class, mappedBy: 'classificationMaterial')]
+    private Collection $materials;
+
     public function __construct()
     {
         $this->announces = new ArrayCollection();
+        $this->materials = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -70,6 +77,36 @@ class ClassificationMaterial
             // set the owning side to null (unless already changed)
             if ($announce->getClassification() === $this) {
                 $announce->setClassification(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Material>
+     */
+    public function getMaterials(): Collection
+    {
+        return $this->materials;
+    }
+
+    public function addMaterial(Material $material): static
+    {
+        if (!$this->materials->contains($material)) {
+            $this->materials->add($material);
+            $material->setClassificationMaterial($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMaterial(Material $material): static
+    {
+        if ($this->materials->removeElement($material)) {
+            // set the owning side to null (unless already changed)
+            if ($material->getClassificationMaterial() === $this) {
+                $material->setClassificationMaterial(null);
             }
         }
 

@@ -24,6 +24,10 @@ class Material
     #[ORM\OneToMany(targetEntity: Announce::class, mappedBy: 'material')]
     private Collection $announces;
 
+    #[ORM\ManyToOne(inversedBy: 'materials')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?ClassificationMaterial $classificationMaterial = null;
+
     public function __construct()
     {
         $this->announces = new ArrayCollection();
@@ -72,6 +76,18 @@ class Material
                 $announce->setMaterial(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getClassificationMaterial(): ?ClassificationMaterial
+    {
+        return $this->classificationMaterial;
+    }
+
+    public function setClassificationMaterial(?ClassificationMaterial $classificationMaterial): static
+    {
+        $this->classificationMaterial = $classificationMaterial;
 
         return $this;
     }

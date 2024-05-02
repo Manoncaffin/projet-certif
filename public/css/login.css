@@ -201,12 +201,33 @@
     }
 
      /* Change the white to any color */
-     input:-webkit-autofill,
-     input:-webkit-autofill:hover,
-     input:-webkit-autofill:focus,
-     input:-webkit-autofill:active {
-         -webkit-box-shadow: 0 0 0 30px rgb(239, 238, 218) inset !important;
-     }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px rgb(239, 238, 218) inset !important;
+    }
+
+    #remember_me {
+        display: none;
+    }
+
+    #remember_me + span:before {
+        margin-right: 15px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 2px solid black;
+        background-color: white;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        transition: background-color 0.1s ease;
+    }
+
+    #remember_me:checked + span:before{
+        background-color: black;
+    }
 
     .foot_form {
         justify-content: center !important;
@@ -377,6 +398,11 @@
     .container {
         width: 580px;
         margin-top: 30px;
+    }
+
+    #remember_me + span:before {
+        width: 20px;
+        height: 20px;
     }
 }
 

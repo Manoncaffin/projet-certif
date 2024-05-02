@@ -24,13 +24,11 @@
                 </div>
                 <div class="bordure mb-4"></div>
 
-                <form action="#" method="POST">
-                    <label for="classification-select" class="classification-select">Classification</label>
-                    <select name="classification" id="classification-select" required onchange="toggleMaterialSelect()">
-                        <option value="">--</option>
-                        <option value="Matériau bio-sourcé">Matériau bio-sourcé</option>
-                        <option value="Matériau géo-sourcé">Matériau géo-sourcé</option>
-                    </select>
+                {{ form_start(searchForm) }}
+
+                    {{ form_label(searchForm.classification) }}
+                    {{ form_widget(searchForm.classification) }}
+
                     <button id="openModal" type="button">Pour en savoir plus, vous pouvez cliquer ici.</button>
                     
                     <div id="myModal" class="modal">
@@ -66,39 +64,27 @@
                         </div>
                     </div>
 
-                    <label for="material-geo-select" class="material-select-geo"
-                        style="display: none;">Matériaux</label>
-                    <select name="material-geo-select" id="material-geo-select" style="display: none;" required>
+
+                    {# {{ form_label(searchForm.material) }} #}
+                    {# {{ form_widget(searchForm.material) }} #}
+
+                        <select name="material-geo-select" id="material-geo-select" style="display: none;" required>
                         <option value="">--</option>
-                        <option value="material geo-source">Brique</option>
-                        <option value="material geo-source">Céramique</option>
-                        <option value="material geo-source">Gravier</option>
-                        <option value="material geo-source">Pierre</option>
-                        <option value="material geo-source">Sable</option>
-                        <option value="material geo-source">Terre</option>
-                        <option value="material geo-source">Verre</option>
+                        {% for material in materials %}
+                        {% if material.classificationMaterial.id == 2 %}
+                        <option value={{ material.material }}>{{ material.material }}</option>
+                        {% endif %}
+                        {% endfor %}
                         <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
                     </select>
 
-                    <label for="material-bio-select" class="material-select-bio"
-                        style="display: none;">Matériaux</label>
-                    <select name="material-bio-select" id="material-bio-select" style="display: none;" required>
+                    <select name="material-bio-select" id="material-bio-select" style="" required>
                         <option value="">--</option>
-                        <option value="material bio-source">Bambou</option>
-                        <option value="material bio-source">Bois</option>
-                        <option value="material bio-source">Canne-de-provence</option>
-                        <option value="material bio-source">Chanvre</option>
-                        <option value="material bio-source">Coquille d'huître</option>
-                        <option value="material bio-source">Coquille d'escargot</option>
-                        <option value="material bio-source">Laine de mouton</option>
-                        <option value="material bio-source">Liège</option>
-                        <option value="material bio-source">Marc de café</option>
-                        <option value="material bio-source">Papier</option>
-                        <option value="material bio-source">Papier-journal</option>
-                        <option value="material bio-source">Paille de blé</option>
-                        <option value="material bio-source">Paille de lavande</option>
-                        <option value="material bio-source">Roseau</option>
-                        <option value="material bio-source">Sciure de bois</option>
+                        {% for material in materials %}
+                        {% if material.classificationMaterial.id == 1 %}
+                        <option value={{ material.material }}>{{ material.material }}</option>
+                        {% endif %}
+                        {% endfor %}
                         <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
                     </select>
 
@@ -118,7 +104,8 @@
                         <a href="#">Vous n'avez pas trouvé ce que vous cherchiez ?</a>
                         <input type="submit" value="Publier cette recherche">
                     </div>
-                </form>
+                {# </form> #}
+                {{ form_end(searchForm) }}
             </section>
         </div>
 

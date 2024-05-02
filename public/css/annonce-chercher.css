@@ -286,7 +286,7 @@
 
     #material-bio-select,
     #material-geo-select,
-    #classification-select,
+    #search_classification,
     #geographical,
     #new-material {
         width: 100%;
@@ -437,7 +437,7 @@
 
     #material-bio-select,
     #material-geo-select,
-    #classification-select,
+    #search_classification,
     #quantity-select,
     #value-select,
     #description,
@@ -561,7 +561,7 @@
         font-size: 1.3rem;
     }
 
-    #classification-select,
+    #search_classification,
     #material-geo-select,
     #material-bio-select,
     #geographical,

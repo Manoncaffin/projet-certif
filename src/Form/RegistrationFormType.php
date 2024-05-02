@@ -31,6 +31,7 @@ class RegistrationFormType extends AbstractType
                     'Je suis un·e particulier' => 'particulier',
                     'Je suis un·e professionnel·le' => 'professional',
                 ],
+                'required' => true,
                 'expanded' => true,
                 'mapped' => false,
                 'empty_data' => 'particulier'
@@ -43,10 +44,9 @@ class RegistrationFormType extends AbstractType
                     return $er->createQueryBuilder('c')
                         ->orderBy('c.activity', 'ASC');
                 },
-                'required' => false,
+                'required' => true,
                 'attr' => [
                     'id' => 'activity-select',
-                    // 'style' => 'display: none;',
                 ],
             ])
 
@@ -96,6 +96,7 @@ class RegistrationFormType extends AbstractType
                 'attr' => [
                     'class'=> 'custom-checkbox',
                 ],
+                'required' => true,
                 'constraints' => [
                     new IsTrue([
                         'message' => 'You should agree to our terms.',
