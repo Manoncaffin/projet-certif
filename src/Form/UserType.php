@@ -28,27 +28,28 @@ class UserType extends AbstractType
                 'class' => 'form-control',
                 'autocomplete' => 'current-password',
                 'placeholder' => 'Votre mot de passe',
-                'required' => 'true',
                 ]
             ])
 
             ->add('identifier', TextType::class, [
-                'label' => 'Prénom',
+                'label' => 'Identifiant',
                 'attr' => [
-                    'id' => 'firstname',
-                    'name' => 'firstname',
-                    'placeholder' => 'Votre prénom',
-                    'required' => 'true',
+                    'id' => 'identifier',
+                    'name' => 'identifier',
+                    'placeholder' => 'Votre identifiant',
+                    'class' => 'form-control',
+                    'autocomplete' => 'identifier',
                 ]
             ])
             
             ->add('email', EmailType::class, [
-                'label' => 'Nom',
+                'label' => 'Email',
                 'attr' => [
-                    'id' => 'lastname',
-                    'name' => 'lastname',
-                    'placeholder' => 'Votre nom',
-                    'required' => 'true',
+                    'id' => 'email',
+                    'name' => 'email',
+                    'placeholder' => 'Votre adresse email',
+                    'class' => 'form-control', 
+                    'autocomplete' => 'email',
                 ]
             ])
         ;

@@ -301,8 +301,6 @@
     .circle_menu {
         width: 17px;
         height: 10px;
-        border-radius: 50%;
-        background-color: black;
     }
 
     .navbar .burger-menu-button {

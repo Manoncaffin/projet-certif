@@ -12,7 +12,7 @@
                     <div class="circle_menu"></div>
 
                     <li class="dropdown">
-                        <a href={{ path('app_accueil') }}#deposer>DÉPOSER UNE ANNONCE</a>
+                        <a href="#deposer">DÉPOSER UNE ANNONCE</a>
                         <ul class="dropdown-menu_one">
                             <li><a href={{ path('app_annonce_chercher') }}>Chercher un matériau</a></li>
                             <li><a href={{ path('app_annonce_donner') }}>Donner un matériau</a></li>
@@ -21,29 +21,23 @@
                     <div class="circle_menu"></div>
 
                     <li class="dropdown">
-                        <a href={{ path('app_login') }}>CONNEXION</a>
-                        <ul class="dropdown-menu_two">
-                        {# DÉPLACER DANS LE HEADER #}
                         {% if app.user %}
-                            <div class="mb-3">
-                                Bienvenue {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
-                            </div>
-                        {% endif %}
-                        {# DÉPLACER DANS LE HEADER #}
-                            <li><a href={{ path('app_login') }}>Connexion</a></li>
-                            <li><a href={{ path('app_register') }}>Inscription</a></li>
-                        </ul>
-                    </li>
-
-                    <div class="circle_menu"></div>
-
-                    <li class="dropdown">
-                        <a href={{ path('app_profil') }}>MON PROFIL</a>
+                            <a href='#'>{{ app.user.identifier }}</a> 
                         <ul class="dropdown-menu_two">
                             <li><a href={{ path('app_profil') }}>Voir mon profil</a></li>
                             <li><a href={{ path('app_mes_annonces') }}>Mes annonces</a></li>
                             <li><a href={{ path('app_messagerie') }}>Messagerie</a></li>
+                            <li><a href={{ path('app_logout') }}>Déconnexion</a></li>
                         </ul>
+
+                        {% else %}
+                        
+                        <a href={{ path('app_login') }}>CONNEXION</a>
+                        <ul class="dropdown-menu_two">
+                            <li><a href={{ path('app_login') }}>Connexion</a></li>
+                            <li><a href={{ path('app_register') }}>Inscription</a></li>
+                        </ul>
+                        {% endif %}
                     </li>
 
                     <div class="circle_menu"></div>
