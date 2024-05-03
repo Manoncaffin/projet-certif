@@ -1,8 +1,8 @@
-// // SEARCH CITY
+// SEARCH CITY
 document.addEventListener("DOMContentLoaded", function () {
     let searchTimeout;
 
-    document.getElementById("geographical").addEventListener("input", function () {
+    document.getElementById("search_geographicalArea").addEventListener("input", function () {
         const postalCode = this.value.trim();
 
         // Déclencher la recherche si le code postal comporte exactement 5 chiffres
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (data && data.length > 0) {
                             const city = data[0].display_name;
                             // Remplir le champ avec la ville trouvée
-                            document.getElementById("geographical").value = city;
+                            document.getElementById("search_geographicalArea").value = city;
                         } else {
                             alert("Aucune ville trouvée pour ce code postal");
                         }
@@ -37,4 +37,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-// // SEARCH CITY
+// SEARCH CITY

@@ -40,17 +40,6 @@ class SearchType extends AbstractType
             ],
                 'required' => true,
             ])
-
-            ->add('material', EntityType::class, [
-                'class' => Material::class,
-                'label' => 'Matériau',
-                'choice_label' => 'material',
-                'attr' => [
-                'id' => 'material',
-                'placeholder' => '--',
-                ],
-                'required' => true,
-            ])
         ;
     }
 

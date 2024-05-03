@@ -195,7 +195,7 @@
         display: flex;
         align-items: start;
         margin-top: 0;
-        margin-bottom: 30px;
+        margin-bottom: 16px;
         border-radius: 20px;
         width: fit-content;
         padding: 6px;
@@ -266,7 +266,7 @@
 
     #material-bio-select,
     #material-geo-select,
-    #classification-select,
+    #give_classification,
     #quantity-select,
     #value-select,
     #description,
@@ -300,6 +300,7 @@
         padding-bottom: 16px;
         font-size: 3rem;
         margin-top: 16px;
+        margin-bottom: 16px;
     }
 
     .quantity-select {
@@ -483,7 +484,7 @@
 
     #material-bio-select,
     #material-geo-select,
-    #classification-select,
+    #give_classification,
     #quantity-select,
     #value-select,
     #description,
@@ -509,10 +510,19 @@
     /* FORM */
 
     /* MODALE */
-           }
+    #openModal {
+        font-size: 0.8rem;
+    }
+
+    .modal-content {
+        font-size: 1.3rem;
+    }
+
+    .close {
+        font-size: 35px;
+    }
 
     /* MODALE */
-
 }
 
 

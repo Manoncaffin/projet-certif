@@ -23,51 +23,59 @@ class GiveType extends AbstractType
             ->add('createdAt', null, [
                 'widget' => 'single_text',
             ])
-            // LISTE DEROULANTE
-            ->add('volume', NumberType::class, [
+
+            ->add('value', NumberType::class, [
                 'label' => 'Volume',
-                'choice_label' => 'number',
-                // La requête trie les options par ordre alphabétique en fonction du nom de la classification.
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('c')
-                        ->orderBy('c.name', 'ASC');
-                }
+                'required' => true,
             ])
+
+            ->add('quantity', TextareaType::class, [
+                'label' => 'Quantité',
+                'required' => true,
+            ])
+
             ->add('reference')
+
             ->add('geographicalArea', TextType::class, [
                 'label' => 'Localisation',
                 'attr' => [
                     'placeholder' => 'Entrez le code postal',
-                ]
-                ])
+                    'id' => 'search_geographicalArea',
+                ],
+                'required' => true,
+            ])
+
+            ->add('classification', EntityType::class, [
+                'class' => ClassificationMaterial::class,
+                'choice_label' => 'name',
+                'placeholder' => '--',
+                'attr' =>
+                [
+                    'onchange' => 'toggleMaterialSelect()',
+                    'id' => 'classification',
+                ],
+                'required' => true,
+            ])
+
+            ->add('material', EntityType::class, [
+                'class' => Material::class,
+                'label' => 'Matériau',
+                'choice_label' => 'material',
+                'attr' => [
+                    'id' => 'material',
+                    'placeholder' => '--',
+                ],
+                'required' => true,
+            ])
+
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
             ])
+
             ->add('user', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',
-            ])
-            // LISTE DEROULANTE
-            ->add('classification', EntityType::class, [
-                'label' => 'Classification',
-                'attr' => [
-                    'class' => 'btn-info btn-test     ',
-                ],
-                'class' => ClassificationMaterial::class,
-                'choice_label' => 'name',
-            ])
-
-            // LISTE DEROULANTE
-            ->add('material', EntityType::class, [
-                'class' => Material::class,
-                'choice_label' => 'name',
-                // La requête trie les options par ordre alphabétique en fonction du nom de la classification.
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('c')
-                        ->orderBy('c.name', 'DESC');
-                }
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
