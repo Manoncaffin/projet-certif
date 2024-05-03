@@ -27,21 +27,26 @@
 // });
 // // SCRIPT SELECT MATERIAL
 
-// Sélectionner les éléments HTML
-const classificationSelect = document.querySelector('#search_form_classification');
-const materialSelect = document.querySelector('#search_form_material');
 
-// Masquer le champ "material" par défaut
-materialSelect.style.display = 'none';
+function toggleMaterialSelect() {
+  const classification = document.querySelector('#search_form_classificationMaterial');
+  const materialBio = document.querySelector('#search_form_materialBio');
+  const materialBioLabel = document.querySelector('#search_form_materialBio-label');
+  const materialGeo = document.querySelector('#search_form_materialGeo');
+  const materialGeoLabel = document.querySelector('#search_form_materialGeo-label');
 
-// Ajouter un écouteur d'événement sur le champ "classification"
-classificationSelect.addEventListener('change', function() {
-  // Vérifier si l'option "matériau géo-sourcé" est sélectionnée
-  if (this.value === 'Matériau géo-sourcé') {
-    // Afficher le champ "material"
-    materialSelect.style.display = 'block';
-  } else {
-    // Masquer le champ "material"
-    materialSelect.style.display = 'none';
+  // Masquer tous les champs
+  materialBio.style.display = 'none';
+  materialBioLabel.style.display = 'none';
+  materialGeo.style.display = 'none';
+  materialGeoLabel.style.display = 'none';
+
+  // Afficher le champ correspondant au type de matériau sélectionné
+  if (classification.value === '1') { // ID de la classification "Matériau bio-sourcé"
+      materialBio.style.display = 'block';
+      materialBioLabel.style.display = 'block';
+  } else if (classification.value === '2') { // ID de la classification "Matériau géo-sourcé"
+      materialGeo.style.display = 'block';
+      materialGeoLabel.style.display = 'block';
   }
-});
+}

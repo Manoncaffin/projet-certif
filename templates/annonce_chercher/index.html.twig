@@ -24,6 +24,7 @@
                 </div>
                 <div class="bordure mb-4"></div>
 
+
                 {{ form_start(searchForm) }}
 
                     {{ form_label(searchForm.classification) }}
@@ -65,9 +66,8 @@
                     </div>
 
 
-                    {# {{ form_label(searchForm.material) }} #}
-                    {# {{ form_widget(searchForm.material) }} #}
-
+                    {# {{ form_label(searchForm.materialGeo) }}
+                    {{ form_widget(searchForm.materialGeo) }}
                         <select name="material-geo-select" id="material-geo-select" style="display: none;" required>
                         <option value="">--</option>
                         {% for material in materials %}
@@ -78,6 +78,8 @@
                         <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
                     </select>
 
+                    {{ form_label(searchForm.materialBio) }}
+                    {{ form_widget(searchForm.materialBio) }}
                     <select name="material-bio-select" id="material-bio-select" style="" required>
                         <option value="">--</option>
                         {% for material in materials %}
@@ -86,7 +88,17 @@
                         {% endif %}
                         {% endfor %}
                         <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
-                    </select>
+                    </select> #}
+
+                    <div id="materialBio" style="display:none;">
+                        {{ form_label(searchForm.materialBio) }}
+                        {{ form_widget(searchForm.materialBio) }}
+                    </div>
+
+                    <div id="materialGeo" style="display:none;">
+                        {{ form_label(searchForm.materialGeo) }}
+                        {{ form_widget(searchForm.materialGeo) }}
+                    </div>
 
                     <div class="add">
                         <label for="new-material" class="new-material">Ajouter</label>
@@ -104,7 +116,7 @@
                         <a href="#">Vous n'avez pas trouvé ce que vous cherchiez ?</a>
                         <input type="submit" value="Publier cette recherche">
                     </div>
-                {# </form> #}
+
                 {{ form_end(searchForm) }}
             </section>
         </div>

@@ -478,12 +478,13 @@
         }
     
         .modal-content {
-            font-size: 2rem;
+            font-size: 1.3rem;
         }
     
         .close {
             font-size: 35px;
         }
+        /* MODALE */
 }
 
 
@@ -506,7 +507,7 @@
         justify-content: space-between;
     }
 
-    .links {
+    .navbar .links a {
         font-size: 1.3rem;
     }
 
