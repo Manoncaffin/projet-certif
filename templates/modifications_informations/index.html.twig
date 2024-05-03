@@ -38,6 +38,7 @@
                             {{ form_widget(registrationForm.professional)}}
                         </div> #}
 
+                        <div class="checkbox mb-3" id="particulier">
                         {% block professional_widget %}
                             {% for child in form.professional %}
                                 <div class="custom-control custom-radio {% if child.vars.value == 'particulier' %}particulier{% elseif child.vars.value == 'professional' %}professional{% endif %}">
@@ -46,6 +47,7 @@
                                 </div>
                             {% endfor %}
                         {% endblock professional_widget %}
+                        </div>
 
 
                         <div class="text_rgpd mb-4" id="text_rgpd" style="display: none;">
@@ -80,8 +82,7 @@
                     {{ form_widget(form.plainPassword)}}
 
                     <div class="foot_form">
-                        {# {{ form_row(form.submit) }} #}
-                        {# <input type="submit" value="Valider les modifications"> #}
+                        {{ form_row(form.submit) }}
                     </div>
 
                         {{ form_end(form) }}
@@ -92,7 +93,7 @@
 
 {% block javascripts %}
     <script src={{ asset('js/overall-scrolling.js') }}></script>
-    <script src={{ asset('js/inscription.js') }}></script>
+    <script src={{ asset('js/modifications-informations.js') }}></script>
 {% endblock %}
 
 

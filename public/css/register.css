@@ -257,7 +257,8 @@
         display: none;
     }
 
-    #registration_form_sectorActivity {
+    #registration_form_sectorActivity,
+    #user_sectorActivity {
         width: 100%;
         border: none;
         outline: none;
@@ -276,7 +277,9 @@
 
     #registration_form_agreeTerms,
     #registration_form_professional_0,
-    #registration_form_professional_1 {
+    #registration_form_professional_1,
+    #user_professional_0,
+    #user_professional_1 {
         display: none;
     }
 
@@ -298,7 +301,9 @@
     }
 
     #registration_form_professional_0 + label:before,
-    #registration_form_professional_1 + label:before {
+    #registration_form_professional_1 + label:before,
+    #user_professional_0 + label:before,
+    #user_professional_1 + label:before {
         margin-right: 15px;
         width: 30px;
         height: 30px;
@@ -312,7 +317,9 @@
     }
     
     #registration_form_professional_0:checked + label:before,
-    #registration_form_professional_1:checked + label:before {
+    #registration_form_professional_1:checked + label:before,
+    #user_professional_0:checked + label:before,
+    #user_professional_1:checked + label:before {
         background-color: black;
     }
     /* FORM  */
@@ -434,6 +441,7 @@
     input[type=email],
     input[type=password],
     #registration_form_sectorActivity,
+    #user_sectorActivity,
     label {
         font-size: 1.3rem;
     }
@@ -504,7 +512,9 @@
 
 
     #registration_form_professional_0 + label:before,
-    #registration_form_professional_1 + label:before{
+    #registration_form_professional_1 + label:before,
+    #user_professional_0 + label:before,
+    #user_professional_1 + label:before {
         width: 20px;
         height: 20px;
     }

@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Announce;
 use App\Entity\ClassificationMaterial;
 use App\Entity\Material;
+use App\Entity\SectorActivity;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -48,5 +49,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Classification', 'fa-solid fa-recycle', ClassificationMaterial::class);
         yield MenuItem::linkToCrud('Material', 'fa-solid fa-feather', Material::class);
         yield MenuItem::linkToCrud('Announce', 'fa-solid fa-users', Announce::class);
+        yield MenuItem::linkToCrud('User','fa-solid fa-users', SectorActivity::class);
     }
 }
