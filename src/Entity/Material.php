@@ -28,6 +28,14 @@ class Material
     #[ORM\JoinColumn(nullable: false)]
     private ?ClassificationMaterial $classificationMaterial = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $volume = null;
+
+    public function __toString()
+    {
+        return $this->material;
+    }
+
     public function __construct()
     {
         $this->announces = new ArrayCollection();
@@ -88,6 +96,18 @@ class Material
     public function setClassificationMaterial(?ClassificationMaterial $classificationMaterial): static
     {
         $this->classificationMaterial = $classificationMaterial;
+
+        return $this;
+    }
+
+    public function getVolume(): ?string
+    {
+        return $this->volume;
+    }
+
+    public function setVolume(string $volume): static
+    {
+        $this->volume = $volume;
 
         return $this;
     }

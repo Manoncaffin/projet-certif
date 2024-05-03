@@ -324,7 +324,6 @@
     .message_enter {
         display: flex;
         flex-direction: column;
-        margin-bottom: 25px;
     }
 
     #message {
@@ -340,7 +339,6 @@
         height: 200px;
         font-size: 2.7rem;
         margin-top: 16px;
-        margin-bottom: 16px;
         resize: none;
         overflow-y: scroll;
         scrollbar-width: none;
@@ -561,6 +559,10 @@
     }
 
     /* NAVBAR  */
+
+    textarea {
+        height: 170px;
+    }
 }
 
 

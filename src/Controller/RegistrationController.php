@@ -34,7 +34,10 @@ class RegistrationController extends AbstractController
         
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $status = $request->request->all()['registration_form']['professional'];
+            $professional = $form->get('professional')->getData();
+            $user->setProfessional($professional);
+
+            // $status = $request->request->all()['registration_form']['professional'];
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -43,7 +46,7 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $user->setProfessional($status);
+            // $user->setProfessional($status);
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -63,7 +66,7 @@ class RegistrationController extends AbstractController
         }
 
         return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form,
+            'registrationForm' => $form->createView(),
         ]);
     }
 

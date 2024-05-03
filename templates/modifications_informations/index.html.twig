@@ -66,30 +66,25 @@
                     </div>
 
                     {{ form_label(form.firstname) }}
-                    {{ form_widget(form.firstname)}}
+                    {{ form_widget(form.firstname)}}                    
 
                     {{ form_label(form.lastname) }}
                     {{ form_widget(form.lastname)}}
 
                     {{ form_label(form.email) }}
                     {{ form_widget(form.email)}}
-
                 
                     {{ form_label(form.identifier) }}
                     {{ form_widget(form.identifier)}}
 
                     {{ form_widget(form.plainPassword)}}
-                    
-                    <div class="custum-checkbox">
-                        {{ form_widget(form.agreeTerms) }}
-                        {{ form_label(form.agreeTerms) }}
-                    </div>
 
                     <div class="foot_form">
-                        <input type="submit" value="Valider les modifications">
+                        {# {{ form_row(form.submit) }} #}
+                        {# <input type="submit" value="Valider les modifications"> #}
                     </div>
 
-                        {{ form_end(Form) }}
+                        {{ form_end(form) }}
             </section>
         </div>
 

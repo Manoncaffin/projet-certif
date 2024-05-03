@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Form\UserType;
+use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\BrowserKit\Request;
+// use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class ModificationsInformationsController extends AbstractController
 {
@@ -18,21 +21,27 @@ class ModificationsInformationsController extends AbstractController
     //     ]);
     // }
 
-    public function index(Request $request): Response
+    public function update(Request $request, UserRepository $userRepository, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
 
-        $form = $this->createForm(UserType::class, $user);
+        if(!$user) {
+            return $this->redirectToRoute('app_login');
+        }
 
+        if(!$user->getUserIdentifier()) {
+            return $this->redirectToRoute('app_accueil');
+        }
+
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
 
             $this->addFlash('success', 'Vos informations ont été mises à jour avec succès.');
 
-            return $this->redirectToRoute('accueil');
+            return $this->redirectToRoute('app_accueil');
         }
 
         return $this->render('modifications_informations/index.html.twig', [

@@ -18,6 +18,9 @@ class Announce
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
+    #[ORM\Column]
+    private ?int $volume = null;
+
     #[ORM\Column(length: 255)]
     private ?string $reference = null;
 
@@ -60,9 +63,6 @@ class Announce
     #[ORM\Column]
     private ?int $number = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $volume = null;
-
     public function __construct()
     {
         $this->messages = new ArrayCollection();
@@ -83,6 +83,18 @@ class Announce
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getVolume(): ?int
+    {
+        return $this->volume;
+    }
+
+    public function setVolume(int $volume): static
+    {
+        $this->volume = $volume;
 
         return $this;
     }
@@ -257,18 +269,6 @@ class Announce
     public function setNumber(int $number): static
     {
         $this->number = $number;
-
-        return $this;
-    }
-
-    public function getVolume(): ?string
-    {
-        return $this->volume;
-    }
-
-    public function setVolume(string $volume): static
-    {
-        $this->volume = $volume;
 
         return $this;
     }

@@ -33,8 +33,8 @@ class RegistrationFormType extends AbstractType
                 ],
                 'required' => true,
                 'expanded' => true,
-                'mapped' => false,
-                'empty_data' => 'particulier'
+                'mapped' => true,
+                // 'empty_data' => 'particulier'
             ]) 
 
             ->add('sectorActivity', EntityType::class, [
@@ -105,7 +105,7 @@ class RegistrationFormType extends AbstractType
             ])
 
             ->add('submit', SubmitType::class, [
-                'label' => 'Valider mon inscription',
+                'label' => 'Valider les informations',
                 'attr' => [
                     'class' => 'custom-submit',
                 ],
