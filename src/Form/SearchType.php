@@ -24,7 +24,9 @@ class SearchType extends AbstractType
             'label' => 'Localisation',
             'attr' => [
                 'placeholder' => 'Entrez le code postal',
-            ]
+                'id' => 'search_geographicalArea',
+            ],
+            'required' => true,
             ])
 
             ->add('classification', EntityType::class, [
@@ -39,46 +41,16 @@ class SearchType extends AbstractType
                 'required' => true,
             ])
 
-            // ->add('material', EntityType::class, [
-            //     'class' => Material::class,
-            //     'label' => 'Matériau',
-            //     'choice_label' => 'material',
-            //     'placeholder' => '--',
-            //     'attr' => [
-            //     'id' => 'material-geo-select',
-            //     'required' => true,
-            //     ],
-            //     'query_builder' => function (EntityRepository $er) {
-            //         return $er->createQueryBuilder('c')
-            //             ->orderBy('c.material', 'ASC');
-            //     }
-            // ])
-
-            ->add('materialBio', EntityType::class, [
+            ->add('material', EntityType::class, [
                 'class' => Material::class,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('m')
-                        ->where('m.classificationMaterial = :classification')
-                        ->setParameter('classification', 1) // ID de la classificaion "Matériau bio-sourcé"
-                        ->orderBy('m.material', 'ASC');
-                },
+                'label' => 'Matériau',
                 'choice_label' => 'material',
-                'placeholder' => 'Choisir un matériau bio-sourcé',
-                'attr' => ['id' => 'material_bio', 'style' => 'display:none;'],
+                'attr' => [
+                'id' => 'material',
+                'placeholder' => '--',
+                ],
+                'required' => true,
             ])
-            // Champ de sélection pour le matériau géo-sourcé
-            ->add('materialGeo', EntityType::class, [
-                'class' => Material::class,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('m')
-                        ->where('m.classificationMaterial = :classification')
-                        ->setParameter('classification', 2) // ID de la classification "Matériau géo-sourcé"
-                        ->orderBy('m.material', 'ASC');
-                },
-                'choice_label' => 'material',
-                'placeholder' => 'Choisir un matériau géo-sourcé',
-                'attr' => ['id' => 'material_geo', 'style' => 'display:none;'],
-            ]);
         ;
     }
 

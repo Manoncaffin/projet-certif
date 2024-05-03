@@ -9,7 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Déclarer une variable pour stocker la référence au marqueur précédent
     let previousMarker = null;
 
-    document.getElementById("geographical").addEventListener("input", function () {
+    
+
+    document.getElementById("search_geographicalArea").addEventListener("input", function () {
         const postalCode = this.value.trim();
 
         // Déclencher la recherche si le code postal comporte exactement 5 chiffres
@@ -26,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (data && data.length > 0) {
                         const city = data[0].display_name;
                         // Remplir le champ avec la ville trouvée
-                        document.getElementById("geographical").value = city;
+                        document.getElementById("search_geographicalArea").value = city;
                         // Déclencher la recherche d'adresse automatiquement
                         searchAddress();
                     } else {
@@ -44,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function searchAddress() {
-        const address = document.getElementById("geographical").value;
+        const address = document.getElementById("search_geographicalArea").value;
         const url = 'https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(address);
 
         fetch(url)
