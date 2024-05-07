@@ -64,7 +64,6 @@
                     <div id="material-label" style="display: none;">
                     {{ form_label(giveForm.material) }}
                     </div>
-                
                     <select name="material-geo-select" id="material-geo-select" style="display: none;">
                         <option value="">--</option>
                         {% for material in materials %}
@@ -85,6 +84,7 @@
                         <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
                     </select>
 
+                    {# REVOIR LE CODE JS / NE S'AFFICHE PLUS #}
                     <div class="add" style="display: none;">
                         <label for="new-material" class="new-material">Ajouter</label>
                         <input type="text" id="new-material" placeholder="Entrer un autre matériau">
@@ -99,8 +99,24 @@
                                 {% endfor %}
                             </select>
 
-                        <label for="value" class="value-select">Valeur</label>
-                        <select name="value" id="value-select">
+
+                    <div id="material-label" style="display: none;">
+                    {{ form_label(giveForm.material) }}
+                    </div>
+                    <select name="material-geo-select" id="material-geo-select" style="display: none;">
+                        <option value="">--</option>
+                        {% for material in materials %}
+                        {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
+                        <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option>
+                        {% endif %}
+                        {% endfor %}
+                        <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
+                    </select>
+
+                        {{ form_label(giveForm.value, 'Valeur', {'label_attr': {'class': 'value-select'}}) }}
+                        {{ form_widget(giveForm.value, {'attr': {'class': 'form-control'}}) }}
+                        {# <label for="value" class="value-select">Valeur</label> #}
+                        {# <select name="value" id="value-select">
                             <option value="">--</option>
                             <option value="kg">kg</option>
                             <option value="kg">tonne(s)</option>
@@ -109,27 +125,29 @@
                             <option value="metres">mètre(s) linéaire(s)</option>
                             <option value="metres carres">mètre(s) carré(s)</option>
                             <option value="metres cubes">mètre(s) cube(s)</option>
-                        </select>
+                        </select> #}
                     </div>
 
-                    <div class="file">
+                    {# <div class="file">
                         <label for="file">Joindre des photos</label>
                         <input id="file" type="file" name="file" placeholder="Choisir un fichier" required>
-                    </div>
+                    </div> #}
+
+                    {{form_row(giveForm.photo)}}
+
+                    <label for="geographical">Localisation</label>
+                    <input id="geographical" type="text" name="geographical" placeholder="Entrer le code postal"
+                    required>
 
                     <div class="message_enter">
                         <label for="description">Description</label>
                         <textarea id="message" placeholder="Entrer la description ici" required></textarea>
                     </div>
-
-                    {# <label for="geographical">Localisation</label>
-                    <input id="geographical" type="text" name="geographical" placeholder="Entrer le code postal"
-                    required> #}
-
+                    
                     <div class="foot_form">
                         <input type="submit" value="Valider mon annonce">
                     </div>
-                </form>
+                {{form_end(giveForm)}}
             </section>
         </div>
 

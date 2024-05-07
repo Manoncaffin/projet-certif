@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\MaterialRepository;
+use App\Repository\VolumeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: MaterialRepository::class)]
-class Material
+#[ORM\Entity(repositoryClass: VolumeRepository::class)]
+class Volume
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -16,23 +16,13 @@ class Material
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $material = null;
+    private ?string $name = null;
 
     /**
      * @var Collection<int, Announce>
      */
-    #[ORM\OneToMany(targetEntity: Announce::class, mappedBy: 'material')]
+    #[ORM\OneToMany(targetEntity: Announce::class, mappedBy: 'volume')]
     private Collection $announces;
-
-    #[ORM\ManyToOne(inversedBy: 'materials')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?ClassificationMaterial $classificationMaterial = null;
-
-
-    public function __toString()
-    {
-        return $this->material;
-    }
 
     public function __construct()
     {
@@ -44,14 +34,14 @@ class Material
         return $this->id;
     }
 
-    public function getMaterial(): ?string
+    public function getName(): ?string
     {
-        return $this->material;
+        return $this->name;
     }
 
-    public function setMaterial(string $material): static
+    public function setName(string $name): static
     {
-        $this->material = $material;
+        $this->name = $name;
 
         return $this;
     }
@@ -68,7 +58,7 @@ class Material
     {
         if (!$this->announces->contains($announce)) {
             $this->announces->add($announce);
-            $announce->setMaterial($this);
+            $announce->setVolume($this);
         }
 
         return $this;
@@ -78,24 +68,11 @@ class Material
     {
         if ($this->announces->removeElement($announce)) {
             // set the owning side to null (unless already changed)
-            if ($announce->getMaterial() === $this) {
-                $announce->setMaterial(null);
+            if ($announce->getVolume() === $this) {
+                $announce->setVolume(null);
             }
         }
 
         return $this;
     }
-
-    public function getClassificationMaterial(): ?ClassificationMaterial
-    {
-        return $this->classificationMaterial;
-    }
-
-    public function setClassificationMaterial(?ClassificationMaterial $classificationMaterial): static
-    {
-        $this->classificationMaterial = $classificationMaterial;
-
-        return $this;
-    }
-
 }

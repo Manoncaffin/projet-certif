@@ -267,10 +267,11 @@
     #material-bio-select,
     #material-geo-select,
     #give_classification,
-    #quantity-select,
+    #give_number,
     #value-select,
+    #give_value,
     #description,
-    #geographical,
+    #give_geographicalArea,
     #new-material {
         width: 100%;
         border: none;
@@ -483,10 +484,11 @@
     #material-bio-select,
     #material-geo-select,
     #give_classification,
-    #quantity-select,
+    #give_number,
     #value-select,
+    #give_value,
     #description,
-    #geographical,
+    #give_geographicalArea,
     #new-material,
     #file {
         font-size: 1.3rem;

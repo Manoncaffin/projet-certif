@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240502142305 extends AbstractMigration
+final class Version20240506103856 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,15 +20,14 @@ final class Version20240502142305 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-     
-        $this->addSql('ALTER TABLE material ADD CONSTRAINT FK_7CBE7595D8088C4F FOREIGN KEY (classification_material_id) REFERENCES classification_material (id)');
-        $this->addSql('CREATE INDEX IDX_7CBE7595D8088C4F ON material (classification_material_id)');
+        $this->addSql('DROP TABLE volume');
+        $this->addSql('ALTER TABLE announce ADD type VARCHAR(255) NOT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE material DROP FOREIGN KEY FK_7CBE7595D8088C4F');
-        $this->addSql('DROP INDEX IDX_7CBE7595D8088C4F ON material');
+        $this->addSql('CREATE TABLE volume (id INT AUTO_INCREMENT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
+        $this->addSql('ALTER TABLE announce DROP type');
     }
 }

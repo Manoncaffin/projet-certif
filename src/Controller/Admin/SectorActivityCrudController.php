@@ -19,7 +19,7 @@ class SectorActivityCrudController extends AbstractCrudController
     {
         return [
             // IdField::new('id'),
-            TextField::new('sectorActivity'),
+            TextField::new('activity'),
         ];
 }
 }

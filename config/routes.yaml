@@ -12,3 +12,4 @@ modifications_informations:
 dashboard:
     path: /dashboard
     controller: App\Controller\Admin\DashboardController::index
+    

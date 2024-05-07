@@ -20,7 +20,7 @@ final class Version20240503183231 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE volume ADD volume VARCHAR(255) NOT NULL');
+        // $this->addSql('CREATE TABLE volume (name VARCHAR(255) NOT NULL)');
     }
 
     public function down(Schema $schema): void

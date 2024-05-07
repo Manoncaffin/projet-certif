@@ -6,6 +6,8 @@ use App\Repository\AnnounceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+// contrainte de validation :
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AnnounceRepository::class)]
 class Announce
@@ -15,20 +17,20 @@ class Announce
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    // #[ORM\Column]
+    // private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\Column]
-    private ?int $volume = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $reference = null;
+    #[ORM\Column(type: 'datetime_immutable')]
+    private $createdAt;
 
     #[ORM\Column(length: 255)]
     private ?string $geographicalArea = null;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
     #[ORM\Column(length: 255)]
-    private ?string $description = null;
+    private $description;
 
     #[ORM\ManyToOne(inversedBy: 'announces')]
     #[ORM\JoinColumn(nullable: false)]
@@ -63,8 +65,15 @@ class Announce
     #[ORM\Column]
     private ?int $number = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $type = null;
+
+    #[ORM\ManyToOne(inversedBy: 'announces')]
+    private ?Volume $volume = null;
+
     public function __construct()
     {
+        $this->createdAt = new \DateTimeImmutable();
         $this->messages = new ArrayCollection();
         $this->privateMessages = new ArrayCollection();
         $this->photo = new ArrayCollection();
@@ -83,30 +92,6 @@ class Announce
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getVolume(): ?int
-    {
-        return $this->volume;
-    }
-
-    public function setVolume(int $volume): static
-    {
-        $this->volume = $volume;
-
-        return $this;
-    }
-
-    public function getReference(): ?string
-    {
-        return $this->reference;
-    }
-
-    public function setReference(string $reference): static
-    {
-        $this->reference = $reference;
 
         return $this;
     }
@@ -269,6 +254,30 @@ class Announce
     public function setNumber(int $number): static
     {
         $this->number = $number;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getVolume(): ?Volume
+    {
+        return $this->volume;
+    }
+
+    public function setVolume(?Volume $volume): static
+    {
+        $this->volume = $volume;
 
         return $this;
     }
