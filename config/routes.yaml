@@ -12,4 +12,8 @@ modifications_informations:
 dashboard:
     path: /dashboard
     controller: App\Controller\Admin\DashboardController::index
+
+app_profil:
+    path: /profil
+    controller: App\Controller\ProfilController::index
     

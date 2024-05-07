@@ -25,14 +25,24 @@ class GiveType extends AbstractType
     {
         $builder
             ->add('value', TextType::class, [
-                // 'label' => 'Valeur',
+                'label' => 'Valeur',
                 'required' => false,
                 'mapped' => false,
+                'attr' => [
+                    'class' => 'value-select',
+                    'placeholder' => '--',
+                    'id' => 'value-select',
+                ],
             ])
 
             ->add('number', NumberType::class, [
                 'label' => 'Quantité',
                 'required' => true,
+                'attr' => [
+                    'class' => 'quantity-select',
+                    'id' => 'give_number',
+                    'placeholder' => '--',
+                ],
             ])
 
             ->add('geographicalArea', TextType::class, [
@@ -60,9 +70,9 @@ class GiveType extends AbstractType
                 'class' => Material::class,
                 'label' => 'Matériau',
                 'choice_label' => 'material',
+                'placeholder' => '--',
                 'attr' => [
-                    'id' => 'material',
-                    'placeholder' => '--',
+                    'class' => 'material-select',
                 ],
                 'required' => true,
             ])

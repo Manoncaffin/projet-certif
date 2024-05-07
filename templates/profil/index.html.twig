@@ -3,7 +3,7 @@
 {% block title %}Bennes solidaires - Profil{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href={{ asset('css/profil.css') }}/>
+<link rel="stylesheet" href={{ asset('css/profil.css') }}>
 {% endblock %}
 
 
@@ -14,16 +14,14 @@
     <div class="container">
             <div class="top">
                 <div class="form_profil">
-                    <p>PROFIL DE SAMIA</p>
+                    <p>PROFIL DE {{ user.identifier }}</p>
                 </div>
                 <div class="form_profil">
-                    <p>1 MESSAGE NON LU</p>
+                {% set unreadMessagesCount = user.privateMessages|length %}
+                    <p>{{ unreadMessagesCount }} MESSAGE(S) NON LU(S)</p>
                 </div>
                 <div class="form_profil">
-                    <p>MEMBRE DEPUIS AVRIL 2024</p>
-                </div>
-                <div class="form_profil">
-                    <p><i class="fas fa-map-marker-alt px-2"></i>LOIRE</p>
+                    <p>MEMBRE DEPUIS {{ user.createdAt|date('F Y') }}</p>
                 </div>
             </div>
 
@@ -51,27 +49,15 @@
                     </div>
                 </div>
 
-                {# <div class="form_medium">
+                <div class="form_medium">
                     <i class="fa-regular fa-pen-to-square"></i>
                     <div class="text">
                         <h6>INFORMATIONS</h6>
                         <p><a href={{ path('app_modifications_informations') }}>Modifier mes informations</a></p>
                         <p class="remove_registration"><a href="#">Supprimer mon compte</a></p>
                     </div>
-                </div> #}
-
-                <div class="form_medium">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    <div class="text">
-                        <h6>INFORMATIONS</h6>
-                        <p><a href={{ path('app_modifications_informations') }}>Modifier mes informations</a></p>
-                        {# FAIRE CODE JS POUR FENETRE  #}
-                        <p class="remove_registration">
-                            <a href="{{ path('app_delete_account') }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">Supprimer mon compte</a>
-                        </p>
-                    </div>
                 </div>
-
+                
                 <div class="form_medium">
                     <i class="fa-regular fa-message"></i>
                     <div class="text">

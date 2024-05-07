@@ -264,15 +264,31 @@
         justify-content: center;
     }
 
-    #material-bio-select,
-    #material-geo-select,
     #give_classification,
     #give_number,
-    #value-select,
-    #give_value,
     #description,
     #give_geographicalArea,
-    #new-material {
+    #new-material,
+    #give_number {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 5px;
+        border-bottom: 1px solid rgb(92, 91, 91);
+        border-radius: 0;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        margin-right: 0px;
+        margin-left: 0px;
+        resize: vertical;
+        color: rgb(123, 122, 122);
+        background-color: transparent;
+        font-size: 2.7rem;
+    }
+
+    .quantity-select,
+    .material-select,
+    .value-select {
         width: 100%;
         border: none;
         outline: none;
@@ -306,11 +322,6 @@
 
     .quantity-select {
         margin: 0px 40px 0px 0px;
-    }
-
-    .value-select {
-        margin-left: 50px;
-        margin-right: 40px;
     }
 
     .checkbox {
@@ -481,12 +492,8 @@
         font-size: 1.3rem;
     }
 
-    #material-bio-select,
-    #material-geo-select,
     #give_classification,
     #give_number,
-    #value-select,
-    #give_value,
     #description,
     #give_geographicalArea,
     #new-material,
@@ -494,8 +501,10 @@
         font-size: 1.3rem;
     }
 
-    .quantity {
-        font-size: 1.3rem;
+    .material-select,
+    .quantity-select,
+    .value-select {
+        font-size: 1.3rem
     }
 
     textarea {
