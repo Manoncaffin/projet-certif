@@ -61,9 +61,29 @@
                         </div>
                     </div>
 
-
+                    <div id="material-label" style="display: none;">
                     {{ form_label(giveForm.material) }}
-                    {{ form_widget(giveForm.material) }}
+                    </div>
+                    <select name="material-geo-select" id="material-geo-select" style="display: none;">
+                        <option value="">--</option>
+                        {% for material in materials %}
+                            {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
+                                <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
+                    </select>
+
+                    <select name="material-bio-select" id="material-bio-select" style="display: none;">
+                        <option value="">--</option>
+                        {% for material in materials %}
+                            {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
+                                <option value={{ material.material }}>{{ material.material }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
+                    </select>
+
                     {# <div id="material-label" style="display: none;">
                     {{ form_label(giveForm.material) }}
                     </div>
@@ -88,22 +108,23 @@
                     </select> #}
 
                     {# REVOIR LE CODE JS / NE S'AFFICHE PLUS #}
-                    <div class="add" style="display: none;">
+                    {# <div class="add" style="display: none;"> #}
+                    <div id="add" style="display: none;"> 
                         <label for="new-material" class="new-material">Ajouter</label>
                         <input type="text" id="new-material" placeholder="Entrer un autre matériau">
                     </div>
 
+                        <div class="quantity">
                         {{ form_label(giveForm.number) }}
-                        {{ form_widget(giveForm.number) }}
-                    {# <div class="quantity">
-                        <label for="number" class="quantity-select">Quantité</label>
                             <select name="number-select" id="quantity-select">
                                 <option value="">--</option>
                                 {% for i in 1..100 %}
                                     <option value="{{ i }}">{{ i }}</option>
                                 {% endfor %}
-                            </select> #}
+                            </select> 
+                        </div>
 
+                        {# AJOUTER MATERIAUX DANS ADMIN ET CREER BOUCLE #}
                         {{ form_label(giveForm.value) }}
                         {{ form_widget(giveForm.value) }}
                         {# <label for="value" class="value-select">Valeur</label> #}
@@ -118,13 +139,13 @@
                             <option value="metres cubes">mètre(s) cube(s)</option>
                         </select> #}
 
+                    <div class="file" id="file">
+                    {{form_row(giveForm.photo)}}
+                    </div>
                     {# <div class="file">
                         <label for="file">Joindre des photos</label>
                         <input id="file" type="file" name="file" placeholder="Choisir un fichier" required>
                     </div> #}
-
-                    {{form_row(giveForm.photo)}}
-
 
                     {{ form_label(giveForm.geographicalArea) }}
                     {{ form_widget(giveForm.geographicalArea) }}
@@ -132,12 +153,15 @@
                     <input id="geographical" type="text" name="geographical" placeholder="Entrer le code postal"
                     required> #}
 
+                    <div class="message_enter">
                     {{ form_label(giveForm.description) }}
                     {{ form_widget(giveForm.description) }}
+                    </div>
                     {# <div class="message_enter">
                         <label for="description">Description</label>
                         <textarea id="message" placeholder="Entrer la description ici" required></textarea>
                     </div> #}
+
                     
                     <div class="foot_form">
                         <input type="submit" value="Valider mon annonce">

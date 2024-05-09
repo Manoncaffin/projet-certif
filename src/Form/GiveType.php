@@ -80,6 +80,10 @@ class GiveType extends AbstractType
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
                 'required' => true,
+                'attr' => [
+                    'id' => 'message',
+                    'placeholder' => 'Entrez la description',
+                ],
             ])
 
             ->add('photo', FileType::class,  [

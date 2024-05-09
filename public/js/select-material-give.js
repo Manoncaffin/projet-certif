@@ -3,7 +3,7 @@ function toggleMaterialSelect() {
     const materialBioSelect = document.querySelector('#material-bio-select');
     const materialGeoSelect = document.querySelector('#material-geo-select');
     const materialLabel = document.querySelector('#material-label');
-    const addMaterialDiv = document.querySelector('.add');
+    const addMaterialDiv = document.querySelector('#add');
   
     // Masquer tous les champs
     materialBioSelect.style.display = 'none';

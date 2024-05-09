@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Announce;
 use App\Entity\File;
+use App\Entity\Material;
 use App\Form\GiveType;
 use App\Repository\MaterialRepository;
 use Doctrine\ORM\EntityManagerInterface;
