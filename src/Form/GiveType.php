@@ -49,7 +49,7 @@ class GiveType extends AbstractType
                 'label' => 'Localisation',
                 'attr' => [
                     'placeholder' => 'Entrez le code postal',
-                    'id' => 'search_geographicalArea',
+                    'id' => 'give_geographicalArea',
                 ],
                 'required' => true,
             ])

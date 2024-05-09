@@ -34,10 +34,6 @@
         }
     }
 
-    #material-geo-select, #material-bio-select, #add {
-        display: none;
-    }
-
     /* NAVBAR */
     .navbar .burger-menu-button {
         color: black;
