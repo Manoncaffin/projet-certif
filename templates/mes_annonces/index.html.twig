@@ -14,13 +14,14 @@
      <div class="container" id="container">
             <div class="top_all">
                 <div class="form_profil">
-                    <p>ANNONCES DE SAMIA</p>
+                    <p>{{ ('ANNONCE(S) DE ' ~ user.identifier)|trans({}, 'messages')|upper }}</p>
                 </div>
                 <div class="form_profil">
-                    <p>MEMBRE DEPUIS AVRIL 2024</p>
+                    {% set unreadMessagesCount = user.privateMessages|length %}
+                    <p>{{ unreadMessagesCount }} {{ ('MESSAGE(S) NON LU(S)')|trans({}, 'messages')|upper }}</p>
                 </div>
                 <div class="form_profil">
-                    <p><i class="fas fa-map-marker-alt px-2"></i>LOIRE</p>
+                    <p>{{ ('MEMBRE DEPUIS ' ~ user.memberDate|date('m/Y'))|upper }}</p>
                 </div>
             </div>
 
@@ -29,47 +30,33 @@
             </div>
 
             <div class="announce">
-                <div class="form_profil_large_two">
-                    <div class="text">
-                        <p>Titre de votre annonce : Terre</p>
-                        <p>Date de publication : 01/02/2024</p>
-                    </div>
+                {% for announce in userAnnounces %}
+                    <div class="form_profil_large_two">
+                        <div class="text">
+                            <p>Titre de votre annonce : {% if announce.material %}{{ announce.material.material }}{% endif %}</p>
+                            <p>Date de publication : {{ announce.createdAt|date('d/m/Y') }}</p>
+                        </div>
 
-                    <div class="announce_inline">
-                        <img src={{ asset('images/IMG_terre.jpeg') }}>
-                    </div>
+                        <div class="announce_inline">
+                            {% if announce.photo|length > 0 %}
+                                <img src="{{ asset('uploads/photos/' ~ announce.photo[0].url) }}" alt="Photo de l'annonce">
+                            {% else %}
+                                <img src="{{ asset('images/no-image.jpg') }}" alt="Pas de photo">
+                            {% endif %}
+                        </div>
 
-                    <div class="foot_form">
-                        <a href="#">
-                            <button type="button" class="update_announce">Modifier</button>
-                        </a>
-                        <a href="#">
-                            <!-- AJOUTER PROMPT ALERT ÊTES-VOUS SÛRE ? -->
-                            <button type="button" class="delete_announce">Supprimer</button>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="form_profil_large_two">
-                    <div class="text">
-                        <p>Titre de votre annonce : Moellons</p>
-                        <p>Date de publication : 15/02/2024</p>
-                    </div>
-                    <div class="announce_inline">
-                        <img src={{ asset('images/pierres.jpeg') }}>
-                    </div>
-                    <div class="foot_form">
-                        <a href="#">
-                            <button class="update_announce">Modifier</button>
-                        </a>
-                        <a href="#">
-                            <!-- AJOUTER PROMPT ALERT ÊTES-VOUS SÛRE ? -->
-                            <button class="delete_announce">Supprimer</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
+                        <div class="foot_form">
+                            <a href="#">
+                                <button type="button" class="update_announce">Modifier</button>
+                            </a>
+                            <a href="#">
+                                <!-- AJOUTER PROMPT ALERT ÊTES-VOUS SÛRE ? -->
+                                <button type="button" class="delete_announce">Supprimer</button>
+                            </a>
+                        </div>
+                    </div> 
+                {% endfor %}
+            </div> 
             {% endblock %}
 
 {% block javascripts %}

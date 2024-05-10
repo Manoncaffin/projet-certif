@@ -25,7 +25,7 @@ class AnnonceDonnerController extends AbstractController
     }
 
     #[Route('/annonce-donner', name: 'app_annonce_donner')]
-    public function index(MaterialRepository $materialRepository, Request $request, SluggerInterface $slugger, EntityManagerInterface $entityManager): Response
+    public function index(MaterialRepository $materialRepository, Request $request, SluggerInterface $slugger): Response
     {
         $materials = $materialRepository->findAll();
         $user = $this->getUser();
@@ -56,7 +56,7 @@ class AnnonceDonnerController extends AbstractController
                     $photoAnnounce->setUrl($newFilename);
                     $photoAnnounce->setAnnounce($announce);
                     $announce->addPhoto($photoAnnounce);
-                    $entityManager->persist($photoAnnounce);
+                    $this->entityManager->persist($photoAnnounce);
 
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
@@ -68,8 +68,8 @@ class AnnonceDonnerController extends AbstractController
             $announce->setMaterial($selectedMaterial);
             $announce->setType('donner');
             
-                $entityManager->persist($announce);
-                $entityManager->flush();
+            $this->entityManager->persist($announce);
+            $this->entityManager->flush();
 
                 return $this->redirectToRoute('app_annonce_valide');
         } else {
