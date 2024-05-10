@@ -438,7 +438,7 @@
     }
 
     .form_profil_large_two {
-        height: 200px;
+        height: fit-content;
     }
 
     .form_medium_all {
@@ -532,10 +532,6 @@
     /* FORM */
     .form_profil_large_one {
         height: 170px;
-    }
-
-    .form_profil_large_two {
-        height: 180px;
     }
 
     .form_medium_all {

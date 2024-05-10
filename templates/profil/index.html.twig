@@ -36,10 +36,12 @@
             </div>
 
             <div class="form_profil_large_two">
-                <p><span>Vous n’avez pas d’annonce en ligne</span></p>
+                <p><span>{{ userAnnounces|length == 0 ? 'Vous n’avez pas d’annonce en ligne' : 'Vous avez ' ~ userAnnounces|length ~ ' annonce(s) en ligne' }}</span></p>
+                    {% if userAnnounces|length == 0 %}</span></p>
                 <p class="pt-4">Vous avez un surplus de matière qui ne peut pas être destiné à son premier usage ?
                     Vous disposez de matières premières dont vous ne savez pas quoi faire ?
                     Vous pouvez faire un geste pour la planète, tout en faisant faire des économies à quelqu’un·e !</p>
+                {% endif %}
             </div>
 
             <div class="form_medium_all">
@@ -69,13 +71,15 @@
                     </div>
                 </div>
                 
-                <div class="form_medium" style="display:none;">
+                {% if userAnnounces|length > 0 %}
+                <div class="form_medium">
                     <i class="fa-regular fa-folder"></i>
                     <div class="text">
-                        <h6>>GÉRER</h6>
+                        <h6>GÉRER</h6>
                         <p><a href={{ path('app_mes_annonces') }}>Gérer mes annonces déposées</a></p>
                     </div>
                 </div>
+                {% endif %}
                 
             </div>
         </div>

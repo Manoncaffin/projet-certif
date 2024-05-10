@@ -23,7 +23,7 @@
 
                     <li class="dropdown">
                         {% if app.user %}
-                            <a href='#'>{{ app.user.identifier }}</a> 
+                            <a href='#'>{{ app.user.identifier | upper }}</a> 
                         <ul class="dropdown-menu_two">
                             <li><a href={{ path('app_profil') }}>Voir mon profil</a></li>
                             <li><a href={{ path('app_mes_annonces') }}>Mes annonces</a></li>
