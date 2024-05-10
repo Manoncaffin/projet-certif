@@ -2,29 +2,25 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Announce;
+use App\Entity\Volume;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Symfony\Component\Form\Extension\Core\Type\CountryType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class AnnounceCrudController extends AbstractCrudController
+class VolumeCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Announce::class;
+        return Volume::class;
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('classification'),
-            AssociationField::new('material'),
-            AssociationField::new('volume'),
+            TextField::new('name'),
         ];
     }
+
 }

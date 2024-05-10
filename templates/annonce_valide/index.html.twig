@@ -11,11 +11,14 @@
 
     <div class="border-container">
         <div class="container">
-            
             <h1>Merci pour votre annonce !</h1>
             <h1>Vous allez être redirigé·e vers la page d’accueil ...</h1>
-            <!-- PREVOIR REDIRECTION VERS LA PAGE D'ACCUEIL -->
             </div>
+            <div id="redirect-container" data-redirect-url="{{ path('app_accueil') }}"></div>
         </div>
+        
+{% endblock %}
 
+{% block javascripts %}
+    <script src={{ asset('js/redirection.js') }}></script>
 {% endblock %}

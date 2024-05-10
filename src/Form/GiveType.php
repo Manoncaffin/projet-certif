@@ -7,6 +7,7 @@ use App\Entity\ClassificationMaterial;
 use App\Entity\File;
 use App\Entity\Material;
 use App\Entity\User;
+use App\Entity\Volume;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -24,10 +25,12 @@ class GiveType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('value', TextType::class, [
+            ->add('volume', EntityType::class, [
+                'class' => Volume::class,
                 'label' => 'Valeur',
                 'required' => false,
                 'mapped' => false,
+                'choice_label' => 'name',
                 'attr' => [
                     'class' => 'value-select',
                     'placeholder' => '--',

@@ -135,19 +135,22 @@
                         </div>
 
                         {# AJOUTER MATERIAUX DANS ADMIN ET CREER BOUCLE #}
-                        {{ form_label(giveForm.value) }}
-                        {{ form_widget(giveForm.value) }}
-                        {# <label for="value" class="value-select">Valeur</label> #}
-                        {# <select name="value" id="value-select">
+                        {# {{ form_label(giveForm.volume) }}
+                        <select name="value" id="value-select">
                             <option value="">--</option>
+                            {% for volume in volumes %}
+                                <option value="{{ volume.id }}">{{ volume.name }}</option>
+                            {% endfor %} #}
+
+                            {# <option value="">--</option>
                             <option value="kg">kg</option>
                             <option value="kg">tonne(s)</option>
                             <option value="sceau">seau(x)</option>
                             <option value="sceau">gamate(s)</option>
                             <option value="metres">mètre(s) linéaire(s)</option>
                             <option value="metres carres">mètre(s) carré(s)</option>
-                            <option value="metres cubes">mètre(s) cube(s)</option>
-                        </select> #}
+                            <option value="metres cubes">mètre(s) cube(s)</option> #}
+                        {# </select> #}
 
                     <div class="file" id="file">
                     {{form_row(giveForm.photo)}}
