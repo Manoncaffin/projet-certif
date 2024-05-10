@@ -28,14 +28,18 @@ class GiveType extends AbstractType
             ->add('volume', EntityType::class, [
                 'class' => Volume::class,
                 'label' => 'Valeur',
-                'required' => false,
+                'required' => true,
                 'mapped' => false,
+                'placeholder' => '--',
                 'choice_label' => 'name',
                 'attr' => [
                     'class' => 'value-select',
-                    'placeholder' => '--',
                     'id' => 'value-select',
                 ],
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('v')
+                        ->orderBy('v.name', 'ASC');
+                },
             ])
 
             ->add('number', NumberType::class, [
@@ -78,6 +82,10 @@ class GiveType extends AbstractType
                     'class' => 'material-select',
                 ],
                 'required' => true,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('m')
+                        ->orderBy('m.material', 'ASC');
+                },
             ])
 
             ->add('description', TextareaType::class, [

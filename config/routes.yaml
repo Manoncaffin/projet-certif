@@ -4,7 +4,6 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-
 modifications_informations:
     path: /modifications-informations
     controller: App\Controller\ModificationsInformationsController::index
@@ -16,4 +15,9 @@ dashboard:
 app_profil:
     path: /profil
     controller: App\Controller\ProfilController::index
+
+app_annonce_donner_modifier:
+    path: /annonce-donner-modifier/{id}
+    controller: App\Controller\AnnonceDonnerModifierController::edit
+    methods: [GET, POST]
     

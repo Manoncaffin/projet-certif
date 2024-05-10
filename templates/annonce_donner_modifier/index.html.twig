@@ -21,8 +21,20 @@
                 </div>
                 <div class="bordure mb-4"></div>
 
-                <form action="" method="POST">
-                    <label for="classification-select" class="classification-select">Classification</label>
+                {# <form action="" method="POST"> #}
+                {{ form_start(giveForm) }}
+
+{{ form_row(giveForm.materialBioSelect, {'value': announce.material ? announce.material.material : null}) }}
+{{ form_row(giveForm.number) }}
+{{ form_row(giveForm.geographicalArea) }}
+{{ form_row(giveForm.classification) }}
+{{ form_row(giveForm.description) }}
+{{ form_row(giveForm.photo) }}
+
+<button type="submit" class="btn btn-primary">Modifier l'annonce</button>
+
+{{ form_end(giveForm) }}
+                    {# <label for="classification-select" class="classification-select">Classification</label>
                     <select name="classification" id="classification-select" required onchange="toggleMaterialSelect()">
                         <option value="">--</option>
                         <option value="Matériau bio-sourcé">Matériau bio-sourcé</option>
@@ -145,7 +157,7 @@
                     </div>
                 </form>
             </section>
-        </div>
+        </div> #}
 
         {% endblock %}
 

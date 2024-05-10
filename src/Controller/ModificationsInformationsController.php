@@ -15,12 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
 class ModificationsInformationsController extends AbstractController
 {
     #[Route('/modifications-informations', name: 'app_modifications_informations')]
-    // public function index(): Response
-    // {
-    //     return $this->render('modifications_informations/index.html.twig', [
-    //         'controller_name' => 'ModificationsInformationsController',
-    //     ]);
-    // }
 
     public function update(Request $request, UserRepository $userRepository, EntityManagerInterface $entityManager): Response
     {
