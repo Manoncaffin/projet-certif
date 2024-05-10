@@ -40,7 +40,7 @@ class GiveType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'class' => 'quantity-select',
-                    'id' => 'give_number',
+                    'id' => 'giveForm_number',
                     'placeholder' => '--',
                 ],
             ])
