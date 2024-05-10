@@ -14,14 +14,17 @@
     <div class="container">
             <div class="top">
                 <div class="form_profil">
-                    <p>PROFIL DE {{ user.identifier }}</p>
+                    <p>{{ ('PROFIL DE ' ~ user.identifier)|trans({}, 'messages')|upper }}</p>
                 </div>
                 <div class="form_profil">
-                {% set unreadMessagesCount = user.privateMessages|length %}
-                    <p>{{ unreadMessagesCount }} MESSAGE(S) NON LU(S)</p>
+                    {% set unreadMessagesCount = user.privateMessages|length %}
+                    <p>{{ unreadMessagesCount }} {{ ('MESSAGE(S) NON LU(S)')|trans({}, 'messages')|upper }}</p>
                 </div>
+                {# <div class="form_profil">
+                    <p>{{ ('MEMBRE DEPUIS ' ~ user.memberDate|date('F Y'))|trans({}, 'messages')|upper }}</p>
+                </div>  #}
                 <div class="form_profil">
-                    <p>MEMBRE DEPUIS {{ user.memberDate|date('F Y') }}</p>
+                    <p>{{ ('MEMBRE DEPUIS ' ~ user.memberDate|date('m/Y'))|upper }}</p>
                 </div>
             </div>
 
