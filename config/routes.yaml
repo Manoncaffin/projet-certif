@@ -19,7 +19,8 @@ app_profil:
 app_annonce_donner_modifier:
     path: /annonce-donner-modifier/{id}
     controller: App\Controller\AnnonceDonnerModifierController::edit
-    methods: [GET, POST]
+    requirements:
+        id: '\d+'
     
 # app_profil_upload_avatar:
 #     path: /profil/upload-avatar

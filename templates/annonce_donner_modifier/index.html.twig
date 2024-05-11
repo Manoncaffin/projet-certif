@@ -14,34 +14,17 @@
     <div class="container" id="container">
             <section id="inscription">
                 <div class="scrolling-text-container">
+                    <p class="scrolling-text">Modifier mon annonce</p>
                     <p class="scrolling-text">Je donne un matériau</p>
-                    <p class="scrolling-text">Je donne un matériau</p>
-                    <p class="scrolling-text">Je donne un matériau</p>
+                    <p class="scrolling-text">Modifier mon annonce</p>
                     <p class="scrolling-text">Je donne un matériau</p>
                 </div>
                 <div class="bordure mb-4"></div>
 
-                {# <form action="" method="POST"> #}
                 {{ form_start(giveForm) }}
 
-{{ form_row(giveForm.materialBioSelect, {'value': announce.material ? announce.material.material : null}) }}
-{{ form_row(giveForm.number) }}
-{{ form_row(giveForm.geographicalArea) }}
-{{ form_row(giveForm.classification) }}
-{{ form_row(giveForm.description) }}
-{{ form_row(giveForm.photo) }}
-
-<button type="submit" class="btn btn-primary">Modifier l'annonce</button>
-
-{{ form_end(giveForm) }}
-                    {# <label for="classification-select" class="classification-select">Classification</label>
-                    <select name="classification" id="classification-select" required onchange="toggleMaterialSelect()">
-                        <option value="">--</option>
-                        <option value="Matériau bio-sourcé">Matériau bio-sourcé</option>
-                        <option value="Matériau géo-sourcé">Matériau géo-sourcé</option>
-                    </select>
-
-                    <button id="openModal" type="button">Pour en savoir plus, vous pouvez cliquer ici.</button>
+                {{ form_row(giveForm.classification) }}
+                <button id="openModal" type="button">Pour en savoir plus, vous pouvez cliquer ici.</button>
                     
                     <div id="myModal" class="modal">
                         <div class="modal-content">
@@ -75,98 +58,28 @@
                             </div>
                         </div>
                     </div>
+                {{ form_row(giveForm.material, {'value': announce.material ? announce.material.material : null}) }}
+                {{ form_row(giveForm.number) }}
+                {{ form_row(giveForm.volume) }}
+                {{ form_row(giveForm.geographicalArea) }}
+                {{ form_row(giveForm.photo) }}
+                {{ form_row(giveForm.description) }}
 
-                    <label for="material-geo-select" class="material-select-geo"
-                        style="display: none;">Matériaux</label>
-                    <select name="material-geo-select" id="material-geo-select" required style="display: none;">
-                        <option value="">--</option>
-                        <option value="material geo-source">Brique</option>
-                        <option value="material geo-source">Céramique</option>
-                        <option value="material geo-source">Gravier</option>
-                        <option value="material geo-source">Pierre</option>
-                        <option value="material geo-source">Sable</option>
-                        <option value="material geo-source">Terre</option>
-                        <option value="material geo-source">Verre</option>
-                        <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
-                    </select>
-
-                    <label for="material-bio-select" class="material-select-bio"
-                        style="display: none;">Matériaux</label>
-                    <select name="material-bio-select" id="material-bio-select" required style="display: none;">
-                        <option value="">--</option>
-                        <option value="material bio-source">Bambou</option>
-                        <option value="material bio-source">Bois</option>
-                        <option value="material bio-source">Canne-de-provence</option>
-                        <option value="material bio-source">Chanvre</option>
-                        <option value="material bio-source">Coquille d'huître</option>
-                        <option value="material bio-source">Coquille d'escargot</option>
-                        <option value="material bio-source">Laine de mouton</option>
-                        <option value="material bio-source">Liège</option>
-                        <option value="material bio-source">Marc de café</option>
-                        <option value="material bio-source">Papier</option>
-                        <option value="material bio-source">Papier-journal</option>
-                        <option value="material bio-source">Paille de blé</option>
-                        <option value="material bio-source">Paille de lavande</option>
-                        <option value="material bio-source">Roseau</option>
-                        <option value="material bio-source">Sciure de bois</option>
-                        <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
-                    </select>
-
-                    <div class="add" style="display: none;">
-                        <label for="new-material" class="new-material">Ajouter</label>
-                        <input type="text" id="new-material" placeholder="Entrer un autre matériau" required>
-                    </div>
-
-                    <div class="quantity">
-                        <label for="number" class="quantity-select">Quantité</label>
-                        <select name="number-select" id="quantity-select" required>
-                            <option value="">--</option>
-                            <option value=""></option>
-                            <option value=""></option>
-                        </select>
-
-                        <label for="value" class="value-select">Valeur</label>
-                        <select name="value" id="value-select" required>
-                            <option value="">--</option>
-                            <option value="kg">kg</option>
-                            <option value="kg">tonne(s)</option>
-                            <option value="sceau">seau(x)</option>
-                            <option value="sceau">gamate(s)</option>
-                            <option value="metres">mètre(s) linéaire(s)</option>
-                            <option value="metres carres">mètre(s) carré(s)</option>
-                            <option value="metres cubes">mètre(s) cube(s)</option>
-                        </select>
-                    </div>
-
-                    <div class="file">
-                        <label for="file">Joindre des photos</label>
-                        <input id="file" type="file" name="file" placeholder="Choisir un fichier" required>
-                    </div>
-
-                    <div class="message_enter">
-                        <label for="description">Description</label>
-                        <textarea id="message" placeholder="Entrer la description ici" required></textarea>
-                    </div>
-
-                    <label for="geographical">Localisation</label>
-                    <input id="geographical" type="text" name="geographical" placeholder="Entrer le code postal"
-                    required>
-
-                    <div class="foot_form">
-                        <input type="submit" value="Valider mon annonce">
-                    </div>
-                </form>
+                <div class="foot_form">
+                    <button type="submit" class="submit">Valider les modifications</button>
+                </div>
+                {{ form_end(giveForm) }}
             </section>
-        </div> #}
+    </div> 
 
         {% endblock %}
 
 {% block javascripts %}
-    {{asset('js/overall-scrolling.js') }}
-    {{asset('js/select-material.js') }}
-    {{asset('js/quantity-material.js') }}
-    {{asset('js/add-material.js') }}
-    {{asset('js/search-city.js') }}
-    {{asset('js/modale.js') }}
-    {{asset('https://unpkg.com/leaflet/dist/leaflet.js') }}
+    <script src={{asset('js/overall-scrolling.js') }}></script>
+    <script src={{asset('js/select-material.js') }}></script>
+    <script src={{asset('js/quantity-material.js') }}></script>
+    <script src={{asset('js/add-material.js') }}></script>
+    <script src={{asset('js/search-city.js') }}></script>
+    <script src={{asset('js/modale.js') }}></script>
+    <script src={{asset('https://unpkg.com/leaflet/dist/leaflet.js') }}></script>
 {% endblock %}

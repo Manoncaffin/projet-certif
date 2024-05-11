@@ -21,28 +21,26 @@ class AnnonceDonnerModifierController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/annonce-donner-modifier/{id}', name: 'app_annonce_donner_modifier', methods: ['GET', 'POST'])]
-    public function edit(Request $request, int $id, SluggerInterface $slugger): Response
-{
-    $announce = $this->entityManager->getRepository(Announce::class)->find($id);
+    #[Route("/annonce-donner-modifier/{id}", name: "app_annonce_donner_modifier", requirements: ["id" => "\d+"])]
+    public function edit(Request $request, Announce $announce): Response
+    {
+        // Créez le formulaire à partir de l'entité Announce
+        $form = $this->createForm(GiveType::class, $announce);
 
-    if (!$announce) {
-        throw $this->createNotFoundException('L\'annonce demandée n\'existe pas.');
+        // Traitez la soumission du formulaire
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Enregistrez les modifications en base de données
+            $this->entityManager->flush();
+
+            // Redirigez vers la page de confirmation
+            return $this->redirectToRoute('app_annonce_valide');
+        }
+
+        // Affichez le formulaire de modification
+        return $this->render('annonce_donner_modifier/index.html.twig', [
+            'giveForm' => $form->createView(),
+            'announce' => $announce,
+        ]);
     }
-
-    $giveForm = $this->createForm(GiveType::class, $announce);
-    $giveForm->handleRequest($request);
-
-    if ($giveForm->isSubmitted() && $giveForm->isValid()) {
-
-        $this->entityManager->flush();
-
-        return $this->redirectToRoute('app_annonce_valide');
-    }
-
-    return $this->render('annonce_donner/index.html.twig', [
-        'giveForm' => $giveForm->createView(),
-        'announce' => $announce,
-    ]);
-}
 }
