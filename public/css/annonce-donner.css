@@ -289,7 +289,8 @@
     #material-bio-select,
     #material-geo-select,
     #quantity-select,
-    #giveForm_number {
+    #giveForm_number,
+    #value-select {
         width: 100%;
         border: none;
         outline: none;
@@ -325,22 +326,23 @@
         font-size: 2.7rem;
     }
 
-    /* #file {
-        font-size: 2.7rem;
-        margin-bottom: 36px;
-    } */
-
     #give_photo {
-        margin-left: 20px;
+        font-size: 2.5rem;
+        margin-top: 5px;
+        margin-bottom: 16px;
+    }
+
+    #file {
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     .quantity {
         display: flex;
         flex-direction: column;
         width: 100%;
-        padding-bottom: 16px;
         font-size: 3rem;
-        margin-top: 16px;
+        gap: 30px;
     }
 
     .quantity-select {
@@ -525,14 +527,36 @@
     #new-material,
     #file,
     #quantity-select,
-    #giveForm_number {
+    #giveForm_number,
+    #value-select {
         font-size: 1.3rem;
+    }
+
+    #giveForm_number,
+    #value-select {
+        margin-bottom: 0;
+    }
+
+    #give_photo {
+        margin-left: 20px;
+        font-size: 1.3rem;
+        margin-top: 0px;
+        margin-bottom: 0;
     }
 
     .material-select,
     .quantity-select,
     .value-select {
         font-size: 1.3rem
+    }
+
+    .quantity {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 100%;
+        font-size: 3rem;
+        gap: 30px;
     }
 
     textarea {
@@ -606,10 +630,6 @@
 
     textarea {
         height: 170px;
-    }
-
-    #file {
-        margin-bottom: 16px;
     }
 }
 

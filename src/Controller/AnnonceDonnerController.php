@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\Announce;
 use App\Entity\File;
 use App\Entity\Material;
+use App\Entity\Volume;
 use App\Form\GiveType;
 use App\Repository\MaterialRepository;
+use App\Repository\VolumeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -25,9 +27,10 @@ class AnnonceDonnerController extends AbstractController
     }
 
     #[Route('/annonce-donner', name: 'app_annonce_donner')]
-    public function index(MaterialRepository $materialRepository, Request $request, SluggerInterface $slugger): Response
+    public function index(MaterialRepository $materialRepository, VolumeRepository $volumeRepository, Request $request, SluggerInterface $slugger): Response
     {
         $materials = $materialRepository->findAll();
+        $volumes = $volumeRepository->findAll();
         $user = $this->getUser();
 
         $announce = new Announce();
@@ -80,7 +83,8 @@ class AnnonceDonnerController extends AbstractController
 
         return $this->render('annonce_donner/index.html.twig', [
             'giveForm' => $giveForm->createView(),
-            'materials' => $materials
+            'materials' => $materials,
+            'volumes' => $volumes,
         ]);
     }
 }

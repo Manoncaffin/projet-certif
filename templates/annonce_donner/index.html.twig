@@ -89,7 +89,7 @@
                         <input type="text" id="new-material" placeholder="Entrer un autre matériau">
                     </div>
 
-                        <div class="quantity">
+                    <div class="quantity">
                             {{ form_label(giveForm.number) }}
                             <select id="giveForm_number" name="giveForm[number]">
                                 <option value="">--</option>
@@ -97,33 +97,20 @@
                                     <option value="{{ i }}">{{ i }}</option>
                                 {% endfor %}
                             </select>
-                        </div>
-
+                        
                         {# CREER BOUCLE #}
-                        {# {{ form_label(giveForm.volume) }}
+                        {{ form_label(giveForm.volume) }}
                         <select name="value" id="value-select">
                             <option value="">--</option>
                             {% for volume in volumes %}
-                                <option value="{{ volume.id }}">{{ volume.name }}</option>
-                            {% endfor %}  #}
-
-                            {# <option value="">--</option>
-                            <option value="kg">kg</option>
-                            <option value="kg">tonne(s)</option>
-                            <option value="sceau">seau(x)</option>
-                            <option value="sceau">gamate(s)</option>
-                            <option value="metres">mètre(s) linéaire(s)</option>
-                            <option value="metres carres">mètre(s) carré(s)</option>
-                            <option value="metres cubes">mètre(s) cube(s)</option> #}
-                        {# </select> #}
+                                <option value={{ volume.id }}>{{ volume.name }}</option>
+                            {% endfor %}
+                        </select>
+                        </div>
 
                     <div class="file" id="file">
                     {{form_row(giveForm.photo)}}
                     </div>
-                    {# <div class="file">
-                        <label for="file">Joindre des photos</label>
-                        <input id="file" type="file" name="file" placeholder="Choisir un fichier" required>
-                    </div> #}
 
                     {{ form_label(giveForm.geographicalArea) }}
                     {{ form_widget(giveForm.geographicalArea) }}
