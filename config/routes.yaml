@@ -21,3 +21,13 @@ app_annonce_donner_modifier:
     controller: App\Controller\AnnonceDonnerModifierController::edit
     methods: [GET, POST]
     
+# app_profil_upload_avatar:
+#     path: /profil/upload-avatar
+#     methods: [POST]
+#     controller: App\Controller\ProfilController::uploadPhoto
+
+announce_delete:
+    path: /announces/{id}
+    methods: ['DELETE']
+    controller: App\Controller\MesAnnoncesController::delete
+

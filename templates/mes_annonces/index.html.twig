@@ -49,10 +49,18 @@
                             <a href="{{ path('app_annonce_donner_modifier', {'id': announce.id}) }}">
                                 <button type="button" class="update_announce">Modifier</button>
                             </a>
-                            <a href="#">
+                            <div class="section">
+                            {{ include ('admin/announces/_delete_form.html.twig', {'announce': announce}, with_context = false) }}
+                            </div>
+                            {# <a href="#"> #}
                                 <!-- AJOUTER PROMPT ALERT ÊTES-VOUS SÛRE ? -->
-                                <button type="button" class="delete_announce">Supprimer</button>
-                            </a>
+                                {# <button type="button" class="delete_announce">Supprimer</button> #}
+                                {# <form method="POST" action="{{ path('announce_delete', {'id': announce.id}) }}">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ announce.id) }}">
+                                    <button type="submit" class="delete_announce">Supprimer</button>
+                                </form> #}
+                            {# </a> #}
                         </div>
                     </div> 
                 {% endfor %}

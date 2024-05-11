@@ -4,8 +4,15 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+// use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\AnnounceRepository;
+use App\Entity\File;
+use App\Entity\Announce;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface as TokenGeneratorTokenGeneratorInterface;
+use Symfony\Component\Security\Csrf\TokenGeneratorInterface;
 
 class MesAnnoncesController extends AbstractController
 {
@@ -21,4 +28,26 @@ class MesAnnoncesController extends AbstractController
             'userAnnounces' => $userAnnounces,
         ]);
     }
+
+    #[Route("/{id}", name:"announce_delete", methods: ["DELETE"])]
+    public function delete(Announce $announce, File $file, Request $request, EntityManagerInterface $entityManager, TokenGeneratorTokenGeneratorInterface $tokenGenerator): Response
+    {
+        $csrfToken = $tokenGenerator->generateToken('delete' . $announce->getId());
+        $token = $request->request->get('_token');
+
+        if (!$this->isCsrfTokenValid('delete' . $announce->getId(), $token)) {
+            throw new \Exception('Invalid CSRF token.');
+        }
+
+         // Supprimer les fichiers liés à l'annonce
+        foreach ($announce->getPhoto() as $file) {
+        $entityManager->remove($file);
+    }
+
+        $entityManager->remove($announce);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_mes_annonces');
+    }
+
 }
