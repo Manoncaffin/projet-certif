@@ -21,7 +21,7 @@
                 </div>
                 <div class="bordure mb-4"></div>
 
-                {{ form_start(giveForm) }}
+                {# {{ form_start(giveForm) }} #}
 
                     {{ form_label(giveForm.classification) }}
                     {{ form_widget(giveForm.classification) }}
@@ -61,7 +61,7 @@
                         </div>
                     </div>
 
-                    <div id="material-label" style="display: none;">
+                    <div id="material-label">
                     {{ form_label(giveForm.material) }}
                     </div>
                     <select name="material-geo-select" id="material-geo-select" style="display: none;">
@@ -74,7 +74,7 @@
                         <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
                     </select>
 
-                    <select name="material-bio-select" id="material-bio-select" style="display: none;">
+                    <select name="material-bio-select" id="material-bio-select">
                         <option value="">--</option>
                         {% for material in materials %}
                             {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
@@ -84,45 +84,10 @@
                         <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
                     </select>
 
-                    {# <div id="material-label" style="display: none;">
-                    {{ form_label(giveForm.material) }}
-                    </div>
-                    <select name="material-geo-select" id="material-geo-select" style="display: none;">
-                        <option value="">--</option>
-                        {% for material in materials %}
-                        {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
-                        <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option>
-                        {% endif %}
-                        {% endfor %}
-                        <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
-                    </select>
-
-                    <select name="material-bio-select" id="material-bio-select" style="display: none;">
-                        <option value="">--</option>
-                        {% for material in materials %}
-                        {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
-                        <option value={{ material.material }}>{{ material.material }}</option>
-                        {% endif %}
-                        {% endfor %}
-                        <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
-                    </select> #}
-
-                    {# REVOIR LE CODE JS / NE S'AFFICHE PLUS #}
-                    {# <div class="add" style="display: none;"> #}
                     <div id="add" style="display: none;"> 
                         <label for="new-material" class="new-material">Ajouter</label>
                         <input type="text" id="new-material" placeholder="Entrer un autre matériau">
                     </div>
-
-                        {# <div class="quantity">
-                        {{ form_label(giveForm.number) }}
-                            <select name="number-select" id="quantity-select">
-                                <option value="">--</option>
-                                {% for i in 1..100 %}
-                                    <option value="{{ i }}">{{ i }}</option>
-                                {% endfor %}
-                            </select> 
-                        </div> #}
 
                         <div class="quantity">
                             {{ form_label(giveForm.number) }}
@@ -134,13 +99,13 @@
                             </select>
                         </div>
 
-                        {# AJOUTER MATERIAUX DANS ADMIN ET CREER BOUCLE #}
+                        {# CREER BOUCLE #}
                         {# {{ form_label(giveForm.volume) }}
                         <select name="value" id="value-select">
                             <option value="">--</option>
                             {% for volume in volumes %}
                                 <option value="{{ volume.id }}">{{ volume.name }}</option>
-                            {% endfor %} #}
+                            {% endfor %}  #}
 
                             {# <option value="">--</option>
                             <option value="kg">kg</option>
@@ -171,7 +136,7 @@
                     <div class="foot_form">
                         <input type="submit" value="Valider mon annonce">
                     </div>
-                {{form_end(giveForm)}}
+                {# {{form_end(giveForm)}} #}
             </section>
     </div>
 {% endblock %}

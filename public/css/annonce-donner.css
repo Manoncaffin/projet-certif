@@ -286,8 +286,10 @@
     #description,
     #give_geographicalArea,
     #new-material,
-    /* #give_number, */
-    #quantity-select {
+    #material-bio-select,
+    #material-geo-select,
+    #quantity-select,
+    #giveForm_number {
         width: 100%;
         border: none;
         outline: none;
@@ -516,12 +518,14 @@
     }
 
     #give_classification,
-    /* #give_number, */
+    #material-geo-select,
+    #material-bio-select,
     #description,
     #give_geographicalArea,
     #new-material,
     #file,
-    #quantity-select {
+    #quantity-select,
+    #giveForm_number {
         font-size: 1.3rem;
     }
 
