@@ -21,14 +21,20 @@ app_annonce_donner_modifier:
     controller: App\Controller\AnnonceDonnerModifierController::edit
     requirements:
         id: '\d+'
-    
-# app_profil_upload_avatar:
-#     path: /profil/upload-avatar
-#     methods: [POST]
-#     controller: App\Controller\ProfilController::uploadPhoto
+
+app_annonce_chercher_modifier:
+    path: /annonce-chercher-modifier/{id}
+    controller: App\Controller\AnnonceChercherModifierController::edit
+    requirements:
+        id: '\d+'
 
 announce_delete:
     path: /announces/{id}
     methods: ['DELETE']
     controller: App\Controller\MesAnnoncesController::delete
+    
+# app_profil_upload_avatar:
+#     path: /profil/upload-avatar
+#     methods: [POST]
+#     controller: App\Controller\ProfilController::uploadPhoto
 

@@ -59,6 +59,12 @@
                         </div>
                     </div>
                 {{ form_row(giveForm.material, {'value': announce.material ? announce.material.material : null}) }}
+                
+                <div class="add" style="display:none;">
+                    <label for="new-material" class="new-material">Ajouter</label>
+                    <input type="text" id="new-material" placeholder="Entrer un autre matériau">
+                </div>
+                    
                 {{ form_row(giveForm.number) }}
                 {{ form_row(giveForm.volume) }}
                 {{ form_row(giveForm.geographicalArea) }}

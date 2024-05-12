@@ -21,7 +21,7 @@
                 </div>
                 <div class="bordure mb-4"></div>
 
-                {# {{ form_start(giveForm) }} #}
+                {{ form_start(giveForm) }}
 
                     {{ form_label(giveForm.classification) }}
                     {{ form_widget(giveForm.classification) }}
@@ -98,15 +98,14 @@
                                 {% endfor %}
                             </select>
                         
-                        {# CREER BOUCLE #}
-                        {{ form_label(giveForm.volume) }}
-                        <select name="value" id="value-select">
-                            <option value="">--</option>
-                            {% for volume in volumes %}
-                                <option value={{ volume.id }}>{{ volume.name }}</option>
-                            {% endfor %}
-                        </select>
-                        </div>
+                            {{ form_label(giveForm.volume) }}
+                            <select name="value" id="value-select">
+                                <option value="">--</option>
+                                {% for volume in volumes %}
+                                    <option value={{ volume.id }}>{{ volume.name }}</option>
+                                {% endfor %}
+                            </select>
+                    </div>
 
                     <div class="file" id="file">
                     {{form_row(giveForm.photo)}}
@@ -119,11 +118,13 @@
                     {{ form_label(giveForm.description) }}
                     {{ form_widget(giveForm.description) }}
                     </div>
+
+                    {{ form_rest(giveForm) }}
                     
                     <div class="foot_form">
                         <input type="submit" value="Valider mon annonce">
                     </div>
-                {# {{form_end(giveForm)}} #}
+                {{form_end(giveForm)}}
             </section>
     </div>
 {% endblock %}

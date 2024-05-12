@@ -27,9 +27,9 @@
 
                 {{ form_start(searchForm) }}
 
-                    {{ form_label(searchForm.classification) }}
-                    {{ form_widget(searchForm.classification) }}
+                    
 
+                    {{ form_row(searchForm.classification) }}
                     <button id="openModal" type="button">Pour en savoir plus, vous pouvez cliquer ici.</button>
                     
                     <div id="myModal" class="modal">
@@ -65,29 +65,28 @@
                         </div>
                     </div>
 
-                    <div id="material-label" style="display: none;">
-                    <label>Matériau</label>
+                    <div id="material-label">
+                    {{ form_label(searchForm.material) }}
                     </div>
                     <select name="material-geo-select" id="material-geo-select" style="display: none;">
                         <option value="">--</option>
                         {% for material in materials %}
-                        {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
-                        <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option>
-                        {% endif %}
+                            {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
+                                <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option>
+                            {% endif %}
                         {% endfor %}
                         <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
                     </select>
 
-                    <select name="material-bio-select" id="material-bio-select" style="display: none;">
+                    <select name="material-bio-select" id="material-bio-select">
                         <option value="">--</option>
                         {% for material in materials %}
-                        {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
-                        <option value={{ material.material }}>{{ material.material }}</option>
-                        {% endif %}
+                            {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
+                                <option value={{ material.material }}>{{ material.material }}</option>
+                            {% endif %}
                         {% endfor %}
                         <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
                     </select>
-
 
                     <div class="add" style="display:none;">
                         <label for="new-material" class="new-material">Ajouter</label>
@@ -101,8 +100,10 @@
 
                     <div class="custom-popup"></div>
 
+                    {{ form_rest(searchForm) }}
+
                     <div class="foot_form">
-                        <a href="#">Vous n'avez pas trouvé ce que vous cherchiez ?</a>
+                        <p>Vous ne trouvez pas ce que vous cherchez ?</p>
                         <input type="submit" value="Publier cette recherche">
                     </div>
 

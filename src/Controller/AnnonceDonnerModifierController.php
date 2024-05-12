@@ -34,7 +34,9 @@ class AnnonceDonnerModifierController extends AbstractController
             $this->entityManager->flush();
 
             // Redirigez vers la page de confirmation
-            return $this->redirectToRoute('app_annonce_valide');
+            // return $this->redirectToRoute('app_annonce_valide');
+            // Redirigez vers la page de détail de l'annonce
+            return $this->redirectToRoute('app_mes_annonces', ['id' => $announce->getId()]);
         }
 
         // Affichez le formulaire de modification

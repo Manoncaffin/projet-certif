@@ -30,7 +30,7 @@ class MesAnnoncesController extends AbstractController
     }
 
     #[Route("/{id}", name:"announce_delete", methods: ["DELETE"])]
-    public function delete(Announce $announce, File $file, Request $request, EntityManagerInterface $entityManager, TokenGeneratorTokenGeneratorInterface $tokenGenerator): Response
+    public function delete(Announce $announce, Request $request, EntityManagerInterface $entityManager, TokenGeneratorTokenGeneratorInterface $tokenGenerator): Response
     {
         $csrfToken = $tokenGenerator->generateToken('delete' . $announce->getId());
         $token = $request->request->get('_token');
@@ -39,9 +39,12 @@ class MesAnnoncesController extends AbstractController
             throw new \Exception('Invalid CSRF token.');
         }
 
-         // Supprimer les fichiers liés à l'annonce
+        // Vérifier le type de l'annonce avant de supprimer les fichiers liés
+        if ($announce->getType() === 'donner') {
+        // Supprimer les fichiers liés à l'annonce
         foreach ($announce->getPhoto() as $file) {
-        $entityManager->remove($file);
+            $entityManager->remove($file);
+        }
     }
 
         $entityManager->remove($announce);

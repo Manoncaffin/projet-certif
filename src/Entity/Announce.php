@@ -12,6 +12,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: AnnounceRepository::class)]
 class Announce
 {
+    public function __toString()
+    {
+        return (string) $this->getId();
+    }
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -29,7 +34,7 @@ class Announce
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private $description;
 
     #[ORM\ManyToOne(inversedBy: 'announces')]
@@ -53,7 +58,7 @@ class Announce
     private ?ClassificationMaterial $classification = null;
 
     #[ORM\ManyToOne(inversedBy: 'announces')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Material $material = null;
 
     /**
@@ -62,7 +67,7 @@ class Announce
     #[ORM\OneToMany(targetEntity: File::class, mappedBy: 'announce')]
     private Collection $photo;
 
-    #[ORM\Column]
+    #[ORM\Column (nullable: true)]
     private ?int $number = null;
 
     #[ORM\Column(length: 255)]
@@ -70,6 +75,9 @@ class Announce
 
     #[ORM\ManyToOne(inversedBy: 'announces')]
     private ?Volume $volume = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $status = 'en attente';
 
     public function __construct()
     {
@@ -278,6 +286,18 @@ class Announce
     public function setVolume(?Volume $volume): static
     {
         $this->volume = $volume;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }

@@ -288,7 +288,8 @@
     #material-geo-select,
     #search_classification,
     #search_geographicalArea,
-    #new-material {
+    #new-material,
+    #search_material {
         width: 100%;
         border: none;
         outline: none;
@@ -443,7 +444,8 @@
     #description,
     #new-material,
     #search_geographicalArea,
-    #file {
+    #file,
+    #search_material {
         font-size: 1.3rem;
     }
 
@@ -566,7 +568,8 @@
     #material-geo-select,
     #material-bio-select,
     #search_geographicalArea,
-    #new-material {
+    #new-material,
+    #search_material {
         font-size: 1.3rem;
     }
 

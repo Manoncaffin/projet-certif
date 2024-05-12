@@ -3,12 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Announce;
-use App\Entity\File;
 use App\Form\SearchType;
 use App\Repository\MaterialRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,33 +34,12 @@ class AnnonceChercherController extends AbstractController
         $searchForm->handleRequest($request);
 
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+            
             $announce = $searchForm->getData();
 
             $materialAnnounce = $request->request->all()['material-bio-select'];
 
             $selectedMaterial = $materialRepository->findOneBy(['material' => $materialAnnounce]);
-         
-            $photoFile = $searchForm->get('photo')->getData();
-
-            if ($photoFile) {
-                $originalFilename = pathinfo($photoFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$photoFile->guessExtension();
-                
-                try {
-                    $photoFile->move($this->getParameter('photo_directory'), $newFilename);
-                    $photoAnnounce = new File();
-                    $photoAnnounce->setUrl($newFilename);
-                    $photoAnnounce->setAnnounce($announce);
-                    $announce->addPhoto($photoAnnounce);
-                    $this->entityManager->persist($photoAnnounce);
-
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                    dd('test');   
-                }
-            }
 
             $announce->setUser($user);
             $announce->setMaterial($selectedMaterial);
@@ -70,11 +47,6 @@ class AnnonceChercherController extends AbstractController
             
             $this->entityManager->persist($announce);
             $this->entityManager->flush();
-
-            // if (!empty($announce->getDescription())) {
-            //     // Persister et flusher l'entité Announce dans la base de données
-            //     $this->entityManager->persist($searchForm);
-            //     $this->entityManager->flush();
 
                 return $this->redirectToRoute('app_annonce_valide');
             } else {
