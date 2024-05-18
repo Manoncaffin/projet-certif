@@ -40,129 +40,6 @@
         }
     }
 
-    /* NAVBAR */
-    .navbar .burger-menu-button {
-        color: black;
-        cursor: pointer;
-        display: none;
-        display: block;
-    }
-
-    .container_menu {
-        display: flex;
-        justify-content: space-between;
-        padding: 20px 50px 20px 50px;
-    }
-
-    .navbar .links {
-        display: none;
-    }
-
-    .logo img {
-        width: 250px;
-    }
-
-    header {
-        position: relative;
-        background-color: rgb(27, 237, 177);
-    }
-
-    .navbar {
-        display: flex;
-        align-items: end;
-        justify-content: center;
-    }
-
-    li {
-        list-style: none;
-    }
-
-    .burger-menu {
-        display: block;
-        height: 0;
-        position: absolute;
-        width: 100%;
-        overflow: hidden;
-        transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        background-color: rgb(27, 237, 177);
-    }
-
-    .burger-menu.open {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .burger-menu.open a {
-        font-size: 4rem;
-    }
-
-    .links {
-        margin: 0;
-        padding: 0;
-    }
-
-    .burger-menu li {
-        padding: 0.7rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .burger-menu-button i {
-        padding: 15px 0 15px 0;
-        transform: scale(4.5);
-    }
-
-    .fa-solid.fa-bars,
-    .fa-solid.fa-xmark {
-        padding-right: 10px;
-    }
-
-    .dropdown-menu_one {
-        z-index: 100;
-        border: 2px solid black;
-        display: none;
-        position: absolute;
-        justify-content: center;
-        padding: 10px;
-        width: 280px;
-        margin-left: 20px;
-        background-color: rgb(243, 237, 79);
-        text-align: center;
-    }
-
-    .dropdown:hover .dropdown-menu_one {
-        display: block;
-    }
-
-    .dropdown-menu_two {
-        z-index: 100;
-        border: 2px solid black;
-        display: none;
-        position: absolute;
-        justify-content: center;
-        padding: 10px;
-        width: 280px;
-        margin-left: 20px;
-        background-color: rgb(243, 237, 79);
-        text-align: center;
-    }
-
-    .dropdown:hover .dropdown-menu_two {
-        display: block;
-    }
-
-    .circle_menu {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: black;
-    }
-
-    /* NAVBAR */
-
     .update_announce,
     .delete_announce {
         background-color: rgb(27, 237, 177);
@@ -288,55 +165,6 @@
 /* --------------------------------------------------- */
 @media only screen and (min-width: 1000px) {
 
-    /* NAVBAR */
-    .navbar {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        padding: 10px 110px 10px 110px;
-        background-color: rgb(243, 237, 79);
-        box-shadow: 2px 2px 10px 1px rgb(243, 237, 79);
-    }
-
-    .circle_menu {
-        width: 17px;
-        height: 10px;
-        border-radius: 50%;
-        background-color: black;
-    }
-
-    .navbar .burger-menu-button {
-        display: none;
-    }
-
-    .navbar .links {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .burger-menu {
-        display: none;
-    }
-
-    .links {
-        width: 100%;
-        font-size: 1.2rem;
-    }
-
-    .container_menu {
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-    }
-
-    .logo img {
-        width: 400px;
-        padding: 15px 110px 15px 110px;
-    }
-
-    /* NAVBAR */
-
     .container {
         padding: 30px 110px 30px 110px;
         min-width: 999px;
@@ -377,39 +205,6 @@
 /* ----------------- SUP. OU ÉGALE ------------------- */
 /* --------------------------------------------------- */
 @media only screen and (min-width: 1200px) {
-
-    /* NAVBAR  */
-    .navbar {
-        padding: 10px 140px 10px 140px;
-        display: flex;
-        justify-content: center;
-    }
-
-    .navbar .links {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .links {
-        font-size: 1.3rem;
-    }
-
-    .logo img {
-        width: 500px;
-        padding: 20px 140px 20px 140px;
-    }
-
-    .container {
-        box-sizing: border-box;
-        border-radius: 5px;
-        padding: 30px 140px 30px 140px;
-        width: 100%;
-        min-width: 980px;
-        max-width: 2000px;
-        margin: 0;
-    }
-
-    /* NAVBAR  */
 
     /* INFOS TOP */
     .top_all {
@@ -494,24 +289,6 @@
 /* ----------------- SUP. OU ÉGALE ------------------- */
 /* --------------------------------------------------- */
 @media only screen and (min-width: 1500px) {
-
-    /* NAVBAR */
-    .navbar {
-        display: flex;
-        justify-content: center;
-    }
-
-    .circle_menu {
-        width: 25px;
-        height: 16px;
-    }
-
-    .navbar .links {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    /* NAVBAR */
 
     .announce_inline img {
         max-height: 540px;

@@ -3,7 +3,8 @@
 {% block title %}Bennes solidaires - Messagerie mobile{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href={{ asset('css/annonce-donner.css') }}>
+<link rel="stylesheet" href={{ asset('css/header.css') }}>
+<link rel="stylesheet" href={{ asset('css/messagerie-mobile.css') }}>
 {% endblock %}
 
 
@@ -52,6 +53,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{asset('js/overall-no-scrolling.js') }}
-    {{asset('js/back.js') }}
+    <script src={{asset('js/overall-no-scrolling.js') }}></script>
+    <script src={{asset('js/back.js') }}></script>
 {% endblock %}

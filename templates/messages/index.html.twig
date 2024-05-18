@@ -3,6 +3,7 @@
 {% block title %}Bennes solidaires - Messages{% endblock %}
 
 {% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/header.css') }}>
 <link rel="stylesheet" href={{ asset('css/messages.css') }}>
 {% endblock %}
 
@@ -29,7 +30,7 @@
                     <p><span>PAILLE</span></p>
                     <p>Annonce en ligne</p>
                     <p>Barnabé - 4 mai 2024</p>
-                    <a href={{ path('app_annonce-detail') }} class="look_announce">Voir l'annonce</a>
+                    <a href={{ path('app_annonce_detail') }} class="look_announce">Voir l'annonce</a>
                 </div>
 
                 <div class="icons_announce">
@@ -43,6 +44,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{asset('js/overall-no-scrolling.js') }}
-    {{asset('js/back.js') }}
+    <script src={{asset('js/overall-no-scrolling.js') }}></script>
+    <script src={{asset('js/back.js') }}></script>
 {% endblock %}
