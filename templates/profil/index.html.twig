@@ -64,7 +64,7 @@
                     <div class="text">
                         <h6>INFORMATIONS</h6>
                         <p><a href={{ path('app_modifications_informations') }}>Modifier mes informations</a></p>
-                        <p class="remove_registration"><a href="#">Supprimer mon compte</a></p>
+                        {% include 'admin/users/delete_account_form.html.twig' with {'user': user} %}
                     </div>
                 </div>
                 

@@ -159,7 +159,7 @@
     .title {
         font-family: "Lemon milk";
         font-weight: 600;
-        font-size: 2.9rem;
+        font-size: 3rem;
         padding-left: 40px;
         text-align: left;
     }
@@ -311,13 +311,13 @@
         justify-content: center;
         font-family: "Lemon Milk";
         font-weight: 600;
-        font-size: 6rem;
+        font-size: 5rem;
     }
 
     .big-title-two {
         font-family: "Lemon Milk";
         font-weight: 600;
-        font-size: 6rem;
+        font-size: 5rem;
     }
 
     /* FOOTER */
@@ -666,11 +666,11 @@ h2 {
     /* FOOTER */
 
     .p_description {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .scrolling-text {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .corners {
@@ -719,7 +719,7 @@ h2 {
     .circle {
         width: 60px;
         height: 60px;
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .big-title,
@@ -742,7 +742,7 @@ h2 {
     }
 
     h2 {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 
     /* MODALE */
@@ -774,26 +774,26 @@ h2 {
     }
 
     h2 {
-        font-size: 3.8rem;
+        font-size: 2.2rem;
     }
 
     .title {
-        font-size: 3.3rem;
+        font-size: 3rem;
     }
 
     .circle {
-        width: 90px;
-        height: 90px;
-        font-size: 4rem;
+        width: 85px;
+        height: 85px;
+        font-size: 3rem;
     }
 
     .big-title,
     .big-title-two {
-        font-size: 7rem;
+        font-size: 5rem;
     }
 
     .mail {
-        font-size: 3.8rem;
+        font-size: 3rem;
     }
 
     .logo_partenaires {
@@ -929,7 +929,7 @@ h2 {
     }
 
     h2 {
-        font-size: 4.6rem;
+        font-size: 3rem;
     }
 
     .icon {
@@ -951,7 +951,11 @@ h2 {
     }
 
     .p_description {
-        font-size: 2.4rem;
+        font-size: 1.8rem;
+    }
+
+    .scrolling-text {
+        font-size: 2rem;
     }
 
     .rectangle-green-one,

@@ -24,8 +24,9 @@ security:
 
             remember_me:
                 secret: '%kernel.secret%'
-                lifetime: 604800
+                lifetime: 604800 #1 semaine en secondes
                 path: /
+                remember_me_parameter: _remember_me # nom du champ dans le formulaire de connexion
                 # by default, the feature is enabled by checking a checkbox in the
                 # login form, uncomment the following line to always enable it.
                 #always_remember_me: true
@@ -54,11 +55,3 @@ when@test:
                 cost: 4 # Lowest possible value for bcrypt
                 time_cost: 3 # Lowest possible value for argon
                 memory_cost: 10 # Lowest possible value for argon
-
-        # FONCTION "SE SOUVENIR DE MOI" DANS LOGIN // À REVOIR
-        _remember_me:
-            secret: '%kernel.secret%'
-            lifetime: 604800 # durée de vie du cookie en secondes (1 semaine)
-            path: /
-            domain: ~
-            always_remember_me: false

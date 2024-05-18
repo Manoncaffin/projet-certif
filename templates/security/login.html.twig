@@ -19,10 +19,10 @@
                         {% endif %}
 
                         <label for="identifier">Identifiant</label>
-                        <input type="text" value="{{ last_username }}" name="identifier" id="identifier"  autocomplete="identifier" placeholder="Votre identifiant" required autofocus>
+                        <input type="text" value="{{ last_identifier }}" name="identifier" id="identifier"  autocomplete="identifier" placeholder="Votre identifiant" required autofocus>
 
                         <label for="inputEmail">Email</label>
-                        <input type="email" value="{{ last_username }}" name="email" id="email" autocomplete="email" placeholder="Votre adresse email" required autofocus>
+                        <input type="email" value="{{ last_identifier }}" name="email" id="email" autocomplete="email" placeholder="Votre adresse email" required autofocus>
 
                         <label for="inputPassword">Mot de passe</label>
                         <input type="password" name="password" id="inputPassword" autocomplete="current-password" placeholder="Votre mot de passe" required>
@@ -32,7 +32,7 @@
                         >
                         <div class="checkbox mb-3">
                             <label>
-                                <input type="checkbox" name="_remember_me" id="remember_me"><span></span>Se souvenir de moi
+                                <input type="checkbox" name="_remember_me" id="remember_me"><span>Se souvenir de moi</span>
                             </label>
                         </div>
 

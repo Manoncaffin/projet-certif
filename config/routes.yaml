@@ -16,6 +16,13 @@ app_profil:
     path: /profil
     controller: App\Controller\ProfilController::index
 
+app_user_delete:
+    path: /users/{id}
+    methods: ['DELETE']
+    controller: App\Controller\UserController::delete
+    requirements:
+        id: \d+
+
 app_annonce_donner_modifier:
     path: /annonce-donner-modifier/{id}
     controller: App\Controller\AnnonceDonnerModifierController::edit
