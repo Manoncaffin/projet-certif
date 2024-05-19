@@ -68,6 +68,12 @@
     #confidentials {
         margin-bottom: 50px;
     }
+
+    .look_confidentials {
+        display: flex;
+        justify-content: start;
+        text-align: start;
+    }
 }
 
 
@@ -143,10 +149,7 @@
     }
 
     .container {
-        box-sizing: border-box;
-        border-radius: 5px;
         padding: 20px 140px 20px 140px;
-        width: 100%;
         min-width: 980px;
         max-width: 2000px;
         margin: 0;

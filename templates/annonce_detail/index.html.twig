@@ -18,14 +18,15 @@
                     <p>ANNONCE</p>
                 </div>
                 <div class="form_profil">
-                    <p>BOTTES DE PAILLE</p>
+                    {# <p>{{ announce.material }}</p> #}
                 </div>
 
                 <div class="form_profil">
-                    <p>SAMIA</p>
+                    <p>{{ ('PROFIL DE ' ~ user.identifier)|trans({}, 'messages')|upper }}</p>
                 </div>
                 <div class="form_profil">
-                    <p>0 MESSAGE NON LU</p>
+                    {% set unreadMessagesCount = user.privateMessages|length %}
+                    <p>{{ unreadMessagesCount }} {{ ('MESSAGE(S) NON LU(S)')|trans({}, 'messages')|upper }}</p>
                 </div>
             </div>
 
@@ -39,6 +40,7 @@
                         <div class="carousel__track">
                             <div class="carousel__slide current-slide">
                                 <img class="carousel__images" src="../images/IMG_2099.jpeg" alt="background-image" />
+                                {# <img{{ announce.photo }}/> #}
                             </div>
                             <div class="carousel__slide">
                                 <img class="carousel__images" src="../images/20201108_115654.jpeg" alt="background-image" />
@@ -63,7 +65,9 @@
                         <div class="link_member">
                             <div class="text">
                                 <p><span>BARNABÉ</span></p>
+                                {# <p>{{ user.identifier }}</p> #}
                                 <p><span>2 ANNONCES</span></p>
+                                {# <p>{{ announce.user }}</p> #}
                             </div>
                             <a href="#" class="link_announce_member">
                                 <div class="icon">
@@ -75,25 +79,30 @@
                         <div class="location">
                             <p><span>LOCALISATION</span></p>
                             <p>Sisteron (04)</p>
+                            {# <p>{{ announce.geographicalArea }}</p> #}
                         </div>
 
                         <div class="classification">
                             <p><span>CLASSIFICATION</span></p>
                             <p>Bio-sourcé</p>
+                            {# <p>{{ announce.classification }}</p> #}
                         </div>
 
                         <div class="materials">
                             <p><span>MATÉRIAU</span></p>
                             <p>Paille de blé</p>
+                            {# <p>{{ announce.material }}</p> #}
                         </div>
 
                         <div class="quantity">
                             <p><span>QUANTITÉ</span></p>
                             <p>3 bottes</p>
+                            {# <p>{{ announce.number }}</p> #}
                         </div>
 
                         <div class="description">
                             <p><span>DESCRIPTION</span></p>
+                            {# <p>{{ announce.description }}</p> #}
                             <p>Bonjour, je donne 3 bottes de paille de blé destinés à la construction mais elles ont
                                 un taux
                                 d’humidité trop haut pour les utiliser.</p>
@@ -112,6 +121,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src={{ asset('public/js/overall-no-scrolling.js') }}></script>
-    <script src={{ asset('public/js/carousel.js') }}></script>
+    <script src={{ asset('js/overall-carousel.js') }}></script>
+    <script src={{ asset('js/carousel.js') }}></script>
 {% endblock %}

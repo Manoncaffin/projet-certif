@@ -61,18 +61,19 @@
     .container {
         box-sizing: border-box;
         border-radius: 5px;
-        padding: 50px;
         width: 100%;
         min-width: 980px;
-        max-width: 900px;
+        max-width: 999px;
         margin: 0 auto;
+        padding: 50px 50px 50px 50px;
     }
 
     /* INFOS TOP */
     .top_all {
-        width: 100%;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
     }
 
     /* INFOS TOP */
@@ -81,9 +82,9 @@
 
     .form_profil {
         width: fit-content;
-        padding: 20px;
-        height: 50px;
-        border-radius: 40px;
+        padding: 15px;
+        height: fit-content;
+        border-radius: 20px;
         background-color: white;
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         display: flex;
@@ -92,7 +93,7 @@
     }
 
     .form_profil p {
-        font-size: 1.7rem;
+        font-size: 2.5rem;
     }
 
     .announce_all {
@@ -106,7 +107,7 @@
 
     .announce {
         margin-top: 40px;
-        width: 70%;
+        max-width: 800px;
         padding: 15px 30px 30px 30px;
         height: fit-content;
         border-radius: 40px;
@@ -155,12 +156,11 @@
     .carousel {
         display: block;
         position: relative;
-        height: 400px;
-        width: 600px;
+        height: 500px;
+        max-width: 800px;
         margin: 0 auto;
         margin-top: 70px;
         margin-bottom: 70px;
-        max-width: 600px;
     }
 
     .carousel__images {
@@ -259,6 +259,12 @@
 /* --------------------------------------------------- */
 @media only screen and (min-width: 1000px) {
 
+    .container {
+        padding: 30px 110px 30px 110px;
+        min-width: 999px;
+        max-width: 1999px;
+    }
+
     .image {
         width: 30%;
         margin-top: 40px;
@@ -276,6 +282,10 @@
     .send_message {
         font-size: 1.3rem;
     }
+
+    .form_profil p {
+        font-size: 1.2rem;
+    }
 }
 
 
@@ -285,6 +295,12 @@
 /* ----------------- SUP. OU ÉGALE ------------------- */
 /* --------------------------------------------------- */
 @media only screen and (min-width: 1200px) {
+
+    .container {
+        min-width: 1200px;
+        max-width: 1400px;
+        padding: 20px 140px 20px 140px;
+    }
 
     /* INFOS TOP */
     .top_all {
@@ -299,14 +315,14 @@
 
     p {
         font-size: 1.3rem;
-    } 
+    }
 
     .form_profil {
         height: 45px;
     }
 
     .form_profil p {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .send_message {
@@ -332,15 +348,21 @@
     /* CAROUSEL */
     .carousel {
         margin-top: 30px;
-        width: 800px; /* Réduire la largeur du carousel pour les grands écrans */
-        max-width: 100%; /* Assurez-vous que le carousel ne dépasse pas la largeur de l'écran */
+        width: 800px;
+        /* Réduire la largeur du carousel pour les grands écrans */
+        max-width: 100%;
+        /* Assurez-vous que le carousel ne dépasse pas la largeur de l'écran */
     }
 
     .carousel__images {
-        width: 100%; /* Les images occupent 100% de la largeur du carousel */
-        height: auto; /* Ajustez la hauteur en fonction de la largeur pour maintenir les proportions */
-        object-fit: cover; /* Ajustez les images pour couvrir toute la zone disponible */
+        width: 100%;
+        /* Les images occupent 100% de la largeur du carousel */
+        height: auto;
+        /* Ajustez la hauteur en fonction de la largeur pour maintenir les proportions */
+        object-fit: cover;
+        /* Ajustez les images pour couvrir toute la zone disponible */
     }
+
     /* CAROUSEL */
 
     .bordure {
@@ -358,6 +380,11 @@
 /* --------------------------------------------------- */
 @media only screen and (min-width: 1500px) {
 
+    .container {
+        min-width: 1500px;
+        max-width: 2000px;
+    }
+
     p {
         font-size: 1.1rem;
     }
@@ -373,18 +400,20 @@
         width: 700px;
         height: 590px;
     }
+
     /* ANNOUNCE */
 
     .carousel {
-        width: 900px; 
+        width: 900px;
         height: auto;
     }
 
     .carousel__images {
-        width: 100%; 
-        height: auto; 
-        object-fit: cover; 
+        width: 100%;
+        height: auto;
+        object-fit: cover;
     }
+
     /* CAROUSEL */
 
     .bordure {

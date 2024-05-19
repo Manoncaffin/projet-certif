@@ -21,7 +21,7 @@ app_user_delete:
     methods: ['DELETE']
     controller: App\Controller\UserController::delete
     requirements:
-        id: \d+
+        id: '\d+'
 
 app_annonce_donner_modifier:
     path: /annonce-donner-modifier/{id}
@@ -45,3 +45,14 @@ announce_delete:
 #     methods: [POST]
 #     controller: App\Controller\ProfilController::uploadPhoto
 
+app_annonce_detail:
+    path: /annonce-detail/{id}
+    controller: App\Controller\AnnonceDetailController::index
+    requirements:
+        id: \d+
+
+app_annonce_chercher:
+    path: /annonce-chercher
+    controller: App\Controller\AnnonceChercherController::index
+    requirements:
+        id: '\d+'
