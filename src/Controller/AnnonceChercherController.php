@@ -23,10 +23,9 @@ class AnnonceChercherController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/annonce_chercher', name: 'app_annonce_chercher')]
+    #[Route('/annonce-chercher', name: 'app_annonce_chercher')]
     public function index(MaterialRepository $materialRepository, AnnounceRepository $announceRepository, Request $request, SluggerInterface $slugger): Response
     {
-
         $materials = $materialRepository->findAll();
         $user = $this->getUser();
 
@@ -34,8 +33,7 @@ class AnnonceChercherController extends AbstractController
         $searchForm = $this->createForm(SearchType::class, $announce);
         $searchForm->handleRequest($request);
 
-        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
-
+        if ($searchForm->isSubmitted() && $searchForm->isValid() && $user) { // Vérification de l'état de connexion de l'utilisateur
             $announce = $searchForm->getData();
 
             $materialAnnounce = $request->request->all()['material-bio-select'];
@@ -70,17 +68,19 @@ class AnnonceChercherController extends AbstractController
         $postalCode = $announce->getgeographicalArea();
 
         if ($material && $postalCode) {
-            $announce = $this->entityManager->getRepository(Announce::class)->findByMaterialAndPostalCode($material, $postalCode);
+            $announces = $announceRepository->findByMaterialAndPostalCode($material, $postalCode);
         } elseif ($material) {
-            $announce = $this->entityManager->getRepository(Announce::class)->findByMaterial($material);
+            $announces = $announceRepository->findByMaterial($material);
         } elseif ($postalCode) {
-            $announce = $this->entityManager->getRepository(Announce::class)->findByPostalCode($postalCode);
+            $announces = $announceRepository->findByPostalCode($postalCode);
+        } else {
+            $announces = $announceRepository->findAll();
         }
 
         return $this->render('annonce_chercher/index.html.twig', [
             'searchForm' => $searchForm->createView(),
             'materials' => $materials,
-            'announce' => $announce
+            'announces' => $announces,
         ]);
     }
 }

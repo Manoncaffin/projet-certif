@@ -26,7 +26,8 @@
                 <div class="bordure mb-4"></div>
 
 
-                {{ form_start(searchForm) }}
+                {# {{ form_start(searchForm) }} #}
+                {{ form_start(searchForm, {'attr': {'id': 'search-form'}}) }}
 
                     
 
@@ -103,10 +104,16 @@
 
                     {{ form_rest(searchForm) }}
 
-                    <div class="foot_form">
-                        <p>Vous ne trouvez pas ce que vous cherchez ?</p>
-                        <input type="submit" value="Publier cette recherche">
-                    </div>
+                    {% if app.user %}
+                        <div class="foot_form">
+                            <p>Vous ne trouvez pas ce que vous cherchez ?</p>
+                            <input type="submit" value="Publier cette recherche">
+                        </div>
+                    {% else %}
+                        <div class="foot_form">
+                            <p>Vous devez être connecté·e pour publier une annonce.</p>
+                        </div>
+                    {% endif %}
 
                 {{ form_end(searchForm) }}
             </section>

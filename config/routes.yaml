@@ -54,5 +54,4 @@ app_annonce_detail:
 app_annonce_chercher:
     path: /annonce-chercher
     controller: App\Controller\AnnonceChercherController::index
-    requirements:
-        id: '\d+'
+
