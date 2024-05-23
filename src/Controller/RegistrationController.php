@@ -52,9 +52,9 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // Envoi de l'e-mail de confirmation d'inscription
-            // $this->mailerController->sendRegistrationConfirmationEmail($mailer, $user->getUserIdentifier(), $user->getEmail());
+            $this->mailerController->sendRegistrationConfirmationEmail($mailer, $user->getUserIdentifier(), $user->getEmail());
 
-            // return $this->redirectToRoute('app_accueil');
+            return $this->redirectToRoute('app_login');
             // Envoi de l'e-mail de confirmation d'inscription
 
             // return $security->login($user, AppAuthenticator::class, 'main');

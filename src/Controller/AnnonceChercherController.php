@@ -64,23 +64,23 @@ class AnnonceChercherController extends AbstractController
         }
 
         // Récupérer les annonces en fonction du matériau et du code postal saisis
-        $material = $announce->getMaterial();
-        $postalCode = $announce->getgeographicalArea();
+        // $material = $announce->getMaterial();
+        // $postalCode = $announce->getgeographicalArea();
 
-        if ($material && $postalCode) {
-            $announces = $announceRepository->findByMaterialAndPostalCode($material, $postalCode);
-        } elseif ($material) {
-            $announces = $announceRepository->findByMaterial($material);
-        } elseif ($postalCode) {
-            $announces = $announceRepository->findByPostalCode($postalCode);
-        } else {
-            $announces = $announceRepository->findAll();
-        }
+        // if ($material && $postalCode) {
+        //     $announces = $announceRepository->findByMaterialAndPostalCode($material, $postalCode);
+        // } elseif ($material) {
+        //     $announces = $announceRepository->findByMaterial($material);
+        // } elseif ($postalCode) {
+        //     $announces = $announceRepository->findByPostalCode($postalCode);
+        // } else {
+        //     $announces = $announceRepository->findAll();
+        // } ajouter dans repository
 
         return $this->render('annonce_chercher/index.html.twig', [
             'searchForm' => $searchForm->createView(),
             'materials' => $materials,
-            'announces' => $announces,
+            // 'announces' => $announces,
         ]);
     }
 }

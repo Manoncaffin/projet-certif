@@ -11,6 +11,8 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class AnnonceDetailController extends AbstractController
 {
+
+    #[Route('/annonce-detail/{id}', name: 'app_annonce_detail')]
         public function index(AnnounceRepository $announceRepository, int $id): Response
     {
         // Récupérer l'annonce à partir de la base de données

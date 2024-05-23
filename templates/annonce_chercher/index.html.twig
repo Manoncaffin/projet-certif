@@ -68,7 +68,7 @@
                     </div>
 
                     <div id="material-label">
-                    {{ form_label(searchForm.material) }}
+                    <label>Matériau</label>
                     </div>
                     <select name="material-geo-select" id="material-geo-select" style="display: none;">
                         <option value="">--</option>
@@ -101,8 +101,6 @@
                     <div id="map"></div>
 
                     <div class="custom-popup"></div>
-
-                    {{ form_rest(searchForm) }}
 
                     {% if app.user %}
                         <div class="foot_form">
