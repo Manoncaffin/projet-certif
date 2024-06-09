@@ -45,7 +45,7 @@ return function (RoutingConfigurator $routes) {
     $routes->add('modifications-informations', '/modifications-informations')
         ->controller('App\Controller\ModificationsInformationsController::index');
 
-    $routes->add('pade-de-confidentialite', '/pade-de-confidentialite')
+    $routes->add('page-de-confidentialite', '/page-de-confidentialite')
         ->controller('App\Controller\PageDeConfidentialiteController::index');
 
     $routes->add('profil', '/profil')

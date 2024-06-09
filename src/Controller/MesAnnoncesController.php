@@ -39,9 +39,7 @@ class MesAnnoncesController extends AbstractController
             throw new \Exception('Invalid CSRF token.');
         }
 
-        // Vérifier le type de l'annonce avant de supprimer les fichiers liés
         if ($announce->getType() === 'donner') {
-        // Supprimer les fichiers liés à l'annonce
         foreach ($announce->getPhoto() as $file) {
             $entityManager->remove($file);
         }

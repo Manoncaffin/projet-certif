@@ -4,6 +4,11 @@
     padding: 0px;
 }
 
+@font-face {
+    font-family: 'Abordage';
+    src: url('Abordage-Regular.otf') format('opentype');
+}
+
 /* --------------------------------------------------- */
 /* --------------------------------------------------- */
 /* ------------- MEDIA MIN-WIDTH 350PX --------------- */
