@@ -6,6 +6,7 @@ use App\Entity\Announce;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\Material;
 
 /**
  * @extends ServiceEntityRepository<Announce>
@@ -47,6 +48,18 @@ class AnnounceRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('a')
             ->where('a.user = :user')
             ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByMaterialAndPostalCode(Material $material, string $postalCode)
+    {
+        return $this->createQueryBuilder('a')
+            ->innerJoin('a.material', 'm')
+            ->where('m = :material')
+            ->setParameter('material', $material)
+            ->andWhere('a.geographicalArea = :postalCode')
+            ->setParameter('postalCode', $postalCode)
             ->getQuery()
             ->getResult();
     }

@@ -67,7 +67,8 @@
         border: none;
         border-radius: 55px;
         cursor: pointer;
-        margin-bottom: 10px;
+        margin-top: 30px;
+        margin-bottom: 20px;
         font-size: 3.1rem;
         width: 100%;
     }
@@ -132,7 +133,7 @@
         justify-content: center;
         width: 100%;
         font-size: 3.2rem;
-        margin-bottom: 120px;
+        margin-bottom: 90px;
     }
 
     .container a {
@@ -184,6 +185,8 @@ input[type=password] {
 
     input[type=submit] {
         font-size: 1.2rem;
+        margin-top: 0px;
+        margin-bottom: 20px;
     }
 
     .container {
@@ -207,6 +210,11 @@ input[type=password] {
     }
 
     /* FORM */
+
+    #remember_me + span:before {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 

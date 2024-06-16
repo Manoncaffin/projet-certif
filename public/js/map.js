@@ -63,41 +63,43 @@ document.addEventListener("DOMContentLoaded", function () {
                         popupAnchor: [3, -76],
                     });
 
-                    // Créer un marqueur aux coordonnées trouvées
-                    const marker = L.marker([lat, lon], {
-                        icon: myIcon
-                    }).addTo(map);
+                    // Vérifier si des annonces correspondantes ont été trouvées
+                    const announces = JSON.parse(document.getElementById("announces").dataset.announces);
+                    if (announces.length > 0) {
+                        const announce = announces[0];
+                        const marker = L.marker([announce.latitude, announce.longitude], {
+                            icon: myIcon
+                        }).addTo(map);
 
-                    // Si un marqueur précédent existe, le supprimer de la carte
-                    if (previousMarker !== null) {
-                        map.removeLayer(previousMarker);
+                        if (previousMarker !== null) {
+                            map.removeLayer(previousMarker);
+                        }
+
+                        previousMarker = marker;
+
+                        const popupContent = `
+                        <div>
+                            <h6>${announce.material.material}</h6>
+                            <p>Date: ${announce.createdAt.substring(0, 10)}</p>
+                            <p>${announce.description}</p>
+                            <a href="./annonce-detail.html"><p>Voir l'annonce</p></a>
+                        </div> `;
+
+
+                        // Ajouter une popup au marqueur pour afficher l'adresse
+                        marker.bindPopup(popupContent, {
+                            className: 'custom-popup',
+                        });
+
+                        marker.on('click', function () {
+                            this.openPopup();
+                        });
+
+                        map.setView([lat, lon], 13);
+                    } else {
+                        // Aucune annonce correspondante n'a été trouvée
+                        alert("Aucune annonce ne correspond à votre recherche.");
                     }
-
-                    // Assigner le nouveau marqueur à la variable previousMarker
-                    previousMarker = marker;
-
-                    // Construire le contenu HTML du popup avec les informations de la publication
-                    const popupContent = `
-    <div>
-        <h6>Bottes de paille</h6>
-        <p>Date: 01/05/2024</p>
-        <p>Bonjour, je donne 3 bottes de paille de blé destinés à la construction mais elles ont un taux d’humidité trop haut pour les utiliser.</p>
-        <a href="./annonce-detail.html"><p>Voir l'annonce</p></a>
-    </div>
-    `;
-
-                    // Ajouter une popup au marqueur pour afficher l'adresse
-                    marker.bindPopup(popupContent, {
-                        className: 'custom-popup',
-                    });
-
-                    // Définir un gestionnaire d'événements pour ouvrir le popup lors du clic sur le marqueur
-                    marker.on('click', function () {
-                        this.openPopup();
-                    });
-
-                    // Centrer la carte sur le marqueur
-                    map.setView([lat, lon], 13);
                 } else {
                     alert("Adresse non trouvée");
                 }
@@ -160,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //         // Envoyer une requête AJAX pour récupérer les annonces en fonction du matériau et de l'adresse
 //         const xhr = new XMLHttpRequest();
-//         xhr.open('GET', `/annonce-chercher?material=${material}&geographicalArea=${encodeURIComponent(address)}`, true);
+//         xhr.open('GET', `/ annonce - chercher ? material = ${ material }& geographicalArea=${ encodeURIComponent(address) } `, true);
 //         xhr.setRequestHeader('Accept', 'application/json'); // Définir l'en-tête "Accept"
 //         xhr.onload = function () {
 //             if (xhr.status === 200) {

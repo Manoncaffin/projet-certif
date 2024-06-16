@@ -27,7 +27,7 @@ class SearchType extends AbstractType
                 'attr' => [
                     'class' => 'hidden-input',
                 ] 
-            ])
+            ])    
 
             ->add('material', EntityType::class, [
                 'class' => Material::class,

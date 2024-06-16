@@ -36,7 +36,6 @@
 
     /* FORM  */
     label {
-        margin-top: 16px;
         margin-right: 0px;
         margin-left: 0px;
         font-size: 3rem;
@@ -91,6 +90,7 @@
         display: flex;
         align-items: start;
         margin-top: 0;
+        margin-bottom: 16px;
         border-radius: 20px;
         width: fit-content;
         padding: 6px;
@@ -171,11 +171,12 @@
         width: 100%;
         border: none;
         outline: none;
-        padding: 5px;
+        padding: 5px 5px 0px 5px;
         border-bottom: 1px solid rgb(92, 91, 91);
         border-radius: 0;
         box-sizing: border-box;
-        margin-bottom: 10px;
+        margin-bottom: 26px;
+        margin-top: 6px;
         margin-right: 0px;
         margin-left: 0px;
         resize: vertical;
@@ -219,7 +220,6 @@
         flex-direction: column;
         width: 100%;
         font-size: 3rem;
-        gap: 30px;
     }
 
     .quantity-select {
@@ -330,7 +330,7 @@
     .scrolling-text {
         display: block;
         margin-right: 500px;
-        font-size: 1.7rem;
+        font-size: 1.5rem;
     }
 
     /* FORM */
@@ -344,7 +344,8 @@
     label {
         margin-right: 0px;
         margin-left: 0px;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
     }
 
     #give_classification,
@@ -357,7 +358,7 @@
     #quantity-select,
     #giveForm_number,
     #value-select {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     #giveForm_number,
@@ -367,7 +368,7 @@
 
     #give_photo {
         margin-left: 20px;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         margin-top: 0px;
         margin-bottom: 0;
     }
@@ -375,7 +376,7 @@
     .material-select,
     .quantity-select,
     .value-select {
-        font-size: 1.3rem
+        font-size: 1.1rem
     }
 
     .quantity {
@@ -388,12 +389,12 @@
     }
 
     textarea {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     input[type=submit] {
         width: 40%;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .submit {
@@ -428,7 +429,7 @@
 @media only screen and (min-width: 1200px) {
     
     textarea {
-        height: 170px;
+        height: 150px;
     }
 
     .container {

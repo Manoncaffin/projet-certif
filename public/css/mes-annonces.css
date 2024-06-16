@@ -117,7 +117,6 @@
         margin-bottom: 20px;
         width: 100%;
         padding: 30px 40px 30px 40px;
-        height: 450px;
         border-radius: 20px;
         background-color: white;
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -229,7 +228,7 @@
     }
 
     .form_profil_large_one p {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
     
     /* INFOS TOP */
@@ -252,6 +251,7 @@
         justify-content: space-between;
         flex-direction: row;
         margin-bottom: 30px;
+        flex-wrap: wrap;
     }
 
     .text {
@@ -259,11 +259,17 @@
         flex-direction: column;
         margin-bottom: 10px;
         font-family: "Lemon Milk";
-        font-size: 1.1rem;
+        font-size: 0.9rem;
+    }
+
+    .update_announce,
+    .delete_announce {
+        font-size: 1rem;
     }
 
     .form_profil_large_two {
         margin-top: 35px;
+        margin-bottom: 0;
         display: flex;
         flex-direction: column;
         width: 47%;

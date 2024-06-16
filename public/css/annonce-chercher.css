@@ -170,12 +170,13 @@
         width: 100%;
         border: none;
         outline: none;
-        padding: 5px;
+        padding: 5px 5px 0px 5px;
         color: rgb(123, 122, 122);
         border-bottom: 1px solid rgb(92, 91, 91);
         border-radius: 0;
         box-sizing: border-box;
-        margin-bottom: 10px;
+        margin-bottom: 26px;
+        margin-top: 6px;
         margin-right: 0px;
         margin-left: 0px;
         resize: vertical;
@@ -193,10 +194,10 @@
     /* FORM  */
 
     #map {
-        height: 400px;
+        height: 800px;
         z-index: 0;
-        margin-top: 20px;
-        margin-bottom: 30px;
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
 
     .scrolling-text-container {
@@ -245,7 +246,7 @@
     .scrolling-text {
         display: block;
         margin-right: 500px;
-        font-size: 1.7rem;
+        font-size: 1.5rem;
     }
 
     /* FORM */
@@ -259,7 +260,8 @@
     label {
         margin-right: 0px;
         margin-left: 0px;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
     }
 
     #material-bio-select,
@@ -272,26 +274,30 @@
     #search_geographicalArea,
     #file,
     #search_material {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        margin-top: 0px;
     }
 
     .quantity {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        margin-top: 0px;
     }
 
     input[type=submit] {
         margin-top: 10px;
         width: 40%;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .foot_form {
         margin-top: 20px;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .foot_form a {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     button {
@@ -313,6 +319,12 @@
             font-size: 35px;
         }
         /* MODALE */
+
+        #map {
+            height: 400px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
 }
 
 
@@ -327,6 +339,21 @@
     min-width: 1200px;
     max-width: 1400px;
     padding: 20px 140px 20px 140px;
+}
+
+#material-bio-select,
+#material-geo-select,
+#search_classification,
+#quantity-select,
+#value-select,
+#description,
+#new-material,
+#search_geographicalArea,
+#file,
+#search_material {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    margin-top: 0px;
 }
 }
 

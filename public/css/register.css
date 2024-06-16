@@ -39,14 +39,14 @@
     input[type=email],
     input[type=password] {
         width: 100%;
-        padding: 5px;
+        padding: 5px 5px 0px 5px;
         border: none;
         outline: none;
         border-bottom: 1px solid rgb(92, 91, 91);
         border-radius: 0;
         box-sizing: border-box;
-        margin-top: 6px;
         margin-bottom: 26px;
+        margin-top: 6px;
         margin-right: 0px;
         margin-left: 0px;
         resize: vertical;
@@ -262,38 +262,56 @@
     }
 
     .scrolling-text {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
+    }
+
+    #registration_form_professional_0 + label:before,
+    #registration_form_professional_1 + label:before,
+    #user_professional_0 + label:before,
+    #user_professional_1 + label:before {
+        width: 20px;
+        height: 20px;
+    }
+
+    #registration_form_agreeTerms + label:before{
+        width: 20px;
+        height: 20px;
     }
 
     input[type=text],
     input[type=email],
     input[type=password],
     #registration_form_sectorActivity,
-    #user_sectorActivity,
-    label {
-        font-size: 1.3rem;
+    #user_sectorActivity {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+        margin-top: 0px;
     }
 
+    label {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
 
     .custom-submit {
         margin-top: 15px;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         width: 40%;
     }
 
     .foot_form {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .foot_form a {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     /* FORM */
 
     .text_rgpd {
         width: 600px;
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 }
 
