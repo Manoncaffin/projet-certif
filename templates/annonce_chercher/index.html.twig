@@ -98,39 +98,9 @@
                     {{ form_label(searchForm.geographicalArea) }}
                     {{ form_widget(searchForm.geographicalArea) }}
 
-
                     <div id="map"></div>
 
-
-
-                    <div id="announces" data-announces="{{ announces }}"></div>
-                    {% if materials is not empty %}
-                    <ul>
-                        {% for material in materials %}
-                            <li>{{ material.material }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% else %}
-                        <p>Aucune annonce trouvée.</p>
-                    {% endif %}
-
-
-
-                    {% if announces is not empty %}
-                    <ul>
-                        {% for announce in announces %}
-                            <li>
-                                Matériau: {{ announce.material }} - Zone géographique: {{ announce.geographicalArea }}
-                                <!-- Ajoutez ici plus de détails si nécessaire -->
-                            </li>
-                        {% endfor %}
-                    </ul>
-                    {% else %}
-                        <p>Aucune annonce trouvée.</p>
-                    {% endif %}
-
-
-
+                    <div id="announces" data-announces="{{ announces|json_encode }}"></div>
 
                     <div class="custom-popup"></div>
 

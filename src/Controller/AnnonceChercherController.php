@@ -53,7 +53,7 @@ class AnnonceChercherController extends AbstractController
 
                 $this->addFlash('success', 'Votre recherche a été publiée avec succès.');
 
-                return $this->redirectToRoute('annonce-chercher');
+                return $this->redirectToRoute('annonce_chercher');
             } else {
                 return $this->render('annonce_chercher/index.html.twig', [
                     'searchForm' => $searchForm->createView(),
