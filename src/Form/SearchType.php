@@ -29,20 +29,20 @@ class SearchType extends AbstractType
                 ] 
             ])    
 
-            ->add('material', EntityType::class, [
-                'class' => Material::class,
-                'label' => 'Matériau',
-                'choice_label' => 'material',
-                'placeholder' => '--',
-                'attr' => [
-                    'class' => 'material-select',
-                ],
-                'required' => true,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('m')
-                        ->orderBy('m.material', 'ASC');
-                },
-            ])
+            // ->add('material', EntityType::class, [
+            //     'class' => Material::class,
+            //     'label' => 'Matériau',
+            //     'choice_label' => 'material',
+            //     'placeholder' => '--',
+            //     'attr' => [
+            //         'class' => 'material-select',
+            //     ],
+            //     'required' => true,
+            //     'query_builder' => function (EntityRepository $er) {
+            //         return $er->createQueryBuilder('m')
+            //             ->orderBy('m.material', 'ASC');
+            //     },
+            // ])
 
             ->add('geographicalArea', TextType::class, [
                 'label' => 'Localisation',

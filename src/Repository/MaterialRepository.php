@@ -16,6 +16,16 @@ class MaterialRepository extends ServiceEntityRepository
         parent::__construct($registry, Material::class);
     }
 
+    public function materialAllWords($name) {
+        return $this->createQueryBuilder('m')
+        ->where('m.material = :name')
+        ->andWhere('m.material LIKE :name')
+        ->setParameter('name', $name)
+        ->setParameter('material', ':name%')
+        ->getQuery()
+        ->getResult();
+}
+
     //    /**
     //     * @return Material[] Returns an array of Material objects
     //     */

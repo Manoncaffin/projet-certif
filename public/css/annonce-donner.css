@@ -359,6 +359,7 @@
     #giveForm_number,
     #value-select {
         font-size: 1.1rem;
+        margin-bottom: 16px;
     }
 
     #giveForm_number,

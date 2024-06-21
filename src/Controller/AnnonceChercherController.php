@@ -26,7 +26,6 @@ class AnnonceChercherController extends AbstractController
     #[Route('/annonce-chercher', name: 'app_annonce_chercher')]
     public function index(Request $request, EntityManagerInterface $entityManager, AnnounceRepository $announceRepository, MaterialRepository $materialRepository): Response
     {
-
         $searchForm = $this->createForm(SearchType::class);
         $searchForm->handleRequest($request);
 
@@ -34,43 +33,47 @@ class AnnonceChercherController extends AbstractController
         $announces = [];
 
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
-            $material = $searchForm->get('material')->getData();
+
+            $materialAnnounce = $request->request->all()['material-bio-select'];
+            if(!$materialAnnounce) {
+                $materialAnnounce = $request->request->all()['material-geo-select'];
+            }
+
+
+            $selectedMaterial = $materialRepository->findOneBy(['material' => $materialAnnounce]);
+            dd($selectedMaterial);
             $postalCode = $searchForm->get('geographicalArea')->getData();
 
-            $announces = $announceRepository->findByMaterialAndPostalCode($material, $postalCode);
+            $announces = $announceRepository->findByMaterialAndPostalCode($selectedMaterial, $postalCode);
 
             if (empty($announces)) {
                 $announce = new Announce();
-                $announce->setMaterial($material);
+                $announce->setMaterial($selectedMaterial);
                 $announce->setGeographicalArea($postalCode);
                 $announce->setUser($this->getUser());
                 $announce->setType('chercher');
-                $announce->setClassification($material->getClassificationMaterial());
+                $announce->setClassification($selectedMaterial->getClassificationMaterial());
 
-                // $entityManager = $entityManager;
                 $entityManager->persist($announce);
                 $entityManager->flush();
 
                 $this->addFlash('success', 'Votre recherche a été publiée avec succès.');
 
-                return $this->redirectToRoute('annonce_chercher');
-            } else {
+                return $this->redirectToRoute('app_annonce_chercher');
+            } 
+        }
                 return $this->render('annonce_chercher/index.html.twig', [
                     'searchForm' => $searchForm->createView(),
                     'announces' => $announces,
                     'materials' => $materials,
                 ]);
-            }
-        }
-        
-            // Retourner la réponse si le formulaire n'est pas soumis ou invalide
-            return $this->render('annonce_chercher/index.html.twig', [
-                'searchForm' => $searchForm->createView(),
-                'materials' => $materials,
-                'announces' => $announces,
-            ]);
         }
     }
+
+
+
+
+
     //     $materials = $materialRepository->findAll();
     //     $user = $this->getUser();
 

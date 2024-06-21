@@ -57,6 +57,7 @@ class GiveType extends AbstractType
                     'class' => 'quantity-select',
                     'id' => 'giveForm_number',
                     'placeholder' => '--',
+                    // AJOUTER VALEURS AVEC SELECT
                 ],
             ])
 
@@ -81,20 +82,20 @@ class GiveType extends AbstractType
                 'required' => true,
             ])
 
-            ->add('material', EntityType::class, [
-                'class' => Material::class,
-                'label' => 'Matériau',
-                'choice_label' => 'material',
-                'placeholder' => '--',
-                'attr' => [
-                    'class' => 'material-select',
-                ],
-                'required' => true,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('m')
-                        ->orderBy('m.material', 'ASC');
-                },
-            ])
+            // ->add('material', EntityType::class, [
+            //     'class' => Material::class,
+            //     'label' => 'Matériau',
+            //     'choice_label' => 'material',
+            //     'placeholder' => '--',
+            //     'attr' => [
+            //         'class' => 'material-select',
+            //     ],
+            //     'required' => true,
+            //     'query_builder' => function (EntityRepository $er) {
+            //         return $er->createQueryBuilder('m')
+            //             ->orderBy('m.material', 'ASC');
+            //     },
+            // ])
 
             ->add('description', TextareaType::class, [
                 'label' => 'Description',

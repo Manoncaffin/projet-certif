@@ -340,21 +340,6 @@
     max-width: 1400px;
     padding: 20px 140px 20px 140px;
 }
-
-#material-bio-select,
-#material-geo-select,
-#search_classification,
-#quantity-select,
-#value-select,
-#description,
-#new-material,
-#search_geographicalArea,
-#file,
-#search_material {
-    font-size: 1.1rem;
-    margin-bottom: 16px;
-    margin-top: 0px;
-}
 }
 
 

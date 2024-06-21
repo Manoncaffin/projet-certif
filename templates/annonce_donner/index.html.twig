@@ -63,7 +63,7 @@
                     </div>
 
                     <div id="material-label">
-                    {{ form_label(giveForm.material) }}
+                    <label>Matériau</label>
                     </div>
                     <select name="material-geo-select" id="material-geo-select" style="display: none;">
                         <option value="">--</option>
@@ -92,20 +92,10 @@
 
                     <div class="quantity">
                             {{ form_label(giveForm.number) }}
-                            <select id="giveForm_number" name="giveForm[number]">
-                                <option value="">--</option>
-                                {% for i in 1..100 %}
-                                    <option value="{{ i }}">{{ i }}</option>
-                                {% endfor %}
-                            </select>
+                            {{ form_widget(giveForm.number) }}
                         
                             {{ form_label(giveForm.volume) }}
-                            <select name="value" id="value-select">
-                                <option value="">--</option>
-                                {% for volume in volumes %}
-                                    <option value={{ volume.id }}>{{ volume.name }}</option>
-                                {% endfor %}
-                            </select>
+                            {{ form_widget(giveForm.volume) }}
                     </div>
 
                     <div class="file" id="file">

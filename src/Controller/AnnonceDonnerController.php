@@ -30,7 +30,6 @@ class AnnonceDonnerController extends AbstractController
     public function index(MaterialRepository $materialRepository, VolumeRepository $volumeRepository, Request $request, SluggerInterface $slugger): Response
     {
         $materials = $materialRepository->findAll();
-        $volumes = $volumeRepository->findAll();
         $user = $this->getUser();
 
         $announce = new Announce();
@@ -40,6 +39,12 @@ class AnnonceDonnerController extends AbstractController
         if ($giveForm->isSubmitted() && $giveForm->isValid()) {
             
             $materialAnnounce = $request->request->all()['material-bio-select'];
+            if(!$materialAnnounce) {
+                $materialAnnounce = $request->request->all()['material-geo-select'];
+            }
+
+            $volume = $request->request->all()['give']['volume'];
+            $volumes = $volumeRepository->findOneBy(['id' => $volume]);
 
             $selectedMaterial = $materialRepository->findOneBy(['material' => $materialAnnounce]);
          
@@ -69,6 +74,7 @@ class AnnonceDonnerController extends AbstractController
 
             $announce->setUser($user);
             $announce->setMaterial($selectedMaterial);
+            $announce->setVolume($volumes);
             $announce->setType('donner');
             
             $this->entityManager->persist($announce);
@@ -84,7 +90,6 @@ class AnnonceDonnerController extends AbstractController
         return $this->render('annonce_donner/index.html.twig', [
             'giveForm' => $giveForm->createView(),
             'materials' => $materials,
-            'volumes' => $volumes,
         ]);
     }
 }
