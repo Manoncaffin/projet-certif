@@ -11,6 +11,7 @@ use App\Entity\Volume;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -50,14 +51,14 @@ class GiveType extends AbstractType
                 },
             ])
 
-            ->add('number', NumberType::class, [
+            ->add('number', ChoiceType::class, [
                 'label' => 'Quantité',
                 'required' => true,
+                'choices' => array_combine(range(1, 10), range(1, 10)),
+                'placeholder' => '--',
                 'attr' => [
                     'class' => 'quantity-select',
                     'id' => 'giveForm_number',
-                    'placeholder' => '--',
-                    // AJOUTER VALEURS AVEC SELECT
                 ],
             ])
 
@@ -81,21 +82,6 @@ class GiveType extends AbstractType
                 ],
                 'required' => true,
             ])
-
-            // ->add('material', EntityType::class, [
-            //     'class' => Material::class,
-            //     'label' => 'Matériau',
-            //     'choice_label' => 'material',
-            //     'placeholder' => '--',
-            //     'attr' => [
-            //         'class' => 'material-select',
-            //     ],
-            //     'required' => true,
-            //     'query_builder' => function (EntityRepository $er) {
-            //         return $er->createQueryBuilder('m')
-            //             ->orderBy('m.material', 'ASC');
-            //     },
-            // ])
 
             ->add('description', TextareaType::class, [
                 'label' => 'Description',

@@ -220,10 +220,7 @@
         flex-direction: column;
         width: 100%;
         font-size: 3rem;
-    }
-
-    .quantity-select {
-        margin: 0px 40px 0px 0px;
+        gap: 16px;
     }
 
     .checkbox {
@@ -359,7 +356,12 @@
     #giveForm_number,
     #value-select {
         font-size: 1.1rem;
+        margin-top: 0;
         margin-bottom: 16px;
+    }
+
+    textarea {
+        margin-top: 0px;
     }
 
     #giveForm_number,

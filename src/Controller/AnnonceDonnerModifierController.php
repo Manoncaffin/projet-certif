@@ -21,7 +21,7 @@ class AnnonceDonnerModifierController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route("/annonce-donner-modifier/{id}", name: "app_annonce_donner_modifier", requirements: ["id" => "\d+"])]
+    #[Route('/annonce-donner-modifier/{id}", name: "app_annonce_donner_modifier', requirements: ["id" => "\d+"])]
     public function edit(Request $request, Announce $announce): Response
     {
         // Créez le formulaire à partir de l'entité Announce

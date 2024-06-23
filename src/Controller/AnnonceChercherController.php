@@ -41,7 +41,7 @@ class AnnonceChercherController extends AbstractController
 
 
             $selectedMaterial = $materialRepository->findOneBy(['material' => $materialAnnounce]);
-            dd($selectedMaterial);
+            // dd($selectedMaterial);
             $postalCode = $searchForm->get('geographicalArea')->getData();
 
             $announces = $announceRepository->findByMaterialAndPostalCode($selectedMaterial, $postalCode);
