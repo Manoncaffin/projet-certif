@@ -48,4 +48,8 @@ announce_delete:
 app_annonce_chercher:
     path: /annonce-chercher
     controller: App\Controller\AnnonceChercherController::index
+    
+app_rechercher:
+    path: /rechercher
+    controller: App\Controller\RechercherController::search
 

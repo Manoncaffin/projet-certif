@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bennes solidaires - Rechercher{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/rechercher.css') }}>
+<link rel="stylesheet" href={{ asset('css/header.css') }}>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+{% endblock %}
+
+{% block body %}
+
+    {% include 'partials/header.html.twig' %}
+
+    <div class="container" id="container">
+            <section id="research">
+                <div class="scrolling-text-container">
+                    <p class="scrolling-text">Je recherche un matériau</p>
+                    <p class="scrolling-text">Je recherche un matériau</p>
+                    <p class="scrolling-text">Je recherche un matériau</p>
+                    <p class="scrolling-text">Je recherche un matériau</p>
+                </div>
+                <div class="bordure mb-4"></div>
+
+                {# AJOUTER CLASSIFICATION
+                AJOUTER MATÉRIAUX
+                AJOUTER LOCALISATION #}
+                {# => AJOUTER POSSIBILITÉ DE CHOISIR 'TOUTE LA FRANCE' #}
+
+                {{ form_start(form) }}
+                {{ form_row(form.keyword) }}
+                {{ form_row(form.category) }}
+                {{ form_row(form.search) }}
+                {{ form_end(form) }}
+
+    <div id="map"></div>
+
+    <div class="custom-popup"></div>
+
+    <div class="foot_form">
+        <p>Vous ne trouvez pas ce que vous cherchez ?</p>
+        <a href="{{ path('app_annonce_chercher') }}" class="search">Publier une annonce</a>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src={{ asset('js/overall-scrolling.js') }}></script>
+    <script src={{ asset('js/select-material-search.js') }}></script>
+    <script src={{ asset('js/map.js') }}></script>
+    <script src={{ asset('https://unpkg.com/leaflet/dist/leaflet.js') }}></script>
+{% endblock %}

@@ -248,7 +248,7 @@
         border: 1px solid rgb(123, 123, 123);
         border-radius: 10px;
         width: 100%;
-        height: 200px;
+        height: 180px;
         font-size: 2.7rem;
         margin-top: 10px;
         resize: none;
@@ -361,6 +361,7 @@
     }
 
     textarea {
+        height: 120px;
         margin-top: 0px;
     }
 
@@ -432,7 +433,7 @@
 @media only screen and (min-width: 1200px) {
     
     textarea {
-        height: 150px;
+        height: 110px;
     }
 
     .container {
