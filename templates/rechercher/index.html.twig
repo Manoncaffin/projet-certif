@@ -22,25 +22,99 @@
                 </div>
                 <div class="bordure mb-4"></div>
 
-                {# AJOUTER CLASSIFICATION
-                AJOUTER MATÉRIAUX
-                AJOUTER LOCALISATION #}
+                {{ form_start(researchForm) }}
+
+                {{ form_label(researchForm.classification) }}
+                {{ form_widget(researchForm.classification) }}
+
+                <button id="openModal" type="button">Pour en savoir plus, vous pouvez cliquer ici.</button>
+                    
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <div class="first-content">
+                                <p class="mb-5">Les matériaux bio-sourcés sont des matériaux qui sont dérivés de matières
+                                    premières
+                                    renouvelables
+                                    d'origine biologique, généralement issues de plantes, d'arbres, ou d'autres organismes
+                                    vivants. Les
+                                    exemples de matériaux bio-sourcés comprennent le bois, la paille, le liège, la fibre de
+                                    lin, le
+                                    bambou, etc. L'utilisation de matériaux bio-sourcés est souvent associée à des avantages
+                                    environnementaux, car ils sont généralement considérés comme plus durables et moins
+                                    nocifs pour
+                                    l'environnement que les matériaux synthétiques dérivés du pétrole.</p>
+                            </div>
+                            
+                            <div class="second-content">
+                                <p>Les matériaux géo-sourcés, eux, sont des matériaux qui sont extraits directement de la
+                                    Terre,
+                                    généralement à partir de ressources minérales ou de roches. Les exemples de matériaux
+                                    géo-sourcés
+                                    comprennent le sable, le gravier, la pierre, l'argile, les métaux, les minéraux, etc.
+                                    Contrairement
+                                    aux matériaux bio-sourcés, les matériaux géo-sourcés ne sont pas dérivés de matières
+                                    premières
+                                    renouvelables, mais sont plutôt issus de ressources naturelles non vivantes présentes
+                                    dans le sol ou
+                                    le sous-sol de la Terre.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="material-label">
+                    <label>Matériau</label>
+                    </div>
+                    <select name="material-geo-select" id="material-geo-select" style="display: none;">
+                        <option value="">--</option>
+                        {% for material in materials %}
+                            {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
+                                <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
+                    </select>
+
+                    <select name="material-bio-select" id="material-bio-select">
+                        <option value="">--</option>
+                        {% for material in materials %}
+                            {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
+                                <option value={{ material.material }}>{{ material.material }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
+                    </select>
+
+                {{ form_label(researchForm.geographicalArea) }}
+                {{ form_widget(researchForm.geographicalArea) }}
                 {# => AJOUTER POSSIBILITÉ DE CHOISIR 'TOUTE LA FRANCE' #}
 
-                {{ form_start(form) }}
-                {{ form_row(form.keyword) }}
-                {{ form_row(form.category) }}
-                {{ form_row(form.search) }}
-                {{ form_end(form) }}
+            
+                {{ form_row(researchForm.search) }}
+                <div class="foot_form">
+                    <p>Vous ne trouvez pas ce que vous cherchez ?</p>
+                    <a href="{{ path('app_annonce_chercher') }}" class="search">Publier une annonce</a>
+                </div>
+                {{ form_end(researchForm) }}
+
+                {% for announce in announces %}
+                <div class="annonce">
+                    <h2>{{ announce.title }}</h2>
+                    <p>{{ announce.description }}</p>
+                    <p>{{ announce.postalCode }}, {{ annonce.city }}</p>
+                    <p>{{ announce.material }}</p>
+                    <p>{{ announce.createdAt|date('d/m/Y') }}</p>
+                </div>
+
+                {% else %}
+                    <p>Aucune annonce ne correspond à votre recherche.</p>
+                {% endfor %}
 
     <div id="map"></div>
 
     <div class="custom-popup"></div>
 
-    <div class="foot_form">
-        <p>Vous ne trouvez pas ce que vous cherchez ?</p>
-        <a href="{{ path('app_annonce_chercher') }}" class="search">Publier une annonce</a>
-    </div>
+    
 
 {% endblock %}
 
