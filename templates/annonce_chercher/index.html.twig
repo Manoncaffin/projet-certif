@@ -92,14 +92,9 @@
                     {{ form_label(searchForm.geographicalArea) }}
                     {{ form_widget(searchForm.geographicalArea) }}
 
-                    {# <div id="map"></div> #}
-
                     <div id="announces" data-announces="{{ announces|json_encode }}"></div>
 
-                    {# <div class="custom-popup"></div> #}
-
                         <div class="foot_form">
-                            {# <p>Vous ne trouvez pas ce que vous cherchez ?</p> #}
                             <input type="submit" value="Valider mon annonce">
                         </div>
 
@@ -112,7 +107,7 @@
 {% block javascripts %}
     <script src={{ asset('js/overall-scrolling.js') }}></script>
     <script src={{ asset('js/select-material-search.js') }}></script>
-    <script src={{ asset('js/map.js') }}></script>
+    <script src={{ asset('js/search-search-city.js') }}></script>
     <script src={{ asset('js/modale.js') }}></script>
     <script src={{ asset('https://unpkg.com/leaflet/dist/leaflet.js') }}></script>
 {% endblock %}

@@ -58,10 +58,10 @@
         font-size: 3rem;
     }
 
-    #material-bio-select, 
-    #material-geo-select, 
-    #research_form_classification, 
-    #research_form_geographicalArea, 
+    #material-bio-select,
+    #material-geo-select,
+    #research_form_classification,
+    #research_form_geographicalArea,
     #research_material {
         width: 100%;
         border: none;
@@ -137,6 +137,40 @@
         transition: transform 0.3s ease;
     }
 
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        overflow: auto;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 15px 25px 35px 25px;
+        border: 2px solid black;
+        box-shadow: 0px 0px 10px 1px white;
+        width: 80%;
+    }
+
+    .custom-popup {
+        font-family: "Abordage";
+
+        h6 {
+            font-family: "Lemon Milk";
+        }
+
+        .container a {
+            display: flex;
+            justify-content: start;
+        }
+    }
+
     .scrolling-text-container {
         min-width: 100%;
         overflow: hidden;
@@ -195,6 +229,29 @@
         margin: 0;
     }
 
+    #research {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #map {
+        height: 410px;
+        width: 100%;
+        margin-bottom: 20px;
+        margin-top: 0;
+    }
+
+    .form {
+        width: 43%;
+    }
+
+    .action_research {
+        width: 53%;
+    }
+
     label {
         margin-right: 0px;
         margin-left: 0px;
@@ -202,34 +259,30 @@
         margin-bottom: 5px;
     }
 
-    #material-bio-select, 
-    #material-geo-select, 
-    #research_form_classification, 
-    #research_form_geographicalArea, 
+    #material-bio-select,
+    #material-geo-select,
+    #research_form_classification,
+    #research_form_geographicalArea,
     #research_material {
         font-size: 1.1rem;
         margin-bottom: 16px;
         margin-top: 0px;
     }
 
-#map {
-    height: 400px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-#research_form_search {
-    width: 40%;
-    font-size: 1.1rem;
-}
-
-.foot_form {
-    margin-top: 30px;
-
-    p {
+    #research_form_search {
         font-size: 1.1rem;
+        margin-top: 15px;
+        margin-bottom: 15px;
     }
-}
+
+    .foot_form {
+
+        p,
+        a {
+            font-size: 1rem;
+        }
+
+    }
 
     /* MODALE */
     #openModal {
@@ -280,16 +333,17 @@
     }
 
     .foot_form {
-        margin-top: 20px;
+        margin-top: 0;
     }
 
     /* FORM */
+
+    #map {
+        height: 420px;
+    }
 
     .container {
         min-width: 1500px;
         max-width: 2000px;
     }
 }
-
-
-

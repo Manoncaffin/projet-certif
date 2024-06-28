@@ -13,7 +13,7 @@
     {% include 'partials/header.html.twig' %}
 
     <div class="container" id="container">
-            <section id="research">
+            
                 <div class="scrolling-text-container">
                     <p class="scrolling-text">Je recherche un matériau</p>
                     <p class="scrolling-text">Je recherche un matériau</p>
@@ -21,13 +21,15 @@
                     <p class="scrolling-text">Je recherche un matériau</p>
                 </div>
                 <div class="bordure mb-4"></div>
+                
+            <section id="research">
+                <div class="form">
+                    {{ form_start(researchForm) }}
 
-                {{ form_start(researchForm) }}
+                    {{ form_label(researchForm.classification) }}
+                    {{ form_widget(researchForm.classification) }}
 
-                {{ form_label(researchForm.classification) }}
-                {{ form_widget(researchForm.classification) }}
-
-                <button id="openModal" type="button">Pour en savoir plus, vous pouvez cliquer ici.</button>
+                    <button id="openModal" type="button">Pour en savoir plus, vous pouvez cliquer ici.</button>
                     
                     <div id="myModal" class="modal">
                         <div class="modal-content">
@@ -85,34 +87,38 @@
                         <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
                     </select>
 
-                {{ form_label(researchForm.geographicalArea) }}
-                {{ form_widget(researchForm.geographicalArea) }}
-                {# => AJOUTER POSSIBILITÉ DE CHOISIR 'TOUTE LA FRANCE' #}
+                    {{ form_label(researchForm.geographicalArea) }}
+                    {{ form_widget(researchForm.geographicalArea) }}
+                    {# => AJOUTER POSSIBILITÉ DE CHOISIR 'TOUTE LA FRANCE' #}
 
-            
-                {{ form_row(researchForm.search) }}
-                <div class="foot_form">
-                    <p>Vous ne trouvez pas ce que vous cherchez ?</p>
-                    <a href="{{ path('app_annonce_chercher') }}" class="search">Publier une annonce</a>
-                </div>
-                {{ form_end(researchForm) }}
-
-                {% for announce in announces %}
-                <div class="annonce">
-                    <h2>{{ announce.title }}</h2>
-                    <p>{{ announce.description }}</p>
-                    <p>{{ announce.postalCode }}, {{ annonce.city }}</p>
-                    <p>{{ announce.material }}</p>
-                    <p>{{ announce.createdAt|date('d/m/Y') }}</p>
+                
+                    {{ form_row(researchForm.search) }}
+                    <div class="foot_form">
+                        <p>Vous ne trouvez pas ce que vous cherchez ?</p>
+                        <a href="{{ path('app_annonce_chercher') }}" class="search">Publier une annonce</a>
+                    </div>
+                    {{ form_end(researchForm) }}
                 </div>
 
-                {% else %}
-                    <p>Aucune annonce ne correspond à votre recherche.</p>
-                {% endfor %}
 
-    <div id="map"></div>
+                <div class="action_research">
+                    <div id="map"></div>
 
-    <div class="custom-popup"></div>
+                    <div class="custom-popup">
+                    <div id="announces" data-announces="{{ announces|json_encode|raw }}"></div>
+
+                    {# {% for announce in announces %}
+                        <h2>{{ announce.material }}</h2>
+                        <p>{{ announce.description }}</p>
+                        <p>{{ announce.geographicalArea }}</p> #}
+                    </div>
+
+                    {# {% else %}
+                        <p>Aucune annonce ne correspond à votre recherche.</p>
+                    {% endfor %} #}
+                </div>
+        </section>
+    
 
     
 
@@ -121,6 +127,8 @@
 {% block javascripts %}
     <script src={{ asset('js/overall-scrolling.js') }}></script>
     <script src={{ asset('js/select-material-search.js') }}></script>
-    <script src={{ asset('js/map.js') }}></script>
+    <script src={{ asset('js/research-search-city-map.js') }}></script>
+    <script src={{ asset('js/select-material-research.js') }}></script>
+    <script src={{ asset('js/modale.js') }}></script>
     <script src={{ asset('https://unpkg.com/leaflet/dist/leaflet.js') }}></script>
 {% endblock %}
