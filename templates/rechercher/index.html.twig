@@ -71,7 +71,8 @@
                         <option value="">--</option>
                         {% for material in materials %}
                             {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
-                                <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option>
+                                <option value="{{ material.material }}" {% if material.material == selectedMaterial %}selected{% endif %}>{{ material.material }}</option>
+                                {# <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option> #}
                             {% endif %}
                         {% endfor %}
                         <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
@@ -81,7 +82,8 @@
                         <option value="">--</option>
                         {% for material in materials %}
                             {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
-                                <option value={{ material.material }}>{{ material.material }}</option>
+                                <option value="{{ material.material }}" {% if material.material == selectedMaterial %}selected{% endif %}>{{ material.material }}</option>
+                                {# <option value={{ material.material }}>{{ material.material }}</option> #}
                             {% endif %}
                         {% endfor %}
                         <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
@@ -106,16 +108,8 @@
 
                     <div class="custom-popup">
                     <div id="announces" data-announces="{{ announces|json_encode|raw }}"></div>
-
-                    {# {% for announce in announces %}
-                        <h2>{{ announce.material }}</h2>
-                        <p>{{ announce.description }}</p>
-                        <p>{{ announce.geographicalArea }}</p> #}
                     </div>
 
-                    {# {% else %}
-                        <p>Aucune annonce ne correspond à votre recherche.</p>
-                    {% endfor %} #}
                 </div>
         </section>
     
