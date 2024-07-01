@@ -68,7 +68,7 @@
         border-radius: 10px;
         cursor: pointer;
         margin-bottom: 20px;
-        margin-top: 25px;
+        margin-top: 45px;
         font-size: 2.5rem;
         width: 100%;
     }
@@ -85,6 +85,25 @@
      input:-webkit-autofill:active {
          -webkit-box-shadow: 0 0 0 30px rgb(239, 238, 218) inset !important;
      }
+
+    .click_confidentials {
+        border: none;
+        background-color: rgb(27, 237, 177, 0.2);
+        font-size: 1.2rem;
+        display: flex;
+        align-items: start;
+        margin-top: 0;
+        margin-bottom: 16px;
+        border-radius: 10px;
+        width: fit-content;
+        padding: 6px;
+        transition: transform 0.3s ease;
+        margin-left: 40px;
+    }
+
+    .click_confidentials:hover {
+        transform: rotate(-2deg);
+    }
 
     .foot_form {
         justify-content: center;
@@ -140,6 +159,14 @@
     #user_professional_0,
     #user_professional_1 {
         display: none;
+    }
+
+    #registration_form_avatar {
+        font-size: 2rem;
+    }
+
+    .avatar {
+        margin-bottom: 26px;
     }
 
     #registration_form_agreeTerms + label:before {
@@ -238,13 +265,20 @@
         border-radius: 5px;
         padding: 20px 110px 20px 110px;
         width: 100%;
-        min-width: 1000px;
-        max-width: 1500px;
         margin: 0;
     }
 
     .scrolling-text {
         font-size: 1.5rem;
+    }
+
+    #registration_form_avatar {
+        font-size: 1rem;
+        margin-left: 20px;
+    }
+
+    .avatar {
+        margin-bottom: 10px;
     }
 
     #registration_form_professional_0 + label:before,
@@ -277,8 +311,14 @@
 
     .custom-submit {
         margin-top: 15px;
+        margin-bottom: 10px;
         font-size: 1.1rem;
         width: 40%;
+    }
+
+    .click_confidentials {
+        margin-left: 30px;
+        font-size: 0.6rem;
     }
 
     .foot_form a {

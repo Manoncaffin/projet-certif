@@ -13,15 +13,14 @@
     {% include 'partials/header.html.twig' %}
 
         <div class="container" id="container">
-            <section id="inscription">
-                <div class="scrolling-text-container">
+        <div class="scrolling-text-container">
                     <p class="scrolling-text">Page d'inscription</p>
                     <p class="scrolling-text">Page d'inscription</p>
                     <p class="scrolling-text">Page d'inscription</p>
                     <p class="scrolling-text">Page d'inscription</p>
                 </div>
                 <div class="bordure mb-4"></div>
-
+            <section id="inscription">
 
                 {{ form_start(registrationForm, {
                     'attr' : {
@@ -33,12 +32,6 @@
                 {% for flash_error in app.flashes('verify_email_error') %}
                     <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
                 {% endfor %}
-
-
-                        {# <div class="checkbox mb-3" id="particulier">                         
-                            {{ form_widget(registrationForm.professional)}}
-                        </div>  #}
-
 
                         <div class="checkbox mb-3" id="particulier">
                         {% block professional_widget %}
@@ -81,11 +74,22 @@
                     {{ form_label(registrationForm.identifier) }}
                     {{ form_widget(registrationForm.identifier)}}
 
+                    <div class="avatar">
+                    {{ form_label(registrationForm.avatar) }}
+                    {{ form_widget(registrationForm.avatar) }}
+
+                    {{ form_errors(registrationForm.avatar) }}
+                    </div>
+
                     {{ form_widget(registrationForm.plainPassword)}}
                     
                     <div class="custum-checkbox">
                         {{ form_widget(registrationForm.agreeTerms) }}
                         {{ form_label(registrationForm.agreeTerms) }}
+                    </div>
+
+                    <div class="confidentials">
+                    <a href={{ path('app_page_de_confidentialite') }} class="click_confidentials">Voir notre politique de confidentialité</a>
                     </div>
 
                     <div class="foot_form">
@@ -95,6 +99,7 @@
                     </div>
 
                         {{ form_end(registrationForm) }}
+
             </section>
         </div>
 

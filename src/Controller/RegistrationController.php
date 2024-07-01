@@ -19,6 +19,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use App\Controller\MailerController;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 class RegistrationController extends AbstractController
 {
@@ -27,7 +28,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, MailerInterface $mailer, Security $security, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, MailerInterface $mailer, Security $security, EntityManagerInterface $entityManager, #[Autowire('%photo_directory%')] string $photoDir): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -37,7 +38,14 @@ class RegistrationController extends AbstractController
             $professional = $form->get('professional')->getData();
             $user->setProfessional($professional);
 
-            // $status = $request->request->all()['registration_form']['professional'];
+            $fileName = null;
+            if ($avatar = $form['avatar']->getData()) {
+                $fileName = uniqid().'.'.$avatar->guessExtension();
+                $avatar->move($photoDir, $fileName);
+            }
+            $user->setAvatar($fileName);
+
+            $status = $request->request->all()['registration_form']['professional'];
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -46,7 +54,7 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            // $user->setProfessional($status);
+            $user->setProfessional($status);
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -57,7 +65,7 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_login');
             // Envoi de l'e-mail de confirmation d'inscription
 
-            // return $security->login($user, AppAuthenticator::class, 'main');
+            return $security->login($user, AppAuthenticator::class, 'main');
         }
 
         return $this->render('registration/register.html.twig', [

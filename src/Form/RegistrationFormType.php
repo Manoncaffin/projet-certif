@@ -4,12 +4,14 @@ namespace App\Form;
 
 use App\Entity\SectorActivity;
 use App\Entity\User;
+use App\Validator\Avatar;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -17,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -89,59 +92,76 @@ class RegistrationFormType extends AbstractType
                     ]
                     ])
 
-            ->add('agreeTerms', RadioType::class, [
-                'label' => 'J\'accepte les termes et conditions',
-                'mapped' => false,
-                'attr' => [
-                    'class'=> 'custom-checkbox',
-                ],
-                'required' => true,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
-            ])
-
-            ->add('submit', SubmitType::class, [
-                'label' => 'Valider les informations',
-                'attr' => [
-                    'class' => 'custom-submit',
-                ],
-            ])
-
-            ->add('plainPassword', RepeatedType::class, [
-                'type' => PasswordType::class,
-                'first_options' => [
-                    'label' => 'Mot de passe',
-                    'attr' => [
-                        'autocomplete' => 'new-password',
-                        'required' => 'true',
-                        'placeholder' => 'Votre mot de passe',
-                    ],
+                ->add('avatar', FileType::class, [
+                    'required' => false,
+                    'mapped' => false,
+                    'label' => 'Photo de profil',
                     'constraints' => [
-                        new NotBlank([
-                            'message' => 'Veuillez entrer un mot de passe',
-                        ]),
-                        new Length([
-                            'min' => 6,
-                            'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
-                            'max' => 4096,
-                        ]),
-                    ],
-                ],
-                'second_options' => [
-                    'label' => 'Confirmation',
+                        new File([
+                            'maxSize' => '1000K',
+                            'mimeTypes' => [
+                                'image/jpeg',
+                                'image/png',
+                                'image/webP',
+                            ],
+                            'mimeTypesMessage' => 'Veuillez télécharger une image valide (JPEG, PNG, WEBP).',
+                        ])
+                    ]
+                ])
+
+                ->add('agreeTerms', RadioType::class, [
+                    'label' => 'J\'accepte les termes et conditions',
+                    'mapped' => false,
                     'attr' => [
-                        'autocomplete' => 'new-password',
-                        'required' => 'true',
-                        'placeholder' => 'Confirmez votre mot de passe',
+                        'class'=> 'custom-checkbox',
                     ],
-                ],
-                'invalid_message' => 'Les mots de passe ne correspondent pas',
-                'mapped' => false,
-            ]);  
-    }
+                    'required' => true,
+                    'constraints' => [
+                        new IsTrue([
+                            'message' => 'Vous devez accepter les conditions.',
+                        ]),
+                    ],
+                ])
+
+                ->add('submit', SubmitType::class, [
+                    'label' => 'Valider les informations',
+                    'attr' => [
+                        'class' => 'custom-submit',
+                    ],
+                ])
+
+                ->add('plainPassword', RepeatedType::class, [
+                    'type' => PasswordType::class,
+                    'first_options' => [
+                        'label' => 'Mot de passe',
+                        'attr' => [
+                            'autocomplete' => 'new-password',
+                            'required' => 'true',
+                            'placeholder' => 'Votre mot de passe',
+                        ],
+                        'constraints' => [
+                            new NotBlank([
+                                'message' => 'Veuillez entrer un mot de passe',
+                            ]),
+                            new Length([
+                                'min' => 6,
+                                'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
+                                'max' => 12,
+                            ]),
+                        ],
+                    ],
+                    'second_options' => [
+                        'label' => 'Confirmation',
+                        'attr' => [
+                            'autocomplete' => 'new-password',
+                            'required' => 'true',
+                            'placeholder' => 'Confirmez votre mot de passe',
+                        ],
+                    ],
+                    'invalid_message' => 'Les mots de passe ne correspondent pas',
+                    'mapped' => false,
+                ]);  
+        }
 
     public function configureOptions(OptionsResolver $resolver): void
     {

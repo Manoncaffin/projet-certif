@@ -127,13 +127,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let searchTimeout;
     const map = L.map('map').setView([48.8566, 2.3522], 13);
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+        attribution: '© OpenStreetMap contributors © CARTO',
         subdomains: 'abcd',
         maxZoom: 19
     }).addTo(map);
 
     // Déclarer une variable pour stocker la référence au marqueur précédent
-    let previousMarker = null;
+    // let previousMarker = null;
 
     document.getElementById("research_form_geographicalArea").addEventListener("input", function () {
         const postalCode = this.value.trim();
@@ -174,9 +174,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const materialSelect = document.getElementById("material_select");
         const material = materialSelect.value;
         const announces = JSON.parse(document.getElementById("announces").dataset.announces);
-
+        // console.log("Fonction searchAddress appelée"); 
         const url = 'https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(address);
-
+        // console.log(address);
         fetch(url)
             .then(response => response.json())
             .then(data => {

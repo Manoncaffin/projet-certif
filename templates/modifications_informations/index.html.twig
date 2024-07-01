@@ -34,11 +34,6 @@
                     <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
                 {% endfor %}
 
-
-                        {# <div class="checkbox mb-3" id="particulier">                         
-                            {{ form_widget(registrationForm.professional)}}
-                        </div> #}
-
                         <div class="checkbox mb-3" id="particulier">
                         {% block professional_widget %}
                             {% for child in form.professional %}
@@ -49,7 +44,6 @@
                             {% endfor %}
                         {% endblock professional_widget %}
                         </div>
-
 
                         <div class="text_rgpd mb-4" id="text_rgpd" style="display: none;">
                             <p>En cochant cette case, vous consentez à ce que nous utilisions les informations
@@ -72,21 +66,28 @@
                     {{ form_widget(form.firstname)}}                    
 
                     {{ form_label(form.lastname) }}
-                    {{ form_widget(form.lastname)}}
+                    {{ form_widget(form.lastname) }}
 
                     {{ form_label(form.email) }}
-                    {{ form_widget(form.email)}}
+                    {{ form_widget(form.email) }}
                 
                     {{ form_label(form.identifier) }}
-                    {{ form_widget(form.identifier)}}
+                    {{ form_widget(form.identifier) }}
 
-                    {{ form_widget(form.plainPassword)}}
+                    <div class="avatar">
+                    {{ form_label(form.avatar) }}
+                    {{ form_widget(form.avatar) }}
+
+                    {{ form_errors(form.avatar) }}
+                    </div>
+
+                    {{ form_widget(form.plainPassword) }}
 
                     <div class="foot_form">
                         {{ form_row(form.submit) }}
                     </div>
 
-                        {{ form_end(form) }}
+                    {{ form_end(form) }}
             </section>
         </div>
 
