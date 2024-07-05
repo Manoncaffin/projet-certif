@@ -94,7 +94,7 @@ class GiveType extends AbstractType
             ->add('photo', FileType::class,  [
                 'label' => 'Joindre une photo',
                 'mapped' => false,
-                'required' => true,
+                'required' => false,
                 // 'constraints' => [
                 //         new File([
                 //             'maxSize' => '1030K',

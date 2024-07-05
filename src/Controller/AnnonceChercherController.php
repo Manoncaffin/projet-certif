@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Announce;
-use App\Entity\Material;
 use App\Form\SearchType;
 use App\Repository\AnnounceRepository;
 use App\Repository\MaterialRepository;
@@ -39,9 +38,8 @@ class AnnonceChercherController extends AbstractController
                 $materialAnnounce = $request->request->all()['material-geo-select'];
             }
 
-
             $selectedMaterial = $materialRepository->findOneBy(['material' => $materialAnnounce]);
-            // dd($selectedMaterial);
+
             $postalCode = $searchForm->get('geographicalArea')->getData();
 
             $announces = $announceRepository->findByMaterialAndPostalCode($selectedMaterial, $postalCode);

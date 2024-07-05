@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Announce;
 use App\Form\SearchType;
+use App\Repository\MaterialRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,30 +15,19 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 class AnnonceChercherModifierController extends AbstractController
 {
     private $entityManager;
-    private $authorizationChecker;
 
     public function __construct(EntityManagerInterface $entityManager, AuthorizationCheckerInterface $authorizationChecker)
     {
         $this->entityManager = $entityManager;
-        $this->authorizationChecker = $authorizationChecker;
     }
 
     #[Route('/annonce-chercher-modifier/{id}', name: 'app_annonce_chercher_modifier', requirements: ["id" => "\d+"])]
-    public function edit(Request $request, Announce $announce): Response
+    public function edit(Request $request, Announce $announce, MaterialRepository $materialRepository): Response
     {
         // Vérifier que l'utilisateur connecté est bien l'auteur de l'annonce
         if ($this->getUser() !== $announce->getUser()) {
             throw $this->createAccessDeniedException();
         }
-        // Vérifier que l'utilisateur connecté a les autorisations nécessaires pour modifier l'annonce
-        // if (!$this->authorizationChecker->isGranted('EDIT', $announce)) {
-        //     throw $this->createAccessDeniedException();
-        // }
-
-        // Vérifier que l'annonce a bien été validée
-        // if ($announce->getStatus() !== 'validée') {
-        //     throw $this->createAccessDeniedException();
-        // }
 
         // Vérifier que l'annonce est bien une annonce de recherche
         if ($announce->getType() !== 'chercher') {
@@ -45,22 +35,31 @@ class AnnonceChercherModifierController extends AbstractController
         }
 
         // Créez le formulaire à partir de l'entité Announce
-        $form = $this->createForm(SearchType::class, $announce);
-        // Traitez la soumission du formulaire
-        $form->handleRequest($request);
+        $searchForm = $this->createForm(SearchType::class, $announce);
+        $materials = $materialRepository->findAll();
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        $searchForm->handleRequest($request);
+
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             // Enregistrez les modifications en base de données
+            $materialModif = $request->request->all()['material-bio-select'];
+            if (!$materialModif) {
+                $materialModif = $request->request->all()['material-geo-select'];
+            }
+
+            $selectedMaterial = $materialRepository->findOneBy(['material' => $materialModif]);
+            $announce->setMaterial($selectedMaterial);
+
             $this->entityManager->flush();
 
-            // Redirigez vers la page de détail de l'annonce
             return $this->redirectToRoute('app_mes_annonces', ['id' => $announce->getId()]);
         }
 
         // Affichez le formulaire de modification
         return $this->render('annonce_chercher_modifier/index.html.twig', [
-            'searchForm' => $form->createView(),
+            'searchForm' => $searchForm->createView(),
             'announce' => $announce,
+            'materials' => $materials,
         ]);
     }
 }
