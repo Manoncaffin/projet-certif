@@ -2,11 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\File;
 use App\Entity\SectorActivity;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -18,7 +18,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\HttpFoundation\File\File;
 
 class UserType extends AbstractType
 {
@@ -84,6 +83,16 @@ class UserType extends AbstractType
                 'required' => false,
                 'mapped' => false,
                 'label' => 'Photo de profil',
+                'constraints' => [
+                        new File([
+                            'maxSize' => '1030K',
+                            'mimeTypes' => [
+                                'image/jpeg',
+                                'image/png',
+                            ],
+                            'mimeTypesMessage' => 'Veuillez télécharger une image valide (JPEG, PNG).',
+                        ])
+                        ],
             ])
 
             ->add('professional', ChoiceType::class, [

@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Announce;
+use App\Entity\Material;
 use App\Form\GiveType;
 use App\Repository\MaterialRepository;
+use App\Repository\VolumeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,14 +24,24 @@ class AnnonceDonnerModifierController extends AbstractController
     }
 
     #[Route('/annonce-donner-modifier/{id}", name: "app_annonce_donner_modifier', requirements: ["id" => "\d+"])]
-    public function edit(Request $request, Announce $announce): Response
+    public function edit(Request $request, Announce $announce, MaterialRepository $materialRepository, VolumeRepository $volumeRepository): Response
     {
         // Créez le formulaire à partir de l'entité Announce
-        $form = $this->createForm(GiveType::class, $announce);
+        $giveForm = $this->createForm(GiveType::class, $announce);
+        $materials = $materialRepository->findAll();
 
         // Traitez la soumission du formulaire
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        $giveForm->handleRequest($request);
+        if ($giveForm->isSubmitted() && $giveForm->isValid()) {
+
+            $materialModif = $request->request->all()['material-bio-select'];
+            if(!$materialModif) {
+                $materialModif = $request->request->all()['material-geo-select'];
+            }
+
+            $selectedMaterial = $materialRepository->findOneBy(['material' => $materialModif]);
+            $announce -> setMaterial($selectedMaterial);
+            
             // Enregistrez les modifications en base de données
             $this->entityManager->flush();
 
@@ -41,8 +53,9 @@ class AnnonceDonnerModifierController extends AbstractController
 
         // Affichez le formulaire de modification
         return $this->render('annonce_donner_modifier/index.html.twig', [
-            'giveForm' => $form->createView(),
+            'giveForm' => $giveForm->createView(),
             'announce' => $announce,
+            'materials' => $materials
         ]);
     }
 }

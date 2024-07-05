@@ -7,6 +7,7 @@ use App\Entity\File;
 use App\Entity\Material;
 use App\Entity\Volume;
 use App\Form\GiveType;
+use App\Repository\FileRepository;
 use App\Repository\MaterialRepository;
 use App\Repository\VolumeRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -47,9 +48,9 @@ class AnnonceDonnerController extends AbstractController
             $volumes = $volumeRepository->findOneBy(['id' => $volume]);
 
             $selectedMaterial = $materialRepository->findOneBy(['material' => $materialAnnounce]);
-         
+        
             $photoFile = $giveForm->get('photo')->getData();
-          
+        
 
             if ($photoFile) {
                 $originalFilename = pathinfo($photoFile->getClientOriginalName(), PATHINFO_FILENAME);

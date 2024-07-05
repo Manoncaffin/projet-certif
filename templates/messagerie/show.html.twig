@@ -22,17 +22,16 @@
                     </div>
 
                     <div class="text_announce">
-                        <p><span>PAILLE</span></p>
+                        <p><span>{{ announce.material }}</span></p>
                         <p>Annonce en ligne</p>
                         <p>Barnabé - 4 mai 2024</p>
-                        <a href={{ path('app_annonce_detail', {id:1 }) }} class="look_announce">Voir l'annonce</a>
+                        <a href={{ path('app_annonce_detail', {id: announce.id }) }} class="look_announce">Voir l'annonce</a>
                     </div>
 
                     <div class="icons_announce">
-                        {# FAIRE BOUCLE ANNONCES AVEC LES MESSAGES ENVOYÉS #}
                         <!-- FONCTION DELETE -->
                         <a href=""><i class="fa-solid fa-trash"></i></a>
-                        <a href={{ path('app_messagerie_show', {id : 1}) }}><i class="fa-regular fa-message"></i></a>
+                        <a href={{ path('app_messagerie') }}><i class="fa-regular fa-message"></i></a>
                     </div>
                 </div>
                 <div class="scrollbar" id="style-1">
@@ -42,7 +41,7 @@
 
             
 
-            {# <div class="container_two">
+            <div class="container_two">
 
                 <!-- <div class="nav-two">
                     <h1><span>BARNABÉ</span></h1>
@@ -73,7 +72,7 @@
                     <i class="fa-regular fa-paper-plane"></i>
                 </div>
             </div>
-        </section> #}
+        </section>
 
 {% endblock %}
 

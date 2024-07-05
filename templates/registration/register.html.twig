@@ -86,6 +86,8 @@
                     <div class="custum-checkbox">
                         {{ form_widget(registrationForm.agreeTerms) }}
                         {{ form_label(registrationForm.agreeTerms) }}
+                        
+                        {{ form_errors(registrationForm.agreeTerms) }}
                     </div>
 
                     <div class="confidentials">
@@ -98,7 +100,7 @@
                         <a href={{ path('app_login') }}>Cliquez ici !</a>
                     </div>
 
-                        {{ form_end(registrationForm) }}
+                    {{ form_end(registrationForm) }}
 
             </section>
         </div>

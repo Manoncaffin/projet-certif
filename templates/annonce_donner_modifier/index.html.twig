@@ -59,7 +59,26 @@
                             </div>
                         </div>
                     </div>
-                {{ form_row(giveForm.material, {'value': announce.material ? announce.material.material : null}) }}
+                    
+                    <select name="material-geo-select" id="material-geo-select" style="display: none;">
+                        <option value={{ announce.material }}>{{ announce.material }}</option>
+                        {% for material in materials %}
+                            {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
+                                <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
+                    </select>
+
+                    <select name="material-bio-select" id="material-bio-select">
+                        <option value={{ announce.material }}>{{ announce.material }}</option>
+                        {% for material in materials %}
+                            {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
+                                <option value={{ material.material }}>{{ material.material }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
+                    </select>
                 
                 <div class="add" style="display:none;">
                     <label for="new-material" class="new-material">Ajouter</label>
@@ -67,7 +86,8 @@
                 </div>
                     
                 {{ form_row(giveForm.number) }}
-                {{ form_row(giveForm.volume) }}
+                {{ form_label(giveForm.volume) }}
+                {{ form_widget(giveForm.volume, {'attr': {'value': announce.volume}}) }}
                 {{ form_row(giveForm.geographicalArea) }}
                 {{ form_row(giveForm.photo) }}
                 {{ form_row(giveForm.description) }}

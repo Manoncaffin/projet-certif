@@ -21,9 +21,6 @@
                     {% set unreadMessagesCount = user.privateMessages|length %}
                     <p>{{ unreadMessagesCount }} {{ ('MESSAGE(S) NON LU(S)')|trans({}, 'messages')|upper }}</p>
                 </div>
-                {# <div class="form_profil">
-                    <p>{{ ('MEMBRE DEPUIS ' ~ user.memberDate|date('F Y'))|trans({}, 'messages')|upper }}</p>
-                </div>  #}
                 <div class="form_profil">
                     <p>{{ ('MEMBRE DEPUIS ' ~ user.memberDate|date('m/Y'))|upper }}</p>
                 </div>
@@ -31,17 +28,9 @@
 
             <div class="form_profil_large_one">
                 <div class="form_circle">
-                    <h1><a href="#">S</a></h1>
+                    <img src=/>
                 </div>
-                {# <form method="POST" action="{{ path('app_profil_upload_avatar') }}" enctype="multipart/form-data">
-                    <input type="hidden" name="_token" value="{{ csrf_token('profil_upload_avatar') }}">
-                    <input type="file" name="avatar" accept="image/*">
-                    <button type="submit">Ajouter une photo de profil</button>
-                </form> #}
-                <p><a href="#"><span>Ajouter une photo de profil.</span></a></p>
-            </div>
 
-            <div class="form_profil_large_two">
                 <p><span>{{ userAnnounces|length == 0 ? 'Vous n’avez pas d’annonce en ligne' : 'Vous avez ' ~ userAnnounces|length ~ ' annonce(s) en ligne' }}</span></p>
                     {% if userAnnounces|length == 0 %}</span></p>
                 <p class="pt-4">Vous avez un surplus de matière qui ne peut pas être destiné à son premier usage ?

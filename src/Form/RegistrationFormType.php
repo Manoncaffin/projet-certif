@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\SectorActivity;
 use App\Entity\User;
-use App\Validator\Avatar;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -13,16 +12,15 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
-use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class RegistrationFormType extends AbstractType
 {
@@ -98,7 +96,7 @@ class RegistrationFormType extends AbstractType
                     'label' => 'Photo de profil',
                     'constraints' => [
                         new File([
-                            'maxSize' => '1000K',
+                            'maxSize' => '2000K',
                             'mimeTypes' => [
                                 'image/jpeg',
                                 'image/png',
@@ -109,20 +107,19 @@ class RegistrationFormType extends AbstractType
                     ]
                 ])
 
-                ->add('agreeTerms', RadioType::class, [
+                ->add('agreeTerms', CheckboxType::class, [
                     'label' => 'J\'accepte les termes et conditions',
                     'mapped' => false,
                     'attr' => [
                         'class'=> 'custom-checkbox',
                     ],
-                    'required' => true,
                     'constraints' => [
-                        new IsTrue([
+                        new Assert\IsTrue([
                             'message' => 'Vous devez accepter les conditions.',
                         ]),
                     ],
                 ])
-
+                
                 ->add('submit', SubmitType::class, [
                     'label' => 'Valider les informations',
                     'attr' => [

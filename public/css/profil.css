@@ -100,19 +100,6 @@
         align-items: center;
     }
 
-    .form_profil_large_two {
-        margin-top: 40px;
-        width: 100%;
-        padding: 35px 40px 30px 40px;
-        height: fit-content;
-        border-radius: 20px;
-        background-color: white;
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-    }
-
     span {
         text-decoration: underline;
     }
@@ -141,8 +128,7 @@
         flex-direction: column;
     }
 
-    .form_profil_large_one p,
-    .form_profil_large_two p {
+    .form_profil_large_one p {
         font-size: 2.7rem;
     }
 
@@ -235,17 +221,12 @@
         margin-top: 100px;
     }
 
-    .form_profil_large_one,
-    .form_profil_large_two {
+    .form_profil_large_one {
         margin-top: 35px;
         padding: 20px 30px 20px 30px;
     }
 
     .form_profil_large_one {
-        height: 180px;
-    }
-
-    .form_profil_large_two {
         height: fit-content;
     }
 
@@ -288,8 +269,7 @@
     }
 
 
-    .form_profil_large_one p,
-    .form_profil_large_two p {
+    .form_profil_large_one p {
         font-size: 1.1rem;
     }
 
@@ -330,7 +310,7 @@
 
     /* FORM */
     .form_profil_large_one {
-        height: 170px;
+        height: fit-content;
     }
 
     .form_medium_all {

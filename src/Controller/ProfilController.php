@@ -34,27 +34,27 @@ class ProfilController extends AbstractController
         ]);
     }
 
-//     public function uploadPhoto(Request $request, EntityManagerInterface $entityManager, User $user)
-// {
+    public function uploadPhoto(Request $request, EntityManagerInterface $entityManager, User $user)
+{
 
-//     $user = $this->getUser();
-//     $avatarFile = $request->files->get('photo');
+    $user = $this->getUser();
+    $avatarFile = $request->files->get('photo');
 
-//     if ($avatarFile) {
-//         $originalAvatar = pathinfo($avatarFile->getClientOriginalName(), PATHINFO_FILENAME);
-//         $safeAvatar = $this->slugger->slug($originalAvatar);
-//         $newAvatar = $safeAvatar.'-'.uniqid().'.'.$avatarFile->guessExtension();
+    if ($avatarFile) {
+        $originalAvatar = pathinfo($avatarFile->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeAvatar = $this->slugger->slug($originalAvatar);
+        $newAvatar = $safeAvatar.'-'.uniqid().'.'.$avatarFile->guessExtension();
 
-//         try {
-//             $avatarFile->move($this->getParameter('photo_directory'), $newAvatar);
-//         } catch (FileException $e) {
-//             // Gérer l'exception si nécessaire
-//         }
+        try {
+            $avatarFile->move($this->getParameter('photo_directory'), $newAvatar);
+        } catch (FileException $e) {
+            // Gérer l'exception si nécessaire
+        }
 
-//         $user->setAvatar($newAvatar);
-//         $entityManager->flush();
-//     }
+        $user->setAvatar($newAvatar);
+        $entityManager->flush();
+    }
 
-//     return $this->redirectToRoute('app_profil');
-// }
+    return $this->redirectToRoute('app_profil');
+}
 }

@@ -38,7 +38,6 @@ class GiveType extends AbstractType
                 'class' => Volume::class,
                 'label' => 'Valeur',
                 'required' => true,
-                'mapped' => false,
                 'placeholder' => '--',
                 'choice_label' => 'name',
                 'attr' => [
@@ -97,12 +96,16 @@ class GiveType extends AbstractType
                 'mapped' => false,
                 'required' => true,
                 // 'constraints' => [
-                //     new File([
-                //         'maxSize' => '1024k',
-                //         'mimeTypesMessage' => 'Merci de télécharger une photo',
-                //     ])
-                // ],
-            ]);
+                //         new File([
+                //             'maxSize' => '1030K',
+                //             'mimeTypes' => [
+                //                 'image/jpeg',
+                //                 'image/png',
+                //             ],
+                //             'mimeTypesMessage' => 'Veuillez télécharger une image valide (JPEG, PNG).',
+                //         ])
+                //         ],
+                    ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

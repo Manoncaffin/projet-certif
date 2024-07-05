@@ -39,6 +39,7 @@
                     <div class="carousel__track-container">
                         <div class="carousel__track">
                             <div class="carousel__slide current-slide">
+                            {# METTRE LA BONNE PHOTO #}
                                 <img class="carousel__images" src="../images/IMG_2099.jpeg" alt="background-image" />
                                 {# <img{{ announce.photo }}/> #}
                             </div>
@@ -64,10 +65,10 @@
                     <div class="announce">
                         <div class="link_member">
                             <div class="text">
-                                <p><span>BARNABÉ</span></p>
-                                {# <p>{{ user.identifier }}</p> #}
-                                <p><span>2 ANNONCES</span></p>
-                                {# <p>{{ announce.user.id }}</p> #}
+                                {# IDENTIFIER DE L'AUTRE USER #}
+                                <p>{{ user.identifier|upper }}</p>
+                                {% set announceCount = announce.user.announces|length %}
+                                <p>{{ announce.user.id }} ANNONCE{{ announceCount > 2 ? 'S' : '' }}</p>
                             </div>
                             <a href="#" class="link_announce_member">
                                 <div class="icon">
@@ -78,38 +79,38 @@
 
                         <div class="location">
                             <p><span>LOCALISATION</span></p>
-                            <p>Sisteron (04)</p>
-                            {# <p>{{ announce.geographicalArea }}</p> #}
+                            {# REDUIRE ET METTRE SEULEMENT LA VILLE ET CODE POSTAL #}
+                            <p>{{ announce.geographicalArea }}</p>
                         </div>
 
                         <div class="classification">
                             <p><span>CLASSIFICATION</span></p>
-                            <p>Bio-sourcé</p>
-                            {# <p>{{ announce.classification }}</p> #}
+                            <p>{{ announce.classification }}</p>
                         </div>
 
                         <div class="materials">
                             <p><span>MATÉRIAU</span></p>
-                            <p>Paille de blé</p>
-                            {# <p>{{ announce.material }}</p> #}
+                            <p>{{ announce.material }}</p>
                         </div>
 
                         <div class="quantity">
                             <p><span>QUANTITÉ</span></p>
-                            <p>3 bottes</p>
-                            {# <p>{{ announce.number }}</p> #}
+                            <p>{{ announce.number }}</p>
+                        </div>
+
+                        <div class="value">
+                            <p><span>VALEUR</span></p>
+                            {# METTRE VOLUME #}
+                            <p>{{ announce.volume }}</p>
                         </div>
 
                         <div class="description">
                             <p><span>DESCRIPTION</span></p>
-                            {# <p>{{ announce.description }}</p> #}
-                            <p>Bonjour, je donne 3 bottes de paille de blé destinés à la construction mais elles ont
-                                un taux
-                                d’humidité trop haut pour les utiliser.</p>
+                            <p>{{ announce.description }}</p>
                         </div>
 
                         <div class="foot_form">
-                            <a href={{ path('app_messagerie') }}>
+                            <a href={{ path('app_messagerie_show', {id: announce.id }) }}>
                                 <button class="send_message">Message</button>
                             </a>
                         </div>

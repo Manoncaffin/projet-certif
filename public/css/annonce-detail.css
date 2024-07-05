@@ -21,7 +21,6 @@
         color: black;
         min-width: 100vw;
         min-height: 100vh;
-        text-align: justify;
         overflow-x: hidden;
 
         p {
@@ -43,13 +42,13 @@
     .send_message {
         background-color: rgb(27, 237, 177);
         color: black;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 15px;
+        border: 1px solid black;
+        padding: 8px 20px;
+        border-radius: 10px;
         cursor: pointer;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         margin-top: 25px;
-        font-size: 1.7rem;
+        font-size: 2.5rem;
         width: 100%;
     }
 
@@ -113,7 +112,10 @@
         border-radius: 40px;
         background-color: white;
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        font-size: 1.7rem;
+    }
+
+    p {
+        font-size: 2.5rem;
     }
 
     .link_member,
@@ -122,7 +124,7 @@
     .materials,
     .quantity,
     .description {
-        padding-top: 15px;
+        padding-top: 25px;
     }
 
     .icon {
@@ -141,6 +143,8 @@
     .text {
         display: flex;
         flex-direction: column;
+        font-size: 2.5rem;
+        font-family: "Lemon Milk";
     }
 
     /* ANNOUNCE */
@@ -271,20 +275,53 @@
         border-radius: 40px;
     }
 
-    .announce {
-        font-size: 1.3;
+        /* ANNOUNCE */
+        .announce_all {
+            display: flex;
+            justify-content: space-between;
+        }
+    
+        .announce {
+            margin-top: 30px;
+            width: 500px;
+        }
+    
+        /* ANNOUNCE */
+
+        /* CAROUSEL */
+    .carousel {
+        margin-top: 30px;
+        width: 800px;
+        /* Réduire la largeur du carousel pour les grands écrans */
+        max-width: 100%;
+        /* Assurez-vous que le carousel ne dépasse pas la largeur de l'écran */
     }
 
-    .announce_all {
-        margin-bottom: 30px;
+    .carousel__images {
+        width: 100%;
+        /* Les images occupent 100% de la largeur du carousel */
+        height: auto;
+        /* Ajustez la hauteur en fonction de la largeur pour maintenir les proportions */
+        object-fit: cover;
+        /* Ajustez les images pour couvrir toute la zone disponible */
     }
+
+    /* CAROUSEL */
 
     .send_message {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .form_profil p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+    }
+
+    .link_member, .location, .classification, .materials, .quantity, .description, .value {
+        padding-top: 15px;
     }
 }
 
@@ -310,40 +347,14 @@
     }
 
     span {
-        font-size: 1.4rem;
-    }
-
-    p {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 
     .form_profil {
         height: 45px;
     }
 
-    .form_profil p {
-        font-size: 1.1rem;
-    }
-
-    .send_message {
-        font-size: 1.3rem;
-    }
-
     /* INFOS TOP */
-
-
-    /* ANNOUNCE */
-    .announce_all {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .announce {
-        margin-top: 30px;
-        width: 500px;
-    }
-
-    /* ANNOUNCE */
 
     /* CAROUSEL */
     .carousel {
@@ -383,14 +394,6 @@
     .container {
         min-width: 1500px;
         max-width: 2000px;
-    }
-
-    p {
-        font-size: 1.1rem;
-    }
-
-    span {
-        font-size: 1.1rem;
     }
 
     /* ANNOUNCE */

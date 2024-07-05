@@ -46,7 +46,6 @@ class RegistrationController extends AbstractController
             $user->setAvatar($fileName);
 
             $status = $request->request->all()['registration_form']['professional'];
-            // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -66,6 +65,7 @@ class RegistrationController extends AbstractController
             // Envoi de l'e-mail de confirmation d'inscription
 
             return $security->login($user, AppAuthenticator::class, 'main');
+
         }
 
         return $this->render('registration/register.html.twig', [
