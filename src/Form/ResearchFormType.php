@@ -16,10 +16,6 @@ class ResearchFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            // ->add('keyword', TextType::class, [
-            //     'label' => 'Mot-clé',
-            //     'required' => false,
-            // ])
 
             ->add('classification', EntityType::class, [
                 'class' => ClassificationMaterial::class,

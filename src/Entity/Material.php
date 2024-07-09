@@ -77,7 +77,7 @@ class Material
     public function removeAnnounce(Announce $announce): static
     {
         if ($this->announces->removeElement($announce)) {
-            // set the owning side to null (unless already changed)
+
             if ($announce->getMaterial() === $this) {
                 $announce->setMaterial(null);
             }

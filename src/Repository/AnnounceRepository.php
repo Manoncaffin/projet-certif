@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Announce;
+use App\Entity\ClassificationMaterial;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -18,31 +19,6 @@ class AnnounceRepository extends ServiceEntityRepository
         parent::__construct($registry, Announce::class);
     }
 
-    //    /**
-    //     * @return Announce[] Returns an array of Announce objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('a.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?Announce
-    //    {
-    //        return $this->createQueryBuilder('a')
-    //            ->andWhere('a.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
-
     public function findByUser(User $user): array
     {
         return $this->createQueryBuilder('a')
@@ -51,16 +27,16 @@ class AnnounceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-
-    public function findByMaterialAndPostalCode(Material $material, string $postalCode)
-    {
-        return $this->createQueryBuilder('a')
-            ->innerJoin('a.material', 'm')
-            ->where('m = :material')
-            ->setParameter('material', $material)
-            ->andWhere('a.geographicalArea = :postalCode')
-            ->setParameter('postalCode', $postalCode)
-            ->getQuery()
-            ->getResult();
-    }
+    public function findByClassificationMaterialAndMaterialAndGeographicalArea($classificationMaterial, $material, $geographicalArea)
+{
+    return $this->createQueryBuilder('a')
+        ->andWhere('a.classificationMaterial = :classificationMaterial')
+        ->andWhere('a.material = :material')
+        ->andWhere('a.geographicalArea = :geographicalArea')
+        ->setParameter('classificationMaterial', $classificationMaterial)
+        ->setParameter('material', $material)
+        ->setParameter('geographicalArea', $geographicalArea)
+        ->getQuery()
+        ->getResult();
+}
 }

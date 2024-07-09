@@ -18,13 +18,13 @@
                 <div class="description_announce">
 
                     <div class="img_announce">
-                        <img src={{ asset('images/20201108_115654.jpeg') }}>
+                        <img src={{ announce.photo }}>
                     </div>
 
                     <div class="text_announce">
                         <p><span>{{ announce.material }}</span></p>
-                        <p>Annonce en ligne</p>
-                        <p>Barnabé - 4 mai 2024</p>
+                        <p>{{ announce.material }}</p>
+                        <p>{{ announce.createdAt }}</p>
                         <a href={{ path('app_annonce_detail', {id: announce.id }) }} class="look_announce">Voir l'annonce</a>
                     </div>
 
@@ -38,18 +38,10 @@
                     <div class="force-overflow"></div>
                 </div>
             </div>
-
             
-
             <div class="container_two">
-
-                <!-- <div class="nav-two">
-                    <h1><span>BARNABÉ</span></h1>
-                    <p>En ligne il y a 1h</p>
-                </div> -->
-                
                 <div class="message_user_one">
-                    <img src={{ asset('images/BS.webp') }} class="avatar">
+                    <img src={{ user.avatar }} class="avatar">
                     <div class="bubble_one">
                         <p>Bonjour Barnabé,
                             Je suis intéressée par vos bottes de paille, pouvez-vous me communiquer vos disponibilités
@@ -60,7 +52,7 @@
                 </div>
 
                 <div class="message_user_two">
-                    <img src={{ asset('images/BS.webp') }} class="avatar">
+                    <img src={{ user.avatar }} class="avatar">
                     <div class="bubble_two">
                         <p>Bonjour Samia, je suis disponible tous les jours à partir de 18h, possible pour vous ?</p>
                     </div>

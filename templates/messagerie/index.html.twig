@@ -18,21 +18,21 @@
                 <div class="description_announce">
 
                     <div class="img_announce">
-                        <img src={{ asset('images/20201108_115654.jpeg') }}>
+                        <img src={{ announce.photo }}>
                     </div>
 
                     <div class="text_announce">
-                        <p><span>PAILLE</span></p>
-                        <p>Annonce en ligne</p>
-                        <p>Barnabé - 4 mai 2024</p>
-                        <a href={{ path('app_annonce_detail', {id:1 }) }} class="look_announce">Voir l'annonce</a>
+                        <p><span>{{ announce.material }}</span></p>
+                        <p>{{ announce.material }}</p>
+                        <p>{{ announce.createdAt }}</p>
+                        <a href={{ path('app_annonce_detail', { id:1 }) }} class="look_announce">Voir l'annonce</a>
                     </div>
 
                     <div class="icons_announce">
                         {# FAIRE BOUCLE ANNONCES AVEC LES MESSAGES ENVOYÉS #}
                         <!-- FONCTION DELETE -->
                         <a href=""><i class="fa-solid fa-trash"></i></a>
-                        <a href={{ path('app_messagerie_show', {id : 1}) }}><i class="fa-regular fa-message"></i></a>
+                        <a href={{ path('app_messagerie_show', { id : 1}) }}><i class="fa-regular fa-message"></i></a>
                     </div>
                 </div>
                 <div class="scrollbar" id="style-1">
@@ -43,7 +43,6 @@
             
 
             {# <div class="container_two">
-
                 <!-- <div class="nav-two">
                     <h1><span>BARNABÉ</span></h1>
                     <p>En ligne il y a 1h</p>

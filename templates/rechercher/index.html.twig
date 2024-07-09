@@ -13,25 +13,25 @@
     {% include 'partials/header.html.twig' %}
 
     <div class="container" id="container">
+            <div class="scrolling-text-container">
+                <p class="scrolling-text">Je recherche un matériau</p>
+                <p class="scrolling-text">Je recherche un matériau</p>
+                <p class="scrolling-text">Je recherche un matériau</p>
+                <p class="scrolling-text">Je recherche un matériau</p>
+            </div>
+
+            <div class="bordure mb-4"></div>
             
-                <div class="scrolling-text-container">
-                    <p class="scrolling-text">Je recherche un matériau</p>
-                    <p class="scrolling-text">Je recherche un matériau</p>
-                    <p class="scrolling-text">Je recherche un matériau</p>
-                    <p class="scrolling-text">Je recherche un matériau</p>
-                </div>
-                <div class="bordure mb-4"></div>
+        <section id="research">
+            <div class="form">
+                {{ form_start(researchForm, {'action': path('app_rechercher'), 'method': 'POST'}) }}
+
+                {{ form_label(researchForm.classification) }}
+                {{ form_widget(researchForm.classification) }}
+
+                <button id="openModal" type="button">Pour en savoir plus, vous pouvez cliquer ici.</button>
                 
-            <section id="research">
-                <div class="form">
-                    {{ form_start(researchForm) }}
-
-                    {{ form_label(researchForm.classification) }}
-                    {{ form_widget(researchForm.classification) }}
-
-                    <button id="openModal" type="button">Pour en savoir plus, vous pouvez cliquer ici.</button>
-                    
-                    <div id="myModal" class="modal">
+                <div id="myModal" class="modal">
                         <div class="modal-content">
                             <span class="close">&times;</span>
                             <div class="first-content">
@@ -62,56 +62,53 @@
                                     le sous-sol de la Terre.</p>
                             </div>
                         </div>
-                    </div>
+                </div>
 
-                    <div id="material-label">
-                    <label>Matériau</label>
-                    </div>
-                    <select name="material-geo-select" id="material-geo-select" style="display: none;">
-                        <option value="">--</option>
-                        {% for material in materials %}
-                            {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
-                                <option value="{{ material.material }}" {% if material.material == selectedMaterial %}selected{% endif %}>{{ material.material }}</option>
-                                {# <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option> #}
-                            {% endif %}
-                        {% endfor %}
-                        <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
-                    </select>
+                <div id="material-label">
+                <label>Matériau</label>
+                </div>
+                <select id="material-geo-select" name="material-geo-select" style="display: none;">
+                    <option value="">--</option>
+                    {% for material in materials %}
+                        {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
+                            <option value="{{ material.material }}" {% if material.material == selectedMaterial %}selected{% endif %}>{{ material.material }}</option>
+                        {% endif %}
+                    {% endfor %}
+                    <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
+                </select>
 
-                    <select name="material-bio-select" id="material-bio-select">
-                        <option value="">--</option>
-                        {% for material in materials %}
-                            {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
-                                <option value="{{ material.material }}" {% if material.material == selectedMaterial %}selected{% endif %}>{{ material.material }}</option>
-                                {# <option value={{ material.material }}>{{ material.material }}</option> #}
-                            {% endif %}
-                        {% endfor %}
-                        <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
-                    </select>
+                <select id="material-bio-select" name="material-bio-select">
+                    <option value="">--</option>
+                    {% for material in materials %}
+                        {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
+                            <option value="{{ material.material }}" {% if material.material == selectedMaterial %}selected{% endif %}>{{ material.material }}</option>
+                        {% endif %}
+                    {% endfor %}
+                    <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
+                </select>
 
-                    {{ form_label(researchForm.geographicalArea) }}
-                    {{ form_widget(researchForm.geographicalArea) }}
-                    {# => AJOUTER POSSIBILITÉ DE CHOISIR 'TOUTE LA FRANCE' #}
-
+                {# => AJOUTER POSSIBILITÉ DE CHOISIR 'TOUTE LA FRANCE' #}
+                {{ form_label(researchForm.geographicalArea) }}
+                {{ form_widget(researchForm.geographicalArea) }}
                 
-                    {{ form_row(researchForm.search) }}
-                    <div class="foot_form">
-                        <p>Vous ne trouvez pas ce que vous cherchez ?</p>
-                        <a href="{{ path('app_annonce_chercher') }}" class="search">Publier une annonce</a>
-                    </div>
-                    {{ form_end(researchForm) }}
+                {# QUAND ON CLIQUE, LA PAGE SHOW DE RECHERCHER DOIT S'AFFICHER #}
+                {{ form_row(researchForm.search) }}
+
+                <div class="foot_form">
+                    <p>Vous ne trouvez pas ce que vous cherchez ?</p>
+                    <a href="{{ path('app_annonce_chercher') }}" class="search">Publier une annonce</a>
                 </div>
+                {{ form_end(researchForm) }}
+            </div>
 
-
-                <div class="action_research">
-                    <div id="map"></div>
-
-                    <div class="custom-popup">
+            <div class="action_research">
+                <div id="map"></div>
+                <div class="custom-popup">
                     <div id="announces" data-announces="{{ announces|json_encode|raw }}"></div>
-                    </div>
-
                 </div>
+            </div>
         </section>
+    </div>
     
 
     

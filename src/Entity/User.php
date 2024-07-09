@@ -82,7 +82,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $avatar = null;
 
- 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $rememberMeToken;
 
     public function __construct()
     {
@@ -348,6 +351,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAvatar(?string $avatar): static
     {
         $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    public function getRememberMeToken(): ?string
+    {
+        return $this->rememberMeToken;
+    }
+
+    public function setRememberMeToken(?string $rememberMeToken): self
+    {
+        $this->rememberMeToken = $rememberMeToken;
 
         return $this;
     }

@@ -60,6 +60,9 @@
                         </div>
                     </div>
                     
+                    <div id="material-label">
+                        <label>Matériau</label>
+                    </div>
                     <select name="material-geo-select" id="material-geo-select" style="display: none;">
                         <option value={{ announce.material }}>{{ announce.material }}</option>
                         {% for material in materials %}
@@ -103,7 +106,7 @@
 
 {% block javascripts %}
     <script src={{asset('js/overall-scrolling.js') }}></script>
-    <script src={{asset('js/select-material.js') }}></script>
+    <script src={{asset('js/select-material-give.js') }}></script>
     <script src={{asset('js/quantity-material.js') }}></script>
     <script src={{asset('js/add-material.js') }}></script>
     <script src={{asset('js/search-city.js') }}></script>

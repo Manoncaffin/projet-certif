@@ -2,7 +2,6 @@ function toggleMaterialSelect() {
   const classification = document.querySelector('#search_classification');
   const materialBioSelect = document.querySelector('#material-bio-select');
   const materialGeoSelect = document.querySelector('#material-geo-select');
-  // const searchMaterial = document.querySelector('#search_material');
   const materialLabel = document.querySelector('#material-label');
   const addMaterialDiv = document.querySelector('.add');
 

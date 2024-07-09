@@ -64,6 +64,21 @@
                         </div>
                     </div>
 
+
+                <div id="material-label">
+                    <label>Matériau</label>
+                </div>
+            {% if announce.material.classificationMaterial.id == 1 %}
+                <select name="material-bio-select" id="material-bio-select">
+                        <option value={{ announce.material }}>{{ announce.material }}</option>
+                        {% for material in materials %}
+                            {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
+                                <option value={{ material.material }}>{{ material.material }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
+                    </select>
+            {% else %}
                     <select name="material-geo-select" id="material-geo-select" style="display: none;">
                         <option value={{ announce.material }}>{{ announce.material }}</option>
                         {% for material in materials %}
@@ -73,22 +88,14 @@
                         {% endfor %}
                         <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
                     </select>
-
-                    <select name="material-bio-select" id="material-bio-select">
-                        <option value={{ announce.material }}>{{ announce.material }}</option>
-                        {% for material in materials %}
-                            {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
-                                <option value={{ material.material }}>{{ material.material }}</option>
-                            {% endif %}
-                        {% endfor %}
-                        <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
-                    </select>
+            {% endif %}
 
                     <div class="add" style="display:none;">
                         <label for="new-material" class="new-material">Ajouter</label>
                         <input type="text" id="new-material" placeholder="Entrez un autre matériau">
                     </div>
 
+                    {# => AJOUTER POSSIBILITÉ DE CHOISIR 'TOUTE LA FRANCE' #}
                     {{ form_row(searchForm.geographicalArea) }}
 
                     <div id="map"></div>
@@ -107,7 +114,7 @@
 
 {% block javascripts %}
     <script src={{ asset('js/overall-scrolling.js') }}></script>
-    <script src={{ asset('js/select-material.js') }}></script>
+    <script src={{ asset('js/select-material-search.js') }}></script>
     <script src={{ asset('js/add-material.js') }}></script>
     <script src={{ asset('js/map.js') }}></script>
     <script src={{ asset('js/modale.js') }}></script>

@@ -9,27 +9,29 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\HttpFoundation\Cookie;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class SecurityController extends AbstractController
 {
     private $tokenStorage;
+    private $authorizationChecker;
 
-    public function __construct(TokenStorageInterface $tokenStorage)
+    public function __construct(TokenStorageInterface $tokenStorage, AuthorizationCheckerInterface $authorizationChecker)
     {
         $this->tokenStorage = $tokenStorage;
+        $this->authorizationChecker = $authorizationChecker;
     }
 
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils, Request $request, EntityManagerInterface $entityManager): Response
     {
-        // get the login error if there is one
+
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
         $lastIdentifier = $authenticationUtils->getLastUsername();
 
         if ($request->isMethod('POST')) {
@@ -37,46 +39,35 @@ class SecurityController extends AbstractController
             $password = $request->request->get('password');
             $rememberMe = $request->request->get('_remember_me', false);
 
-            // Récupérer l'utilisateur à partir de l'identifiant
             $user = $entityManager->getRepository(User::class)
                 ->findOneBy(['identifier' => $identifier]);
 
-            // Vérifier que l'utilisateur existe et que le mot de passe est valide
             if ($user instanceof PasswordAuthenticatedUserInterface && password_verify($password, $user->getPassword())) {
-                // Créer un token d'authentification
-                $token = new AbstractToken();
-                $token->setUser($user);
-                $token->setAttribute('authenticated', true);
+                $token = new UsernamePasswordToken($user, 'main', $user->getRoles());
 
-                // Tenter de se connecter avec le token
-                $authChecker = $this->container->get('security.authorization_checker');
-                if ($authChecker->isGranted('IS_AUTHENTICATED_FULLY', $token)) {
-                    // La connexion a réussi, enregistrer le token dans la session
+                if ($this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY', $token)) {
                     $this->tokenStorage->setToken($token);
 
-                    // Créer un cookie de rappel si l'utilisateur a coché la case "Se souvenir de moi"
                     if ($rememberMe) {
-                        $tokenValue = bin2hex(random_bytes(32)); // Générer un jeton d'authentification aléatoire
-                        $user->setRememberMeToken($tokenValue); // Stocker le jeton dans l'entité utilisateur
-                        $entityManager->flush(); // Enregistrer l'entité utilisateur dans la base de données
+                        $tokenValue = bin2hex(random_bytes(32)); 
+                        $user->setRememberMeToken($tokenValue);
+                        $entityManager->flush(); 
 
                         $cookie = new Cookie(
                             '_remember_me',
                             $tokenValue,
-                            time() + 60 * 60 * 24 * 7 // Cookie valable 1 semaine
+                            time() + 60 * 60 * 24 * 7 
                         );
                         $response = $this->redirectToRoute('app_accueil');
                         $response->headers->setCookie($cookie);
                         return $response;
                     }
 
-                    // Rediriger vers la page d'accueil
                     return $this->redirectToRoute('app_accueil');
                 }
             }
         }
 
-        // Afficher le formulaire de connexion
         return $this->render('security/login.html.twig', [
             'last_identifier' => $lastIdentifier,
             'error' => $error,
