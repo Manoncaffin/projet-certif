@@ -66,7 +66,7 @@
                         <div class="link_member">
                             <div class="text">
                                 {# IDENTIFIER DE L'AUTRE USER #}
-                                <p>{{ user.identifier|upper }}</p>
+                                <p>{{ announce.user.identifier|upper }}</p>
                                 {% set announceCount = announce.user.announces|length %}
                                 <p>{{ announce.user.id }} ANNONCE{{ announceCount > 2 ? 'S' : '' }}</p>
                             </div>

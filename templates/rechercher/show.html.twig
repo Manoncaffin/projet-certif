@@ -13,38 +13,19 @@
     {% include 'partials/header.html.twig' %}
 
     <div class="container" id="container">
+
+    <input type='hidden' value={{announces[0].geographicalArea}} id="geographicalArea">
+    <input type='hidden' value={{announces[0].material}} id="material">
+
         <section id="research">    
                 <div class="action_research">
                     <div id="map"></div>
                     <div class="custom-popup">
-                    <div id="announces" data-announces="{{ announces|json_encode|raw }}"></div>
+                    <div id="announces" data-announces='{{ Json|raw }}'></div>
                     </div>
                 </div>
         </section>
     </div>
- <script>
-        // announces = {{ announces|json_encode|raw }};
-
-        const map = L.map('map').setView([48.8566, 2.3522], 15);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        // Récupération des annonces
-        const announces = JSON.parse(document.getElementById('announces').getAttribute('data-announces'));
-
-        // Ajout des markers sur la carte
-        announces.forEach(function(announce) {
-            var marker = L.marker([announce.latitude, announce.longitude]).addTo(map);
-            marker.bindPopup("<p>" + announce.title + "</p>");
-        });
-
-        // {% for announce in announces %}
-        //     var marker = L.marker([{{ announce.latitude }}, {{ announce.longitude }}]).addTo(map);
-        //     marker.bindPopup("<p>{{ announce.title }}</p>");
-        // {% endfor %}
-    </script>
 
     
 
@@ -52,9 +33,6 @@
 
 {% block javascripts %}
     <script src={{ asset('js/overall-scrolling.js') }}></script>
-    <script src={{ asset('js/select-material-search.js') }}></script>
-    <script src={{ asset('js/research-search-city-map.js') }}></script>
-    <script src={{ asset('js/select-material-research.js') }}></script>
-    <script src={{ asset('js/modale.js') }}></script>
+    <script src={{ asset('js/show.js') }}></script>
     <script src={{ asset('https://unpkg.com/leaflet/dist/leaflet.js') }}></script>
 {% endblock %}

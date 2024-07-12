@@ -27,13 +27,11 @@ class AnnounceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-    public function findByClassificationMaterialAndMaterialAndGeographicalArea($classificationMaterial, $material, $geographicalArea)
+    public function findByClassificationMaterialAndMaterialAndGeographicalArea($material, $geographicalArea)
 {
     return $this->createQueryBuilder('a')
-        ->andWhere('a.classificationMaterial = :classificationMaterial')
-        ->andWhere('a.material = :material')
+        ->where('a.material = :material')
         ->andWhere('a.geographicalArea = :geographicalArea')
-        ->setParameter('classificationMaterial', $classificationMaterial)
         ->setParameter('material', $material)
         ->setParameter('geographicalArea', $geographicalArea)
         ->getQuery()

@@ -54,10 +54,6 @@ app_rechercher:
     controller: App\Controller\RechercherController::search
 
 app_rechercher_show:
-    path: /rechercher/{classification}/{material}/{geographicalArea}
+    path: /rechercher/{material}/{geographicalArea}
     controller: App\Controller\RechercherController::show
-    requirements:
-        classification: '[a-zA-Z]+'
-        material: '[a-zA-Z]+'
-        geographicalArea: '\d{5}'
 
