@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '© OpenStreetMap contributors © CARTO',
         subdomains: 'abcd',
-        maxZoom: 19
+        maxZoom: 15
     }).addTo(map);
     
     function searchAddress() {
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const lat = data[0].lat;
                 const lon = data[0].lon;
                 const myIcon = L.icon({
-                    iconUrl: '../images/marker.png',
+                    iconUrl: '/images/marker.png',
                     iconSize: [50, 50],
                     iconAnchor: [22, 94],
                     popupAnchor: [3, -76],

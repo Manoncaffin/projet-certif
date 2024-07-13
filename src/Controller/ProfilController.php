@@ -48,7 +48,6 @@ class ProfilController extends AbstractController
         try {
             $avatarFile->move($this->getParameter('photo_directory'), $newAvatar);
         } catch (FileException $e) {
-            // Gérer l'exception si nécessaire
         }
 
         $user->setAvatar($newAvatar);

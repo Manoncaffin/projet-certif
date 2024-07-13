@@ -94,18 +94,19 @@ class GiveType extends AbstractType
             ->add('photo', FileType::class,  [
                 'label' => 'Joindre une photo',
                 'mapped' => false,
-                'required' => false,
-                // 'constraints' => [
-                //         new File([
-                //             'maxSize' => '1030K',
-                //             'mimeTypes' => [
-                //                 'image/jpeg',
-                //                 'image/png',
-                //             ],
-                //             'mimeTypesMessage' => 'Veuillez télécharger une image valide (JPEG, PNG).',
-                //         ])
-                //         ],
-                    ]);
+                'required' => true,
+                'constraints' => [
+                    new \Symfony\Component\Validator\Constraints\File([
+                        'maxSize' => '2000k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Merci de télécharger une image valide (JPEG/PNG)',
+                    ])
+                ],
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

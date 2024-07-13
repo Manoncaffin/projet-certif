@@ -302,6 +302,10 @@
         cursor: pointer;
         display: flex;
         align-items: center;
+
+        li {
+            font-size: 1.25rem;
+        }
     }
 
     .toggle-table i {
@@ -508,7 +512,7 @@ h2 {
     .corner {
         width: 450px;
         height: fit-content;
-        font-size: 1.6rem;
+        font-size: 1.25rem;
     }
 
     .rectangle {
@@ -663,11 +667,11 @@ h2 {
     #partenaires {
         height: 100%;
         padding: 0 140px;
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     .credits {
-        margin: 0 140px;
+        margin: 0 50px 0 140px;
     }
 
     .confidential {
@@ -689,6 +693,7 @@ h2 {
         flex-direction: row;
         justify-content: space-around;
         align-items: start;
+        font-size: 1.1;
     }
 
     .container {
@@ -717,15 +722,6 @@ h2 {
     .circle_menu {
         width: 25px;
         height: 16px;
-    }
-
-    .logo img {
-        width: 60%;
-        padding: 40px 50px 40px 140px;
-    }
-
-    .imageChange {
-        width: 60%;
     }
 
     h2 {

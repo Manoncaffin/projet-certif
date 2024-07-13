@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-// use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\AnnounceRepository;
 use App\Entity\File;
@@ -13,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface as TokenGeneratorTokenGeneratorInterface;
 use Symfony\Component\Security\Csrf\TokenGeneratorInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 class MesAnnoncesController extends AbstractController
 {
@@ -30,7 +30,7 @@ class MesAnnoncesController extends AbstractController
     }
 
     #[Route("/{id}", name:"announce_delete", methods: ["DELETE"])]
-    public function delete(Announce $announce, Request $request, EntityManagerInterface $entityManager, TokenGeneratorTokenGeneratorInterface $tokenGenerator): Response
+    public function delete(Announce $announce, Request $request, EntityManagerInterface $entityManager, TokenGeneratorTokenGeneratorInterface $tokenGenerator, Filesystem $filesystem): Response
     {
         $csrfToken = $tokenGenerator->generateToken('delete' . $announce->getId());
         $token = $request->request->get('_token');
@@ -41,6 +41,11 @@ class MesAnnoncesController extends AbstractController
 
         if ($announce->getType() === 'donner') {
         foreach ($announce->getPhoto() as $file) {
+            $filePath = $this->getParameter('photo_directory') . '/' . $file->getUrl();
+            if ($filesystem->exists($filePath)) {
+                $filesystem->remove($filePath);
+            }
+            
             $entityManager->remove($file);
         }
     }

@@ -18,20 +18,21 @@
                 <div class="description_announce">
 
                     <div class="img_announce">
-                        <img src={{ announce.photo }}>
+                    {% for photo in announce.photo %}
+                        <img src="{{ asset(photo.url) }}" alt="Photo annonce">
+                    {% endfor %}
                     </div>
 
-                    <div class="text_announce">
-                        <p><span>{{ announce.material }}</span></p>
-                        <p>{{ announce.material }}</p>
-                        <p>{{ announce.createdAt }}</p>
-                        <a href={{ path('app_annonce_detail', {id: announce.id }) }} class="look_announce">Voir l'annonce</a>
-                    </div>
+                <div class="text_announce">
+                    <p><span>{{ announce.material }}</span></p>
+                    <p>{{ announce.createdAt | date('d/m/Y H:i') }}</p>
+                    <a href="{{ path('app_annonce_detail', { id: announce.id }) }}" class="look_announce">Voir l'annonce</a>
+                </div>
 
                     <div class="icons_announce">
                         <!-- FONCTION DELETE -->
                         <a href=""><i class="fa-solid fa-trash"></i></a>
-                        <a href={{ path('app_messagerie') }}><i class="fa-regular fa-message"></i></a>
+                        <a href="{{ path('app_messagerie_show', { id: announce.id }) }}"><i class="fa-regular fa-message"></i></a>
                     </div>
                 </div>
                 <div class="scrollbar" id="style-1">
@@ -39,31 +40,7 @@
                 </div>
             </div>
             
-            <div class="container_two">
-                <div class="message_user_one">
-                    <img src={{ user.avatar }} class="avatar">
-                    <div class="bubble_one">
-                        <p>Bonjour Barnabé,
-                            Je suis intéressée par vos bottes de paille, pouvez-vous me communiquer vos disponibilités
-                            pour
-                            venir les récupérer ?</p>
-                    </div>
-                    <div class="datetime_one">LE 06 MAI À 10h12</div>
-                </div>
-
-                <div class="message_user_two">
-                    <img src={{ user.avatar }} class="avatar">
-                    <div class="bubble_two">
-                        <p>Bonjour Samia, je suis disponible tous les jours à partir de 18h, possible pour vous ?</p>
-                    </div>
-                    <div class="datetime_two">LE 06 MAI À 13h10</div>
-                </div>
-
-                <div class="message-input">
-                    <textarea id="message" placeholder="Votre message..."></textarea>
-                    <i class="fa-regular fa-paper-plane"></i>
-                </div>
-            </div>
+            
         </section>
 
 {% endblock %}
