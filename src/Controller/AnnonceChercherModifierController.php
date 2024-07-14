@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Announce;
+use App\Entity\Material;
 use App\Form\SearchType;
+use App\Repository\AnnounceRepository;
 use App\Repository\MaterialRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,45 +23,61 @@ class AnnonceChercherModifierController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/annonce-chercher-modifier/{id}', name: 'app_annonce_chercher_modifier', requirements: ["id" => "\d+"])]
-    public function edit(Request $request, Announce $announce, MaterialRepository $materialRepository): Response
+    private function findMaterialByPartialName($materialName)
     {
-        // Vérifier que l'utilisateur connecté est bien l'auteur de l'annonce
-        if ($this->getUser() !== $announce->getUser()) {
-            throw $this->createAccessDeniedException();
-        }
+        $qb = $this->entityManager->createQueryBuilder();
 
-        // Vérifier que l'annonce est bien une annonce de recherche
-        if ($announce->getType() !== 'chercher') {
-            throw $this->createNotFoundException();
-        }
+        $qb->select('m')
+            ->from(Material::class, 'm')
+            ->where($qb->expr()->like('m.material', ':material'))
+            ->setParameter('material', '%'.$materialName.'%');
 
-        // Créez le formulaire à partir de l'entité Announce
-        $searchForm = $this->createForm(SearchType::class, $announce);
-        $materials = $materialRepository->findAll();
+        $query = $qb->getQuery();
 
-        $searchForm->handleRequest($request);
-
-        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
-            // Enregistrez les modifications en base de données
-            $materialModif = $request->request->all()['material-bio-select'];
-            if (!$materialModif) {
-                $materialModif = $request->request->all()['material-geo-select'];
-            }
-
-            $selectedMaterial = $materialRepository->findOneBy(['material' => $materialModif]);
-            $announce->setMaterial($selectedMaterial);
-
-            $this->entityManager->flush();
-
-            return $this->redirectToRoute('app_mes_annonces', ['id' => $announce->getId()]);
-        }
-
-        // Affichez le formulaire de modification
-        return $this->render('annonce_chercher_modifier/index.html.twig', [
-            'searchForm' => $searchForm->createView(),
-            'announce' => $announce,
-            'materials' => $materials,
-        ]);
+        return $query->getResult();
     }
+
+    #[Route('/annonce-chercher-modifier/{id}', name: 'app_annonce_chercher_modifier', requirements: ["id" => "\d+"])]
+    public function edit($id, Request $request, Announce $announce, AnnounceRepository $announceRepository, MaterialRepository $materialRepository): Response
+    {
+        $user = $this->getUser();
+
+    if ($user !== $announce->getUser()) {
+        throw $this->createAccessDeniedException();
+    }
+
+    if ($announce->getType() !== 'chercher') {
+        throw $this->createNotFoundException();
+    }
+
+    $searchForm = $this->createForm(SearchType::class, $announce);
+    $materials = $materialRepository->findAll();
+
+    $searchForm->handleRequest($request);
+
+    if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+        $materialModif = $request->request->get('material-bio-select') ?: $request->request->get('material-geo-select');
+
+        if ($materialModif) {
+            $selectedMaterial = $materialRepository->findOneBy(['material' => $materialModif]);
+
+            if ($selectedMaterial) {
+                $announce->setMaterial($selectedMaterial);
+                $this->entityManager->flush();
+
+                return $this->redirectToRoute('app_mes_annonces', ['id' => $announce->getId()]);
+            } else {
+                $this->addFlash('error', 'Aucun matériau ne correspond à votre sélection.');
+            }
+        } else {
+            $this->addFlash('error', 'Veuillez sélectionner un matériau.');
+        }
+    }
+
+    return $this->render('annonce_chercher_modifier/index.html.twig', [
+        'searchForm' => $searchForm->createView(),
+        'announce' => $announce,
+        'materials' => $materials,
+    ]);
+}
 }
