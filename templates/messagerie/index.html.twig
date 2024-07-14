@@ -26,54 +26,21 @@
                     <div class="text_announce">
                     <p><span>{{ announce.material }}</span></p>
                     <p>{{ announce.createdAt | date('d/m/Y H:i') }}</p>
-                    <a href="{{ path('app_annonce_detail', { id: announce.id }) }}" class="look_announce">Voir l'annonce</a>
+                    {# <a href="{{ path('app_annonce_detail', { id: announce.id }) }}" class="look_announce">Voir l'annonce</a> #}
+                    <a href={{ path('app_annonce_detail', { id : 2}) }} class="look_announce">Voir l'annonce</a>
                     </div>
 
                     <div class="icons_announce">
                         {# FAIRE BOUCLE ANNONCES AVEC LES MESSAGES ENVOYÉS #}
                         <!-- FONCTION DELETE -->
                         <a href=""><i class="fa-solid fa-trash"></i></a>
-                        <a href={{ path('app_messagerie_show', { id : 1}) }}><i class="fa-regular fa-message"></i></a>
+                        <a href={{ path('app_messagerie_show', { id : 2}) }}><i class="fa-regular fa-message"></i></a>
                         {# <a href="{{ path('app_messagerie_show', { id: announce.id }) }}"><i class="fa-regular fa-message"></i></a> #}
                     </div>
                 </div>
             {% endfor %}
                 <div class="scrollbar" id="style-1">
                     <div class="force-overflow"></div>
-                </div>
-            </div>
-
-            <div class="container_two">
-                <div class="message_user_one">
-                    <div class="avatar">
-                    {# {% for announce in announces %}
-                    {{ announce.user.identifier|first }}
-                    {% endfor %} #}
-                    </div>
-                    <div class="bubble_one">
-                        <p>Bonjour Barnabé,
-                            Je suis intéressée par vos bottes de paille, pouvez-vous me communiquer vos disponibilités
-                            pour
-                            venir les récupérer ?</p>
-                    </div>
-                    <div class="datetime_one">LE 06 MAI À 10h12</div>
-                </div>
-
-                <div class="message_user_two">
-                    <div class="avatar">
-                    {# {% for announce in announces %}
-                    {{ announce.user.identifier|first }}
-                    {% endfor %} #}
-                    </div>
-                    <div class="bubble_two">
-                        <p>Bonjour Samia, je suis disponible tous les jours à partir de 18h, possible pour vous ?</p>
-                    </div>
-                    <div class="datetime_two">LE 06 MAI À 13h10</div>
-                </div>
-
-                <div class="message-input">
-                    <textarea id="message" placeholder="Votre message..."></textarea>
-                    <i class="fa-regular fa-paper-plane"></i>
                 </div>
             </div>
         </section>

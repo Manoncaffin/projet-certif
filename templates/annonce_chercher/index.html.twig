@@ -14,21 +14,21 @@
     {% include 'partials/header.html.twig' %}
 
     <div class="container" id="container">
-            <section id="inscription">
-                <div class="scrolling-text-container">
-                    <p class="scrolling-text">Je cherche un matériau</p>
-                    <p class="scrolling-text">Je cherche un matériau</p>
-                    <p class="scrolling-text">Je cherche un matériau</p>
-                    <p class="scrolling-text">Je cherche un matériau</p>
-                </div>
-                <div class="bordure mb-4"></div>
+        <section id="inscription">
+            <div class="scrolling-text-container">
+                <p class="scrolling-text">Je cherche un matériau</p>
+                <p class="scrolling-text">Je cherche un matériau</p>
+                <p class="scrolling-text">Je cherche un matériau</p>
+                <p class="scrolling-text">Je cherche un matériau</p>
+            </div>
+            <div class="bordure mb-4"></div>
 
-                {{ form_start(searchForm, {'attr': {'id': 'search-form'}}) }}
-                    
-                    {{ form_row(searchForm.classification) }}
-                    <button id="openModal" type="button">Pour en savoir plus, vous pouvez cliquer ici.</button>
-                    
-                    <div id="myModal" class="modal">
+            {{ form_start(searchForm, {'attr': {'id': 'search-form'}}) }}
+                
+                {{ form_row(searchForm.classification) }}
+                <button id="openModal" type="button">Pour en savoir plus, vous pouvez cliquer ici.</button>
+                
+                <div id="myModal" class="modal">
                         <div class="modal-content">
                             <span class="close">&times;</span>
                             <div class="first-content">
@@ -59,48 +59,46 @@
                                     le sous-sol de la Terre.</p>
                             </div>
                         </div>
-                    </div>
+                </div>
 
-                    <div id="material-label">
+                <div id="material-label">
                     <label>Matériau</label>
+                </div>
+                <select name="material-geo-select" id="material-geo-select" style="display: none;">
+                    <option value="">--</option>
+                    {% for material in materials %}
+                        {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
+                            <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option>
+                        {% endif %}
+                    {% endfor %}
+                    <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
+                </select>
+
+                <select name="material-bio-select" id="material-bio-select">
+                    <option value="">--</option>
+                    {% for material in materials %}
+                        {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
+                            <option value={{ material.material }}>{{ material.material }}</option>
+                        {% endif %}
+                    {% endfor %}
+                    <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
+                </select>
+
+                <div class="add" style="display:none;">
+                    <label for="new-material" class="new-material">Ajouter</label>
+                    <input type="text" id="new-material" placeholder="Entrez un autre matériau">
+                </div>
+
+                {{ form_label(searchForm.geographicalArea) }}
+                {{ form_widget(searchForm.geographicalArea) }}
+
+                    <div class="foot_form">
+                        <input type="submit" value="Valider mon annonce">
                     </div>
-                    <select name="material-geo-select" id="material-geo-select" style="display: none;">
-                        <option value="">--</option>
-                        {% for material in materials %}
-                            {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
-                                <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option>
-                            {% endif %}
-                        {% endfor %}
-                        <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
-                    </select>
 
-                    <select name="material-bio-select" id="material-bio-select">
-                        <option value="">--</option>
-                        {% for material in materials %}
-                            {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
-                                <option value={{ material.material }}>{{ material.material }}</option>
-                            {% endif %}
-                        {% endfor %}
-                        <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
-                    </select>
-
-                    <div class="add" style="display:none;">
-                        <label for="new-material" class="new-material">Ajouter</label>
-                        <input type="text" id="new-material" placeholder="Entrez un autre matériau">
-                    </div>
-
-                    {{ form_label(searchForm.geographicalArea) }}
-                    {{ form_widget(searchForm.geographicalArea) }}
-
-                    <div id="announces" data-announces="{{ announces|json_encode }}"></div>
-
-                        <div class="foot_form">
-                            <input type="submit" value="Valider mon annonce">
-                        </div>
-
-                {{ form_end(searchForm) }}
-            </section>
-        </div>
+            {{ form_end(searchForm) }}
+        </section>
+    </div>
 
     {% endblock %}
 

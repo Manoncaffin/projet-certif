@@ -21,7 +21,12 @@
                 <div class="action_research">
                     <div id="map"></div>
                     <div class="custom-popup">
-                    <div id="announces" data-announces='{{ Json|raw }}'></div>
+                    {% if announces is not empty %}
+                        <div id="announces" data-announces='{{ Json|raw }}'></div>
+                    {% else %}
+                        <p>Aucune annonce trouvée pour ce matériau et cette zone géographique.</p>
+                    {% endif %}
+                    {# <div id="announces" data-announces='{{ Json|raw }}'></div> #}
                     </div>
                 </div>
         </section>

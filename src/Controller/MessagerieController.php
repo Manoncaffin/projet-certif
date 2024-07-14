@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Announce;
+use App\Repository\AnnounceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,15 +19,17 @@ class MessagerieController extends AbstractController
     }
 
     #[Route('/messagerie', name: 'app_messagerie')]
-    public function index(): Response
+    public function index(AnnounceRepository $announceRepository): Response
     {
-        $announces = $this->entityManager->getRepository(Announce::class)->findAll();
+        // $announces = $this->entityManager->getRepository(Announce::class)->findAll();
+        // $user = $this->getUser();
+
         $user = $this->getUser();
+        $announces = $announceRepository->findByOtherUsers($user);
 
         return $this->render('messagerie/index.html.twig', [
             'controller_name' => 'MessagerieController',
             'announces' => $announces,
-            'user' => $user,
         ]);
     }
 

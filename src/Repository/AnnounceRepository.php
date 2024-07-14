@@ -3,11 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Announce;
-use App\Entity\ClassificationMaterial;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use App\Entity\Material;
 
 /**
  * @extends ServiceEntityRepository<Announce>
@@ -28,13 +26,21 @@ class AnnounceRepository extends ServiceEntityRepository
             ->getResult();
     }
     public function findByClassificationMaterialAndMaterialAndGeographicalArea($material, $geographicalArea)
-{
-    return $this->createQueryBuilder('a')
-        ->where('a.material = :material')
-        ->andWhere('a.geographicalArea = :geographicalArea')
-        ->setParameter('material', $material)
-        ->setParameter('geographicalArea', $geographicalArea)
-        ->getQuery()
-        ->getResult();
-}
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.material = :material')
+            ->andWhere('a.geographicalArea = :geographicalArea')
+            ->setParameter('material', $material)
+            ->setParameter('geographicalArea', $geographicalArea)
+            ->getQuery()
+            ->getResult();
+    }
+    public function findByOtherUsers($currentUser)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.user != :user')
+            ->setParameter('user', $currentUser)
+            ->getQuery()
+            ->getResult();
+    }
 }

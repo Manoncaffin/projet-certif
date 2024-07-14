@@ -1,8 +1,10 @@
 <?php
 
+// src/Controller/AnnonceChercherController.php
 namespace App\Controller;
 
 use App\Entity\Announce;
+use App\Entity\Material;
 use App\Form\SearchType;
 use App\Repository\AnnounceRepository;
 use App\Repository\MaterialRepository;
@@ -14,7 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AnnonceChercherController extends AbstractController
 {
-
     private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
@@ -22,106 +23,80 @@ class AnnonceChercherController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
+    private function findMaterialByPartialName($materialName)
+    {
+        $qb = $this->entityManager->createQueryBuilder();
+
+        $qb->select('m')
+            ->from(Material::class, 'm')
+            ->where($qb->expr()->like('m.material', ':material'))
+            ->setParameter('material', '%'.$materialName.'%');
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
+
     #[Route('/annonce-chercher', name: 'app_annonce_chercher')]
     public function index(Request $request, EntityManagerInterface $entityManager, AnnounceRepository $announceRepository, MaterialRepository $materialRepository): Response
     {
-        $searchForm = $this->createForm(SearchType::class);
+        $materials = $materialRepository->findAll();
+        $user = $this->getUser();
+
+        $announce = new Announce();
+        $searchForm = $this->createForm(SearchType::class, $announce);
         $searchForm->handleRequest($request);
 
-        $materials = $materialRepository->findAll();
-        $announces = [];
+        if ($searchForm->isSubmitted()) {
+            if ($searchForm->isValid() && $user) {
+                $announce = $searchForm->getData();
 
-        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+                $materialAnnounce = $request->request->get('material-bio-select') ?: $request->request->get('material-geo-select');
 
-            $materialAnnounce = $request->request->all()['material-bio-select'];
-            if(!$materialAnnounce) {
-                $materialAnnounce = $request->request->all()['material-geo-select'];
+                if ($materialAnnounce) {
+                    $selectedMaterials = $this->findMaterialByPartialName($materialAnnounce);
+
+                    if (count($selectedMaterials) === 1) {
+                        $selectedMaterial = $selectedMaterials[0];
+                    } else {
+                        $this->addFlash('error', 'Plusieurs matériaux correspondent à votre sélection. Veuillez être plus précis.');
+                        return $this->redirectToRoute('app_annonce_chercher');
+                    }
+
+                    $announce->setUser($user);
+                    $announce->setMaterial($selectedMaterial);
+                    $announce->setType('chercher');
+
+                    // Vérifier si une annonce similaire existe déjà
+                    $existingAnnounce = $this->entityManager->getRepository(Announce::class)->findOneBy([
+                        'user' => $user,
+                        'material' => $selectedMaterial,
+                        'type' => 'chercher',
+                    ]);
+
+                    if (!$existingAnnounce) {
+                        // Si aucune annonce similaire n'existe, enregistrer la nouvelle annonce
+                        $this->entityManager->persist($announce);
+                        $this->entityManager->flush();
+
+                        return $this->redirectToRoute('app_annonce_valide');
+                    } else {
+                        // Afficher un message d'erreur si une annonce similaire existe déjà
+                        $this->addFlash('error', 'Vous avez déjà publié une annonce pour ce matériau.');
+                    }
+                } else {
+                    $this->addFlash('error', 'Veuillez sélectionner un matériau.');
+                }
+            } else {
+                $this->addFlash('error', 'Formulaire invalide ou utilisateur non connecté.');
             }
-
-            $selectedMaterial = $materialRepository->findOneBy(['material' => $materialAnnounce]);
-
-            $postalCode = $searchForm->get('geographicalArea')->getData();
-
-            $announces = $announceRepository->findByMaterialAndPostalCode($selectedMaterial, $postalCode);
-
-            if (empty($announces)) {
-                $announce = new Announce();
-                $announce->setMaterial($selectedMaterial);
-                $announce->setGeographicalArea($postalCode);
-                $announce->setUser($this->getUser());
-                $announce->setType('chercher');
-                $announce->setClassification($selectedMaterial->getClassificationMaterial());
-
-                $entityManager->persist($announce);
-                $entityManager->flush();
-
-                $this->addFlash('success', 'Votre recherche a été publiée avec succès.');
-
-                return $this->redirectToRoute('app_annonce_chercher');
-            } 
+        } else {
+            $this->addFlash('error', 'Formulaire non soumis.');
         }
-                return $this->render('annonce_chercher/index.html.twig', [
-                    'searchForm' => $searchForm->createView(),
-                    'announces' => $announces,
-                    'materials' => $materials,
-                ]);
-        }
+
+        return $this->render('annonce_chercher/index.html.twig', [
+            'searchForm' => $searchForm->createView(),
+            'materials' => $materials,
+        ]);
     }
-
-
-
-
-
-    //     $materials = $materialRepository->findAll();
-    //     $user = $this->getUser();
-
-    //     $announce = new Announce();
-    //     $searchForm = $this->createForm(SearchType::class, $announce);
-    //     $searchForm->handleRequest($request);
-
-    //     if ($searchForm->isSubmitted() && $searchForm->isValid() && $user) { // Vérification de l'état de connexion de l'utilisateur
-    //         $announce = $searchForm->getData();
-
-    //         $materialAnnounce = $request->request->all()['material-bio-select'];
-
-    //         $selectedMaterial = $materialRepository->findOneBy(['material' => $materialAnnounce]);
-
-    //         $announce->setUser($user);
-    //         $announce->setMaterial($selectedMaterial);
-    //         $announce->setType('chercher');
-
-    //         // Vérifier si une annonce similaire existe déjà
-    //         $existingAnnounce = $this->entityManager->getRepository(Announce::class)->findOneBy([
-    //             'user' => $user,
-    //             'material' => $selectedMaterial,
-    //             'type' => 'chercher',
-    //         ]);
-
-    //         if (!$existingAnnounce) {
-    //             // Si aucune annonce similaire n'existe, enregistrer la nouvelle annonce
-    //             $this->entityManager->persist($announce);
-    //             $this->entityManager->flush();
-
-    //             return $this->redirectToRoute('app_annonce_valide');
-    //         } else {
-    //             // Afficher un message d'erreur si une annonce similaire existe déjà
-    //             $this->addFlash('error', 'Vous avez déjà publié une annonce pour ce matériau.');
-    //         }
-    //     }
-
-    //     // Récupérer les annonces en fonction du matériau et du code postal saisis
-    //     $material = $announce->getMaterial();
-    //     $postalCode = $announce->getGeographicalArea();
-
-    //     if ($material !== null) {
-    //         $announces = $announceRepository->findByMaterialAndPostalCode($material, $postalCode);
-    //     } else {
-    //         $announces = [];
-    //     }
-
-    //     return $this->render('annonce_chercher/index.html.twig', [
-    //         'searchForm' => $searchForm->createView(),
-    //         'materials' => $materials,
-    //         'announces' => json_encode($announces),
-    //     ]);
-    // }
+}

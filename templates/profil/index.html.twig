@@ -13,71 +13,77 @@
     {% include 'partials/header.html.twig' %}
 
     <div class="container">
-            <div class="top">
-                <div class="form_profil">
-                    <p>{{ ('PROFIL DE ' ~ user.identifier)|trans({}, 'messages')|upper }}</p>
-                </div>
-                <div class="form_profil">
-                    {% set unreadMessagesCount = user.privateMessages|length %}
-                    <p>{{ unreadMessagesCount }} {{ ('MESSAGE(S) NON LU(S)')|trans({}, 'messages')|upper }}</p>
-                </div>
-                <div class="form_profil">
-                    <p>{{ ('MEMBRE DEPUIS ' ~ user.memberDate|date('m/Y'))|upper }}</p>
-                </div>
+        <div class="top">
+            <div class="form_profil">
+                <p>{{ ('PROFIL DE ' ~ user.identifier)|trans({}, 'messages')|upper }}</p>
             </div>
-
-            <div class="form_profil_large_one">
-                <div class="form_circle">
-                    <img src=/>
-                </div>
-
-                <p><span>{{ userAnnounces|length == 0 ? 'Vous n’avez pas d’annonce en ligne' : 'Vous avez ' ~ userAnnounces|length ~ ' annonce(s) en ligne' }}</span></p>
-                    {% if userAnnounces|length == 0 %}</span></p>
-                <p class="pt-4">Vous avez un surplus de matière qui ne peut pas être destiné à son premier usage ?
-                    Vous disposez de matières premières dont vous ne savez pas quoi faire ?
-                    Vous pouvez faire un geste pour la planète, tout en faisant faire des économies à quelqu’un·e !</p>
-                {% endif %}
+            <div class="form_profil">
+                {% set unreadMessagesCount = user.privateMessages|length %}
+                <p>{{ unreadMessagesCount }} {{ ('MESSAGE(S) NON LU(S)')|trans({}, 'messages')|upper }}</p>
             </div>
-
-            <div class="form_medium_all">
-                <div class="form_medium">
-                    <i class="fa-solid fa-folder-plus"></i>
-                    <div class="text">
-                        <h6>DÉPÔT</h6>
-                        <p><a href={{ path('app_annonce_donner') }}>Donner un matériau</a></p>
-                        <p><a href={{ path('app_annonce_chercher') }}>Chercher un matériau</a></p>
-                    </div>
-                </div>
-
-                <div class="form_medium">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    <div class="text">
-                        <h6>INFORMATIONS</h6>
-                        <p><a href={{ path('app_modifications_informations') }}>Modifier mes informations</a></p>
-                        {% include 'admin/users/delete_account_form.html.twig' with {'user': user} %}
-                    </div>
-                </div>
-                
-                <div class="form_medium">
-                    <i class="fa-regular fa-message"></i>
-                    <div class="text">
-                        <h6>MESSAGERIE</h6>
-                        <p><a href={{ path('app_messagerie') }}>Consulter mes messages</a></p>
-                    </div>
-                </div>
-                
-                {% if userAnnounces|length > 0 %}
-                <div class="form_medium">
-                    <i class="fa-regular fa-folder"></i>
-                    <div class="text">
-                        <h6>GÉRER</h6>
-                        <p><a href={{ path('app_mes_annonces') }}>Gérer mes annonces déposées</a></p>
-                    </div>
-                </div>
-                {% endif %}
-                
+            <div class="form_profil">
+                <p>{{ ('MEMBRE DEPUIS ' ~ user.memberDate|date('m/Y'))|upper }}</p>
             </div>
         </div>
+
+        <div class="form_profil_large_one">
+            <div class="part_one">
+                <div class="avatar_container">
+                    {% if app.user.avatar %}
+                        <img src="{{ asset('uploads/photos/' ~ app.user.avatar) }}" alt="Avatar de {{ app.user.identifier }}">
+                    {% else %}
+                        <div class="avatar_placeholder">{{ app.user.identifier | first_letter }}</div>
+                    {% endif %}
+                </div>
+                <p><span>{{ userAnnounces|length == 0 ? 'Vous n’avez pas d’annonce en ligne' : 'Vous avez ' ~ userAnnounces|length ~ ' annonce(s) en ligne' }}</span></p>
+                    {% if userAnnounces|length == 0 %}</span></p>
+            </div>
+
+            <p class="pt-4">Vous avez un surplus de matière qui ne peut pas être destiné à son premier usage ?
+                Vous disposez de matières premières dont vous ne savez pas quoi faire ?
+                Vous pouvez faire un geste pour la planète, tout en faisant faire des économies à quelqu’un·e !</p>
+            {% endif %}
+        </div>
+
+
+        <div class="form_medium_all">
+            <div class="form_medium">
+                <i class="fa-solid fa-folder-plus"></i>
+                <div class="text">
+                    <h6>DÉPÔT</h6>
+                    <p><a href={{ path('app_annonce_donner') }}>Donner un matériau</a></p>
+                    <p><a href={{ path('app_annonce_chercher') }}>Chercher un matériau</a></p>
+                </div>
+            </div>
+
+            <div class="form_medium">
+                <i class="fa-regular fa-pen-to-square"></i>
+                <div class="text">
+                    <h6>INFORMATIONS</h6>
+                    <p><a href={{ path('app_modifications_informations') }}>Modifier mes informations</a></p>
+                    {% include 'admin/users/delete_account_form.html.twig' with {'user': user} %}
+                </div>
+            </div>
+            
+            <div class="form_medium">
+                <i class="fa-regular fa-message"></i>
+                <div class="text">
+                    <h6>MESSAGERIE</h6>
+                    <p><a href={{ path('app_messagerie') }}>Consulter mes messages</a></p>
+                </div>
+            </div>
+            
+            {% if userAnnounces|length > 0 %}
+            <div class="form_medium">
+                <i class="fa-regular fa-folder"></i>
+                <div class="text">
+                    <h6>GÉRER</h6>
+                    <p><a href={{ path('app_mes_annonces') }}>Gérer mes annonces déposées</a></p>
+                </div>
+            </div>
+            {% endif %}   
+        </div>
+    </div>
 
 {% endblock %}
 

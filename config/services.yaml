@@ -25,7 +25,11 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    # effacer une image du système
     Symfony\Component\Filesystem\Filesystem: ~
+
+    App\Twig\FirstLetterExtension:
+        tags: ['twig.extension']
 
 
     # add more service definitions when explicit configuration is needed

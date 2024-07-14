@@ -3,17 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\HttpFoundation\Cookie;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class SecurityController extends AbstractController
@@ -39,11 +38,10 @@ class SecurityController extends AbstractController
             $password = $request->request->get('password');
             $rememberMe = $request->request->get('_remember_me', false);
 
-            $user = $entityManager->getRepository(User::class)
-                ->findOneBy(['identifier' => $identifier]);
+            $user = $entityManager->getRepository(User::class)->findOneBy(['identifier' => $identifier]);
 
             if ($user instanceof PasswordAuthenticatedUserInterface && password_verify($password, $user->getPassword())) {
-                $token = new UsernamePasswordToken($user, 'main', $user->getRoles());
+                $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
 
                 if ($this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY', $token)) {
                     $this->tokenStorage->setToken($token);

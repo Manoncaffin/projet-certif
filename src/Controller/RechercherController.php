@@ -34,15 +34,19 @@ class RechercherController extends AbstractController
         $announces = [];
         $selectedMaterial = null;
 
-        // $announcesJson = '';
-        
         if ($researchForm->isSubmitted() && $researchForm->isValid()) {
             $selectedMaterial = $request->request->get('material-bio-select') ?: $request->request->get('material-geo-select');
             $selectedMaterial = $materialRepository->findOneBy(['material' => $selectedMaterial]);
             $geographicalArea = $researchForm->get('geographicalArea')->getData();
-            return $this->redirectToRoute('app_rechercher_show', ['material'=>$selectedMaterial, 'geographicalArea'=>$geographicalArea]);
+
+            return $this->redirectToRoute('app_rechercher_show', [
+                'material' => $selectedMaterial, 
+                'geographicalArea' => $geographicalArea
+            ]);
         }
-            return $this->render('rechercher/index.html.twig', [
+
+        
+        return $this->render('rechercher/index.html.twig', [
             'controller_name' => 'RechercherController',
             'researchForm' => $researchForm->createView(),
             'materials' => $materials,
@@ -51,22 +55,6 @@ class RechercherController extends AbstractController
         ]);
     }
 
-    
-            // $announcesJson = json_encode($announces);
-            // $materialAnnounce = $request->request->all()['material-bio-select'];
-            // if (!$materialAnnounce) {
-            //     $materialAnnounce = $request->request->all()['material-geo-select'];
-            // }
-
-            // $selectedMaterial = $materialRepository->findOneBy(['material' => $materialAnnounce]);
-            // // dd($selectedMaterial);
-            // $geographicalArea = $researchForm->get('geographicalArea')->getData();
-
-            // $announces = $announceRepository->findByClassificationAndMaterialAndGeographicalArea($selectedMaterial, $geographicalArea);
-
-            // $announcesJson = json_encode($announces);
-            // dump($announces);
-        // }
 
     // CRÉER NOUVELLE ROUTE POUR AFFICHER LES ANNONCES DANS LA MAP
     #[Route('/rechercher/{material}/{geographicalArea}', name: 'app_rechercher_show')]
@@ -76,20 +64,27 @@ class RechercherController extends AbstractController
 
         $announces = $announceRepository->findByClassificationMaterialAndMaterialAndGeographicalArea($selectedMaterial, $geographicalArea);
 
-        $json = [
-            "material" => $announces[0] -> getMaterial() -> getMaterial(),
-            "geographicalArea" => $announces[0] -> getGeographicalArea(),
-            "description" => $announces[0] -> getDescription(),
-            "createdAt" => $announces[0] -> getCreatedAt(),
-            "id" => $announces[0] -> getId(),
-        ];
+        if (!empty($announces)) {
+            $json = [
+                "material" => $announces[0]->getMaterial()->getMaterial(),
+                "geographicalArea" => $announces[0]->getGeographicalArea(),
+                "description" => $announces[0]->getDescription(),
+                "createdAt" => $announces[0]->getCreatedAt(),
+                "id" => $announces[0]->getId(),
+            ];
 
-        $jsonData = $serializer->serialize($json, 'json');
+            $jsonData = $serializer->serialize($json, 'json');
 
-        return $this->render('rechercher/show.html.twig', [
-            'controller_name' => 'RechercherController',
-            'announces' => $announces,
-            'Json' => $jsonData,
-        ]);
+            return $this->render('rechercher/show.html.twig', [
+                'controller_name' => 'RechercherController',
+                'announces' => $announces,
+                'Json' => $jsonData,
+            ]);
+        } else {
+            return $this->render('rechercher/show.html.twig', [
+                'controller_name' => 'RechercherController',
+                'message' => 'Aucune annonce trouvée pour ce matériau et cette zone géographique.',
+            ]);
+        }
     }
 }
