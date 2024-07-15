@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let searchTimeout;
+    // let searchTimeout;
     const map = L.map('map').setView([48.8566, 2.3522], 13);
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         attribution: '© OpenStreetMap contributors © CARTO',
@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
         maxZoom: 19
     }).addTo(map);
 
-    function searchAddress() {
-        console.log("Fonction de recherche d'adresse appelée.");
-    }
+    // function searchAddress() {
+    //     console.log("Fonction de recherche d'adresse appelée.");
+    // }
 
     document.getElementById("research_form_search").addEventListener("click", function (event) {
         searchAddress();

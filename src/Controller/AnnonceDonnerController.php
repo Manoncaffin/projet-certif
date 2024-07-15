@@ -38,6 +38,7 @@ class AnnonceDonnerController extends AbstractController
             
             $materialAnnounce = $request->request->all()['material-bio-select'];
             if(!$materialAnnounce) {
+                dd($materialAnnounce);
                 $materialAnnounce = $request->request->all()['material-geo-select'];
             }
 

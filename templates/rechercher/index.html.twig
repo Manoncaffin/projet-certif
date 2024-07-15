@@ -92,21 +92,21 @@
                 {{ form_widget(researchForm.geographicalArea) }}
                 
                 {# QUAND ON CLIQUE, LA PAGE SHOW DE RECHERCHER DOIT S'AFFICHER #}
-                {{ form_row(researchForm.search) }}
-
-                <div class="foot_form">
-                    <p>Vous ne trouvez pas ce que vous cherchez ?</p>
-                    <a href="{{ path('app_annonce_chercher') }}" class="search">Publier une annonce</a>
+                <div class="search">
+                    {{ form_row(researchForm.search) }}
+                    <div class="foot_form">
+                        <div class="redirection">
+                            <p>Vous ne trouvez pas ce que vous cherchez ?</p>
+                            <a href="{{ path('app_annonce_chercher') }}" class="search">Publier une annonce</a>
+                        </div>
+                    </div>
+                    {{ form_end(researchForm) }}
                 </div>
-                {{ form_end(researchForm) }}
             </div>
 
-            <div class="action_research">
-                <div id="map"></div>
                 <div class="custom-popup">
                     <div id="announces" data-announces="{{ announces|json_encode|raw }}"</div>
                 </div>
-            </div>
         </section>
     </div>
     

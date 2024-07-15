@@ -60,9 +60,14 @@ class RechercherController extends AbstractController
 
     // CRÉER NOUVELLE ROUTE POUR AFFICHER LES ANNONCES DANS LA MAP
     #[Route('/rechercher/{material}/{geographicalArea}', name: 'app_rechercher_show')]
-    public function show($material, $geographicalArea, AnnounceRepository $announceRepository, MaterialRepository $materialRepository, SerializerInterface $serializer): Response
+    public function show(Request $request, $material, $geographicalArea, AnnounceRepository $announceRepository, MaterialRepository $materialRepository, SerializerInterface $serializer): Response
     {
+
+        $researchForm = $this->createForm(ResearchFormType::class);
+        $researchForm->handleRequest($request);
+        
         $selectedMaterial = $materialRepository->findOneBy(['material' => $material]);
+
         $announces = $announceRepository->findByClassificationMaterialAndMaterialAndGeographicalArea($selectedMaterial, $geographicalArea);
 
         if (!empty($announces)) {
@@ -70,7 +75,7 @@ class RechercherController extends AbstractController
                 "material" => $announces[0]->getMaterial()->getMaterial(),
                 "geographicalArea" => $announces[0]->getGeographicalArea(),
                 "description" => $announces[0]->getDescription(),
-                "createdAt" => $announces[0]->getCreatedAt()->format('Y-m-d H:i:s'),
+                "createdAt" => $announces[0]->getCreatedAt(),
                 "id" => $announces[0]->getId(),
             ];
 
