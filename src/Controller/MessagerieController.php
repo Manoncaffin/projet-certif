@@ -21,8 +21,6 @@ class MessagerieController extends AbstractController
     #[Route('/messagerie', name: 'app_messagerie')]
     public function index(AnnounceRepository $announceRepository): Response
     {
-        // $announces = $this->entityManager->getRepository(Announce::class)->findAll();
-        // $user = $this->getUser();
 
         $user = $this->getUser();
         $announces = $announceRepository->findByOtherUsers($user);

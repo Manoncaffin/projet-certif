@@ -4,6 +4,13 @@
     padding: 0px;
 }
 
+@font-face {
+    font-family: 'Abordage';
+    src: url('/fonts/Abordage-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* --------------------------------------------------- */
 /* --------------------------------------------------- */
 /* ------------- MEDIA MIN-WIDTH 350PX --------------- */

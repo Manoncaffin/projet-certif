@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 for (const id in announces) {
                     const announce = announces[id];
 
-                    if (announces.material === material) {
+                    if (announce.material === material) {
                         console.log(data[0].lat);
                         const marker = L.marker([data[0].lat, data[0].lon], {
                             icon: myIcon
@@ -46,10 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         const popupContent = `
                             <div> 
-                                <h6>${announces.material}</h6>
-                                <p>Date: ${announces.createdAt.substring(0, 10)}</p> 
-                                <p>${announces.description}</p> 
-                                <a href="http://127.0.0.1:8000/annonce-detail/${announces.id}"><p>Voir l'annonce</p></a> 
+                                <h6>${announce.material}</h6>
+                                <p>Date: ${announce.createdAt.substring(0, 10)}</p> 
+                                <p>${announce.description}</p> 
+                                <a href="http://127.0.0.1:8000/annonce-detail/${announce.id}"><p>Voir l'annonce</p></a> 
                             </div>
                         `;
 
@@ -78,5 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Une erreur s'est produite lors de la recherche d'adresse");
         });
 }
+document.getElementById("searchButton").addEventListener("click", function() {
 searchAddress();
+});
 });

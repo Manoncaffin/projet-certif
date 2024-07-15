@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
         maxZoom: 19
     }).addTo(map);
 
+    function searchAddress() {
+        console.log("Fonction de recherche d'adresse appelée.");
+    }
+
     document.getElementById("research_form_search").addEventListener("click", function (event) {
         searchAddress();
     });
@@ -15,8 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const postalCode = this.value.trim();
 
         if (postalCode.length === 5 && /^\d+$/.test(postalCode)) {
-            clearTimeout(searchTimeout);
-
             const url = 'https://nominatim.openstreetmap.org/search?format=json&postalcode=' + encodeURIComponent(postalCode) + '&countrycodes=FR,RE,GF,GP,MQ,YT';
 
             fetch(url)

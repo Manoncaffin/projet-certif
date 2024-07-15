@@ -2,17 +2,17 @@
 
 namespace App\Controller;
 
-use App\Entity\Announce;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Attribute\Route;
+use App\Entity\Material;
 use App\Form\ResearchFormType;
 use App\Repository\AnnounceRepository;
 use App\Repository\MaterialRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Encoder\JsonEncode;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Encoder\JsonEncode;
 
 class RechercherController extends AbstractController
 {
@@ -27,6 +27,7 @@ class RechercherController extends AbstractController
     #[Route('/rechercher', name: 'app_rechercher')]
     public function search(Request $request, AnnounceRepository $announceRepository, MaterialRepository $materialRepository): Response
     {
+
         $researchForm = $this->createForm(ResearchFormType::class);
         $researchForm->handleRequest($request);
 
@@ -40,12 +41,13 @@ class RechercherController extends AbstractController
             $geographicalArea = $researchForm->get('geographicalArea')->getData();
 
             return $this->redirectToRoute('app_rechercher_show', [
-                'material' => $selectedMaterial, 
-                'geographicalArea' => $geographicalArea
+                'material' => $selectedMaterial,
+                'geographicalArea' => $geographicalArea,
+                'announces' => $announces
             ]);
         }
 
-        
+
         return $this->render('rechercher/index.html.twig', [
             'controller_name' => 'RechercherController',
             'researchForm' => $researchForm->createView(),
@@ -61,7 +63,6 @@ class RechercherController extends AbstractController
     public function show($material, $geographicalArea, AnnounceRepository $announceRepository, MaterialRepository $materialRepository, SerializerInterface $serializer): Response
     {
         $selectedMaterial = $materialRepository->findOneBy(['material' => $material]);
-
         $announces = $announceRepository->findByClassificationMaterialAndMaterialAndGeographicalArea($selectedMaterial, $geographicalArea);
 
         if (!empty($announces)) {
@@ -69,7 +70,7 @@ class RechercherController extends AbstractController
                 "material" => $announces[0]->getMaterial()->getMaterial(),
                 "geographicalArea" => $announces[0]->getGeographicalArea(),
                 "description" => $announces[0]->getDescription(),
-                "createdAt" => $announces[0]->getCreatedAt(),
+                "createdAt" => $announces[0]->getCreatedAt()->format('Y-m-d H:i:s'),
                 "id" => $announces[0]->getId(),
             ];
 
@@ -80,11 +81,12 @@ class RechercherController extends AbstractController
                 'announces' => $announces,
                 'Json' => $jsonData,
             ]);
-        } else {
-            return $this->render('rechercher/show.html.twig', [
-                'controller_name' => 'RechercherController',
-                'message' => 'Aucune annonce trouvée pour ce matériau et cette zone géographique.',
-            ]);
         }
+        
+        return $this->render('rechercher/show.html.twig', [
+            'controller_name' => 'RechercherController',
+            'announces' => [],
+            'Json' => '[]',
+        ]);
     }
 }

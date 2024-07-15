@@ -6,7 +6,9 @@
 
 @font-face {
     font-family: 'Abordage';
-    src: url('Abordage-Regular.otf') format('opentype');
+    src: url('/fonts/Abordage-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 /* --------------------------------------------------- */

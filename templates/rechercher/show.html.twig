@@ -13,23 +13,31 @@
     {% include 'partials/header.html.twig' %}
 
     <div class="container" id="container">
+        <div class="scrolling-text-container">
+                    <p class="scrolling-text">Je recherche un matériau</p>
+                    <p class="scrolling-text">Je recherche un matériau</p>
+                    <p class="scrolling-text">Je recherche un matériau</p>
+                    <p class="scrolling-text">Je recherche un matériau</p>
+                </div>
 
-    <input type='hidden' value={{announces[0].geographicalArea}} id="geographicalArea">
-    <input type='hidden' value={{announces[0].material}} id="material">
+                <div class="bordure mb-4"></div>
+                
+            
+        {% if announces is not empty %}
+        <input type='hidden' value={{announces[0].geographicalArea}} id="geographicalArea">
+        <input type='hidden' value={{announces[0].material}} id="material">
 
         <section id="research">    
                 <div class="action_research">
                     <div id="map"></div>
                     <div class="custom-popup">
-                    {% if announces is not empty %}
                         <div id="announces" data-announces='{{ Json|raw }}'></div>
-                    {% else %}
-                        <p>Aucune annonce trouvée pour ce matériau et cette zone géographique.</p>
-                    {% endif %}
-                    {# <div id="announces" data-announces='{{ Json|raw }}'></div> #}
                     </div>
                 </div>
         </section>
+        {% else %}
+            <p>Aucune annonce trouvée pour ce matériau et cette zone géographique.</p>
+        {% endif %}
     </div>
 
     
