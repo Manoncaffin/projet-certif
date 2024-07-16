@@ -41,6 +41,15 @@
         }
     }
 
+    .custom-error-list {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    
+    .custom-error-item {
+        color: red;
+    }
+
     /* FORM  */
     input[type=text],
     input[type=email],

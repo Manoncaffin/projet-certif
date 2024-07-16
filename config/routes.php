@@ -6,11 +6,11 @@ return function (RoutingConfigurator $routes) {
     $routes->add('accueil', '/accueil')
         ->controller('App\Controller\AccueilController::index');
 
-    $routes->add('inscription', '/inscription')
-        ->controller('App\Controller\InscriptionController::index');
+    $routes->add('registration', '/register')
+        ->controller('App\Controller\RegistrationController::index');
 
-    $routes->add('connexion', '/connexion.html')
-        ->controller('App\Controller\ConnexionController::index');
+    $routes->add('login', '/login')
+        ->controller('App\Controller\SecurityController::index');
 
     $routes->add('mes-annonces', '/mes-annonces')
         ->controller('App\Controller\MesAnnoncesController::index');

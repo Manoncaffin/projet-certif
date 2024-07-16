@@ -28,6 +28,7 @@
                     'role' : 'form',
                     }
                 }) }}
+                
 
                 {% for flash_error in app.flashes('verify_email_error') %}
                     <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
@@ -69,10 +70,23 @@
 
                     {{ form_label(registrationForm.email) }}
                     {{ form_widget(registrationForm.email)}}
-
+                    {% if registrationForm.email.vars.errors|length > 0 %}
+                    <ul class="custom-error-list">
+                        {% for error in registrationForm.email.vars.errors %}
+                            <li class="custom-error-item">{{ error.message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 
                     {{ form_label(registrationForm.identifier) }}
                     {{ form_widget(registrationForm.identifier)}}
+                    {% if registrationForm.identifier.vars.errors|length > 0 %}
+                    <ul class="custom-error-list">
+                        {% for error in registrationForm.identifier.vars.errors %}
+                            <li class="custom-error-item">{{ error.message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
 
                     <div class="avatar">
                     {{ form_label(registrationForm.avatar) }}

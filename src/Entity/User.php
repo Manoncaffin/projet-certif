@@ -13,9 +13,9 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-#[UniqueEntity(fields: ['email'], message: 'Cet email est déjà utilisé')]
-#[UniqueEntity(fields: ['identifier'], message:'Cet identifiant est déjà utilisé')]
+#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', columns: ['email'])]
+#[UniqueEntity(fields: ['email'], message: "Cet email est déjà utilisé")]
+#[UniqueEntity(fields: ['identifier'], message: "Cet identifiant est déjà utilisé")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -23,9 +23,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
+    /**
+     * @ORM\Column(type="string", lenght=255)
+     * #Assert\Email('L\'adresse email "{{ value }}" est déjà utilisée.')
+     */
     #[ORM\Column(length: 180)]
     private ?string $email = null;
-
 
     /**
      * @var list<string> The user roles
@@ -82,10 +85,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $avatar = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $rememberMeToken;
 
     public function __construct()
     {
@@ -351,18 +350,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAvatar(?string $avatar): static
     {
         $this->avatar = $avatar;
-
-        return $this;
-    }
-
-    public function getRememberMeToken(): ?string
-    {
-        return $this->rememberMeToken;
-    }
-
-    public function setRememberMeToken(?string $rememberMeToken): self
-    {
-        $this->rememberMeToken = $rememberMeToken;
 
         return $this;
     }
