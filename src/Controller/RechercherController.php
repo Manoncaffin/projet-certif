@@ -63,12 +63,13 @@ class RechercherController extends AbstractController
     public function show(Request $request, $material, $geographicalArea, AnnounceRepository $announceRepository, MaterialRepository $materialRepository, SerializerInterface $serializer): Response
     {
 
+        $currentUser = $this->getUser();
         $researchForm = $this->createForm(ResearchFormType::class);
         $researchForm->handleRequest($request);
         
         $selectedMaterial = $materialRepository->findOneBy(['material' => $material]);
 
-        $announces = $announceRepository->findByClassificationMaterialAndMaterialAndGeographicalArea($selectedMaterial, $geographicalArea);
+        $announces = $announceRepository->findByClassificationMaterialAndMaterialAndGeographicalArea($selectedMaterial, $geographicalArea, $currentUser);
 
         if (!empty($announces)) {
             $json = [

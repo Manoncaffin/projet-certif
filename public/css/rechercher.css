@@ -227,6 +227,14 @@
         border: 1px solid black;
     }
 
+    .back {
+        margin-top: 20px;
+    }
+
+    .no_result {
+        font-size: 2.5rem;
+    }
+
     .back a {
         background-color: rgb(27, 237, 177);
         color: black;
@@ -313,7 +321,6 @@
         margin-top: 0px;
     }
 
-
     #research_form_search {
         font-size: 1.1rem;
         margin-top: 15px;
@@ -364,6 +371,10 @@
     /* MODALE */
 
     .back a {
+        font-size: 1.1rem;
+    }
+
+    .no_result {
         font-size: 1.1rem;
     }
 }

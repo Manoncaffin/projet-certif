@@ -34,12 +34,17 @@
                         <a href={{ path('app_rechercher') }}>Revenir en arrière</a>
                     </div>
                     <div class="custom-popup">
-                        <div id="announces" data-announces='{{ Json|raw }}'></div>
+                        <div id="announces" data-announces='{{ Json|raw|e('html_attr') }}'></div>
                     </div>
                 </div>
         </section>
         {% else %}
+        <div class="no_result">
             <p>Aucune annonce trouvée pour ce matériau et cette zone géographique.</p>
+        </div>
+            <div class="back">
+                <a href={{ path('app_rechercher') }}>Revenir en arrière</a>
+            </div>
         {% endif %}
     </div>
 
