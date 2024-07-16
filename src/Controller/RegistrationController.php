@@ -63,8 +63,6 @@ class RegistrationController extends AbstractController
             // Envoi de l'e-mail de confirmation d'inscription
 
             return $security->login($user, AppAuthenticator::class, 'main');
-        } else {
-            $errors = $form->getErrors();
         }
 
         return $this->render('registration/register.html.twig', [

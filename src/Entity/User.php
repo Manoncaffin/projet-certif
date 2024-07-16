@@ -25,7 +25,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", lenght=255)
-     * #Assert\Email('L\'adresse email "{{ value }}" est déjà utilisée.')
      */
     #[ORM\Column(length: 180)]
     private ?string $email = null;

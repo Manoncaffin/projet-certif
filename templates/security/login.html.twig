@@ -29,13 +29,7 @@
                         <input type="password" name="password" id="inputPassword" autocomplete="current-password" placeholder="Votre mot de passe" required>
 
                         <input type="hidden" name="_csrf_token"
-                            value="{{ csrf_token('authenticate') }}"
-                        >
-                        <div class="checkbox mb-3">
-                            <label>
-                                <input type="checkbox" name="_remember_me" id="remember_me"><span>Se souvenir de moi</span>
-                            </label>
-                        </div>
+                            value="{{ csrf_token('authenticate') }}">
 
                         <div class="foot_form">
                             <input type="submit" value="Valider">

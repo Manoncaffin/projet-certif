@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,7 +35,6 @@ class SecurityController extends AbstractController
         if ($request->isMethod('POST')) {
             $identifier = $request->request->get('identifier');
             $password = $request->request->get('password');
-            $rememberMe = $request->request->get('_remember_me', false);
 
             $user = $entityManager->getRepository(User::class)->findOneBy(['identifier' => $identifier]);
 
@@ -45,21 +43,6 @@ class SecurityController extends AbstractController
 
                 if ($this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY', $token)) {
                     $this->tokenStorage->setToken($token);
-
-                    if ($rememberMe) {
-                        $tokenValue = bin2hex(random_bytes(32)); 
-                        $user->setRememberMeToken($tokenValue);
-                        $entityManager->flush(); 
-
-                        $cookie = new Cookie(
-                            '_remember_me',
-                            $tokenValue,
-                            time() + 60 * 60 * 24 * 7 
-                        );
-                        $response = $this->redirectToRoute('app_accueil');
-                        $response->headers->setCookie($cookie);
-                        return $response;
-                    }
 
                     return $this->redirectToRoute('app_accueil');
                 }

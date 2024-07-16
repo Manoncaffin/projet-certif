@@ -24,8 +24,6 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            // ->add('roles', CheckboxType::class) 
-
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom',
                 'attr' => [
@@ -45,17 +43,6 @@ class UserType extends AbstractType
                     'required' => 'true',
                 ]
             ])
-
-            // ->add('password', PasswordType::class, [
-            //     'label' => 'Mot de passe',
-            //     'attr' => [
-            //     'name' => 'password',
-            //     'id' => 'inputPassword',
-            //     'class' => 'form-control',
-            //     'autocomplete' => 'current-password',
-            //     'placeholder' => 'Votre mot de passe',
-            //     ]
-            // ])
 
             ->add('identifier', TextType::class, [
                 'label' => 'Identifiant',
@@ -155,7 +142,6 @@ class UserType extends AbstractType
         
     }
 
-    // C’est ici que l’on y indique à quelle entité est rattachée ce formulaire.
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

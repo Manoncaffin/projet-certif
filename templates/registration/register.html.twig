@@ -92,16 +92,48 @@
                     {{ form_label(registrationForm.avatar) }}
                     {{ form_widget(registrationForm.avatar) }}
 
-                    {{ form_errors(registrationForm.avatar) }}
+                    {% if registrationForm.avatar.vars.errors|length > 0 %}
+                        <ul class="custom-error-list">
+                            {% for error in registrationForm.avatar.vars.errors %}
+                                <li class="custom-error-item">{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                     </div>
 
-                    {{ form_widget(registrationForm.plainPassword)}}
+                    {{ form_label(registrationForm.plainPassword.first) }}
+                    {{ form_widget(registrationForm.plainPassword.first) }}
+
+                    {{ form_label(registrationForm.plainPassword.second) }}
+                    {{ form_widget(registrationForm.plainPassword.second) }}
+
+                    {% if registrationForm.plainPassword.first.vars.errors|length > 0 %}
+                        <ul class="custom-error-list">
+                            {% for error in registrationForm.plainPassword.first.vars.errors %}
+                                <li class="custom-error-item">{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    {% if registrationForm.plainPassword.second.vars.errors|length > 0 %}
+                        <ul class="custom-error-list">
+                            {% for error in registrationForm.plainPassword.second.vars.errors %}
+                                <li class="custom-error-item">{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                     
                     <div class="custum-checkbox">
                         {{ form_widget(registrationForm.agreeTerms) }}
                         {{ form_label(registrationForm.agreeTerms) }}
                         
-                        {{ form_errors(registrationForm.agreeTerms) }}
+                        {% if registrationForm.agreeTerms.vars.errors|length > 0 %}
+                            <ul class="custom-error-list">
+                                {% for error in registrationForm.agreeTerms.vars.errors %}
+                                    <li class="custom-error-item">{{ error.message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
 
                     <div class="confidentials">
@@ -123,7 +155,8 @@
 
 {% block javascripts %}
     <script src={{ asset('js/overall-scrolling.js') }}></script>
-    <script src={{ asset('js/inscription.js') }}></script>
+    <script src={{ asset('js/registration.js') }}></script>
+    <script src={{ asset('js/submit-registration.js') }}></script>
 {% endblock %}
 
 
