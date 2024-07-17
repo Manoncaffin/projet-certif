@@ -40,7 +40,7 @@
                     <div class="carousel__slide current-slide">
                         {% for file in announce.photo|slice(0, 3) %}
                             <div class="carousel__slide">
-                                <img class="carousel__image" src="{{ asset(file.url) }}" alt="Image annonce">
+                                <img class="carousel__image" src="{{ asset('uploads/photos/' ~ file.url) }}" alt="Image annonce">
                             </div>
                         {% endfor %}
                     </div>

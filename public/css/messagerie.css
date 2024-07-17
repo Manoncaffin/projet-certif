@@ -164,7 +164,7 @@
     .message-input {
         position: fixed;
         bottom: 0;
-        left: 0;
+        /* left: 0; */
         width: 100%;
         padding: 45px;
         box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
@@ -239,20 +239,21 @@
         }
     }
 
+    .container {
+        padding-left: 0;
+    }
+    
     .all_container {
         display: flex;
     }
 
-    /* NAV TWO */
-    /* .nav-two {
-        padding: 10px 20px 10px 0px;
-        display: flex;
-        margin-bottom: 50px;
-        margin-top: 20px;
-        height: fit-content;
-        background-color: rgb(247, 245, 216);
-        border-bottom: 1px solid black;
-    } */
+    .message_user_one {
+        margin: 20px;
+    }
+
+    .message_user_two {
+        margin: 20px;
+    }
 
     .info_user {
         display: flex;

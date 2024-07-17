@@ -18,31 +18,32 @@
             {% for announce in announces %}
                 <div class="description_announce">
                     <div class="img_announce">
-                        {% for photo in announce.photo %}
-                            <img src="{{ asset(photo.url) }}" alt="Photo annonce">
-                        {% endfor %}
-                    </div>
+                    {% if announce.photo|length > 0 %}
+                        {% set firstPhoto = announce.photo|first %}
+                        <img src="{{ asset('uploads/photos/' ~ firstPhoto.url) }}" alt="Photo annonce">
+                    {% else %}
+                        <p>Aucune photo disponible.</p>
+                    {% endif %}
+                </div>
 
                     <div class="text_announce">
                     <p><span>{{ announce.material }}</span></p>
-                    <p>{{ announce.createdAt | date('d/m/Y H:i') }}</p>
-                    {# <a href="{{ path('app_annonce_detail', { id: announce.id }) }}" class="look_announce">Voir l'annonce</a> #}
-                    <a href={{ path('app_annonce_detail', { id : 2}) }} class="look_announce">Voir l'annonce</a>
+                    <p>{{ announce.createdAt | date('d/m/Y') }}</p>
+                    <a href={{ path('app_annonce_detail', { id : announce.id}) }} class="look_announce">Voir l'annonce</a>
                     </div>
 
                     <div class="icons_announce">
                         {# FAIRE BOUCLE ANNONCES AVEC LES MESSAGES ENVOYÉS #}
                         <!-- FONCTION DELETE -->
                         <a href=""><i class="fa-solid fa-trash"></i></a>
-                        <a href={{ path('app_messagerie_show', { id : 2}) }}><i class="fa-regular fa-message"></i></a>
-                        {# <a href="{{ path('app_messagerie_show', { id: announce.id }) }}"><i class="fa-regular fa-message"></i></a> #}
+                        <a href={{ path('app_messagerie_show', { id : announce.id}) }}><i class="fa-regular fa-message"></i></a>
                     </div>
                 </div>
             {% endfor %}
+            </div>
                 <div class="scrollbar" id="style-1">
                     <div class="force-overflow"></div>
                 </div>
-            </div>
         </section>
 
 {% endblock %}

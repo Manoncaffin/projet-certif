@@ -22,7 +22,6 @@ class AnnonceDetailController extends AbstractController
         }
 
         $user = $this->getUser();
-        // $userAnnounces = $announceRepository->findByUser($user);
 
         return $this->render('annonce_detail/index.html.twig', [
             'user' => $user,

@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
     menuToggle.addEventListener('click', function () {
         navMenu.classList.toggle('active');
         const carousel = document.querySelector('.carousel');
-        carousel.classList.toggle('hide-carousel'); // Ajoute ou supprime la classe 'hide-carousel' du carousel lorsque le menu burger est cliqué
+        carousel.classList.toggle('hide-carousel');
     });
 });
 });
