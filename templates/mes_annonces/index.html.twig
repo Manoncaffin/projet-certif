@@ -12,7 +12,18 @@
 
     {% include 'partials/header.html.twig' %}
 
-     <div class="container" id="container">
+    <div class="container" id="container">
+
+            {% for message in app.flashes('success') %}
+                <div class="custom-success-item" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+
+
             <div class="top_all">
                 <div class="form_profil">
                     <p>{{ ('ANNONCE(S) DE ' ~ user.identifier)|trans({}, 'messages')|upper }}</p>

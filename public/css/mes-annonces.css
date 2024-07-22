@@ -162,6 +162,34 @@
             width: 100%;
         }
     }
+
+    .custom-error-list {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    
+    .custom-error-item {
+        color: #721c24;
+        background-color: #f8d7da;
+        padding: 0.75rem 1.25rem;
+        border: 1px solid #f1aeb5;
+        border-radius: 0.25rem;
+        margin-bottom: 15px;
+    }
+
+    .custom-success-item {
+        color: #63bf2a;
+        background-color: #e2f8d7;
+        padding: 0.75rem 1.25rem;
+        border: 1px solid #c9f1ae;
+        border-radius: 0.25rem;
+        margin-bottom: 15px;
+    }
+
+    .close {
+        display: flex;
+        justify-content: end;
+    }
 }
 
 

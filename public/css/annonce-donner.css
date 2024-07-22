@@ -84,7 +84,7 @@
         color: white;
     }
 
-     /* MODALE */
+    /* MODALE */
     .text_click {
         font-family: "Lemon Milk";
     }
@@ -141,6 +141,7 @@
         text-decoration: none;
         cursor: pointer;
     }
+
     /* MODALE */
 
     .foot_form {
@@ -250,7 +251,7 @@
     }
 
     textarea {
-        background-color:rgb(247, 245, 216);
+        background-color: rgb(247, 245, 216);
         border: 1px solid rgb(123, 123, 123);
         border-radius: 10px;
         width: 100%;
@@ -277,13 +278,13 @@
         background-color: #000;
     }
 
-     /* Change the white to any color */
-     input:-webkit-autofill,
-     input:-webkit-autofill:hover,
-     input:-webkit-autofill:focus,
-     input:-webkit-autofill:active {
-         -webkit-box-shadow: 0 0 0 30px rgb(247, 245, 216) inset !important;
-     }
+    /* Change the white to any color */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px rgb(247, 245, 216) inset !important;
+    }
 
     /* FORM  */
 
@@ -318,6 +319,34 @@
 
     .bordure {
         border: 1px solid black;
+    }
+
+    .custom-error-list {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    
+    .custom-error-item {
+        color: #721c24;
+        background-color: #f8d7da;
+        padding: 0.75rem 1.25rem;
+        border: 1px solid #f1aeb5;
+        border-radius: 0.25rem;
+        margin-bottom: 15px;
+    }
+
+    .custom-success-item {
+        color: #63bf2a;
+        background-color: #e2f8d7;
+        padding: 0.75rem 1.25rem;
+        border: 1px solid #c9f1ae;
+        border-radius: 0.25rem;
+        margin-bottom: 15px;
+    }
+
+    .close {
+        display: flex;
+        justify-content: end;
     }
 }
 
@@ -437,7 +466,7 @@
 /* ----------------- SUP. OU ÉGALE ------------------- */
 /* --------------------------------------------------- */
 @media only screen and (min-width: 1200px) {
-    
+
     textarea {
         height: 110px;
     }

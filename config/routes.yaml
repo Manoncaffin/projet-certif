@@ -47,7 +47,7 @@ announce_delete:
 
 messagerie_delete:
     path: /messagerie/delete/{id}
-    controller: App\Controller\MessageController::delete
+    controller: App\Controller\MessagerieController::delete
     methods: DELETE
     
 app_profil_upload_avatar:

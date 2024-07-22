@@ -22,7 +22,22 @@
                 </div>
                 <div class="bordure mb-4"></div>
 
+            {% for message in app.flashes('error') %}
+                <div class="custom-error-item" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+
                 {{ form_start(giveForm) }}
+
+                {% if form_errors(giveForm) %}
+                    <div class="alert alert-danger">
+                        {{ form_errors(giveForm) }}
+                    </div>
+                {% endif %}
 
                     {{ form_label(giveForm.classification) }}
                     {{ form_widget(giveForm.classification) }}

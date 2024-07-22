@@ -33,27 +33,24 @@ class MessagerieController extends AbstractController
         ]);
     }
 
-    #[Route('/messagerie/{id}', name: 'app_messagerie_show')]
-    public function messagerie(int $id): Response
+    #[Route('/messagerie/{id}', name: 'app_messagerie_show', methods: ['GET'])]
+    public function show(int $id, AnnounceRepository $announceRepository): Response
     {
-        $announce = $this->entityManager->getRepository(Announce::class)->find($id);
-        $photos = $announce->getPhoto();
+        $announce = $announceRepository->find($id);
 
         if (!$announce) {
             throw $this->createNotFoundException('L\'annonce n\'existe pas.');
         }
 
         return $this->render('messagerie/show.html.twig', [
-            'controller_name' => 'MessagerieController',
             'announce' => $announce,
-            'photos' => $photos,
         ]);
     }
 
     #[Route('/messagerie/supprimer/{id}', name: 'messagerie_supprimer', methods: ['DELETE'])]
-    public function delete($id, EntityManagerInterface $entityManager, LoggerInterface $logger): JsonResponse
+    public function delete($id, LoggerInterface $logger): JsonResponse
     {
-        $announce = $entityManager->getRepository(Announce::class)->find($id);
+        $announce = $this->entityManager->getRepository(Announce::class)->find($id);
 
         if (!$announce) {
             $logger->error("Announce with id $id not found.");
@@ -61,8 +58,9 @@ class MessagerieController extends AbstractController
         }
 
         try {
-            $entityManager->remove($announce);
-            $entityManager->flush();
+            $this->entityManager->remove($announce);
+            $this->entityManager->flush();
+
         } catch (\Exception $e) {
             $logger->error("Error deleting announce: " . $e->getMessage());
             return new JsonResponse(['success' => false, 'error' => 'Error deleting announce'], 500);

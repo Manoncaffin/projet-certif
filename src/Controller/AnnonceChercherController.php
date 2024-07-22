@@ -72,23 +72,22 @@ class AnnonceChercherController extends AbstractController
                         'material' => $selectedMaterial,
                         'type' => 'chercher',
                     ]);
-
+                    
                     if (!$existingAnnounce) {
                         $this->entityManager->persist($announce);
                         $this->entityManager->flush();
 
+                        $this->addFlash('success', 'Votre annonce a été ajoutée avec succès.');
                         return $this->redirectToRoute('app_annonce_valide');
                     } else {
-                        $this->addFlash('error', 'Vous avez déjà publié une annonce pour ce matériau.');
+                        $this->addFlash('error', 'Vous avez déjà publié une annonce pour ce matériau et cette localisation.');
                     }
                 } else {
                     $this->addFlash('error', 'Veuillez sélectionner un matériau.');
                 }
             } else {
-                $this->addFlash('error', 'Formulaire invalide ou utilisateur non connecté.');
+                $this->addFlash('error', 'Utilisateur·rice non connecté·e.');
             }
-        } else {
-            $this->addFlash('error', 'Formulaire non soumis.');
         }
 
         return $this->render('annonce_chercher/index.html.twig', [

@@ -78,7 +78,7 @@ class AnnonceDonnerController extends AbstractController
 
                 return $this->redirectToRoute('app_annonce_valide');
         } else {
-                $this->addFlash('error', 'Veuillez saisir une description pour votre annonce.');
+                $this->addFlash('error', 'Le formulaire n/est pas valide.');
             }
         
         return $this->render('annonce_donner/index.html.twig', [

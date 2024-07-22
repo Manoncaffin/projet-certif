@@ -53,6 +53,8 @@ class MesAnnoncesController extends AbstractController
         $entityManager->remove($announce);
         $entityManager->flush();
 
+        $this->addFlash('success', 'Votre annonce a été supprimée avec succès.');
+        
         return $this->redirectToRoute('app_mes_annonces');
     }
 
