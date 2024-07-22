@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Announce;
 use App\Entity\File;
+use App\Entity\Material;
 use App\Form\GiveType;
 use App\Repository\MaterialRepository;
 use App\Repository\VolumeRepository;
@@ -71,5 +72,19 @@ class AnnonceDonnerModifierController extends AbstractController
             'announce' => $announce,
             'materials' => $materials,
         ]);
+    }
+
+    private function findMaterialByPartialName($materialName)
+    {
+        $qb = $this->entityManager->createQueryBuilder();
+
+        $qb->select('m')
+            ->from(Material::class, 'm')
+            ->where($qb->expr()->like('m.material', ':material'))
+            ->setParameter('material', '%'.$materialName.'%');
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
     }
 }

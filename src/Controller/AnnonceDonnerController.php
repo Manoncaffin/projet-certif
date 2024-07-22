@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Announce;
 use App\Entity\File;
+use App\Entity\Material;
 use App\Form\GiveType;
 use App\Repository\MaterialRepository;
 use App\Repository\VolumeRepository;
@@ -38,7 +39,6 @@ class AnnonceDonnerController extends AbstractController
             
             $materialAnnounce = $request->request->all()['material-bio-select'];
             if(!$materialAnnounce) {
-                dd($materialAnnounce);
                 $materialAnnounce = $request->request->all()['material-geo-select'];
             }
 
@@ -64,6 +64,7 @@ class AnnonceDonnerController extends AbstractController
                     $this->entityManager->persist($photoAnnounce);
 
                 } catch (FileException $e) { 
+                    $this->addFlash('error', 'Il y a un problème avec votre fichier.');
                 }
             }
 
@@ -77,14 +78,26 @@ class AnnonceDonnerController extends AbstractController
 
                 return $this->redirectToRoute('app_annonce_valide');
         } else {
-                // Afficher un message d'erreur si le champ "description" est vide
                 $this->addFlash('error', 'Veuillez saisir une description pour votre annonce.');
             }
         
-
         return $this->render('annonce_donner/index.html.twig', [
             'giveForm' => $giveForm->createView(),
             'materials' => $materials,
         ]);
+    }
+
+    private function findMaterialByPartialName($materialName)
+    {
+        $qb = $this->entityManager->createQueryBuilder();
+
+        $qb->select('m')
+            ->from(Material::class, 'm')
+            ->where($qb->expr()->like('m.material', ':material'))
+            ->setParameter('material', '%'.$materialName.'%');
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
     }
 }

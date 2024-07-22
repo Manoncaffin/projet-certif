@@ -33,7 +33,7 @@
 
         p {
             margin: 0;
-            font-size: 2.7rem;
+            font-size: 2.5rem;
         }
 
         a {
@@ -105,6 +105,14 @@
         color: white;
     }
 
+    .hidden {
+        display: none;
+    }
+
+    .static-position {
+        position: static !important; /* Important to override any other styles */
+    }
+    
     /* CONTAINER 1 */
 
 
@@ -120,8 +128,8 @@
 
     .avatar {
         margin: 0 40px 10px 40px;
-        width: 45px;
-        height: 45px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
         background-color: black;
     }
@@ -150,6 +158,10 @@
         padding-top: 12px;
     }
 
+    .datetime {
+        font-size: 1.8rem;
+    }
+
     .datetime_one {
         padding-left: 40px;
     }
@@ -164,7 +176,7 @@
     .message-input {
         position: fixed;
         bottom: 0;
-        /* left: 0; */
+        left: 0;
         width: 100%;
         padding: 45px;
         box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
@@ -238,13 +250,10 @@
             text-align: start;
         }
     }
-
-    .container {
-        padding-left: 0;
-    }
     
     .all_container {
         display: flex;
+        width: 100vw;
     }
 
     .message_user_one {
@@ -307,13 +316,14 @@
     /* SCROLLBAR */
     .scrollbar {
         float: left;
-        height: 577px;
         width: 65px;
         overflow-y: scroll;
+        height: 76.5vh;
     }
 
     .force-overflow {
         min-height: 815px;
+        height: 76.5vh;
     }
 
     #wrapper {
@@ -344,9 +354,9 @@
     /* CONTAINER 2 */
 
     .container_two {
-        height: 76vh;
+        /* height: 76vh; */
         width: 65%;
-        padding: 50px 140px 0 140px;
+        padding: 0;
         position: relative;
     }
 
@@ -363,20 +373,10 @@
         border-radius: 20px;
     }
 
-    .datetime_one,
-    .datetime_two {
+    .datetime {
         font-size: 0.7rem;
-        padding-top: 10px;
+        padding-top: 5px;
     }
-
-    .datetime_one {
-        padding-left: 15px;
-    }
-
-    .datetime_two {
-        padding-right: 15px;
-    }
-
 
     /* TEXTAREA */
 
@@ -439,6 +439,10 @@
         }
     }
 
+    .all_container {
+        height: 81vh;
+    }
+
     /* NAV TWO */
 
     span {
@@ -478,6 +482,7 @@
     /* SCROLLBAR */
     .scrollbar {
         height: 757px;
+        height: 81vh;
     }
 
     #style-1::-webkit-scrollbar-track {
@@ -500,12 +505,11 @@
     .container_two {
         height: 81vh;
         width: 70%;
-        padding-bottom: 300px;
     }
 
     .avatar {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         margin-bottom: 10px;
     }
 

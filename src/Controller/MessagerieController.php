@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\Announce;
 use App\Repository\AnnounceRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class MessagerieController extends AbstractController
 {
@@ -46,5 +48,26 @@ class MessagerieController extends AbstractController
             'announce' => $announce,
             'photos' => $photos,
         ]);
+    }
+
+    #[Route('/messagerie/supprimer/{id}', name: 'messagerie_supprimer', methods: ['DELETE'])]
+    public function delete($id, EntityManagerInterface $entityManager, LoggerInterface $logger): JsonResponse
+    {
+        $announce = $entityManager->getRepository(Announce::class)->find($id);
+
+        if (!$announce) {
+            $logger->error("Announce with id $id not found.");
+            return new JsonResponse(['success' => false, 'error' => 'Announce not found'], 404);
+        }
+
+        try {
+            $entityManager->remove($announce);
+            $entityManager->flush();
+        } catch (\Exception $e) {
+            $logger->error("Error deleting announce: " . $e->getMessage());
+            return new JsonResponse(['success' => false, 'error' => 'Error deleting announce'], 500);
+        }
+
+        return new JsonResponse(['success' => true]);
     }
 }

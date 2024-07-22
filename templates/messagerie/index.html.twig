@@ -35,7 +35,7 @@
                     <div class="icons_announce">
                         {# FAIRE BOUCLE ANNONCES AVEC LES MESSAGES ENVOYÉS #}
                         <!-- FONCTION DELETE -->
-                        <a href=""><i class="fa-solid fa-trash"></i></a>
+                        <a href="#" class="delete-announce" data-id="{{ announce.id }}"><i class="fa-solid fa-trash"></i></a>
                         <a href={{ path('app_messagerie_show', { id : announce.id}) }}><i class="fa-regular fa-message"></i></a>
                     </div>
                 </div>
@@ -52,4 +52,5 @@
     <script src={{ asset('js/overall-no-scrolling.js') }}></script>
     <script src={{ asset('js/back.js') }}></script>
     <script src={{ asset('js/messagerie.js') }}></script>
+    <script src={{ asset('js/delete-announce.js') }}></script>
 {% endblock %}

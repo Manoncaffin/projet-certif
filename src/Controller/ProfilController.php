@@ -8,9 +8,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ProfilController extends AbstractController
@@ -23,7 +20,7 @@ class ProfilController extends AbstractController
         $this->slugger = $slugger;
     }
 
-    public function index(AuthenticationUtils $authenticationUtils, AnnounceRepository $announceRepository)
+    public function index(AnnounceRepository $announceRepository)
     {
         $user = $this->getUser();
         $userAnnounces = $announceRepository->findByUser($user);

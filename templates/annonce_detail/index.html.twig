@@ -13,7 +13,17 @@
     {% include 'partials/header.html.twig' %}
 
     <div class="container">
-            <div class="top_all">
+    {% for label, messages in app.flashes %}
+    <div class="flash-{{ label }}">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+        {% set topAllClass = user ? 'top_all' : 'top_all_logged_out' %}
+        <div class="info_new_research">
+            <div class="{{ topAllClass }}">
                 <div class="form_profil">
                     <p>ANNONCE</p>
                 </div>
@@ -21,6 +31,7 @@
                     <p>{{ announce.material|upper }}</p>
                 </div>
 
+            {% if user %}
                 <div class="form_profil">
                     <p>{{ ('PROFIL DE ' ~ user.identifier)|trans({}, 'messages')|upper }}</p>
                 </div>
@@ -28,7 +39,12 @@
                     {% set unreadMessagesCount = user.privateMessages|length %}
                     <p>{{ unreadMessagesCount }} {{ ('MESSAGE(S) NON LU(S)')|trans({}, 'messages')|upper }}</p>
                 </div>
+            {% endif %}
             </div>
+            <div class="back">
+                <a href={{ path('app_rechercher') }}>Effectuer une nouvelle recherche</a>
+            </div>
+        </div>
 
             <div class="announce_all">
                 <div class="carousel">
@@ -44,7 +60,7 @@
                             </div>
                         {% endfor %}
                     </div>
-                        
+                    
                     </div>
                     {% if announce.photo|length > 1 %}
                         <button class="carousel__button carousel__button--right">
@@ -68,11 +84,6 @@
                                 {% set announceCount = announce.user.announces|length %}
                                 <p>{{ announce.user.id }} ANNONCE{{ announceCount > 2 ? 'S' : '' }}</p>
                             </div>
-                            {# <a href="#" class="link_announce_member">
-                                <div class="icon">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                            </a> #}
                         </div>
 
                         <div class="location">
@@ -106,9 +117,13 @@
                         </div>
 
                         <div class="foot_form">
+                        {% if user %}
                             <a href="{{ path('app_messagerie', {'id': announce.id }) }}">
                                 <button class="send_message">Message</button>
                             </a>
+                        {% else %}
+                        <button class="send_message" onclick="alert('Vous devez être connecté·e pour accéder à la messagerie.')">Message</button>
+                        {% endif %}
                         </div>
                     </div>
                 </div>

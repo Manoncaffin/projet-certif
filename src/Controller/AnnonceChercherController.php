@@ -67,7 +67,6 @@ class AnnonceChercherController extends AbstractController
                     $announce->setMaterial($selectedMaterial);
                     $announce->setType('chercher');
 
-                    // Vérifier si une annonce similaire existe déjà
                     $existingAnnounce = $this->entityManager->getRepository(Announce::class)->findOneBy([
                         'user' => $user,
                         'material' => $selectedMaterial,
@@ -75,13 +74,11 @@ class AnnonceChercherController extends AbstractController
                     ]);
 
                     if (!$existingAnnounce) {
-                        // Si aucune annonce similaire n'existe, enregistrer la nouvelle annonce
                         $this->entityManager->persist($announce);
                         $this->entityManager->flush();
 
                         return $this->redirectToRoute('app_annonce_valide');
                     } else {
-                        // Afficher un message d'erreur si une annonce similaire existe déjà
                         $this->addFlash('error', 'Vous avez déjà publié une annonce pour ce matériau.');
                     }
                 } else {

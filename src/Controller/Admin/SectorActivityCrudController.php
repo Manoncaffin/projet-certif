@@ -18,7 +18,6 @@ class SectorActivityCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            // IdField::new('id'),
             TextField::new('activity'),
         ];
 }

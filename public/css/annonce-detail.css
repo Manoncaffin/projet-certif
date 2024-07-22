@@ -82,6 +82,35 @@
         gap: 30px;
     }
 
+    .top_all_logged_out {
+        display: flex;
+        justify-content: start;
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    .back {
+        margin-top: 30px;
+    }
+
+    .back a {
+        background-color: rgb(27, 237, 177);
+        color: black;
+        border: 1px solid black;
+        padding: 8px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        margin-top: 7px;
+        font-size: 2.5rem;
+        width: fit-content;
+    }
+
+    .back a:hover {
+        background-color: black;
+        color: white;
+    }
+
     /* INFOS TOP */
 
     /* ANNOUNCE */
@@ -174,7 +203,7 @@
         margin-bottom: 70px;
     }
 
-    .carousel__images {
+    .carousel__image {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -302,18 +331,7 @@
     .carousel {
         margin-top: 30px;
         width: 800px;
-        /* Réduire la largeur du carousel pour les grands écrans */
         max-width: 100%;
-        /* Assurez-vous que le carousel ne dépasse pas la largeur de l'écran */
-    }
-
-    .carousel__images {
-        width: 100%;
-        /* Les images occupent 100% de la largeur du carousel */
-        height: auto;
-        /* Ajustez la hauteur en fonction de la largeur pour maintenir les proportions */
-        object-fit: cover;
-        /* Ajustez les images pour couvrir toute la zone disponible */
     }
 
     /* CAROUSEL */
@@ -333,6 +351,14 @@
     .link_member, .location, .classification, .materials, .quantity, .description, .value {
         padding-top: 15px;
     }
+
+    .back {
+        margin-top: 20px;
+    }
+
+    .back a {
+        font-size: 1.1rem;
+    }
 }
 
 
@@ -350,7 +376,6 @@
 
     /* INFOS TOP */
     .top_all {
-        width: 100%;
         display: flex;
         justify-content: space-between;
     }
@@ -363,24 +388,20 @@
         height: 45px;
     }
 
+    .info_new_research {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
     /* INFOS TOP */
 
     /* CAROUSEL */
     .carousel {
         margin-top: 30px;
         width: 800px;
-        /* Réduire la largeur du carousel pour les grands écrans */
         max-width: 100%;
-        /* Assurez-vous que le carousel ne dépasse pas la largeur de l'écran */
-    }
-
-    .carousel__images {
-        width: 100%;
-        /* Les images occupent 100% de la largeur du carousel */
-        height: auto;
-        /* Ajustez la hauteur en fonction de la largeur pour maintenir les proportions */
-        object-fit: cover;
-        /* Ajustez les images pour couvrir toute la zone disponible */
     }
 
     /* CAROUSEL */
@@ -417,12 +438,6 @@
     .carousel {
         width: 900px;
         height: auto;
-    }
-
-    .carousel__images {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
     }
 
     /* CAROUSEL */

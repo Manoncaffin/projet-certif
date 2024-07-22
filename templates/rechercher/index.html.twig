@@ -87,11 +87,9 @@
                     <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
                 </select>
 
-                {# => AJOUTER POSSIBILITÉ DE CHOISIR 'TOUTE LA FRANCE' #}
                 {{ form_label(researchForm.geographicalArea) }}
                 {{ form_widget(researchForm.geographicalArea) }}
                 
-                {# QUAND ON CLIQUE, LA PAGE SHOW DE RECHERCHER DOIT S'AFFICHER #}
                 <div class="search">
                     {{ form_row(researchForm.search) }}
                     <div class="foot_form">

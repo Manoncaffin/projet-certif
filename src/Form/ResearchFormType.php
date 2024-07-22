@@ -23,7 +23,6 @@ class ResearchFormType extends AbstractType
                 'placeholder' => '--',
                 'attr' =>
                 [
-                    // 'onchange' => 'toggleMaterialSelect()',
                     'id' => 'classification',
                 ],
                 'required' => true,

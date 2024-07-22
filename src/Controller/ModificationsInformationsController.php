@@ -47,19 +47,6 @@ class ModificationsInformationsController extends AbstractController
 
         return $this->redirectToRoute('app_profil');
     }
-
-
-        // $form = $this->createForm(UserType::class, $user);
-        // $form->handleRequest($request);
-
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $entityManager->flush();
-
-        //     $this->addFlash('success', 'Vos informations ont été mises à jour avec succès.');
-
-        //     return $this->redirectToRoute('app_accueil');
-        // }
-
         return $this->render('modifications_informations/index.html.twig', [
             'form' => $form->createView(),
         ]);

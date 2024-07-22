@@ -33,7 +33,7 @@
 
                     <div class="icons_announce">
                         <!-- FONCTION DELETE -->
-                        <a href=""><i class="fa-solid fa-trash"></i></a>
+                        <a href="#" class="delete-announce" data-id="{{ announce.id }}"><i class="fa-solid fa-trash"></i></a>
                         <a href="{{ path('app_messagerie_show', { id: announce.id }) }}"><i class="fa-regular fa-message"></i></a>
                     </div>
                 </div>
@@ -42,12 +42,12 @@
                 <div class="force-overflow"></div>
             </div>
 
-            <div class="container">
+            <div class="container_two">
             <div class="message_user_one">
                 <img src={{ asset('images/BS.webp') }} class="avatar">
                 <div class="bubble_one">
-                    <p>Bonjour Barnabé,
-                        Je suis intéressée par vos bottes de paille, pouvez-vous me communiquer vos disponibilités pour
+                    <p>Bonjour,
+                        je suis intéressée par votre annonce, pouvez-vous me communiquer vos disponibilités pour
                         venir les récupérer ?</p>
                 </div>
                 <div class="datetime pt-3 px-5">LE 06 MAI À 10h12</div>
@@ -56,13 +56,13 @@
             <div class="message_user_two">
                 <img src={{ asset('images/BS.webp') }} class="avatar">
                 <div class="bubble_two">
-                    <p>Bonjour Samia, je suis disponible tous les jours à partir de 18h, possible pour vous ?</p>
+                    <p>Bonjour, je suis disponible tous les jours à partir de 18h, possible pour vous ?</p>
                 </div>
                 <div class="datetime pt-3 px-5">LE 06 MAI À 13h10</div>
             </div>
 
-            <footer class="message-input">
-                <textarea id="message" placeholder="Entrer le message ici"></textarea>
+            <footer class="message-input hidden">
+                <textarea id="message" placeholder="Entrez le message ici"></textarea>
                 <i class="fa-regular fa-paper-plane"></i>
             </footer>
         </div>
@@ -73,7 +73,8 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src={{ asset('js/overall-no-scrolling.js') }}></script>
+    <script src={{ asset('js/overall-scrolling.js') }}></script>
     <script src={{ asset('js/back.js') }}></script>
     <script src={{ asset('js/messagerie.js') }}></script>
+    <script src={{ asset('js/delete-announce.js') }}></script>
 {% endblock %}

@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Serializer\Encoder\JsonEncode;
 
 class RechercherController extends AbstractController
 {
@@ -69,7 +68,11 @@ class RechercherController extends AbstractController
         
         $selectedMaterial = $materialRepository->findOneBy(['material' => $material]);
 
-        $announces = $announceRepository->findByClassificationMaterialAndMaterialAndGeographicalArea($selectedMaterial, $geographicalArea, $currentUser);
+        if ($currentUser) {
+            $announces = $announceRepository->findByClassificationMaterialAndMaterialAndGeographicalArea($selectedMaterial, $geographicalArea, $currentUser);
+        } else {
+            $announces = $announceRepository->findByClassificationMaterialAndMaterialAndGeographicalAreaExcludeUser($selectedMaterial, $geographicalArea);
+        }
 
         if (!empty($announces)) {
             $json = [
