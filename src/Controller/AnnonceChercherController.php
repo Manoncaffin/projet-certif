@@ -7,6 +7,7 @@ use App\Entity\Announce;
 use App\Entity\Material;
 use App\Form\SearchType;
 use App\Repository\AnnounceRepository;
+use App\Service\MaterialSearchService;
 use App\Repository\MaterialRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,25 +18,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class AnnonceChercherController extends AbstractController
 {
     private $entityManager;
+    private $materialSearchService;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, MaterialSearchService $materialSearchService)
     {
         $this->entityManager = $entityManager;
+        $this->materialSearchService = $materialSearchService;
     }
 
-    private function findMaterialByPartialName($materialName)
-    {
-        $qb = $this->entityManager->createQueryBuilder();
+    // private function findMaterialByPartialName($materialName)
+    // {
+    //     $qb = $this->entityManager->createQueryBuilder();
 
-        $qb->select('m')
-            ->from(Material::class, 'm')
-            ->where($qb->expr()->like('m.material', ':material'))
-            ->setParameter('material', '%'.$materialName.'%');
+    //     $qb->select('m')
+    //         ->from(Material::class, 'm')
+    //         ->where($qb->expr()->like('m.material', ':material'))
+    //         ->setParameter('material', '%'.$materialName.'%');
 
-        $query = $qb->getQuery();
+    //     $query = $qb->getQuery();
 
-        return $query->getResult();
-    }
+    //     return $query->getResult();
+    // }
 
     #[Route('/annonce-chercher', name: 'app_annonce_chercher')]
     public function index(Request $request, EntityManagerInterface $entityManager, AnnounceRepository $announceRepository, MaterialRepository $materialRepository): Response
@@ -54,7 +57,7 @@ class AnnonceChercherController extends AbstractController
                 $materialAnnounce = $request->request->get('material-bio-select') ?: $request->request->get('material-geo-select');
 
                 if ($materialAnnounce) {
-                    $selectedMaterials = $this->findMaterialByPartialName($materialAnnounce);
+                    $selectedMaterials = $this->materialSearchService->findMaterialByPartialName($materialAnnounce);
 
                     if (count($selectedMaterials) === 1) {
                         $selectedMaterial = $selectedMaterials[0];

@@ -32,7 +32,7 @@ class MesAnnoncesController extends AbstractController
     #[Route("/{id}", name:"announce_delete", methods: ["DELETE"])]
     public function delete(Announce $announce, Request $request, EntityManagerInterface $entityManager, TokenGeneratorTokenGeneratorInterface $tokenGenerator, Filesystem $filesystem): Response
     {
-        $csrfToken = $tokenGenerator->generateToken('delete' . $announce->getId());
+
         $token = $request->request->get('_token');
 
         if (!$this->isCsrfTokenValid('delete' . $announce->getId(), $token)) {

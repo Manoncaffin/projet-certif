@@ -23,7 +23,6 @@
                 </div>
             {% endfor %}
 
-
             <div class="top_all">
                 <div class="form_profil">
                     <p>{{ ('ANNONCE(S) DE ' ~ user.identifier)|trans({}, 'messages')|upper }}</p>
@@ -78,6 +77,11 @@
             {% endblock %}
 
 {% block javascripts %}
+    <script>
+        function confirmDelete() {
+            return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?');
+        }
+    </script>
     <script src={{ asset('js/overall-no-scrolling.js') }}></script>
 {% endblock %}
 
