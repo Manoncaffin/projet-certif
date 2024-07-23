@@ -81,6 +81,7 @@ class RechercherController extends AbstractController
                 "description" => $announces[0]->getDescription(),
                 "createdAt" => $announces[0]->getCreatedAt(),
                 "id" => $announces[0]->getId(),
+                'type' => $announces[0]->getType() ?? 'N/A', 
             ];
 
             $jsonData = $serializer->serialize($json, 'json');

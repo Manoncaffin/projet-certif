@@ -26,20 +26,6 @@ class AnnonceChercherController extends AbstractController
         $this->materialSearchService = $materialSearchService;
     }
 
-    // private function findMaterialByPartialName($materialName)
-    // {
-    //     $qb = $this->entityManager->createQueryBuilder();
-
-    //     $qb->select('m')
-    //         ->from(Material::class, 'm')
-    //         ->where($qb->expr()->like('m.material', ':material'))
-    //         ->setParameter('material', '%'.$materialName.'%');
-
-    //     $query = $qb->getQuery();
-
-    //     return $query->getResult();
-    // }
-
     #[Route('/annonce-chercher', name: 'app_annonce_chercher')]
     public function index(Request $request, EntityManagerInterface $entityManager, AnnounceRepository $announceRepository, MaterialRepository $materialRepository): Response
     {

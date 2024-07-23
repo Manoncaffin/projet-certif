@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         const popupContent = `
                             <div> 
                                 <h6>${announces.material}</h6>
+                                <p>Type: ${announces.type}</p>
                                 <p>Date: ${announces.createdAt.substring(0, 10)}</p> 
                                 <p>${announces.description}</p> 
                                 <a href="http://127.0.0.1:8000/annonce-detail/${announces.id}"><p>Voir l'annonce</p></a> 
