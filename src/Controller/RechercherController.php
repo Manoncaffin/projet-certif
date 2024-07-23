@@ -56,8 +56,6 @@ class RechercherController extends AbstractController
         ]);
     }
 
-
-    // CRÉER NOUVELLE ROUTE POUR AFFICHER LES ANNONCES DANS LA MAP
     #[Route('/rechercher/{material}/{geographicalArea}', name: 'app_rechercher_show')]
     public function show(Request $request, $material, $geographicalArea, AnnounceRepository $announceRepository, MaterialRepository $materialRepository, SerializerInterface $serializer): Response
     {

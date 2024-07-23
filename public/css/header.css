@@ -65,6 +65,11 @@ li {
     justify-content: center;
 }
 
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
 .burger-menu.open a {
     font-size: 4rem;
 }

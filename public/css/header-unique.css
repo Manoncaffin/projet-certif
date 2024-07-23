@@ -124,13 +124,16 @@ li {
     display: block;
 }
 
-/* revoir */
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
 #imageChange {
     padding: 40px 100px 0 0;
     width: 35%;
     height: auto;
 }
-
 }
 
 

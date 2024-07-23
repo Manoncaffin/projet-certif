@@ -14,9 +14,11 @@
                     <li class="dropdown">
                         <a href="#deposer">DONNER OU CHERCHER</a>
                         <ul class="dropdown-menu_one">
-                            <li><a href={{ path('app_rechercher') }}>Voir les annonces</a></li>
+                            <li><a href={{ path('app_rechercher') }}>Faire une recherche</a></li>
+                        {% if app.user %}
                             <li><a href={{ path('app_annonce_chercher') }}>Je cherche un matériau</a></li>
                             <li><a href={{ path('app_annonce_donner') }}>Je donne un matériau</a></li>
+                        {% endif %}
                         </ul>
                     </li>
                     <div class="circle_menu"></div>
@@ -59,7 +61,10 @@
         <div class="burger-menu" id="nav-menu">
             <ul class="links">
                 <li><a href={{ path('app_accueil') }}>ACCUEIL</a></li>
+                <li><a href={{ path('app_rechercher') }}>FAIRE UNE RECHERCHE</a></li>
+            {% if app.user %}
                 <li><a href={{ path('app_accueil') }}#deposer>DONNER OU CHERCHER</a></li>
+            {% endif %}
                 <li><a href={{ path('app_register') }}>INSCRIPTION</a></li>
                 <li><a href={{ path('app_login') }}>CONNEXION</a></li>
                 <li><a href={{ path('app_accueil') }}#adhesion>ADHÉSION</a></li>
