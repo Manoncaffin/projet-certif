@@ -7,6 +7,7 @@ use App\Entity\Material;
 use App\Form\SearchType;
 use App\Repository\AnnounceRepository;
 use App\Repository\MaterialRepository;
+use App\Service\MaterialSearchService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,24 +18,12 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 class AnnonceChercherModifierController extends AbstractController
 {
     private $entityManager;
+    private $materialSearchService;
 
-    public function __construct(EntityManagerInterface $entityManager, AuthorizationCheckerInterface $authorizationChecker)
+    public function __construct(EntityManagerInterface $entityManager, MaterialSearchService $materialSearchService, AuthorizationCheckerInterface $authorizationChecker)
     {
         $this->entityManager = $entityManager;
-    }
-
-    private function findMaterialByPartialName($materialName)
-    {
-        $qb = $this->entityManager->createQueryBuilder();
-
-        $qb->select('m')
-            ->from(Material::class, 'm')
-            ->where($qb->expr()->like('m.material', ':material'))
-            ->setParameter('material', '%'.$materialName.'%');
-
-        $query = $qb->getQuery();
-
-        return $query->getResult();
+        $this->materialSearchService = $materialSearchService;
     }
 
     #[Route('/annonce-chercher-modifier/{id}', name: 'app_annonce_chercher_modifier', requirements: ["id" => "\d+"])]
@@ -52,22 +41,22 @@ class AnnonceChercherModifierController extends AbstractController
 
     $searchForm = $this->createForm(SearchType::class, $announce);
     $materials = $materialRepository->findAll();
-
     $searchForm->handleRequest($request);
 
     if ($searchForm->isSubmitted() && $searchForm->isValid()) {
         $materialModif = $request->request->get('material-bio-select') ?: $request->request->get('material-geo-select');
 
         if ($materialModif) {
-            $selectedMaterial = $materialRepository->findOneBy(['material' => $materialModif]);
+            $selectedMaterials = $this->materialSearchService->findMaterialByPartialName($materialModif);
 
-            if ($selectedMaterial) {
+            if (count($selectedMaterials) === 1) {
+                $selectedMaterial = $selectedMaterials[0];
                 $announce->setMaterial($selectedMaterial);
                 $this->entityManager->flush();
 
                 return $this->redirectToRoute('app_mes_annonces', ['id' => $announce->getId()]);
             } else {
-                $this->addFlash('error', 'Aucun matériau ne correspond à votre sélection.');
+                $this->addFlash('error', 'Plusieurs matériaux correspondent à votre sélection. Veuillez être plus précis.');
             }
         } else {
             $this->addFlash('error', 'Veuillez sélectionner un matériau.');

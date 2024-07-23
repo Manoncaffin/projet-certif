@@ -12,7 +12,7 @@
                     <div class="circle_menu"></div>
 
                     <li class="dropdown">
-                        <a href="#deposer">DONNER OU CHERCHER</a>
+                        <a href="#deposer">TROUVER</a>
                         <ul class="dropdown-menu_one">
                             <li><a href={{ path('app_rechercher') }}>Faire une recherche</a></li>
                         {% if app.user %}
@@ -63,7 +63,7 @@
                 <li><a href={{ path('app_accueil') }}>ACCUEIL</a></li>
                 <li><a href={{ path('app_rechercher') }}>FAIRE UNE RECHERCHE</a></li>
             {% if app.user %}
-                <li><a href={{ path('app_accueil') }}#deposer>DONNER OU CHERCHER</a></li>
+                <li><a href={{ path('app_accueil') }}#deposer>TROUVER</a></li>
             {% endif %}
                 <li><a href={{ path('app_register') }}>INSCRIPTION</a></li>
                 <li><a href={{ path('app_login') }}>CONNEXION</a></li>
