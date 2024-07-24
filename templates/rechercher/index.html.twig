@@ -74,7 +74,6 @@
                             <option value="{{ material.material }}" {% if material.material == selectedMaterial %}selected{% endif %}>{{ material.material }}</option>
                         {% endif %}
                     {% endfor %}
-                    <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
                 </select>
 
                 <select id="material-bio-select" name="material-bio-select">
@@ -84,7 +83,6 @@
                             <option value="{{ material.material }}" {% if material.material == selectedMaterial %}selected{% endif %}>{{ material.material }}</option>
                         {% endif %}
                     {% endfor %}
-                    <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
                 </select>
 
                 {{ form_label(researchForm.geographicalArea) }}

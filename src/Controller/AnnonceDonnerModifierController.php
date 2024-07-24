@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 class AnnonceDonnerModifierController extends AbstractController
 {
@@ -53,8 +54,20 @@ class AnnonceDonnerModifierController extends AbstractController
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '-' . uniqid() . '.' . $photoFile->guessExtension();
 
+                $photoDirectory = $this->getParameter('photo_directory');
+
                 try {
-                    $photoFile->move($this->getParameter('photo_directory'), $newFilename);
+                    foreach ($announce->getPhoto() as $existingPhoto) {
+                        $filesystem = new Filesystem();
+                        $filePath = $photoDirectory . '/' . $existingPhoto->getUrl();
+                        if ($filesystem->exists($filePath)) {
+                            $filesystem->remove($filePath);
+                        }
+                        $this->entityManager->remove($existingPhoto);
+                    }
+
+                    $photoFile->move($photoDirectory, $newFilename);
+
                     $photoAnnounce = new File();
                     $photoAnnounce->setUrl($newFilename);
                     $photoAnnounce->setAnnounce($announce);
@@ -64,12 +77,11 @@ class AnnonceDonnerModifierController extends AbstractController
                     $this->addFlash('error', 'Une erreur est survenue lors du téléchargement de la photo.');
                 }
             }
-       
+
             $materialModif =  $request->request->get('material-geo-select') ?: $request->request->get('material-bio-select'); 
-         
             if ($materialModif) {
                 $selectedMaterials = $this->materialSearchService->findMaterialByPartialName($materialModif);
-             
+            
                 if (count($selectedMaterials) === 1) {
                     $selectedMaterial = $selectedMaterials[0];
                     $announce->setMaterial($selectedMaterial);

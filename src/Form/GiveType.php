@@ -95,8 +95,9 @@ class GiveType extends AbstractType
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
+                            'image/webP',
                         ],
-                        'mimeTypesMessage' => 'Merci de télécharger une image valide (JPEG/PNG)',
+                        'mimeTypesMessage' => 'Merci de télécharger une image valide (JPEG/PNG/WEBP)',
                     ])
                 ],
             ])
