@@ -6,12 +6,11 @@ function toggleMaterialSelect() {
     const materialLabel = document.querySelector('#material-label');
   
     if (classification) {
-    // Afficher le champ correspondant au type de matériau sélectionné
-    if (classification.value === '1') { // ID de la classification "Matériau bio-sourcé"
+    if (classification.value === '1') {
         materialBioSelect.style.display = 'block';
         materialLabel.style.display = 'block';
         materialGeoSelect.style.display = 'none';
-    } else if (classification.value === '2') { // ID de la classification "Matériau géo-sourcé"
+    } else if (classification.value === '2') { 
         materialGeoSelect.style.display = 'block';
         materialLabel.style.display = 'block';
         materialBioSelect.style.display = 'none';
@@ -22,7 +21,6 @@ function toggleMaterialSelect() {
   }
 }
   
-  // Appel de la fonction au chargement de la page
   toggleMaterialSelect();
   
   if (classification) {

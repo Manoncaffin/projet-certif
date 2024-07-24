@@ -68,19 +68,10 @@
                 <div id="material-label">
                     <label>Matériau</label>
                 </div>
-            {% if announce.material.classificationMaterial.id == 1 %}
-                <select name="material-bio-select" id="material-bio-select">
+                <select name="material-geo-select" id="material-geo-select" style="display: none;">
+                    {% if announce.material.classificationMaterial.id == 2 %}
                         <option value={{ announce.material }}>{{ announce.material }}</option>
-                        {% for material in materials %}
-                            {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
-                                <option value={{ material.material }}>{{ material.material }}</option>
-                            {% endif %}
-                        {% endfor %}
-                        <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
-                    </select>
-            {% else %}
-                    <select name="material-geo-select" id="material-geo-select" style="display: none;">
-                        <option value={{ announce.material }}>{{ announce.material }}</option>
+                    {% endif %}
                         {% for material in materials %}
                             {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
                                 <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option>
@@ -88,7 +79,18 @@
                         {% endfor %}
                         <option value="add-an-material-geo">Le matériau ne figure pas dans la liste</option>
                     </select>
-            {% endif %}
+
+                    <select name="material-bio-select" id="material-bio-select">
+                        {% if announce.material.classificationMaterial.id == 1 %}
+                        <option value={{ announce.material }}>{{ announce.material }}</option>
+                        {% endif %}
+                        {% for material in materials %}
+                            {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
+                                <option value={{ material.material }}>{{ material.material }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        <option value="add-an-material-bio">Le matériau ne figure pas dans la liste</option>
+                    </select>
 
                     <div class="add" style="display:none;">
                         <label for="new-material" class="new-material">Ajouter</label>
