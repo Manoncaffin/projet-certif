@@ -84,9 +84,20 @@
             {% endif %}   
         </div>
     
+        <div id="delete-account-modal" class="modal">
+            <div class="modal-content">
+                <h4>Confirmation</h4>
+                <p>Êtes-vous sûr·e de vouloir supprimer votre compte ? Cette action est irréversible.</p>
+                <div class="modal-footer">
+                <a href="#" id="confirm-delete-btn" class="modal-close waves-effect waves-green btn-flat">Confirmer</a>
+                <a href="#" id="cancel-delete-btn" class="modal-close waves-effect waves-red btn-flat">Annuler</a>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 
 {% block javascripts %}
     <script src={{ asset('js/overall-no-scrolling.js') }}></script>
+    <script src={{ asset('js/delete-user.js') }}></script>
 {% endblock %}

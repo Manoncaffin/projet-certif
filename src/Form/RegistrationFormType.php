@@ -32,7 +32,7 @@ class RegistrationFormType extends AbstractType
                     'Je suis un·e particulier' => 'particulier',
                     'Je suis un·e professionnel·le' => 'professional',
                 ],
-                'required' => true,
+                'required' => false,
                 'expanded' => true,
                 'mapped' => true,
             ]) 

@@ -74,15 +74,22 @@
                     </div> 
                 {% endfor %}
             </div> 
-            {% endblock %}
+            
+            <div id="confirm-dialog" class="modal">
+                <div class="modal-content">
+                    <h4>Confirmation</h4>
+                    <p>Êtes-vous sûr·e de vouloir supprimer cette annonce ? Cette action est irréversible.</p>
+                    <div class="modal-footer">
+                    <a href="#" id="confirm-btn" class="modal-close waves-effect waves-green btn-flat">Confirmer</a>
+                    <a href="#" id="cancel-btn" class="modal-close waves-effect waves-red btn-flat">Annuler</a>
+                </div>
+            </div>
+        </div>
+{% endblock %}
 
 {% block javascripts %}
-    <script>
-        function confirmDelete() {
-            return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?');
-        }
-    </script>
     <script src={{ asset('js/overall-no-scrolling.js') }}></script>
+    <script src={{ asset('js/delete-announce.js') }}></script>
 {% endblock %}
 
 

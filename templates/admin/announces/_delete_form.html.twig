@@ -1,5 +1,5 @@
-<form action="{{ path('announce_delete', {'id': announce.id}) }}" method="POST" onsubmit="return confirmDelete();" id="delete-form">
+<form method="POST" id="delete-form">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ announce.id) }}">
     <button type="submit" class="delete_announce">Supprimer</button>
-</form> 
+</form>
