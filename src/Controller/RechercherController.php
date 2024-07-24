@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Material;
 use App\Form\ResearchFormType;
 use App\Repository\AnnounceRepository;
 use App\Repository\MaterialRepository;

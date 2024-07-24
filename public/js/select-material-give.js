@@ -10,10 +10,14 @@ function toggleMaterialSelect() {
         materialBioSelect.style.display = 'block';
         materialLabel.style.display = 'block';
         materialGeoSelect.style.display = 'none';
+        materialGeoSelect.value = null;
+        console.log(materialGeoSelect.value);
     } else if (classification.value === '2') { // ID de la classification "Matériau géo-sourcé"
         materialGeoSelect.style.display = 'block';
         materialLabel.style.display = 'block';
         materialBioSelect.style.display = 'none';
+        materialBioSelect.value = null;
+        console.log(materialBioSelect.value);
   } else {
     materialBioSelect.style.display = 'block';
     materialLabel.style.display = 'block';

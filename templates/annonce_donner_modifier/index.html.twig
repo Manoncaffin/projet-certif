@@ -64,7 +64,9 @@
                         <label>Matériau</label>
                     </div>
                     <select name="material-geo-select" id="material-geo-select" style="display: none;">
+                        {% if announce.material.classificationMaterial.id == 2 %}
                         <option value={{ announce.material }}>{{ announce.material }}</option>
+                        {% endif %}
                         {% for material in materials %}
                             {% if material.classificationMaterial.name == 'Matériau géo-sourcé' %}
                                 <option class="material-geo-source" value={{ material.material }}>{{ material.material }}</option>
@@ -74,7 +76,9 @@
                     </select>
 
                     <select name="material-bio-select" id="material-bio-select">
+                        {% if announce.material.classificationMaterial.id == 1 %}
                         <option value={{ announce.material }}>{{ announce.material }}</option>
+                        {% endif %}
                         {% for material in materials %}
                             {% if material.classificationMaterial.name == 'Matériau bio-sourcé' %}
                                 <option value={{ material.material }}>{{ material.material }}</option>
