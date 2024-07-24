@@ -40,6 +40,15 @@
         }
     }
 
+    #projet,
+    #fonctionnement,
+    #adhesion,
+    #contact,
+    #partenaires {
+        padding: 0 50px;
+        font-size: 1.7rem;
+    }
+
     .title {
         font-family: "Lemon Milk";
         font-weight: 600;
@@ -52,9 +61,16 @@
         box-sizing: border-box;
         border-radius: 5px;
         width: 100%;
-        min-width: 980px;
-        max-width: 1000px;
         margin: 0 auto;
+        padding: 0;
+    }
+
+    .etap {
+        font-size: 1.7rem;
+    }
+
+    .mail {
+        font-size: 2.1rem;
     }
 
     /* MODALE */
@@ -146,7 +162,7 @@
     .corner {
         border-radius: 25px;
         border: 2px solid #000000;
-        padding: 20px 30px;
+        padding: 10px 20px;
         width: 490px;
         height: fit-content;
         font-size: 2.1rem;
@@ -159,7 +175,6 @@
     }
 
     .p_description {
-        margin-top: 50px;
         font-size: 2.6rem;
     }
 
@@ -172,21 +187,12 @@
     .scrolling-text {
         font-family: "Abordage";
         display: block;
-        margin-right: 500px;
-        font-size: 3rem;
-        white-space: nowrap;
-        animation: scrollText 18s linear infinite;
-        animation-direction: alternate-reverse;
-    }
-
-    @keyframes scrollText {
-        from {
-            transform: translateX(100%);
-        }
-
-        to {
-            transform: translateX(-100%);
-        }
+        font-size: 2.6rem;
+        width: fit-content;
+        height: fit-content;
+        background-color: rgb(243, 237, 79);
+        padding: 15px;
+        border-radius: 15px;
     }
 
     .big-title {
@@ -235,6 +241,9 @@
     }
 
     /* FOOTER */
+    .bordure {
+        width: 100%;
+    }
 }
 
 
@@ -251,13 +260,13 @@
         right: 0;
     }
 
-    #projet,
-    #fonctionnement,
-    #adhesion,
-    #contact,
-    #partenaires {
+    .etap {
         height: 100%;
-        padding: 0 50px;
+        font-size: 1.7rem;
+    }
+
+    .corner,
+    .mail {
         font-size: 1.7rem;
     }
 
@@ -279,7 +288,7 @@
         justify-content: center;
         align-items: center;
         font-size: 2.5rem;
-        font-family: "Beatrice";
+        font-family: "Lemon Milk";
         font-weight: 600;
         color: #fff;
     }
@@ -374,75 +383,75 @@
         border-right: 30px solid black;
         position: relative;
     }
-}
 
-.icon {
-    width: 280px;
-}
-
-.arrow-up {
-    display: flex;
-    justify-content: end;
-}
-
-h2 {
-    font-family: "Lemon Milk";
-    font-weight: 600;
-    font-size: 2.6rem;
-    text-align: center;
-}
-
-.swipe-text {
-    display: inline-block;
-    position: relative;
-    transition: transform 0.2s ease-in-out;
-}
-
-.swipe-text:hover {
-    transform: translateX(20px);
-}
-
-.mail {
-    font-size: 3rem;
-}
-
-.text_line span {
-    text-decoration: underline;
-}
-
-.logo_partenaires {
-    display: flex;
-    align-items: center;
-    width: 50px;
-    height: auto;
-
-    div {
-        margin-right: 30px;
+    .icon {
+        width: 280px;
     }
 
-    .RM {
-        width: 100px;
-        height: auto;
+    .arrow-up {
+        display: flex;
+        justify-content: end;
     }
 
-    .AURA {
-        width: 150px;
-        height: auto;
+    h2 {
+        font-family: "Lemon Milk";
+        font-weight: 600;
+        font-size: 2.6rem;
+        text-align: center;
     }
 
-    .PF {
-        width: 120px;
-        height: auto;
+    .title {
+        font-size: 2.6rem;
     }
 
-    .CDD {
-        width: 90px;
-        height: auto;
+    .swipe-text {
+        display: inline-block;
+        position: relative;
+        transition: transform 0.2s ease-in-out;
     }
 
-    .OU {
-        width: 130px;
+    .swipe-text:hover {
+        transform: translateX(20px);
+    }
+
+    .text_line span {
+        text-decoration: underline;
+    }
+
+    .logo_partenaires {
+        display: flex;
+        align-items: center;
+        width: 50px;
         height: auto;
+
+        div {
+            margin-right: 30px;
+        }
+
+        .RM {
+            width: 100px;
+            height: auto;
+        }
+
+        .AURA {
+            width: 150px;
+            height: auto;
+        }
+
+        .PF {
+            width: 120px;
+            height: auto;
+        }
+
+        .CDD {
+            width: 90px;
+            height: auto;
+        }
+
+        .OU {
+            width: 130px;
+            height: auto;
+        }
     }
 }
 
@@ -473,12 +482,16 @@ h2 {
     #partenaires {
         height: 100%;
         padding: 0 110px;
-        font-size: 1.25rem;
+        font-size: 1.1rem;
     }
 
     /* FOOTER */
     #footer {
         font-size: 1rem;
+    }
+
+    .etap {
+        font-size: 1.1rem;
     }
 
     .confidential {
@@ -496,25 +509,29 @@ h2 {
     /* FOOTER */
 
     .p_description {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
+        width: 95%;
     }
 
     .scrolling-text {
-        font-size: 1.5rem;
+        margin-right: 280px;
+        font-size: 1.4rem;
+        width: fit-content;
+        height: fit-content;
     }
 
     .corners {
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
+        flex-direction: row;
         gap: 50px;
     }
 
     .corner {
         width: 450px;
         height: fit-content;
-        font-size: 1.25rem;
+        font-size: 1.1rem;
     }
 
     .rectangle {
@@ -543,18 +560,24 @@ h2 {
     }
 
     .title {
-        font-size: 1.9rem;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        padding-left: 25px;
+    }
+
+    h2 {
+        font-size: 1.4rem;
     }
 
     .circle {
-        width: 50px;
-        height: 50px;
-        font-size: 1.9rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
     }
 
     .big-title,
     .big-title-two {
-        font-size: 5.3rem;
+        font-size: 4rem;
     }
 
     .mail {
@@ -571,10 +594,6 @@ h2 {
         }
     }
 
-    h2 {
-        font-size: 2rem;
-    }
-
     /* MODALE */
     #openModal {
         font-size: 0.6rem;
@@ -587,8 +606,40 @@ h2 {
     .close {
         font-size: 35px;
     }
-    /* MODALE */
 
+    /* MODALE */
+    #fonctionnement {
+        position: relative;
+    }
+
+    .steps-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .etap {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .stage-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .stage {
+        margin-right: 10px;
+        display: flex;
+        align-items: start;
+    }
+
+    .text-container {
+        text-align: left;
+        width: 50%;
+    }
 }
 
 
@@ -599,18 +650,32 @@ h2 {
 /* --------------------------------------------------- */
 @media only screen and (min-width: 1200px) {
 
-    h2 {
-        font-size: 2.2rem;
-    }
-
+    h2,
     .title {
-        font-size: 3rem;
+        font-size: 1.7rem;
     }
 
     .circle {
         width: 75px;
         height: 75px;
-        font-size: 3rem;
+        font-size: 1.7rem;
+    }
+
+    .corner {
+        font-size: 1.1rem;
+    }
+
+    .corners {
+        gap: 15px;
+    }
+
+    .scrolling-text {
+        font-size: 1.4rem;
+    }
+
+    .p_description {
+        font-size: 1.4rem;
+        width: 80%;
     }
 
     .big-title,
@@ -619,7 +684,7 @@ h2 {
     }
 
     .mail {
-        font-size: 3rem;
+        font-size: 1.7rem;
     }
 
     .logo_partenaires {
@@ -669,7 +734,6 @@ h2 {
     #partenaires {
         height: 100%;
         padding: 0 140px;
-        font-size: 1.3rem;
     }
 
     .credits {
@@ -692,19 +756,13 @@ h2 {
 
     .corners {
         display: flex;
-        flex-direction: row;
         justify-content: space-around;
         align-items: start;
-        font-size: 1.1;
     }
 
     .container {
-    min-width: 1200px;
-    max-width: 1500px;
-    }
-
-    .title {
-        font-size: 2rem;
+        min-width: 1200px;
+        max-width: 1500px;
     }
 
     .circle {
@@ -726,6 +784,20 @@ h2 {
         height: 16px;
     }
 
+    .p_description {
+        font-size: 1.5rem;
+        width: 70%;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .text_corner {
+        display: flex;
+        flex-direction: column;
+    }
+
     h2 {
         font-size: 3rem;
     }
@@ -734,17 +806,9 @@ h2 {
         width: 400px;
     }
 
-    .p_description {
-        font-size: 1.8rem;
-    }
-
-    .scrolling-text {
-        font-size: 2rem;
-    }
-
     .rectangle-green-one,
     .rectangle-green-two,
-    .rectangle-gray-one, 
+    .rectangle-gray-one,
     .rectangle-gray-two {
         height: 400px;
     }
