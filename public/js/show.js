@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const announce = announces[id];
 
                     if (announces.material === material) {
-                        console.log(data[0].lat);
+                    
                         const marker = L.marker([data[0].lat, data[0].lon], {
                             icon: myIcon
                         }).addTo(map);

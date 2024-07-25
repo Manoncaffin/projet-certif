@@ -1,8 +1,8 @@
 function showDeleteModal() {
-    var modal = document.getElementById('delete-account-modal');
-    var confirmBtn = document.getElementById('confirm-delete-btn');
-    var cancelBtn = document.getElementById('cancel-delete-btn');
-    var form = document.getElementById('delete-account-form');
+    const modal = document.getElementById('delete-account-modal');
+    const confirmBtn = document.getElementById('confirm-delete-btn');
+    const cancelBtn = document.getElementById('cancel-delete-btn');
+    const form = document.getElementById('delete-account-form');
 
     modal.style.display = 'block'; 
 

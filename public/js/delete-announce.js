@@ -2,29 +2,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('confirm-dialog');
     const confirmBtn = document.getElementById('confirm-btn');
     const cancelBtn = document.getElementById('cancel-btn');
-    const form = document.getElementById('delete-form');
-    const deleteButtons = document.querySelectorAll('.delete_announce');
+    let currentForm = null;
 
-
-    deleteButtons.forEach(function (button) {
+    document.querySelectorAll('.delete_announce').forEach(function (button) {
         button.addEventListener('click', function (event) {
-            event.preventDefault(); 
-            form.setAttribute('action', this.closest('form').getAttribute('action'));
-            modal.style.display = 'block'; 
+            event.preventDefault();
+            currentForm = button.closest('form');
+            const action = currentForm.getAttribute('action');
+            document.getElementById('confirm-dialog').setAttribute('data-form-action', action);
+            modal.style.display = 'block';
         });
     });
 
     confirmBtn.addEventListener('click', function () {
+        if (currentForm) {
+            currentForm.action = document.getElementById('confirm-dialog').getAttribute('data-form-action');
+            currentForm.submit();
+        }
         modal.style.display = 'none';
-        form.submit(); 
     });
 
     cancelBtn.addEventListener('click', function () {
-        modal.style.display = 'none'; 
+        modal.style.display = 'none';
     });
 
     window.addEventListener('click', function (event) {
-        if (event.target == modal) {
+        if (event.target === modal) {
             modal.style.display = 'none';
         }
     });
