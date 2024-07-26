@@ -35,14 +35,14 @@
                 {% endfor %}
 
                         <div class="checkbox mb-3" id="particulier">
-                        {% block professional_widget %}
+                 
                             {% for child in registrationForm.professional %}
                                 <div class="custom-control custom-radio {% if child.vars.value == 'particulier' %}particulier{% elseif child.vars.value == 'professional' %}professional{% endif %}">
                                 {{ form_widget(child) }}
                                 <label class="custom-control-label" for="{{ child.vars.id }}">{{ child.vars.label }}</label>
                                 </div>
                             {% endfor %}
-                        {% endblock professional_widget %}
+                        
                         </div>
 
                         <div class="text_rgpd mb-4" id="text_rgpd" style="display: none;">

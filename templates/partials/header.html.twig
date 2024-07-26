@@ -14,10 +14,10 @@
                     <li class="dropdown">
                         <a href="#deposer">ANNONCES</a>
                         <ul class="dropdown-menu_one">
-                            <li><a href={{ path('app_rechercher') }}>Faire une recherche</a></li>
+                            <li><a href={{ path('app_rechercher') }} class="underline-animation">Faire une recherche</a></li>
                         {% if app.user %}
-                            <li><a href={{ path('app_annonce_chercher') }}>Je cherche un matériau</a></li>
-                            <li><a href={{ path('app_annonce_donner') }}>Je donne un matériau</a></li>
+                            <li><a href={{ path('app_annonce_chercher') }} class="underline-animation">Je cherche un matériau</a></li>
+                            <li><a href={{ path('app_annonce_donner') }} class="underline-animation">Je donne un matériau</a></li>
                         {% endif %}
                         </ul>
                     </li>
@@ -27,18 +27,18 @@
                         {% if app.user %}
                             <a href='#'>{{ app.user.identifier | upper }}</a> 
                         <ul class="dropdown-menu_two">
-                            <li><a href={{ path('app_profil') }}>Voir mon profil</a></li>
-                            <li><a href={{ path('app_mes_annonces') }}>Mes annonces</a></li>
-                            <li><a href={{ path('app_messagerie') }}>Messagerie</a></li>
-                            <li><a href={{ path('app_logout') }}>Déconnexion</a></li>
+                            <li><a href={{ path('app_profil') }} class="underline-animation">Voir mon profil</a></li>
+                            <li><a href={{ path('app_mes_annonces') }} class="underline-animation">Mes annonces</a></li>
+                            <li><a href={{ path('app_messagerie') }} class="underline-animation">Messagerie</a></li>
+                            <li><a href={{ path('app_logout') }} class="underline-animation">Déconnexion</a></li>
                         </ul>
 
                         {% else %}
                         
                         <a href={{ path('app_login') }}>CONNEXION</a>
                         <ul class="dropdown-menu_two">
-                            <li><a href={{ path('app_login') }}>Connexion</a></li>
-                            <li><a href={{ path('app_register') }}>Inscription</a></li>
+                            <li><a href={{ path('app_login') }} class="underline-animation">Connexion</a></li>
+                            <li><a href={{ path('app_register') }} class="underline-animation">Inscription</a></li>
                         </ul>
                         {% endif %}
                     </li>

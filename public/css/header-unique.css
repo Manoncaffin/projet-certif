@@ -93,13 +93,14 @@ li {
 }
 
 .dropdown-menu_one {
+    z-index: 100;
     border: 2px solid black;
     display: none;
     position: absolute;
     justify-content: center;
     padding: 10px;
     width: 280px;
-    margin-left: 10px;
+    margin-left: -10px;
     background-color: rgb(243, 237, 79);
     text-align: center;
 }
@@ -109,13 +110,14 @@ li {
 }
 
 .dropdown-menu_two {
+    z-index: 100;
     border: 2px solid black;
     display: none;
     position: absolute;
     justify-content: center;
     padding: 10px;
     width: 280px;
-    margin-left: 10px;
+    margin-left: -10px;
     background-color: rgb(243, 237, 79);
     text-align: center;
 }
@@ -163,13 +165,6 @@ a:hover {
         justify-content: space-between;
     }
 
-    .navbar .links a {
-        font-size: 1.1rem;
-        flex-wrap: wrap;
-        display: flex;
-        justify-content: center;
-    }
-
     .burger-menu {
         display: none;
     }
@@ -192,6 +187,30 @@ a:hover {
     #imageChange {
         width: 32%;
         padding: 40px 110px 40px 0;
+    }
+
+    .underline-animation {
+        position: relative;
+        text-decoration: none;
+        color: #000; 
+    }
+    
+    .underline-animation::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px; 
+        background-color: #000; 
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease;
+    }
+    
+    .underline-animation:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
     }
 }
 
@@ -249,16 +268,6 @@ a:hover {
 @media only screen and (min-width: 1500px) {
     .navbar .links {
         display: flex;
-    }
-
-    .dropdown-menu_one,
-    .dropdown-menu_two {
-        padding: 10px;
-        width: 340px;
-    }
-
-    .dropdown:hover .dropdown-menu_one {
-        display: block;
     }
 
     .logo img {

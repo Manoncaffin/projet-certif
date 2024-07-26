@@ -35,6 +35,7 @@ class RegistrationFormType extends AbstractType
                 'required' => false,
                 'expanded' => true,
                 'mapped' => true,
+                'placeholder' => false
             ]) 
 
             ->add('sectorActivity', EntityType::class, [
