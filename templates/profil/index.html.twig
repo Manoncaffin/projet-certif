@@ -12,7 +12,7 @@
 
     {% include 'partials/header.html.twig' %}
 
-    <div class="container">
+     <div class="container">
         <div class="top">
             <div class="form_profil">
                 <p>{{ ('PROFIL DE ' ~ user.identifier)|trans({}, 'messages')|upper }}</p>
@@ -28,33 +28,38 @@
 
         <div class="form_profil_large_one">
             <div class="part_one">
-            <div class="avatar_announce">
-                <div class="avatar_container">
-                    {% if app.user.avatar %}
-                        <img src="{{ asset('uploads/photos/' ~ app.user.avatar) }}" alt="Avatar de {{ app.user.identifier }}">
+                <div class="avatar_announce">
+                    <div class="avatar_container">
+                        {% if app.user.avatar %}
+                            <img src="{{ asset('uploads/photos/' ~ app.user.avatar) }}" alt="Avatar de {{ app.user.identifier }}">
+                        {% else %}
+                            <div class="avatar_placeholder">{{ app.user.identifier | first_letter }}</div>
+                        {% endif %}
+                    </div>
+                    <p> {% if userAnnounces|length == 0 %}
+                    <span>Vous n’avez pas d’annonce en ligne</span> 
                     {% else %}
-                        <div class="avatar_placeholder">{{ app.user.identifier | first_letter }}</div>
-                    {% endif %}
-                </div>
-                <p><span>{{ userAnnounces|length == 0 ? 'Vous n’avez pas d’annonce en ligne' : 'Vous avez ' ~ userAnnounces|length ~ ' annonce(s) en ligne' }}</span></p>
-                </div>    
-                    {% if userAnnounces|length == 0 %}</span></p>
-                <p class="pt-4">Vous avez un surplus de matière qui ne peut pas être destiné à son premier usage ?
-                    Vous disposez de matières premières dont vous ne savez pas quoi faire ?
-                    Vous pouvez faire un geste pour la planète, tout en faisant faire des économies à quelqu’un·e !</p>
+                    <span>Vous avez <a href="{{ path('app_mes_annonces') }}">{{ userAnnounces|length ~ ' annonce(s) en ligne' }}</a></span>
                 {% endif %}
+                </div> 
+                    {% if userAnnounces|length == 0 %}
+                        <p class="pt-4">
+                            Vous avez un surplus de matière qui ne peut pas être destiné à son premier usage ?
+                            Vous disposez de matières premières dont vous ne savez pas quoi faire ?
+                            Vous pouvez faire un geste pour la planète, tout en faisant faire des économies à quelqu’un·e !
+                        </p>
+                    {% endif %}
+                
             </div>
         </div>
-    </div>
 
-<div class="container">
         <div class="form_medium_all">
             <div class="form_medium">
                 <i class="fa-solid fa-folder-plus"></i>
                 <div class="text">
                     <h6>DÉPÔT</h6>
-                    <p><a href={{ path('app_annonce_donner') }} class="underline-animation">Donner un matériau</a></p>
-                    <p><a href={{ path('app_annonce_chercher') }} class="underline-animation">Chercher un matériau</a></p>
+                    <p><a href="{{ path('app_annonce_donner') }}" class="underline-animation">Donner un matériau</a></p>
+                    <p><a href="{{ path('app_annonce_chercher') }}" class="underline-animation">Chercher un matériau</a></p>
                 </div>
             </div>
 
@@ -62,7 +67,7 @@
                 <i class="fa-regular fa-pen-to-square"></i>
                 <div class="text">
                     <h6>INFORMATIONS</h6>
-                    <p><a href={{ path('app_modifications_informations') }} class="underline-animation">Modifier mes informations</a></p>
+                    <p><a href="{{ path('app_modifications_informations') }}" class="underline-animation">Modifier mes informations</a></p>
                     {% include 'admin/users/delete_account_form.html.twig' with {'user': user} %}
                 </div>
             </div>
@@ -71,32 +76,32 @@
                 <i class="fa-regular fa-message"></i>
                 <div class="text">
                     <h6>MESSAGERIE</h6>
-                    <p><a href={{ path('app_messagerie') }} class="underline-animation">Consulter mes messages</a></p>
+                    <p><a href="{{ path('app_messagerie') }}" class="underline-animation">Consulter mes messages</a></p>
                 </div>
             </div>
-            
+
             {% if userAnnounces|length > 0 %}
             <div class="form_medium">
                 <i class="fa-regular fa-folder"></i>
                 <div class="text">
                     <h6>GÉRER</h6>
-                    <p><a href={{ path('app_mes_annonces') }} class="underline-animation">Gérer mes annonces déposées</a></p>
+                    <p><a href="{{ path('app_mes_annonces') }}" class="underline-animation">Gérer mes annonces déposées</a></p>
                 </div>
             </div>
-            {% endif %}   
+            {% endif %}
         </div>
-</div>
-    
+
         <div id="delete-account-modal" class="modal">
             <div class="modal-content">
                 <h4>Confirmation</h4>
                 <p>Êtes-vous sûr·e de vouloir supprimer votre compte ? Cette action est irréversible.</p>
                 <div class="modal-footer">
-                <a href="#" id="confirm-delete-btn" class="modal-close waves-effect waves-green btn-flat">Confirmer</a>
-                <a href="#" id="cancel-delete-btn" class="modal-close waves-effect waves-red btn-flat">Annuler</a>
+                    <a href="#" id="confirm-delete-btn" class="modal-close waves-effect waves-green btn-flat">Confirmer</a>
+                    <a href="#" id="cancel-delete-btn" class="modal-close waves-effect waves-red btn-flat">Annuler</a>
+                </div>
             </div>
         </div>
-    
+    </div>
 
 {% endblock %}
 
