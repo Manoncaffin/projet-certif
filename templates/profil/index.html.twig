@@ -28,6 +28,7 @@
 
         <div class="form_profil_large_one">
             <div class="part_one">
+            <div class="avatar_announce">
                 <div class="avatar_container">
                     {% if app.user.avatar %}
                         <img src="{{ asset('uploads/photos/' ~ app.user.avatar) }}" alt="Avatar de {{ app.user.identifier }}">
@@ -36,16 +37,17 @@
                     {% endif %}
                 </div>
                 <p><span>{{ userAnnounces|length == 0 ? 'Vous n’avez pas d’annonce en ligne' : 'Vous avez ' ~ userAnnounces|length ~ ' annonce(s) en ligne' }}</span></p>
+                </div>    
                     {% if userAnnounces|length == 0 %}</span></p>
+                <p class="pt-4">Vous avez un surplus de matière qui ne peut pas être destiné à son premier usage ?
+                    Vous disposez de matières premières dont vous ne savez pas quoi faire ?
+                    Vous pouvez faire un geste pour la planète, tout en faisant faire des économies à quelqu’un·e !</p>
+                {% endif %}
             </div>
-
-            <p class="pt-4">Vous avez un surplus de matière qui ne peut pas être destiné à son premier usage ?
-                Vous disposez de matières premières dont vous ne savez pas quoi faire ?
-                Vous pouvez faire un geste pour la planète, tout en faisant faire des économies à quelqu’un·e !</p>
-            {% endif %}
         </div>
     </div>
 
+<div class="container">
         <div class="form_medium_all">
             <div class="form_medium">
                 <i class="fa-solid fa-folder-plus"></i>
@@ -83,6 +85,7 @@
             </div>
             {% endif %}   
         </div>
+</div>
     
         <div id="delete-account-modal" class="modal">
             <div class="modal-content">

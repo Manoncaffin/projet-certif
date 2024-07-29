@@ -37,7 +37,11 @@
             </div>
 
             <div class="form_profil_large_one">
-                <p><a href={{ path('app_mes_annonces') }}>Vos annonces en ligne.</a></p>
+            {% if userAnnounces|length  == 0 %}
+                <p>Vous n'avez pas d'annonce en ligne.</p>
+            {% else %}
+                <p><a href="{{ path('app_mes_annonces') }}">Vos annonces en ligne.</a></p>
+            {% endif %}
             </div>
 
             <div class="announce">

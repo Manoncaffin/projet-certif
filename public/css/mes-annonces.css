@@ -265,16 +265,16 @@
     }
 
     .form_profil p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .form_profil_large_one p {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
         text-align: start;
     }
 
     .text {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         text-align: start;
     }
 
@@ -328,10 +328,6 @@
 
     .form_profil_large_one {
         margin-top: 35px;
-    }
-
-    .form_profil_large_one p {
-        font-size: 1.1rem;
     }
 
     /* INFOS TOP */

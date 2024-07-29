@@ -298,9 +298,16 @@
         height: fit-content;
     }
 
+    .avatar_announce {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
     .part_one {
         display: flex;
-        align-items: center;
+        align-items: start;
+        flex-direction: column;
     }
 
     .form_medium_all {
