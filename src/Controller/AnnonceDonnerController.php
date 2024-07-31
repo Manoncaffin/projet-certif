@@ -90,7 +90,7 @@ class AnnonceDonnerController extends AbstractController
                 $this->addFlash('error', 'Veuillez sélectionner un matériau.');
             }
         } else {
-            $this->addFlash('error', 'Le formulaire n\'est pas valide.');
+            $this->addFlash('error', 'Utilisateur·rice non connecté·e.');
         }
 
         return $this->render('annonce_donner/index.html.twig', [
