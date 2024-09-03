@@ -1,0 +1,1 @@
+Bennes solidaires est un projet de design de services qui se situe dans le domaine de l'économie circulaire. Mes expériences passées, dans le design et dans l'éco-construction m'ont amené à développer ce projet d'intérêt général.
